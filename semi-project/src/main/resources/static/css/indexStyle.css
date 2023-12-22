@@ -1,0 +1,167 @@
+@font-face {
+    font-family: 'JejuHallasan';
+    font-weight: normal;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/jeju/JejuHallasan.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/jeju/JejuHallasan.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/jeju/JejuHallasan.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/jeju/JejuHallasan.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/webfontworld/jeju/JejuHallasan.ttf') format("truetype");
+    font-display: swap;
+}
+.admin {
+    width: 500px;
+    height: 500px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    top: 250px;
+    left: 350px;
+    overflow: hidden;
+}
+.admin-login {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+.user-login {
+    width: 100px;
+    height: 30px;
+}
+.main-title {
+    width: 700px;
+    height: 471px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    top: 296px;
+    left: 900px;
+    overflow: hidden;
+}
+.login-ment {
+    width: 700px;
+    position: absolute;
+    font-weight: Bold;
+    font-size: 80px;
+
+}
+.login-ment2 {
+    width:550px;
+    position: absolute;
+    top: 120px;
+    font-weight: Bold;
+    font-size: 30px;
+}
+#popupClick {
+    width: 180px;
+    height: 50px;
+    position: absolute;
+    font-size: 30px;
+    text-align: center;
+    background: rgba(255,255,255,1);
+    border: 1px solid rgba(254,239,197,1);
+    cursor: pointer;
+}
+
+.popup {
+    position: fixed;
+    /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    height: 500px;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid;
+}
+.popup h3 {
+    font-size: 40px;
+    text-align: center;
+    padding: 20px 0;
+    font-weight: lighter;
+}
+#footers{
+    width: 800px;
+    height: 50px;
+    bottom: 0;
+    padding-left: 50px;
+    padding-right: 50px;
+    background: rgba(255, 255, 255, 0);
+    border: 1px rgba(255, 255, 255, 0) solid;
+    display: inline-flex;
+    position: absolute;
+    left: 50%; /* 부모의 가운데 정렬을 위한 위치 설정 */
+    transform: translateX(-50%); /* 자신의 너비의 반만큼 왼쪽으로 이동하여 중앙 정렬 */
+}
+
+
+
+#email {
+    color: #A3A3A3;
+    font-size: 20px;
+    font-weight: 500;
+    word-wrap: break-word;
+    position: absolute; /* 상대 위치 설정을 위해 absolute 사용 */
+    top: 0;
+    left: 50%; /* 부모의 가운데 정렬을 위한 위치 설정 */
+    transform: translateX(-50%); /* 자신의 너비의 반만큼 왼쪽으로 이동하여 중앙 정렬 */
+}
+
+#bell{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+#footerTitle {
+    color: #FFE150;
+    font-size: 20px;
+    font-weight: 800;
+    word-wrap: break-word;
+    position: absolute; /* 상대 위치 설정을 위해 absolute 사용 */
+    top: 0;
+    left: 30px;
+}
+
+#number{
+    color: #A3A3A3;
+    font-size: 20px;
+    font-weight: 500;
+    word-wrap: break-word;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#footerFinal{
+    bottom: 0;
+    left: 22%;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 80%; /* 부모의 100%를 차지하도록 설정 */
+}
+
+footer div div{
+    color: #A39E9E;
+    font-size: 20px;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+#jejuH{
+    color: #A39E9E;
+    font-size: 20px;
+    font-family: JejuHallasan;
+    font-weight: 400;
+    word-wrap: break-word;
+}

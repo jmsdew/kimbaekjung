@@ -1,0 +1,535 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>학교종이 땡땡땡</title>
+  <link rel="stylesheet" href="/css/global.css" type="text/css">
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+  <!--------------------------------------제목 및 네비----------------------------------------------->
+    <header class="navbox">
+      <nav>
+        <h1>
+          <button class="main" onclick="location.href='/main/main'">
+            학교종이 땡땡땡
+          </button>
+        </h1>
+        <ul>
+          <li>
+            <button class="ranking" onclick="location.href='/rank/rank'">
+              랭킹
+            </button>
+          </li>
+          <li>
+            <button class="calendar" onclick="location.href='/calendar/calendar'">
+              캘린더
+            </button>
+          </li>
+          <li>
+            <button class="student-management" onclick="location.href='#'">
+              학생관리
+            </button>
+          </li>
+          <li>
+            <button class="mypage">
+              <a href="#">마이페이지</a>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+<!------------------------------------------사이드 시간표---------------------------------------------------->
+<aside>
+  <div class="time-line">
+    <div class="class-box">
+      <div class="first-class">
+        <input type="text" id="timeFont" value="1교시 09:00"/>
+      </div>
+      <div class="first-check" id="showHide"><i class="bi-heart" style="font-size:3rem; color: red; cursor: pointer;"></i></div>
+    </div>
+      <button id="plusButton" >시간표 추가</button>
+  </div>
+</aside>
+<!----------------------------------------------좌석 화면---------------------------------------------------->
+<article class="main-view">
+  <section class="stop-watch">
+    <div class="period">
+      <!-- 교시 정보 표시 -->
+      <div class="period-text">수업 시작</div>
+    </div>
+    <div class="timer">
+      <h2>
+          <div id="viewTimer"></div>
+      </h2>
+  </div>
+
+    <div class="time-start-button">
+      <button class="start-button">시작</button>
+    </div>
+  </section>
+  <!----------------------------------------------------학교정보 및 123등---------------------------------------------->
+  <section class="school-info">
+    <div class="school-name" ><p class="school-name-name" th:text="${ school }"></p
+    ><p class="school-name-rank">랭킹 탑3</p><p class="school-name-rank" th:text="${ student }"></div>
+  </section>
+  <!----------------------------------------------------%%%%쿼리문 수정하기%%%%---------------------------------------------->
+  <section class="student-seat">
+    <div class="student-table">
+      <table id="student-table">
+        <tr th:each="student1 : ${student2}">   <!--foreach 문 표현식-->
+          <td>  <button class="student-name"
+                        th:value="${student1.name}"
+                        th:text="${student1.name}"
+                        th:data-student-name="${student1.name}"
+                        onclick="showOptions(this)"
+                        style="background-color: white; cursor: pointer">
+          </button></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="popup1">
+      <div class="popup1-div" id="options-container" style="display: none;">
+        <button class="popup1-button" onclick="handleOption('sitDown')">착석체크</button>
+        <button type="button" class="popup1-button" id="popupClick-praise">칭찬하기</button>
+        <button type="button" class="popup1-button" id="popupClick-attendance">지각결석</button>
+        <button class="popup1-button" onclick="handleOption('standUp')">착석취소</button>
+      </div>
+    </div>
+
+    <!--칭찬팝업-->
+      <div class="popup-2">
+        <div class="popup-2-div">
+          <h3>칭찬하기</h3>
+            <form action="#" class="content1">
+              <input type="text" name="name" class="praise-date" placeholder="이름"/>
+              <input type="date" name="date" class="praise-date"/>
+              <input type="number" name="point" class="praise-date" placeholder="점수"/>
+              <select name="category" class="praise-date">
+                <option value="1">배려</option>
+                <option value="2">사교</option>
+                <option value="3">긍정</option>
+                <option value="4">책임</option>
+                <option value="5">성실</option>
+                <option value="6">도움</option>
+                <option value="7">예의</option>
+                <option value="8">봉사</option>
+                <option value="9">리더십</option>
+                <option value="10">끈기</option>
+              </select>
+              <textarea name="praise" class="praise-text" placeholder="칭찬 내용을 써주세요"></textarea>
+              <button type="submit">등록</button>
+            </form>
+        </div>
+      </div>
+
+    <!--지각결석팝업-->
+      <div class="popup-3">
+        <div class="popup-2-div">
+          <h3>출결체크</h3>
+          <form action="#" class="content2">
+            <input type="text" name="name" class="praise-date" placeholder="이름"/>
+            <input type="date" name="date" class="praise-date"/>
+            <select name="kind" class="praise-date">
+              <option value="결석">결석</option>
+              <option value="지각">지각</option>
+              <option value="조퇴">조퇴</option>
+              <option value="결과">결과</option>
+              <option value="기타">기타</option>
+            </select>
+            <textarea name="praise" class="praise-text" placeholder="사유를 입력 해주세요"></textarea>
+            <button type="submit">등록</button>
+          </form>
+        </div>
+      </div>
+
+
+  </section>
+  <!----------------------------------------------------이미지, 교과서---------------------------------------------->
+  <section class="study-ment">
+    <p>공부할 준비가 되었나요?</p>
+  </section>
+
+  <section class="charactor">
+    <img id="image" src="/image/v23_24.png">
+  </section>
+
+  <section class="material">
+  <!-- 준비물 -->
+  <input class="textbook-text" type="text">
+  <div class="textbook">교과서</div>
+    <input class="material-text" type="text">
+    <div class="material-ment">준비물</div>
+    <input class="page-text" type="text">
+    <div class="page">쪽</div>
+  </section>
+
+</article>
+<!-----------------------------------종소리 작업------------------------------------------->
+
+  <footer class="bell-sound">
+    <div class="bell-sound-icon"><img class="bell-sound-icon" src="/image/bell.png"> </div>
+    <div class="bell-sound-ment">우리반 수업 종소리</div>
+    <div class="first-bell">
+      <input type="radio" name="sound" id="radio1" onclick="handleRadioClick('media/music1.mp3')"> <label for="radio1"></label>
+      <button type="button" class="bell-click" value="PLAY" onclick="playSound()">1번 학교종</button>
+    </div>
+    <div class="two-bell">
+      <input type="radio" name="sound" id="radio2" onclick="handleRadioClick('media/2번종소리.mp3')"> <label for="radio2"></label>
+      <button type="button" class="bell-click" value="PLAY" onclick="playSound()">2번 학교종</button>
+    </div>
+    <div class="three-bell">
+      <input type="radio" name="sound" id="radio3" onclick="handleRadioClick('media/3번종소리.mp3')"> <label for="radio3"></label>
+      <button type="button" class="bell-click" value="PLAY" onclick="playSound()">3번 학교종</button>
+    </div>
+    <div class="four-bell">
+      <input type="radio" name="sound" id="radio4" onclick="handleRadioClick('media/4번종소리.mp3')"> <label for="radio4"></label>
+      <button type="button" class="bell-click" value="PLAY" onclick="playSound()">4번 학교종</button>
+    </div>
+    <div class="five-bell">
+      <input type="radio" name="sound" id="radio5" onclick="handleRadioClick('media/전우.mp4')"> <label for="radio5"></label>
+      <button type="button" class="bell-click" value="PLAY" onclick="playSound()">5번 학교종</button>
+    </div>
+    <div class="show-popup">
+      <button type="button" class="popup-click" id="popupClick">설정</button>
+    </div>
+
+    <div class="popup">
+      <h3>옵션 선택</h3>
+      <div class="content"></div>
+      <div class="buttons">
+        <button>종소리변경</button>
+        <button>이미지변경</button>
+        <button>좌석초기화</button>
+      </div>
+    </div>
+
+
+  </footer>
+
+
+
+
+<!-----------------------------------------------자바스크립트--------------------------------------------------->
+<script type="text/javascript">
+
+
+
+  let selectedStudent = null;
+
+  function showOptions(button) {
+    // 선택된 버튼을 저장
+    selectedStudent = button;
+
+    // 특정 div를 표시하도록 스타일 변경
+    document.getElementById('options-container').style.display = 'block';
+  }
+
+  function handleOption(option) {
+    // 선택한 학생 이름을 가져옴
+    let selectedStudentName = selectedStudent.getAttribute('data-student-name');
+
+    // 선택한 옵션과 학생 이름을 사용하여 작업 수행
+    console.log("선택한 옵션:", option);
+    console.log("선택한 학생 이름:", selectedStudentName);
+
+    // 스타일 변경은 'sitDown' 옵션일 때만 수행
+    if (option === 'sitDown') {
+      // 이전에 선택된 버튼이 있다면 스타일 초기화
+      if (selectedStudent) {
+        selectedStudent.style.backgroundColor = 'white';
+      }
+
+      // 현재 선택된 버튼 스타일 변경
+      selectedStudent.style.backgroundColor = 'lightblue';
+      selectedStudent.style.border = '5px solid blue';
+    }
+    if (option === 'standUp'){
+      if (selectedStudent) {
+        selectedStudent.style.backgroundColor = 'white';
+      }
+      selectedStudent.style.backgroundColor = 'whilte';
+      selectedStudent.style.border = '5px solid rgba(77,161,85,1)';
+
+    }
+
+
+    // Ajax를 사용하여 서버에 요청을 보냅니다.
+    $.ajax({
+      type: "POST",
+      url: "/main/handleOption",
+      contentType: "application/json",
+      data: JSON.stringify({
+        option: option,
+        studentName: selectedStudentName
+      }),
+      success: function(response) {
+        // 서버에서의 응답을 처리합니다.
+        console.log("서버 응답:", response);
+
+        // 여기에 새로고침 없이 업데이트할 내용을 추가하세요.
+      },
+      error: function(error) {
+        console.error("에러 발생:", error);
+      }
+    });
+  }
+// ------------------------------------------------------------------- 칭찬 제출
+
+  $(document).ready(function () {
+    $(".content1").submit(function (e) {
+      e.preventDefault(); // 폼 제출 방지
+
+      // FormData 객체를 생성하여 폼 데이터를 담습니다.
+      var formData = new FormData(this);
+
+      $.ajax({
+        type: "POST",
+        url: "/main/processPraise", // 서버의 컨트롤러 매핑 주소
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log("서버 응답:", response);
+          alert("등록완료");
+          document.querySelector('.popup-2').style.display = 'none';
+
+        },
+        error: function (error) {
+          console.error("에러 발생:", error);
+        },
+      });
+    });
+  });
+
+
+
+//---------------------------------------------------------------  출결체크
+  $(document).ready(function () {
+    $(".content2").submit(function (e) {
+      e.preventDefault(); // 폼 제출 방지
+
+      // FormData 객체를 생성하여 폼 데이터를 담습니다.
+      var formData = new FormData(this);
+
+      $.ajax({
+        type: "POST",
+        url: "/main/attendance", // 서버의 컨트롤러 매핑 주소
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log("서버 응답:", response);
+          alert("등록완료");
+          document.querySelector('.popup-3').style.display = 'none';
+
+        },
+        error: function (error) {
+          console.error("에러 발생:", error);
+        },
+      });
+    });
+  });
+
+
+
+<!-- 총 착석 하트 -------------------------------------->
+  let i = 0;
+    $('i').on('click',function(){
+        if(i==0){
+            $(this).attr('class','bi-heart-fill');
+            i++;
+        }else if(i==1){
+            $(this).attr('class','bi-heart');
+            i--;
+        }
+
+    });
+
+$(document).ready(function() {
+    let i = 0;
+    $("#plusButton").click(function() {
+      // ".classbox"를 복제하여 추가합니다.
+      let clonedBox = $(".class-box").first().clone();
+      // 복제된 박스 안에 있는 교시 번호를 갱신합니다.
+
+     // 시간 관련 함수
+     function time(i) {
+    const times = ["09:50", "10:50", "12:30", "01:20", "02:00", "02:50"];
+    return i < times.length ? times[i] : null;   // 3항 연산자
+    }
+      clonedBox.find("#timeFont").val(i+2 + "교시 " + time(i));
+
+      let iconClone = clonedBox.find(".bi-heart").clone();
+      clonedBox.find(".first-check").empty().append(iconClone);
+
+      // 복제된 박스를 기존 .classbox 바로 아래에 추가합니다.
+      $(".time-line").append(clonedBox);
+      i++;
+
+      // 복제된 하트에 대한 클릭 이벤트 처리
+      handleHeartClick(clonedBox);
+
+      let newTop = 50; // 간격을 조절하여 원하는 위치 설정
+      newTop += i*105;
+      clonedBox.find(".first-check").css({ top: newTop + "px" });
+    });
+
+    function handleHeartClick(box) {
+      box.find('i').off('click').on('click', function() {
+        if ($(this).hasClass('bi-heart')) {
+          $(this).attr('class', 'bi-heart-fill');
+        } else if ($(this).hasClass('bi-heart-fill')) {
+          $(this).attr('class', 'bi-heart');
+        }
+      });
+    }
+
+    // 초기화 단계에서도 클릭 이벤트 처리
+    handleHeartClick($(".classbox"));
+  });
+//  --------------------------------------------------------------------------------------------타이머조정
+  let SetTime = 600; // 테스트를 위해 시간을 10초로 설정
+  let tid; // 타이머 ID
+  let audio = new Audio();
+  let selectedSound = null;
+
+  function formatTime(time) {
+    return time < 10 ? "0" + time : time;
+  }
+
+  function msg_time() {
+    let minutes = Math.floor(SetTime / 60);
+    let seconds = SetTime % 60;
+
+    let formattedMinutes = formatTime(minutes);
+    let formattedSeconds = formatTime(seconds);
+
+    let msg = formattedMinutes + " : " + formattedSeconds;
+
+    if (SetTime <= 3) { // 3초 이하일 때 클래스 추가하여 빨간색으로 변경
+      document.getElementById('viewTimer').classList.add('red-text');
+    }
+
+    document.getElementById('viewTimer').innerHTML = msg;
+    SetTime--;
+
+    if (SetTime < 0) {
+      clearInterval(tid);
+      playSound();
+    }
+  }
+
+  function TimerStart() {
+    tid = setInterval(msg_time, 1000);
+  }
+
+  function playSound() {
+    if (selectedSound !== null) {
+      audio.src = selectedSound;
+      audio.play();
+    }
+  }
+  $(".start-button").click(function () {
+    clearInterval(tid); // 타이머 해제
+    SetTime = 600; // 초기 설정 시간으로 되돌림
+    document.getElementById('viewTimer').classList.remove('red-text'); // 빨간색 클래스 제거
+    TimerStart(); // 타이머 재시작
+  });
+
+  function handleRadioClick(sound) {
+    selectedSound = sound;
+  }
+
+  window.onload = function () {
+    TimerStart();
+  };
+
+
+  // -----------------------------------------------------------------------타이머
+
+  function play1(){
+    let audio = new Audio('media/music1.mp3');
+    audio.play();
+  }
+  function play2(){
+    let audio = new Audio('media/2번종소리.mp3');
+    audio.play();
+  }
+  function play3(){
+    let audio = new Audio('media/3번종소리.mp3');
+    audio.play();
+  }
+  function play4(){
+    let audio = new Audio('media/4번종소리.mp3');
+    audio.play();
+  }
+  function play5(){
+    let audio = new Audio('media/전우.mp4');
+    audio.play();
+  }
+  function play6(){
+    let audio = new Audio('media/생일축하.mp3');
+    audio.play();
+  }
+/**************************************** 설정버튼 만들기 ******************************************************/
+
+  document.getElementById('popupClick').addEventListener('click', function() {
+    document.querySelector('.popup').style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target !== document.querySelector('.popup') && !document.querySelector('.popup').contains(event.target) && event.target !== document.getElementById('popupClick')) {
+      document.querySelector('.popup').style.display = 'none';
+    }
+  });
+  let popup = document.querySelector('.popup1');
+
+  // 여러 학생 이름 엘리먼트에 대해 반복하여 이벤트를 등록
+  let studentNameElements = document.getElementsByClassName('student-name');
+
+  for (let i = 0; i < studentNameElements.length; i++) {
+    studentNameElements[i].addEventListener('click', function(event) {
+      // 마우스 커서 위치를 이용하여 팝업 위치 설정
+      popup.style.display = 'block';
+      popup.style.left = (event.pageX + 20) + 'px'; // 10px 오른쪽에 표시
+      popup.style.top = (event.pageY + 10) + 'px';  // 10px 아래에 표시
+    });
+  }
+
+  // 다른 곳을 클릭했을 때 팝업을 닫는 이벤트 등록
+  document.addEventListener('click', function (event) {
+    if (event.target !== popup && !popup.contains(event.target) && !event.target.classList.contains('student-name')) {
+      popup.style.display = 'none';
+    }
+  });
+
+  /*************************** 칭찬하기, 지각결석 팝업 ***************************/
+  document.getElementById('popupClick-praise').addEventListener('click', function() {
+    document.querySelector('.popup-2').style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target !== document.querySelector('.popup-2') && !document.querySelector('.popup-2').contains(event.target) && event.target !== document.getElementById('popupClick-praise')) {
+      document.querySelector('.popup-2').style.display = 'none';
+    }
+  });
+  document.getElementById('popupClick-attendance').addEventListener('click', function() {
+    document.querySelector('.popup-3').style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target !== document.querySelector('.popup-3') && !document.querySelector('.popup-3').contains(event.target) && event.target !== document.getElementById('popupClick-attendance')) {
+      document.querySelector('.popup-3').style.display = 'none';
+    }
+  });
+
+
+/***********************************************************************************************/
+</script>
+</body>
+</html>

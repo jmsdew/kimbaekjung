@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.rank.totalRank.model.RankDAO">
+
+
+    <resultMap id="studentResult" type="com.kimbaekjung.semiproject.rank.totalRank.dto.RankDTO">
+        <id property="name" column="student_name"/>
+        <result property="score" column="score"/>
+        <result property="tema" column="category_name"/>
+    </resultMap>
+
+    <select id="findTema1" resultMap="studentResult">
+        SELECT
+            category_name
+          FROM praise_category
+         WHERE category_code =1;
+    </select>
+    <select id="findTema2" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =2;
+    </select>
+    <select id="findTema3" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =3;
+    </select>
+    <select id="findTema4" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =4;
+    </select>
+    <select id="findTema5" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =5;
+    </select>
+    <select id="findTema6" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =6;
+    </select>
+    <select id="findTema7" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =7;
+    </select>
+    <select id="findTema8" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =8;
+    </select>
+    <select id="findTema9" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =9;
+    </select>
+    <select id="findTema10" resultMap="studentResult">
+        SELECT
+        category_name
+        FROM praise_category
+        WHERE category_code =10;
+    </select>
+
+    <select id="temaRank1" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =1
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank2" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =2
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank3" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =3
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank4" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =4
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank5" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =5
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank6" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =6
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank7" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =7
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank8" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =8
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank9" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =9
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+    <select id="temaRank10" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        WHERE b.category_code =10
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 10;
+    </select>
+
+    <select id="studentRank" resultMap="studentResult">
+        SELECT
+            a.student_name,
+            sum(b.score) AS score
+          FROM student a
+          JOIN praise b ON (a.student_code = b.student_code)
+         GROUP BY a.student_name
+         ORDER BY score DESC
+         LIMIT 10;
+    </select>
+
+
+    <select id="firstRank" resultMap="studentResult">
+        SELECT
+             a.student_name,
+             sum(b.score) AS score
+          FROM student a
+          JOIN praise b ON (a.student_code = b.student_code)
+         GROUP BY a.student_name
+         ORDER BY score DESC
+         LIMIT 1;
+    </select>
+    <select id="secondRank" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 1 offset 1;
+    </select>
+    <select id="thirdRank" resultMap="studentResult">
+        SELECT
+        a.student_name,
+        sum(b.score) AS score
+        FROM student a
+        JOIN praise b ON (a.student_code = b.student_code)
+        GROUP BY a.student_name
+        ORDER BY score DESC
+        LIMIT 1 offset 2;
+    </select>
+
+</mapper>

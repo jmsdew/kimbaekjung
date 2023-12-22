@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.main.model.MainDAO">
+
+    <resultMap id="schoolResult" type="com.kimbaekjung.semiproject.main.dto.MainDTO">
+        <id property="school" column="school"/>
+        <result property="grade" column="grade"/>
+        <result property="kind" column="class"/>
+        <result property="total" column="total"/>
+    </resultMap>
+
+    <select id="userSchool" resultMap="schoolResult">
+        SELECT
+        school,
+        grade,
+        class,
+        (SELECT count(*) FROM student) AS total
+        FROM user_info
+        WHERE user_code=1;
+    </select>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.main.model.AttendanceDAO">
+
+
+    <insert id="attendanceStudent" parameterType="com.kimbaekjung.semiproject.main.dto.AttendanceDTO">
+        INSERT INTO attend
+        VALUES
+        (
+        NULL,
+        (SELECT
+        student_code
+        FROM student
+        WHERE student_name = '${name}'
+        AND user_code = 1),
+        "${kind}",
+        "${date}",
+        "${reason}",
+        "Y",
+        null,
+        NULL,
+        NULL
+        );
+    </insert>
+</mapper>
