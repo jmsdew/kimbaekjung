@@ -32,7 +32,6 @@ public class SchoolController {
     @GetMapping("call_info_notification")
     public ModelAndView notifi(ModelAndView mv){
         List<NotificationDTO> titles = schoolService.titles();
-        System.out.println("dfw");
         mv.addObject("titles",titles);
         mv.setViewName("/school/call_info_notification");
 

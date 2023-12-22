@@ -1,121 +1,87 @@
-
-
-@font-face {
-    font-family: 'DNFBitBitv2';
-    font-style: normal;
-    font-weight: 400;
-    src: local('DNFBitBitv2'), url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.woff2') format('woff2'),
-    url('//cdn.df.nexon.com/img/common/font/DNFBitBitv2.woff') format('woff');
+@font-face{
+    font-family:'bitbit';
+    src:url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff'),url('//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2') ;
 }
-
-
-html {
+html{
     scroll-behavior: smooth;
 }
-
-a, a:link, a:visited {
+a, a:link, a:visited{
     color: inherit;
     text-decoration: none;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'DNFBitBitv2', sans-serif;
-    background-color: rgb(255, 255, 255);
+    font-family:'bitbit';
 }
 
 /*************************************************네비 바******************************************************/
-li {
+li{
     list-style: none;
 }
-
-header .navbox {
+header .navbox{
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     padding-top: 0%;
-    position: fixed; /* 수정: header를 고정시키기 위해 position 속성 추가 */
-    top: 0; /* 수정: header의 상단에 위치하도록 top 속성 추가 */
-    z-index: 1;
-    color: white;
-}
 
-header nav {
+}
+header{
+    position: fixed;
+    color: white;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    padding: 0;
+
+}
+header nav{
     display: flex;
-    justify-content: space-between;
-    align-items: top;
+    justify-content:space-between;
+    align-items:top;
     width: 100%;
 }
-
-header nav ul {
+header nav ul{
     display: flex;
     align-items: top;
 }
-
-header nav ul li {
+header nav ul li{
     padding-left: 10px;
     padding-top: 0;
 }
-
-header button {
-    background: transparent;
-    border: none;
+header button{
+    background:transparent;
+    border: 0;
     cursor: pointer;
-    background: rgba(199.66, 217.81, 201.51, 0.47);
+    background-color: rgba(0,47,4,1);
     width: 230px;
     height: 70px;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
-
-header h1 button {
+header h1 button{
     font-size: 70px;
-    color: rgba(255, 225, 80, 1);
-    background-color: rgb(255, 255, 255);
+    color: rgba(255,225,80,1);
     width: 500px;
     height: 100px;
     text-align: left;
     padding-left: 1rem;
+    background-color: white;
 }
-
-
-.ranking {
+header nav ul li button{
     font-size: 35px;
     color: rgb(255, 255, 255);
-    background: rgba(199.66, 217.81, 201.51, 0.5);
+    background-color: rgba(0,47,4,1);
     overflow: hidden;
 }
-.calendar {
-    font-size: 35px;
-    color: rgb(255, 255, 255);
-    background: rgba(199.66, 217.81, 201.51, 0.5);
-    overflow: hidden;
-}
-.student-management {
-    font-size: 35px;
-    color: rgb(255, 255, 255);
-    background: rgba(199.66, 217.81, 201.51, 0.5);
-    overflow: hidden;
-}
-.mypage {
-    font-size: 35px;
-    color: rgb(255, 255, 255);
-    background: #003005;
-    overflow: hidden;
-
-}
-#myPage{
-    background: #003005;
-}
-
-header nav ul li button a {
-    background: rgba(233, 239, 233, 0.5);
+header nav ul li button a{
+    background-color: rgba(0,47,4,1);
 }
 /*************************************************마이페이지 버튼들******************************************************/
 #bar {
+    top: 10%;
     width: 96%;
     height: 80px;
     position: absolute;
