@@ -19,6 +19,9 @@
         <mapper resource="mapper/main/sitDownMapper.xml"/>
         <mapper resource="mapper/main/praiseMapper.xml"/>
         <mapper resource="mapper/main/attendanceMapper.xml"/>
+        <mapper resource="mapper/school/mapper.xml" />
+        <mapper resource="mapper/school/mapper1.xml" />
+        <mapper resource="mapper/manage/manage.xml" />
     </mappers>
 
 </configuration>

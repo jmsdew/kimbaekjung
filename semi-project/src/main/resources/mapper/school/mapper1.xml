@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.school.model.NotificationDAO">
+
+    <resultMap id="notiResult" type="com.kimbaekjung.semiproject.school.dto.NotificationDTO">
+        <id property="code" column="NOTICE_CODE"/>
+        <result property="name" column="NOTICE_NAME"/>
+        <result property="noticeDate" column="REGIST_DATE"/>
+    </resultMap>
+
+
+    <select id="titles" resultMap="notiResult">
+        SELECT
+        NOTICE_CODE,
+        NOTICE_NAME,
+        REGIST_DATE
+        FROM NOTICE
+    </select>
+
+
+
+</mapper>
