@@ -25,4 +25,24 @@
         NULL
         );
     </insert>
+    <insert id="standUp" parameterType="com.kimbaekjung.semiproject.main.dto.SitDTO">
+        INSERT INTO praise
+        VALUES
+        (
+        NULL,
+        11,
+        "착석취소",
+        -10,
+        (SELECT
+        student_code
+        FROM student
+        WHERE student_name = '${studentName}'
+        AND user_code = 1),
+        CURRENT_DATE,
+        "Y",
+        CURRENT_DATE,
+        NULL,
+        NULL
+        );
+    </insert>
 </mapper>

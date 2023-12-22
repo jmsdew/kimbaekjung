@@ -54,8 +54,12 @@ public class MainController {
             mv.setViewName("/main/main");
         }else if (option.equals("standUp")){
 
-            // 칭찬에 -10점 주기
-
+            SitDTO sitDTO = new SitDTO();
+            sitDTO.setStudentName(studentName);
+            int sitDown = mainservice.standUp(sitDTO);
+            if(sitDown > 0){
+                System.out.println("성공");
+            }
             mv.setViewName("/main/main");
         }
         return mv;

@@ -53,4 +53,8 @@ public class Mainservice {
         return attendance;
     }
 
+    public int standUp(SitDTO sitDTO) {
+        int standUp = sitDAO.standUp(sitDTO);
+        return standUp;
+    }
 }

@@ -175,23 +175,23 @@
     <div class="bell-sound-icon"><img class="bell-sound-icon" src="/image/bell.png"> </div>
     <div class="bell-sound-ment">우리반 수업 종소리</div>
     <div class="first-bell">
-      <input type="radio" name="sound" id="radio1" onclick="handleRadioClick('media/music1.mp3')"> <label for="radio1"></label>
+      <input type="radio" name="sound" id="radio1" onclick="handleRadioClick('/media/music1.mp3')"> <label for="radio1"></label>
       <button type="button" class="bell-click" value="PLAY" onclick="playSound()">1번 학교종</button>
     </div>
     <div class="two-bell">
-      <input type="radio" name="sound" id="radio2" onclick="handleRadioClick('media/2번종소리.mp3')"> <label for="radio2"></label>
+      <input type="radio" name="sound" id="radio2" onclick="handleRadioClick('/media/2번종소리.mp3')"> <label for="radio2"></label>
       <button type="button" class="bell-click" value="PLAY" onclick="playSound()">2번 학교종</button>
     </div>
     <div class="three-bell">
-      <input type="radio" name="sound" id="radio3" onclick="handleRadioClick('media/3번종소리.mp3')"> <label for="radio3"></label>
+      <input type="radio" name="sound" id="radio3" onclick="handleRadioClick('/media/3번종소리.mp3')"> <label for="radio3"></label>
       <button type="button" class="bell-click" value="PLAY" onclick="playSound()">3번 학교종</button>
     </div>
     <div class="four-bell">
-      <input type="radio" name="sound" id="radio4" onclick="handleRadioClick('media/4번종소리.mp3')"> <label for="radio4"></label>
+      <input type="radio" name="sound" id="radio4" onclick="handleRadioClick('/media/4번종소리.mp3')"> <label for="radio4"></label>
       <button type="button" class="bell-click" value="PLAY" onclick="playSound()">4번 학교종</button>
     </div>
     <div class="five-bell">
-      <input type="radio" name="sound" id="radio5" onclick="handleRadioClick('media/전우.mp4')"> <label for="radio5"></label>
+      <input type="radio" name="sound" id="radio5" onclick="handleRadioClick('/media/전우.mp4')"> <label for="radio5"></label>
       <button type="button" class="bell-click" value="PLAY" onclick="playSound()">5번 학교종</button>
     </div>
     <div class="show-popup">
@@ -453,23 +453,23 @@ $(document).ready(function() {
   // -----------------------------------------------------------------------타이머
 
   function play1(){
-    let audio = new Audio('media/music1.mp3');
+    let audio = new Audio('/media/music1.mp3');
     audio.play();
   }
   function play2(){
-    let audio = new Audio('media/2번종소리.mp3');
+    let audio = new Audio('/media/2번종소리.mp3');
     audio.play();
   }
   function play3(){
-    let audio = new Audio('media/3번종소리.mp3');
+    let audio = new Audio('/media/3번종소리.mp3');
     audio.play();
   }
   function play4(){
-    let audio = new Audio('media/4번종소리.mp3');
+    let audio = new Audio('/media/4번종소리.mp3');
     audio.play();
   }
   function play5(){
-    let audio = new Audio('media/전우.mp4');
+    let audio = new Audio('/media/전우.mp4');
     audio.play();
   }
   function play6(){

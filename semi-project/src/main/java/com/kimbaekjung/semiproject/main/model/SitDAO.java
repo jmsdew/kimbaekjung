@@ -8,4 +8,6 @@ import org.apache.ibatis.annotations.Mapper;
 public interface SitDAO {
 
     int sitDown(SitDTO sitDTO);
+
+    int standUp(SitDTO sitDTO);
 }
