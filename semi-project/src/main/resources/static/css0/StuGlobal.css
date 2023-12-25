@@ -215,7 +215,7 @@ header nav ul li button a{
     background: rgba(255,247,227,1);
     opacity: 1;
     position: absolute;
-    top: 39.5%;
+    top: 320px;
     left: 0;
     overflow: hidden;
     display: flex;
@@ -323,7 +323,7 @@ header nav ul li button a{
 
 #section5{
     width: 83.3%;
-    height: 47.1%;
+    height: 372px;
     top: 430px;
     left: 16.7%;
     position: absolute;
