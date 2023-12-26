@@ -219,13 +219,7 @@ public class RankController {
             gradeDTO.setName(studentName);
             gradeDTO.setTema(tema);
 
-            System.out.println("Received student name: " + studentName);
-            System.out.println("tema: " + tema);
-            System.out.println(gradeDTO);
-
             List<GradeDTO> rankReason = service.gradeReason(gradeDTO);
-            System.out.println(rankReason);
-
             return ResponseEntity.ok(rankReason);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
