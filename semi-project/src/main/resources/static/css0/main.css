@@ -64,14 +64,145 @@
   transform: translate(-50%, -50%);
   background-color: #fff;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 380px;
-  height: 200px;
+  width: 700px;
+  height: 600px;
   display: none;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid;
 }
 
+#namePopup0{
+  border: 1px solid black;
+  position: absolute;
+  top: 20px;
+  left: 240px;
+  width: 220px;
+  height: 50px;
+}
+
+.popup0 section{
+  position: absolute;
+  left: 110px;
+  width: 480px;
+  height: 60px;
+  top: 90px;
+}
+
+.popup0 section div{
+  width: 100%;
+  height: 30px;
+  display: flex;
+}
+
+.popup0 section div div{
+  font-size: 20px;
+  font-weight: normal;
+  font-family: Inter;
+  width: 96px;
+  border: solid 1px black;
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.attendance{
+  width: 90%;
+  height: 370px;
+  position: absolute;
+  left: 5%;
+  bottom: 60px;
+  border: 1px solid black;
+}
+
+.attendance div{
+  position: absolute;
+  width: 100%;
+  height: 185px;
+  display: flex;
+}
+
+.attendance div h3{
+  top: -4%;
+  left: 2%;
+  position: absolute;
+  font-family: Inter;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+#word1{
+  top: -4%;
+  position: absolute;
+  font-family: Inter;
+  font-size: 15px;
+  left: 465px;
+  letter-spacing: 2px;
+}
+
+
+#date1{
+  position: absolute;
+  width: 235px;
+  height: 60px;
+  left: 2%;
+  top: 20%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#attend1{
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  left: 45%;
+  top: 20%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#agree{
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  right: 2%;
+  top: 20%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#statusContent{
+  position: absolute;
+  width: 96%;
+  height: 60px;
+  left: 2%;
+  top: 60%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+
+
+
+#color1{
+ background-color: #FFF8E4;
+}
+#color2{
+  background-color: #FFF8E4;
+}
+#color3{
+  background-color: #FFF8E4;
+}
+#color4{
+  background-color: #FFF8E4;
+}
+#color5{
+  background-color: #FFF8E4;
+}
 
  #showPopupButton{
    width: 90px;
