@@ -21,6 +21,8 @@
         <mapper resource="mapper/main/attendanceMapper.xml"/>
         <mapper resource="mapper/school/mapper.xml" />
         <mapper resource="mapper/school/mapper1.xml" />
+        <mapper resource="mapper/school/propose.xml" />
+        <mapper resource="mapper/manage/manage.xml" />
         <mapper resource="mapper/manage/manage.xml" />
     </mappers>
 

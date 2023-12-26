@@ -2,6 +2,7 @@ package com.kimbaekjung.semiproject.school.controller;
 
 
 import com.kimbaekjung.semiproject.school.dto.NotificationDTO;
+import com.kimbaekjung.semiproject.school.dto.ProposeDTO;
 import com.kimbaekjung.semiproject.school.dto.SchoolDTO;
 import com.kimbaekjung.semiproject.school.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,15 @@ public class SchoolController {
     }
 
 
+    @GetMapping("call_info_propose")
+    public ModelAndView propose(ModelAndView mv){
+        List<ProposeDTO> propose = schoolService.propose();
+        mv.addObject("propose",propose);
+        mv.setViewName("/school/call_info_propose");
+
+        return mv;
+    }
+
     @GetMapping("restart_info")
     public String restart(){
         return "/school/restart_info";
@@ -55,10 +65,6 @@ public class SchoolController {
     }
 
 
-    @GetMapping("call_info_propose")
-    public String propose(){
-        return "/school/call_info_propose";
-    }
 
     @GetMapping("propose_write")
     public String write(){
