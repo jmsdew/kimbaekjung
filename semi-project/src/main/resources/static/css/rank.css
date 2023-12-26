@@ -491,3 +491,29 @@
     80%, 99.9% {
         margin-top: 30%;
         margin-left: 80%; } }
+
+
+#rankTableContainer {
+    width: 600px;
+    text-align: center;
+    font-size: 35px;
+    position: relative;
+    word-break: break-word;
+    word-spacing: normal;
+}
+thead {
+    background-color: white;
+}
+#ranktb1 {
+    align-content: center;
+    width: 800px;
+    height: 100px;
+    background-color: white;
+}
+#ranktb1 tr {
+    height: 80px;
+}
+#ranktb1 td {
+    background-color: white;
+    width: 250px;
+}

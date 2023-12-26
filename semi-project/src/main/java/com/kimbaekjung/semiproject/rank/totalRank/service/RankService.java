@@ -1,7 +1,9 @@
 package com.kimbaekjung.semiproject.rank.totalRank.service;
 
+import com.kimbaekjung.semiproject.rank.totalRank.dto.GradeDTO;
 import com.kimbaekjung.semiproject.rank.totalRank.dto.RankDTO;
 import com.kimbaekjung.semiproject.rank.totalRank.dto.TopRankDTO;
+import com.kimbaekjung.semiproject.rank.totalRank.model.GradeDAO;
 import com.kimbaekjung.semiproject.rank.totalRank.model.RankDAO;
 import com.kimbaekjung.semiproject.rank.totalRank.model.TopRankDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,8 @@ public class RankService {
     private RankDAO rankDAO;
     @Autowired
     private TopRankDAO topRankDAO;
-
+    @Autowired
+    private GradeDAO gradeDAO;
     public List<RankDTO> studentRank() {
         List<RankDTO> students = rankDAO.studentRank();
         if(Objects.isNull(students)){              // 반환된 결과 없음     쿼리문에서 에러 발생 체크
@@ -124,4 +127,8 @@ public class RankService {
         return tema;
     }
 
+    public List<GradeDTO> gradeReason(GradeDTO gradeDTO) {
+        List<GradeDTO> success = gradeDAO.gradeReason(gradeDTO);
+        return success;
+    }
 }
