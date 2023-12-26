@@ -14,37 +14,37 @@
     <div class="before"></div>
     <div class="after"></div>
 </div>
-    <header class="navbox">
-        <nav>
-            <h1>
-                <button class="main" onclick="location.href='/main/main'">
-                    학교종이 땡땡땡
+<header class="navbox">
+    <nav>
+        <h1>
+            <button class="main" onclick="location.href='/main/main'">
+                학교종이 땡땡땡
+            </button>
+        </h1>
+        <ul>
+            <li>
+                <button class="ranking" onclick="location.href='/rank/rank'">
+                    랭킹
                 </button>
-            </h1>
-            <ul>
-                <li>
-                    <button class="ranking" onclick="location.href='/rank/rank'">
-                        랭킹
-                    </button>
-                </li>
-                <li>
-                    <button class="calendar" onclick="location.href='/calendar/calendar'">
-                        캘린더
-                    </button>
-                </li>
-                <li>
-                    <button class="student-management" onclick="location.href='/management/student_manage'">
-                        학생관리
-                    </button>
-                </li>
-                <li>
-                    <button class="mypage" onclick="location.href='/school/mypage_info'">
-                        마이페이지
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            </li>
+            <li>
+                <button class="calendar" onclick="location.href='/calendar/calendar'">
+                    캘린더
+                </button>
+            </li>
+            <li>
+                <button class="student-management" onclick="location.href='/management/student_manage'">
+                    학생관리
+                </button>
+            </li>
+            <li>
+                <button class="mypage" onclick="location.href='/school/mypage_info'">
+                    마이페이지
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
 
     <article class="rank">
         <!---------------------------반 랭킹-------------------------------------->
@@ -52,7 +52,6 @@
             <div class="rank-main">
                 <div class="rank-main-1">종합순위</div>
                 <div class="category-button"><button class="category-button-1" id="popupClick">테마</button></div>
-                <div class="student-button"><button class="student-button-1">학생</button></div>
             </div>
             <div class="ranking-page">
                 <div class="ranking-page-1">등수 <br>
@@ -73,10 +72,8 @@
 
         <div class="popup">
             <div class="popup-div">
-
-                <!--temarank 비동기 방식으로 이름 넣어서 전달하기 만들기.-->
                 <button class="popup1-button" onclick="location.href='temaRank1'">배려</button>
-               <!-- <button class="popup1-button" onclick="location.href='temaRank2'">사교</button>
+                <button class="popup1-button" onclick="location.href='temaRank2'">사교</button>
                 <button class="popup1-button" onclick="location.href='temaRank3'">긍정</button>
                 <button class="popup1-button" onclick="location.href='temaRank4'">책임</button>
                 <button class="popup1-button" onclick="location.href='temaRank5'">성실</button>
@@ -84,7 +81,7 @@
                 <button class="popup1-button" onclick="location.href='temaRank7'">예의</button>
                 <button class="popup1-button" onclick="location.href='temaRank8'">봉사</button>
                 <button class="popup1-button" onclick="location.href='temaRank9'">리더십</button>
-                <button class="popup1-button" onclick="location.href='temaRank10'">끈기</button>-->
+                <button class="popup1-button" onclick="location.href='temaRank10'">끈기</button>
             </div>
         </div>
         <!-----------------------------테마별 1등---------------------------------------->
