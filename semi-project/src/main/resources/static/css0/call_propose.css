@@ -231,33 +231,32 @@
   text-align: center;
   height: 20px;
   width: 80px;
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 18px;
+  font-family: Inter;
 }
 #special2{
   text-align: center;
   height: 20px;
   width: 578.67px;
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 18px;
   border: none;
   background-color: white;
+  font-family: Inter;
 }
 #special3{
   text-align: center;
   height: 20px;
   width: 120px;
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 18px;
+  font-family: Inter;
 }
 #special4{
   text-align: center;
   height: 20px;
   width: 118px;
-  font-size: 15px;
-  font-weight: lighter;
+  font-size: 18px;
+  font-family: Inter;
 }
-
 
 
 .paging {
@@ -298,11 +297,13 @@
   justify-content: center;
   align-items: flex-start;
   display: flex;
-  gap: 20px;
+  gap: 30px;
 }
 #search{
   width: 300px;
   height: 30px;
+  font-family: Inter;
+  font-size: 20px;
 }
 #research button{
   flex: 1;
@@ -315,4 +316,7 @@
   letter-spacing: 3px;
   word-wrap: break-word;
   border-radius: 5px;
+  width: 80px;
+  position: absolute;
+  top: 5px;
 }
