@@ -192,33 +192,102 @@
   font-weight: bold;
 }
 
-#allPageBtn{
-  width: 600px;
-  height: 40px;
-  left: 20%;
-  position: absolute;
-  bottom: 60px;
+/*#allPageBtn{*/
+/*  width: 600px;*/
+/*  height: 40px;*/
+/*  left: 20%;*/
+/*  position: absolute;*/
+/*  bottom: 60px;*/
+/*  display: flex;*/
+/*  gap: 20px;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*}*/
+
+/*#allPageBtn a{*/
+/*  font-size: 25px;*/
+/*  text-align: center;*/
+/*  display: block;*/
+/*}*/
+
+/*#leftBtns{*/
+/*  position: absolute;*/
+/*  left: 0;*/
+/*}*/
+
+/*#rightBtns{*/
+/*  position: absolute;*/
+/*  right: 0;*/
+/*}*/
+.namelist1{
+  width: 100%;
+  height: 30px;
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
+  align-content: flex-start;
 }
 
-#allPageBtn a{
-  font-size: 25px;
+#special1{
   text-align: center;
-  display: block;
+  height: 20px;
+  width: 80px;
+  font-size: 15px;
+  font-weight: lighter;
+}
+#special2{
+  text-align: center;
+  height: 20px;
+  width: 578.67px;
+  font-size: 15px;
+  font-weight: lighter;
+  border: none;
+  background-color: white;
+}
+#special3{
+  text-align: center;
+  height: 20px;
+  width: 120px;
+  font-size: 15px;
+  font-weight: lighter;
+}
+#special4{
+  text-align: center;
+  height: 20px;
+  width: 118px;
+  font-size: 15px;
+  font-weight: lighter;
 }
 
-#leftBtns{
+
+
+.paging {
+  font-size: 25px;
+  width: 90%;
+  height: 40px;
   position: absolute;
-  left: 0;
+  bottom: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#rightBtns{
-  position: absolute;
-  right: 0;
+.paging>i,
+.paging>.pages {
+  margin: 0 10px;
 }
+
+.paging>i,
+.pages>span {
+  font-family: 'Roboto', sans-serif;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+.active {
+  color: black;
+  font-weight: bold;
+}
+
 
 #research{
   width: 400px;

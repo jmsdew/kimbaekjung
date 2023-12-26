@@ -1,8 +1,10 @@
 package com.kimbaekjung.semiproject.school.service;
 
 import com.kimbaekjung.semiproject.school.dto.NotificationDTO;
+import com.kimbaekjung.semiproject.school.dto.ProposeDTO;
 import com.kimbaekjung.semiproject.school.dto.SchoolDTO;
 import com.kimbaekjung.semiproject.school.model.NotificationDAO;
+import com.kimbaekjung.semiproject.school.model.ProposeDAO;
 import com.kimbaekjung.semiproject.school.model.SchoolDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +19,8 @@ public class SchoolService {
     @Autowired
     private NotificationDAO notificationDAO;
 
-
+    @Autowired
+    private ProposeDAO proposeDAO;
 
     public List<SchoolDTO> oneName() {
         List<SchoolDTO> nameOne= schoolDAO.oneName();
@@ -33,4 +36,9 @@ public class SchoolService {
     }
 
 
+    public List<ProposeDTO> propose() {
+        List<ProposeDTO> propose = proposeDAO.propose();
+
+        return propose;
+    }
 }
