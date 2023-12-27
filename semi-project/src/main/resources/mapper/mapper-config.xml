@@ -26,7 +26,7 @@
         <mapper resource="mapper/school/SearchPropose.xml" />
         <mapper resource="mapper/school/SearchMapper1.xml" />
         <mapper resource="mapper/manage/manage.xml" />
-        <mapper resource="mapper/calendar/calendarMapper.xml" />
+        <mapper resource="mapper/manage/manage.xml" />
     </mappers>
 
 </configuration>
