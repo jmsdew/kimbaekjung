@@ -7,19 +7,18 @@
 </head>
 <body>
     <div class="admin"><button class="admin-login" onclick="location.href='/login/adminLoginPage'"><img src="image/bell.png"> </button></div>
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
-            integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
-    <script>
-        Kakao.init('528bf87193c911d9669e1fac9b50a2e8'); // 사용하려는 앱의 JavaScript 키 입력
-        console.log(Kakao.isInitialized());
-    </script>
+
 
     <div class="main-title">
         <span class="login-ment">학교 종이 땡땡땡</span>
         <span class="login-ment2">선생님을 위한 맞춤형 교실 관리 사이트 지금 가입하세요</span>
+        <a
+                style="position: relative; top: 250px; border:none;
+                background-color: white; cursor: pointer"
+                class="admin-login" href="javascript:loginWithKakao();">
+            <img src="img/kakao.png"> </a>
 
     </div>
-    <button onclick="location.href='/main/main'" class="user-login">로그인</button>
     <footer id=footers>
         <div id = email>kbjcom@google.com</div>
         <img src="image/bell.png" alt="school Bell" id="bell">
@@ -35,68 +34,39 @@
 
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-        function loginWithKakao() {  // redirectUri 로 code 를 받고 accessToken 받아서 활용해야 함
+        Kakao.init('528bf87193c911d9669e1fac9b50a2e8');
+
+        function loginWithKakao() {
             Kakao.Auth.authorize({
-                redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
+                redirectUri:
+                    'http://localhost:8080/oauth/kakao',
             });
         }
 
-        function requestUserInfo() {
-            Kakao.API.request({
-                url: '/v2/user/me',
-            })
-                .then(function(res) {
-                    alert(JSON.stringify(res));
-                })
-                .catch(function(err) {
-                    alert(
-                        'failed to request user information: ' + JSON.stringify(err)
-                    );
+        // 카카오 로그인 후 호출되는 콜백 함수
+        function kakaoLoginCallback(response) {
+            if (response.status === 'connected') {
+                // 로그인 성공 시 사용자 정보를 가져올 수 있음
+                Kakao.API.request({
+                    url: '/v2/user/me',
+                    success: function (res) {
+                        // 사용자 정보 처리
+                        console.log(res);
+                    },
+                    fail: function (error) {
+                        // 사용자 정보 가져오기 실패 시 처리
+                        console.error(error);
+                    }
                 });
-        }
-
-
-        displayToken()
-        function displayToken() {
-            var token = getCookie('authorize-access-token');
-
-            if(token) {
-                Kakao.Auth.setAccessToken(token);
-                Kakao.Auth.getStatusInfo()
-                    .then(function(res) {
-                        if (res.status === 'connected') {
-                            document.getElementById('token-result').innerText
-                                = 'login success, token: ' + Kakao.Auth.getAccessToken();
-                        }
-                    })
-                    .catch(function(err) {
-                        Kakao.Auth.setAccessToken(null);
-                    });
             }
         }
 
-        function getCookie(name) {
-            var parts = document.cookie.split(name + '=');
-            if (parts.length === 2) { return parts[1].split(';')[0]; }
-        }
-
-        $.ajax({
-            type : "POST"
-            , url : 'https://kauth.kakao.com/oauth/token'
-            , data : {
-                grant_type : 'authorization_code',
-                client_id : '528bf87193c911d9669e1fac9b50a2e8',
-                redirect_uri : 'http://localhost:8080/user/main',
-                code : kakaoCode
-            }
-            , contentType:'application/x-www-form-urlencoded;charset=utf-8'
-            , dataType: null
-            , success : function(response) {
-                Kakao.Auth.setAccessToken(response.access_token);
-                document.querySelector('button.api-btn').style.visibility = 'visible';
-            }
-            ,error : function(jqXHR, error) {
-
+        // 카카오 로그인 초기화
+        Kakao.Auth.createLoginButton({
+            container: '#kakao-login-btn',
+            success: kakaoLoginCallback,
+            fail: function (error) {
+                console.error(error);
             }
         });
     </script>

@@ -7,23 +7,23 @@ import java.util.List;
 
 @Mapper
 public interface RankDAO {
-    List<RankDTO> firstRank();
+    List<RankDTO> firstRank(int userCode);
 
-    List<RankDTO> secondRank();
+    List<RankDTO> secondRank(int userCode);
 
-    List<RankDTO> thirdRank();
+    List<RankDTO> thirdRank(int userCode);
 
-    List<RankDTO> studentRank();
-    List<RankDTO> temaRank1();
-    List<RankDTO> temaRank2();
-    List<RankDTO> temaRank3();
-    List<RankDTO> temaRank4();
-    List<RankDTO> temaRank5();
-    List<RankDTO> temaRank6();
-    List<RankDTO> temaRank7();
-    List<RankDTO> temaRank8();
-    List<RankDTO> temaRank9();
-    List<RankDTO> temaRank10();
+    List<RankDTO> studentRank(int userCode);
+    List<RankDTO> temaRank1(int userCode);
+    List<RankDTO> temaRank2(int userCode);
+    List<RankDTO> temaRank3(int userCode);
+    List<RankDTO> temaRank4(int userCode);
+    List<RankDTO> temaRank5(int userCode);
+    List<RankDTO> temaRank6(int userCode);
+    List<RankDTO> temaRank7(int userCode);
+    List<RankDTO> temaRank8(int userCode);
+    List<RankDTO> temaRank9(int userCode);
+    List<RankDTO> temaRank10(int userCode);
     List<RankDTO> findTema1();
     List<RankDTO> findTema2();
     List<RankDTO> findTema3();

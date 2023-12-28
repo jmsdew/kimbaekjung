@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface TopRankDAO {
-    List<TopRankDTO> topRank();
+    List<TopRankDTO> topRank(int userCode);
 }

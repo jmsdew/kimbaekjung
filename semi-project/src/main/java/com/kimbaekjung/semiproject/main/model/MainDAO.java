@@ -7,5 +7,5 @@ import java.util.List;
 
 @Mapper
 public interface MainDAO {
-    List<MainDTO> userSchool();
+    List<MainDTO> userSchool(int userCodes);
 }

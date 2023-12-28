@@ -1,15 +1,16 @@
 package com.kimbaekjung.semiproject.main.controller;
 
 import com.kimbaekjung.semiproject.main.dto.*;
+import com.kimbaekjung.semiproject.main.kakao.controller.AuthController;
 import com.kimbaekjung.semiproject.main.service.Mainservice;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.net.http.HttpHeaders;
 import java.util.List;
 import java.util.Map;
 
@@ -20,11 +21,18 @@ public class MainController {
     @Autowired
     private Mainservice mainservice;
 
+    @Autowired
+    private AuthController authController;
+
+
     @GetMapping("/main")
-    public ModelAndView main(ModelAndView mv){
-        List<MainDTO> school = mainservice.userSchool();
-        List<StudentDTO> student = mainservice.studentName();
-        List<StudentDTO> student2 = mainservice.allStudent();
+    public ModelAndView main(ModelAndView mv, HttpSession session){
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int c = Integer.parseInt(b);
+        List<MainDTO> school = mainservice.userSchool(c);
+        List<StudentDTO> student = mainservice.studentName(c);
+        List<StudentDTO> student2 = mainservice.allStudent(c);
 
         mv.addObject("student", student);
         mv.addObject("school", school);
@@ -33,6 +41,7 @@ public class MainController {
         mv.setViewName("/main/main");
         return mv;
     }
+
     @PostMapping("/handleOption")
     public ModelAndView handleOption(@RequestBody Map<String, String> requestData) {
         String option = requestData.get("option");

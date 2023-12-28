@@ -15,6 +15,7 @@
             sum(b.score) AS score
           FROM student a
           JOIN praise b ON (a.student_code = b.student_code)
+          where a.user_code = #{userCodes}
          GROUP BY a.student_name
          ORDER BY score DESC
          LIMIT 3;
@@ -25,7 +26,8 @@
         SELECT
          STUDENT_NAME
          FROM student
-         WHERE user_code =1;
+         WHERE user_code = #{userCodes}
+           and student_status = 'Y'
 
     </select>
 

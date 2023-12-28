@@ -20,70 +20,70 @@ public class RankService {
     private TopRankDAO topRankDAO;
     @Autowired
     private GradeDAO gradeDAO;
-    public List<RankDTO> studentRank() {
-        List<RankDTO> students = rankDAO.studentRank();
+    public List<RankDTO> studentRank(int userCode) {
+        List<RankDTO> students = rankDAO.studentRank(userCode);
         if(Objects.isNull(students)){              // 반환된 결과 없음     쿼리문에서 에러 발생 체크
             System.out.println("exeception 학생이 없네요 ");
         }
         return students;
     }
-    public List<TopRankDTO> topRank() {
-        List<TopRankDTO> ranking = topRankDAO.topRank();
+    public List<TopRankDTO> topRank(int userCode) {
+        List<TopRankDTO> ranking = topRankDAO.topRank(userCode);
         return ranking;
     }
 
-    public List<RankDTO> firstRank() {
-        List<RankDTO> first = rankDAO.firstRank();
+    public List<RankDTO> firstRank(int userCode) {
+        List<RankDTO> first = rankDAO.firstRank(userCode);
         return first;
     }
 
-    public List<RankDTO> secondRank() {
-        List<RankDTO> second = rankDAO.secondRank();
+    public List<RankDTO> secondRank(int userCode) {
+        List<RankDTO> second = rankDAO.secondRank(userCode);
         return second;
     }
 
-    public List<RankDTO> thirdRank() {
-        List<RankDTO> third = rankDAO.thirdRank();
+    public List<RankDTO> thirdRank(int userCode) {
+        List<RankDTO> third = rankDAO.thirdRank(userCode);
         return third;
     }
-    public List<RankDTO> temaRank1() {
-        List<RankDTO> students = rankDAO.temaRank1();
+    public List<RankDTO> temaRank1(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank1(userCode);
         return students;
     }
-    public List<RankDTO> temaRank2() {
-        List<RankDTO> students = rankDAO.temaRank2();
+    public List<RankDTO> temaRank2(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank2(userCode);
         return students;
     }
-    public List<RankDTO> temaRank3() {
-        List<RankDTO> students = rankDAO.temaRank3();
+    public List<RankDTO> temaRank3(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank3(userCode);
         return students;
     }
-    public List<RankDTO> temaRank4() {
-        List<RankDTO> students = rankDAO.temaRank4();
+    public List<RankDTO> temaRank4(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank4(userCode);
         return students;
     }
-    public List<RankDTO> temaRank5() {
-        List<RankDTO> students = rankDAO.temaRank5();
+    public List<RankDTO> temaRank5(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank5(userCode);
         return students;
     }
-    public List<RankDTO> temaRank6() {
-        List<RankDTO> students = rankDAO.temaRank6();
+    public List<RankDTO> temaRank6(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank6(userCode);
         return students;
     }
-    public List<RankDTO> temaRank7() {
-        List<RankDTO> students = rankDAO.temaRank7();
+    public List<RankDTO> temaRank7(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank7(userCode);
         return students;
     }
-    public List<RankDTO> temaRank8() {
-        List<RankDTO> students = rankDAO.temaRank8();
+    public List<RankDTO> temaRank8(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank8(userCode);
         return students;
     }
-    public List<RankDTO> temaRank9() {
-        List<RankDTO> students = rankDAO.temaRank9();
+    public List<RankDTO> temaRank9(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank9(userCode);
         return students;
     }
-    public List<RankDTO> temaRank10() {
-        List<RankDTO> students = rankDAO.temaRank10();
+    public List<RankDTO> temaRank10(int userCode) {
+        List<RankDTO> students = rankDAO.temaRank10(userCode);
         return students;
     }
     public List<RankDTO> findTema1() {
@@ -127,8 +127,8 @@ public class RankService {
         return tema;
     }
 
-    public List<GradeDTO> gradeReason(GradeDTO gradeDTO) {
-        List<GradeDTO> success = gradeDAO.gradeReason(gradeDTO);
+    public List<GradeDTO> gradeReason(GradeDTO gradeDTO, int userCode) {
+        List<GradeDTO> success = gradeDAO.gradeReason(gradeDTO,userCode);
         return success;
     }
 }
