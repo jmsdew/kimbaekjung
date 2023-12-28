@@ -7,6 +7,12 @@
 </head>
 <body>
     <div class="admin"><button class="admin-login" onclick="location.href='/login/adminLoginPage'"><img src="image/bell.png"> </button></div>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+            integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx" crossorigin="anonymous"></script>
+    <script>
+        Kakao.init('528bf87193c911d9669e1fac9b50a2e8'); // 사용하려는 앱의 JavaScript 키 입력
+        console.log(Kakao.isInitialized());
+    </script>
 
     <div class="main-title">
         <span class="login-ment">학교 종이 땡땡땡</span>
@@ -26,5 +32,73 @@
         </div>
     </footer>
 
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        function loginWithKakao() {  // redirectUri 로 code 를 받고 accessToken 받아서 활용해야 함
+            Kakao.Auth.authorize({
+                redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
+            });
+        }
+
+        function requestUserInfo() {
+            Kakao.API.request({
+                url: '/v2/user/me',
+            })
+                .then(function(res) {
+                    alert(JSON.stringify(res));
+                })
+                .catch(function(err) {
+                    alert(
+                        'failed to request user information: ' + JSON.stringify(err)
+                    );
+                });
+        }
+
+
+        displayToken()
+        function displayToken() {
+            var token = getCookie('authorize-access-token');
+
+            if(token) {
+                Kakao.Auth.setAccessToken(token);
+                Kakao.Auth.getStatusInfo()
+                    .then(function(res) {
+                        if (res.status === 'connected') {
+                            document.getElementById('token-result').innerText
+                                = 'login success, token: ' + Kakao.Auth.getAccessToken();
+                        }
+                    })
+                    .catch(function(err) {
+                        Kakao.Auth.setAccessToken(null);
+                    });
+            }
+        }
+
+        function getCookie(name) {
+            var parts = document.cookie.split(name + '=');
+            if (parts.length === 2) { return parts[1].split(';')[0]; }
+        }
+
+        $.ajax({
+            type : "POST"
+            , url : 'https://kauth.kakao.com/oauth/token'
+            , data : {
+                grant_type : 'authorization_code',
+                client_id : '528bf87193c911d9669e1fac9b50a2e8',
+                redirect_uri : 'http://localhost:8080/user/main',
+                code : kakaoCode
+            }
+            , contentType:'application/x-www-form-urlencoded;charset=utf-8'
+            , dataType: null
+            , success : function(response) {
+                Kakao.Auth.setAccessToken(response.access_token);
+                document.querySelector('button.api-btn').style.visibility = 'visible';
+            }
+            ,error : function(jqXHR, error) {
+
+            }
+        });
+    </script>
 </body>
 </html>
