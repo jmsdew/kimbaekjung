@@ -497,7 +497,7 @@ input[type="radio"] {
 input[type="radio"]:checked {
   background-color: #4CAF50; /* 선택 시 배경색을 녹색으로 변경 */
 }
-#radio1, #radio2,#radio3,#radio4,#radio5{
+#radio1, #radio2,#radio3,#radio4,#radio5,#radio6{
   width: 30px;
   height: 30px;
   border: none;
@@ -561,8 +561,7 @@ input[type="radio"]:checked {
   border-bottom-right-radius: 100px;
   overflow: hidden;
 }
-
-.show-popup {
+.six-bell {
   width: 180px;
   height: 50px;
   background: rgba(255,255,255,1);
@@ -570,38 +569,14 @@ input[type="radio"]:checked {
   position: absolute;
   top: 15px;
   left: 1650px;
-  border-radius: 100px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
   overflow: hidden;
-  cursor: pointer;
-}
-.popup-click {
-  width: 180px;
-  height: 50px;
-  position: absolute;
-  font-size: 30px;
-  opacity: 1;
-  text-align: center;
-  background: rgba(255,255,255,1);
-  border: 1px solid rgba(254,239,197,1);
-  cursor: pointer;
 }
 
-.popup {
-  position: fixed;
-  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
-  z-index: 11;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  height: 500px;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid;
-}
+
 /********************칭찬팝업*******************/
 .popup-2 {
   position: fixed;

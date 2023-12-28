@@ -13,16 +13,17 @@
     </resultMap>
     <select id="gradeReason" resultMap="schoolResult">
         SELECT
-            B.student_name,
-            c.category_name,
-            A.score ,
-            A.praise_context ,
-            A.praise_date
-          FROM praise A
-          JOIN student B ON (A.student_code = B.student_code)
-          JOIN praise_category C ON (A.category_code = C.category_code)
-         WHERE B.student_name = "${name}"
-           AND C.category_name = "${tema}";
+        B.student_name,
+        C.category_name,
+        A.score,
+        A.praise_context,
+        A.praise_date
+        FROM praise A
+        JOIN student B ON (A.student_code = B.student_code)
+        JOIN praise_category C ON (A.category_code = C.category_code)
+        WHERE B.student_name = #{gradeDTO.name}
+        AND C.category_name = #{gradeDTO.tema}
+        AND B.user_code = #{userCode}
 
 
     </select>

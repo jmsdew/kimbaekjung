@@ -23,18 +23,18 @@ public class Mainservice {
     private PraiseDAO praiseDAO;
 
 
-    public List<MainDTO> userSchool() {
-        List<MainDTO> school = mainDAO.userSchool();
+    public List<MainDTO> userSchool(int userCodes) {
+        List<MainDTO> school = mainDAO.userSchool(userCodes);
         return school;
     }
 
-    public List<StudentDTO> studentName() {
-        List<StudentDTO> student = studentDAO.studentName();
+    public List<StudentDTO> studentName(int userCodes) {
+        List<StudentDTO> student = studentDAO.studentName(userCodes);
         return student;
     }
 
-    public List<StudentDTO> allStudent() {
-        List<StudentDTO> student2 = studentDAO.allStudent();
+    public List<StudentDTO> allStudent(int userCodes) {
+        List<StudentDTO> student2 = studentDAO.allStudent(userCodes);
         return student2;
     }
 

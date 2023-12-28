@@ -18,6 +18,6 @@
         class,
         (SELECT count(*) FROM student) AS total
         FROM user_info
-        WHERE user_code=1;
+        WHERE user_code= #{userCodes}
     </select>
 </mapper>

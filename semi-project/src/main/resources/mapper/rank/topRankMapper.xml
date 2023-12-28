@@ -21,6 +21,7 @@
           STUDENT A
           JOIN PRAISE B ON A.student_code = B.student_code
           JOIN praise_category C ON B.category_code = C.category_code
+          and a.user_code = #{userCode}
          GROUP BY C.category_NAME, A.STUDENT_NAME
         )
         SELECT
