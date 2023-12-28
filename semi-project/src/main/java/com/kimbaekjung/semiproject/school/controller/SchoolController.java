@@ -1,15 +1,11 @@
 package com.kimbaekjung.semiproject.school.controller;
 
 
-import com.kimbaekjung.semiproject.admin.dto.SearchNoticeDTO;
 import com.kimbaekjung.semiproject.school.dto.*;
 import com.kimbaekjung.semiproject.school.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -29,6 +25,38 @@ public class SchoolController {
 
         return mv;
     }
+
+
+//    @GetMapping("student/list")
+//    public
+
+//    @GetMapping("popup_info")
+//    public ModelAndView attendNum(ModelAndView mv){
+//        List<AttendNumDTO> attendNum = schoolService.attendNum();
+//        mv.addObject("attendNum",attendNum);
+//        mv.setViewName("/school/mypage_info");
+//
+//        return mv;
+//    }
+
+
+    @GetMapping("regist")
+    public void insert(){};
+
+    @PostMapping("regist")
+    public ModelAndView insert(ModelAndView mv, InsertDTO insertDTO ){
+        int insert = schoolService.insert(insertDTO);
+        if(insert >= 0 ){
+            System.out.println("exception");
+        }
+        mv.setViewName("/school/mypage_info");
+
+        return mv;
+    }
+
+
+
+
 
 
     @GetMapping("call_info_notification")
@@ -73,6 +101,9 @@ public class SchoolController {
 
         return mv;
     }
+
+
+
 
     @GetMapping("restart_info")
     public String restart(){

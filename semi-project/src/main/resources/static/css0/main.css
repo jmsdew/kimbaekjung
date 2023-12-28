@@ -32,8 +32,11 @@
 #namelist button{
   height: 45px;
   width: 179px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 450;
+  background-color: white;
+  border: 1px solid black;
+  font-family: Inter;
 }
 
 
@@ -79,6 +82,11 @@
   left: 240px;
   width: 220px;
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* 가운데 정렬을 유지하기 위해 추가 */
+  font-family: Inter;
 }
 
 .popup0 section{
@@ -113,6 +121,7 @@
   left: 5%;
   bottom: 60px;
   border: 1px solid black;
+  overflow-y: auto;
 }
 
 .attendance div{
@@ -205,10 +214,13 @@
 }
 
  #showPopupButton{
-   width: 90px;
-   height: 25px;
+   width: 100px;
+   height: 30px;
    right: 150px;
    bottom: 60px;
+   font-family: Inter;
+   font-size: 17px;
+   font-weight: bold;
    position: absolute;
 
  }
@@ -230,6 +242,34 @@
   justify-content: space-between;
   border: 1px solid;
 }
+
+.popup section{
+  width: 95%;
+  height: 350px;
+  position: absolute;
+  top: 70px;
+  left: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.nameBtn2{
+  width: 170px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+  font-family: Inter;
+  font-size: 20px;
+}
+
+.nameBtn2.selected{
+
+  background-color: #e7e7e7;
+}
+
+
 h3 {
   font-size: 25px;
   text-align: center;
@@ -245,6 +285,17 @@ h3 {
   padding: 20px 40px;
 }
 .buttons button {
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 70px;
+  font-size: 20px;
+}
+
+.popup_cancel1{
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
   border: 1px solid #000;
   background-color: #fff;
   border-radius: 20px;
