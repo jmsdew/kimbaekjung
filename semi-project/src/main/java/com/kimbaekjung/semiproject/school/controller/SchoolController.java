@@ -3,6 +3,7 @@ package com.kimbaekjung.semiproject.school.controller;
 
 import com.kimbaekjung.semiproject.school.dto.*;
 import com.kimbaekjung.semiproject.school.service.SchoolService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class SchoolController {
     private SchoolService schoolService;
 
     @GetMapping("mypage_info")
-    public ModelAndView namesBtn(ModelAndView mv){
+    public ModelAndView namesBtn(ModelAndView mv, HttpSession session){
         List<SchoolDTO> names = schoolService.oneName();
 //        SchoolDTO names = schoolService.oneName(schoolDTO);
         mv.addObject("names",names);

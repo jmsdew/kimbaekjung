@@ -167,17 +167,28 @@
 <!--*****************************팝업*********************************-->
  <div class="popup">
      <h3>학생관리</h3>
+<!--     <section id="popupList">-->
+<!--         <tr th:each="name, index : ${names}">-->
+<!--             <button class="nameBtn2"  th:text="${name.studentName}" th:attr="data-index=${index.index + 1}"></button>-->
+<!--         </tr>-->
+
+<!--     </section>-->
+
      <section id="popupList">
          <tr th:each="name, index : ${names}">
-             <button class="nameBtn2"  th:text="${name.studentName}" th:attr="data-index=${index.index + 1}"></button>
+             <button class="nameBtn2" th:text="${name.studentName}" th:attr="data-student-code=${name.studentCode}" th:attr="data-index=${index.index + 1}" onclick="onClickStudentHandler2(this)"></button>
          </tr>
-
      </section>
      <div class="buttons">
          <button id="addPopupStu">등록</button>
          <button>수정</button>
+<!--         <form id="deleteName">-->
+<!--             <button type="submit" th:onclick="'onClickStudentHandler1(\'' + ${name.studentCode} + '\')'">삭제</button>-->
+<!--         </form>-->
+
          <form id="deleteName">
-             <button type="submit" th:onclick="'onClickStudentHandler1(\'' + ${name.studentCode} + '\')'">삭제</button>
+             <!-- 삭제 버튼의 onclick 수정 -->
+             <button type="submit" onclick="onClickDeleteButton()">삭제</button>
          </form>
      </div>
  </div>
@@ -239,8 +250,26 @@
 
 
 
-     function onClickStudentHandler1(studentCode) {
+     let selectedStudentCode = null;
 
+     function onClickStudentHandler2(button) {
+         // 선택된 학생 코드 저장
+         selectedStudentCode = button.getAttribute('data-student-code');
+         // 여기에서 선택된 버튼에 대한 추가 동작 수행 가능
+     }
+
+     function onClickDeleteButton() {
+         if (selectedStudentCode) {
+             // 삭제 버튼을 눌렀을 때 선택된 학생 코드에 대한 함수 호출
+             onClickStudentHandler1(selectedStudentCode);
+         } else {
+             // 선택된 학생이 없는 경우에 대한 처리
+             console.log('No student selected');
+         }
+     }
+
+     // 기존의 onClickStudentHandler1 함수는 그대로 유지
+     function onClickStudentHandler1(studentCode) {
          console.log(studentCode);
          fetch(`/student/delete/${studentCode}`, {
              method: 'POST',
@@ -260,16 +289,16 @@
                  data.forEach(element => {
                      const {studentName} = element;
                      text = `
-                     <tr>
-                       <button class="nameBtn1">${studentName}</button>
-                     </tr>
-                     `;
+                    <tr>
+                        <button class="nameBtn1">${studentName}</button>
+                    </tr>
+                `;
 
                      text1 = `
-                     <tr>
-                     <button class="nameBtn2">${studentName}</button>
-                     </tr>
-                     `;
+                    <tr>
+                        <button class="nameBtn2">${studentName}</button>
+                    </tr>
+                `;
                      html += text;
                      html1 += text1;
                  });
@@ -283,6 +312,53 @@
                  console.log(error);
              });
      }
+
+
+
+     // function onClickStudentHandler1(studentCode) {
+     //
+     //     console.log(studentCode);
+     //     fetch(`/student/delete/${studentCode}`, {
+     //         method: 'POST',
+     //         body: JSON.stringify({ studentCode: studentCode }),
+     //         headers: {
+     //             'Content-Type': 'application/json'
+     //         }
+     //     })
+     //         .then(res => res.json())
+     //         .then(data => {
+     //             console.log(data);
+     //             selectedButton.parentElement.remove();
+     //             let html = '';
+     //             let text = '';
+     //             let html1 = '';
+     //             let text1 = '';
+     //             data.forEach(element => {
+     //                 const {studentName} = element;
+     //                 text = `
+     //                 <tr>
+     //                   <button class="nameBtn1">${studentName}</button>
+     //                 </tr>
+     //                 `;
+     //
+     //                 text1 = `
+     //                 <tr>
+     //                 <button class="nameBtn2">${studentName}</button>
+     //                 </tr>
+     //                 `;
+     //                 html += text;
+     //                 html1 += text1;
+     //             });
+     //             nameListSection.innerHTML = html;
+     //             popupListSection.innerHTML = html1;
+     //
+     //             selectedButton.classList.remove('selected');
+     //             selectedButton = null;
+     //         })
+     //         .catch(error => {
+     //             console.log(error);
+     //         });
+     // }
 
 
      // nameBtn2 버튼 클릭 이벤트 리스너
@@ -300,27 +376,27 @@
      // });
 
      // **************************************************************
-     let selectedButton = null;
-     function addEventListenersToNameBtn2() {
-         const nameBtn2 = document.querySelectorAll('.nameBtn2');
-         nameBtn2.forEach(nameBtn => {
-             nameBtn.addEventListener('click', function () {
-                 // 모든 버튼의 클래스 초기화
-                 nameBtn2.forEach(btn => btn.classList.remove('selected'));
-
-                 // 클릭된 버튼에 새로운 클래스 추가
-                 nameBtn.classList.add('selected');
-
-                 selectedButton = nameBtn;
-             });
-         });
-     }
-
-     document.addEventListener('DOMContentLoaded', function () {
-         // 페이지가 로드되면 실행되는 코드
-
-         addEventListenersToNameBtn2();
-     });
+     // let selectedButton = null;
+     // function addEventListenersToNameBtn2() {
+     //     const nameBtn2 = document.querySelectorAll('.nameBtn2');
+     //     nameBtn2.forEach(nameBtn => {
+     //         nameBtn.addEventListener('click', function () {
+     //             // 모든 버튼의 클래스 초기화
+     //             nameBtn2.forEach(btn => btn.classList.remove('selected'));
+     //
+     //             // 클릭된 버튼에 새로운 클래스 추가
+     //             nameBtn.classList.add('selected');
+     //
+     //             selectedButton = nameBtn;
+     //         });
+     //     });
+     // }
+     //
+     // document.addEventListener('DOMContentLoaded', function () {
+     //     // 페이지가 로드되면 실행되는 코드
+     //
+     //     addEventListenersToNameBtn2();
+     // });
 
      //
      // deleteName.addEventListener("submit", function (event) {
