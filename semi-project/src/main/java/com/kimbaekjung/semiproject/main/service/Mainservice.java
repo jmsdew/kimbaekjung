@@ -21,6 +21,8 @@ public class Mainservice {
     private SitDAO sitDAO;
     @Autowired
     private PraiseDAO praiseDAO;
+    @Autowired
+    private UserInfoDAO userInfoDAO;
 
 
     public List<MainDTO> userSchool(int userCodes) {
@@ -38,8 +40,8 @@ public class Mainservice {
         return student2;
     }
 
-    public int sitDown(SitDTO sitDTO) {
-        int sitDown = sitDAO.sitDown(sitDTO);
+    public int sitDown(SitDTO sitDTO, int userCode) {
+        int sitDown = sitDAO.sitDown(sitDTO, userCode);
         return sitDown;
     }
 
@@ -53,8 +55,18 @@ public class Mainservice {
         return attendance;
     }
 
-    public int standUp(SitDTO sitDTO) {
-        int standUp = sitDAO.standUp(sitDTO);
+    public int standUp(SitDTO sitDTO, int userCode) {
+        int standUp = sitDAO.standUp(sitDTO, userCode);
         return standUp;
+    }
+
+    public int userInfor(UserInfoDTO userInfoDTO, int userCode) {
+        int insert = userInfoDAO.userInfor(userInfoDTO, userCode);
+        return insert;
+    }
+
+    public int studentInfo(List<String> names, int userCode) {
+        int insert = userInfoDAO.studentInfo(names,userCode);
+        return insert;
     }
 }

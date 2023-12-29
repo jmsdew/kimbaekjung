@@ -16,8 +16,8 @@
         (SELECT
         student_code
         FROM student
-        WHERE student_name = '${studentName}'
-        AND user_code = 1),
+        WHERE student_name = '${sitDTO.studentName}'
+        AND user_code = #{userCode}),
         CURRENT_DATE,
         "Y",
         CURRENT_DATE,
@@ -36,8 +36,8 @@
         (SELECT
         student_code
         FROM student
-        WHERE student_name = '${studentName}'
-        AND user_code = 1),
+        WHERE student_name = '${sitDTO.studentName}'
+        AND user_code = #{userCode}),
         CURRENT_DATE,
         "Y",
         CURRENT_DATE,

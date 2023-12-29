@@ -7,10 +7,9 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.net.http.HttpHeaders;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +42,10 @@ public class MainController {
     }
 
     @PostMapping("/handleOption")
-    public ModelAndView handleOption(@RequestBody Map<String, String> requestData) {
+    public ModelAndView handleOption(@RequestBody Map<String, String> requestData, HttpSession session) {
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
         String option = requestData.get("option");
         String studentName = requestData.get("studentName");
 
@@ -55,7 +57,7 @@ public class MainController {
         if(option.equals("sitDown")){
             SitDTO sitDTO = new SitDTO();
             sitDTO.setStudentName(studentName);
-            int sitDown = mainservice.sitDown(sitDTO);
+            int sitDown = mainservice.sitDown(sitDTO, userCode);
             if(sitDown > 0){
                 System.out.println("성공");
             }
@@ -65,7 +67,7 @@ public class MainController {
 
             SitDTO sitDTO = new SitDTO();
             sitDTO.setStudentName(studentName);
-            int sitDown = mainservice.standUp(sitDTO);
+            int sitDown = mainservice.standUp(sitDTO, userCode);
             if(sitDown > 0){
                 System.out.println("성공");
             }
@@ -92,5 +94,31 @@ public class MainController {
         mv.setViewName("/main/main");
         return mv;
     }
+    @PostMapping("/userInfo")
+    public ModelAndView userInfo(ModelAndView mv, UserInfoDTO userInfoDTO, HttpSession session){
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        int info = mainservice.userInfor(userInfoDTO,userCode);
+        if(info > 0){
+            System.out.println("성공");
+        }
+        mv.setViewName("/main/main");
+        return mv;
+    }
+
+    @PostMapping("/studentInfo")
+    public ModelAndView studentInfo(ModelAndView mv,String name, HttpSession session){
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        String[] name1 = name.split(",");
+        List<String> names = Arrays.asList(name1);
+        System.out.println(names);
+        int info = mainservice.studentInfo(names,userCode);
+        mv.setViewName("/main/main");
+        return mv;
+    }
+
 
 }
