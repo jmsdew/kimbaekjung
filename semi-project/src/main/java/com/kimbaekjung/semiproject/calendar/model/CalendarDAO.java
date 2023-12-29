@@ -7,9 +7,9 @@ import java.util.List;
 
 @Mapper
 public interface CalendarDAO {
-    int calendarSave(List<CalendarDTO> calendarEvents);
+    int calendarSave(List<CalendarDTO> calendarEvents, int userCode);
 
-    List<CalendarDTO> eventData();
+    List<CalendarDTO> eventData(int userCode);
 
-    List<CalendarDTO> eventToday();
+    List<CalendarDTO> eventToday(int userCode);
 }

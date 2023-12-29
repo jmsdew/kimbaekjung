@@ -13,18 +13,18 @@ public class CalendarService {
     @Autowired
     private CalendarDAO calendarDAO;
 
-    public int calendarSave(List<CalendarDTO> calendarEvents) {
-        int calendarsave = calendarDAO.calendarSave(calendarEvents);
+    public int calendarSave(List<CalendarDTO> calendarEvents, int userCode) {
+        int calendarsave = calendarDAO.calendarSave(calendarEvents, userCode);
         return calendarsave;
     }
 
-    public List<CalendarDTO> eventData() {
-        List<CalendarDTO> data = calendarDAO.eventData();
+    public List<CalendarDTO> eventData(int userCode) {
+        List<CalendarDTO> data = calendarDAO.eventData(userCode);
         return data;
     }
 
-    public List<CalendarDTO> eventToday() {
-        List<CalendarDTO> today = calendarDAO.eventToday();
+    public List<CalendarDTO> eventToday(int userCode) {
+        List<CalendarDTO> today = calendarDAO.eventToday(userCode);
         return today;
     }
 

@@ -2,6 +2,7 @@ package com.kimbaekjung.semiproject.calendar.controller;
 
 import com.kimbaekjung.semiproject.calendar.dto.CalendarDTO;
 import com.kimbaekjung.semiproject.calendar.service.CalendarService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,25 +23,33 @@ public class CalendarController {
     @Autowired
     private CalendarService service;
     @GetMapping("/calendar")
-    public ModelAndView calendar(){
-        List<CalendarDTO> schedule = service.eventToday();
+    public ModelAndView calendar(HttpSession session){
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        List<CalendarDTO> schedule = service.eventToday(userCode);
         ModelAndView mv = new ModelAndView();
         mv.addObject("schedule",schedule);
         mv.setViewName("/calendar/calendar");
         return mv;
     }
     @PostMapping("/eventData")
-    public ResponseEntity<List<CalendarDTO>> getEventData() {
-
-        List<CalendarDTO> eventData = service.eventData();
+    public ResponseEntity<List<CalendarDTO>> getEventData(HttpSession session) {
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        List<CalendarDTO> eventData = service.eventData(userCode);
         // 가져온 이벤트 데이터를 JSON 형태로 응답
         return ResponseEntity.ok(eventData);
     }
 
 
     @PostMapping("/calendarSave")
-    public ResponseEntity<String> saveCalendarEvent(@RequestBody CalendarDTO calendarEvent) {
-        int calendarSave = service.calendarSave(Collections.singletonList(calendarEvent));
+    public ResponseEntity<String> saveCalendarEvent(@RequestBody CalendarDTO calendarEvent, HttpSession session) {
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        int calendarSave = service.calendarSave(Collections.singletonList(calendarEvent), userCode);
 
         if (calendarSave > 0) {
             System.out.println("등록 성공");
