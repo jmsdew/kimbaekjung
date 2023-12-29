@@ -10,15 +10,15 @@
         VALUES
         (
         NULL,
-        ${category},
-        "${praise}",
-        ${point},
+        ${praiseDTO.category},
+        "${praiseDTO.praise}",
+        ${praiseDTO.point},
         (SELECT
         student_code
         FROM student
-        WHERE student_name = '${name}'
-        AND user_code = 1),
-        "${date}",
+        WHERE student_name = '${praiseDTO.name}'
+        AND user_code = #{userCode}),
+        "${praiseDTO.date}",
         "Y",
         CURRENT_DATE,
         NULL,

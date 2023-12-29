@@ -77,8 +77,11 @@ public class MainController {
     }
 
     @PostMapping("/processPraise")
-    public ModelAndView processPraise(ModelAndView mv, PraiseDTO praiseDTO) {
-        int praise = mainservice.processPraise(praiseDTO);
+    public ModelAndView processPraise(ModelAndView mv, PraiseDTO praiseDTO , HttpSession session) {
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        int praise = mainservice.processPraise(praiseDTO, userCode);
         if(praise > 0){
             System.out.println("성공");
         }
@@ -86,8 +89,11 @@ public class MainController {
         return mv;
     }
     @PostMapping("/attendance")
-    public ModelAndView attendance(ModelAndView mv, AttendanceDTO attendanceDTO) {
-        int attendance = mainservice.attendance(attendanceDTO);
+    public ModelAndView attendance(ModelAndView mv, AttendanceDTO attendanceDTO, HttpSession session) {
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        int attendance = mainservice.attendance(attendanceDTO, userCode);
         if(attendance > 0){
             System.out.println("성공");
         }
