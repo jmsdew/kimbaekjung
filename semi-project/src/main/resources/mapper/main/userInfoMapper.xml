@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.main.model.UserInfoDAO">
+
+
+    <insert id="userInfor" parameterType="com.kimbaekjung.semiproject.main.dto.UserInfoDTO">
+        INSERT INTO user_info
+        VALUES
+        (
+        #{userCode},
+        #{userInfoDTO.school},
+        #{userInfoDTO.grade},
+        #{userInfoDTO.clas},
+        'Y',
+        current_date,
+        null,
+        null
+        );
+    </insert>
+</mapper>

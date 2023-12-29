@@ -16,7 +16,7 @@
         school,
         grade,
         class,
-        (SELECT count(*) FROM student) AS total
+        (SELECT count(*) FROM student where student_status='Y' and user_code = #{userCodes}) AS total
         FROM user_info
         WHERE user_code= #{userCodes}
     </select>

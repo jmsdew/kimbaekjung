@@ -21,6 +21,8 @@ public class Mainservice {
     private SitDAO sitDAO;
     @Autowired
     private PraiseDAO praiseDAO;
+    @Autowired
+    private UserInfoDAO userInfoDAO;
 
 
     public List<MainDTO> userSchool(int userCodes) {
@@ -56,5 +58,10 @@ public class Mainservice {
     public int standUp(SitDTO sitDTO) {
         int standUp = sitDAO.standUp(sitDTO);
         return standUp;
+    }
+
+    public int userInfor(UserInfoDTO userInfoDTO, int userCode) {
+        int insert = userInfoDAO.userInfor(userInfoDTO, userCode);
+        return insert;
     }
 }

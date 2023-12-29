@@ -194,9 +194,31 @@
       <input type="radio" name="sound" id="radio5" onclick="handleRadioClick('/media/전우.mp4')"> <label for="radio5"></label>
       <button type="button" class="bell-click" value="PLAY" onclick="playSound()">5번 학교종</button>
     </div>
-    <div class="six-bell">
-      <input type="radio" name="sound" id="radio6" onclick="handleRadioClick('/media/생일축하.mp3')"> <label for="radio6"></label>
-      <button type="button" class="bell-click" value="PLAY" onclick="playSound()">6번 학교종</button>
+    <div class="show-popup">
+      <button type="button" class="popup-click" id="popupClick">초기설정</button>
+    </div>
+
+    <div class="popup">
+      <h3>옵션 선택</h3>
+        <div class="popup-content">
+          <button type="button" class="popup1-button" id="popupClick-school">학교정보입력</button>
+          <button type="button" class="popup1-button" id="popupClick-studentName">학생이름입력</button>
+        </div>
+      <p>학교정보, 학생정보 꼭 입력 해주세요</p>
+      </div>
+    </div>
+<!--초기 정보 학교 정보 입력 팝업-->
+
+    <div class="popup-4">
+      <div class="popup-4-div">
+        <h3>학교정보입력</h3>
+        <form action="#" class="content3">
+          <input type="text" name="school" class="praise-date" placeholder="학교이름"/>
+          <input type="text" name="grade" class="praise-date" placeholder="학년"/>
+          <input type="text" name="clas" class="praise-date" placeholder="반"/>
+          <button type="submit">등록</button>
+        </form>
+      </div>
     </div>
 
 
@@ -276,7 +298,7 @@
       e.preventDefault(); // 폼 제출 방지
 
       // FormData 객체를 생성하여 폼 데이터를 담습니다.
-      var formData = new FormData(this);
+      let formData = new FormData(this);
 
       $.ajax({
         type: "POST",
@@ -305,7 +327,7 @@
       e.preventDefault(); // 폼 제출 방지
 
       // FormData 객체를 생성하여 폼 데이터를 담습니다.
-      var formData = new FormData(this);
+      let formData = new FormData(this);
 
       $.ajax({
         type: "POST",
@@ -325,8 +347,47 @@
       });
     });
   });
+//-----------------------------------------------------------초기정보등록 - 학교
 
+  $(document).ready(function () {
+    // 학교정보입력 버튼에 대한 클릭 이벤트 리스너 추가
+    $("#popupClick-school").click(function () {
+      // 이벤트 핸들러 로직
+      $(".popup-4").show();
+    });
 
+    $(".content3").submit(function (e) {
+      e.preventDefault(); // 폼 제출 방지
+
+      // FormData 객체를 생성하여 폼 데이터를 담습니다.
+      let formData = new FormData(this);
+
+      $.ajax({
+        type: "POST",
+        url: "/main/userInfo", // 서버의 컨트롤러 매핑 주소
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log("서버 응답:", response);
+          alert("등록완료");
+          $(".popup-4").hide();
+        },
+        error: function (error) {
+          console.error("에러 발생:", error);
+        },
+      });
+    });
+
+    // 팝업 외부 클릭 시 팝업 닫기
+    $(document).click(function (event) {
+      if (!$(event.target).closest('.popup-4').length && !$(event.target).is('#popupClick-school')) {
+        $(".popup-4").hide();
+      }
+    });
+  });
+
+//-----------------------------------------------------------초기정보등록 - 학생
 
 <!-- 총 착석 하트 -------------------------------------->
   let i = 0;
@@ -468,6 +529,16 @@ $(document).ready(function() {
     audio.play();
   }
 /**************************************** 설정버튼 만들기 ******************************************************/
+
+  document.getElementById('popupClick').addEventListener('click', function() {
+    document.querySelector('.popup').style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target !== document.querySelector('.popup') && !document.querySelector('.popup').contains(event.target) && event.target !== document.getElementById('popupClick')) {
+      document.querySelector('.popup').style.display = 'none';
+    }
+  });
 
   let popup = document.querySelector('.popup1');
 

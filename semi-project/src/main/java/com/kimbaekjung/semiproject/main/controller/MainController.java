@@ -7,10 +7,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.net.http.HttpHeaders;
 import java.util.List;
 import java.util.Map;
 
@@ -87,6 +85,18 @@ public class MainController {
     public ModelAndView attendance(ModelAndView mv, AttendanceDTO attendanceDTO) {
         int attendance = mainservice.attendance(attendanceDTO);
         if(attendance > 0){
+            System.out.println("성공");
+        }
+        mv.setViewName("/main/main");
+        return mv;
+    }
+    @PostMapping("/userInfo")
+    public ModelAndView userInfo(ModelAndView mv, UserInfoDTO userInfoDTO, HttpSession session){
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        int info = mainservice.userInfor(userInfoDTO,userCode);
+        if(info > 0){
             System.out.println("성공");
         }
         mv.setViewName("/main/main");

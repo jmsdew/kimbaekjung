@@ -561,20 +561,7 @@ input[type="radio"]:checked {
   border-bottom-right-radius: 100px;
   overflow: hidden;
 }
-.six-bell {
-  width: 180px;
-  height: 50px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 15px;
-  left: 1650px;
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-  border-bottom-left-radius: 100px;
-  border-bottom-right-radius: 100px;
-  overflow: hidden;
-}
+
 .show-popup {
   width: 180px;
   height: 50px;
@@ -614,6 +601,23 @@ input[type="radio"]:checked {
   justify-content: space-between;
   border: 1px solid;
 }
+.popup-content {
+  background-color: white;
+  height: 400px;
+  width: 400px;
+}
+.popup-content button {
+  width: 400px;
+  height: 200px;
+  font-size: 60px;
+  background-color: white;
+  border: 3px solid;
+  cursor: pointer;
+}
+.popup p {
+  font-size: 30px;
+}
+
 
 /********************칭찬팝업*******************/
 .popup-2 {
@@ -652,6 +656,34 @@ input[type="radio"]:checked {
   overflow: hidden;
   border-radius: 30px;
 }
+.popup-4 {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 200px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.popup-4-div {
+  background-color: rgba(6, 97, 26, 1);
+  height: 150px;
+  margin: auto; /* 추가: 수평 가운데 정렬 */
+  position: relative;
+  top: 15px;
+  width: 350px;
+  border-radius: 20%;
+
+}
 
 .popup-2-div {
   top: 20px;
@@ -683,6 +715,16 @@ input[type="radio"]:checked {
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
+.popup-4 h3 {
+  margin-top: 5px;
+  font-size: 30px;
+  color: white;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: lighter;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
 
 .popup-2 form {
   display: block;
@@ -691,6 +733,12 @@ input[type="radio"]:checked {
   border-bottom-right-radius: 30px;
 }
 .popup-3 form {
+  display: block;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.popup-4 form {
   display: block;
   text-align: center;
   border-bottom-left-radius: 30px;
@@ -740,6 +788,17 @@ select {
   background-color: white;
   position: relative;
   left: 100px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.popup-4 button {
+  margin-top: 5px; /* 버튼과 텍스트 사이 간격 조절 */
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+  position: relative;
+  left: 30px;
   margin-left: 10px;
   border-radius: 5px;
 }
