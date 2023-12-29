@@ -12,19 +12,19 @@
 <header class="navbox">
   <nav>
     <h1>
-      <button class="main">
-        <a href="#">학교종이 땡땡땡</a>
+      <button class="main" onclick="location.href='/main/main'">
+        학교종이 땡땡땡
       </button>
     </h1>
     <ul>
       <li>
-        <button class="ranking">
-          <a href="#">랭킹</a>
+        <button class="ranking" onclick="location.href='/rank/rank'">
+          랭킹
         </button>
       </li>
       <li>
-        <button class="calendar">
-          <a href="#">캘린더</a>
+        <button class="calendar" onclick="location.href='/calendar/calendar'">
+          캘린더
         </button>
       </li>
       <li>
@@ -113,7 +113,7 @@
   <!--  -->
   <section class="namelist1" th:each="search : ${searchNoti}">
     <div id="special1" th:text="${search.code}"></div>
-    <button id="special2" th:text="${search.name}"></button>
+    <button onclick="location.href='/school/one_noti'" id="special2" th:text="${search.name}"></button>
     <div id="special3">관리자</div>
     <div id="special4" th:text="${#dates.format(search.noticeDate, 'yyyy.MM.dd')}"></div>
   </section>

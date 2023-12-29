@@ -15,6 +15,7 @@
         STUDENT_NAME
         FROM STUDENT
         WHERE STUDENT_STATUS = 'Y'
+        AND USER_CODE = #{userCodes}
     </select>
 
 

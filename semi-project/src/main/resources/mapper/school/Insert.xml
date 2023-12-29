@@ -12,7 +12,7 @@
         REGIST_DATE
         )VALUES(
         #{name},
-              1,
+        #{userCodes},
             'Y',
         CURDATE()
         )

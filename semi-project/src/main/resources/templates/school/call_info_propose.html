@@ -113,7 +113,7 @@
 
   <section class="namelist1" th:each=" proposes : ${propose}">
     <div id="special1" th:text="${proposes.code}"></div>
-    <button id="special2" th:text="${proposes.title}"></button>
+    <button onclick="location.href='/school/one_propose'" id="special2" th:text="${proposes.title}"></button>
     <div id="special3" th:text="${#strings.substring(proposes.email, 0, #strings.indexOf(proposes.email, '@'))}"></div>
     <div id="special4" th:text="${#dates.format(proposes.enrollD, 'yyyy.MM.dd')}"></div>
   </section>

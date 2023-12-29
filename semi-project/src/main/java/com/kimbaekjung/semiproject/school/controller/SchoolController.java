@@ -19,7 +19,10 @@ public class SchoolController {
 
     @GetMapping("mypage_info")
     public ModelAndView namesBtn(ModelAndView mv, HttpSession session){
-        List<SchoolDTO> names = schoolService.oneName();
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int c = Integer.parseInt(b);
+        List<SchoolDTO> names = schoolService.oneName(c);
 //        SchoolDTO names = schoolService.oneName(schoolDTO);
         mv.addObject("names",names);
         mv.setViewName("/school/mypage_info");
@@ -45,8 +48,11 @@ public class SchoolController {
     public void insert(){};
 
     @PostMapping("regist")
-    public ModelAndView insert(ModelAndView mv, InsertDTO insertDTO ){
-        int insert = schoolService.insert(insertDTO);
+    public ModelAndView insert(ModelAndView mv, InsertDTO insertDTO, HttpSession session){
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int c = Integer.parseInt(b);
+        int insert = schoolService.insert(insertDTO,c);
         if(insert >= 0 ){
             System.out.println("exception");
         }
@@ -128,5 +134,10 @@ public class SchoolController {
         return "/school/propose_write";
     }
 
+    @GetMapping("one_noti")
+    public String oneNoti(){ return "/school/one_noti"; }
+
+    @GetMapping("one_propose")
+    public String oneProp(){ return "/school/one_propose"; }
 
 }

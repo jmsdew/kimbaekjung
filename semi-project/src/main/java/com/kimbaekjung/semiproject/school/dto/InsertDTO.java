@@ -6,7 +6,7 @@ public class InsertDTO {
 
     private String name;
 
-    private int userCode;
+    private int userCodes;
 
     private String status;
 
@@ -15,9 +15,9 @@ public class InsertDTO {
     public InsertDTO() {
     }
 
-    public InsertDTO(String name, int userCode, String status, Date enroll) {
+    public InsertDTO(String name, int userCodes, String status, Date enroll) {
         this.name = name;
-        this.userCode = userCode;
+        this.userCodes = userCodes;
         this.status = status;
         this.enroll = enroll;
     }
@@ -30,12 +30,12 @@ public class InsertDTO {
         this.name = name;
     }
 
-    public int getUserCode() {
-        return userCode;
+    public int getUserCodes() {
+        return userCodes;
     }
 
-    public void setUserCode(int userCode) {
-        this.userCode = userCode;
+    public void setUserCodes(int userCodes) {
+        this.userCodes = userCodes;
     }
 
     public String getStatus() {
@@ -58,7 +58,7 @@ public class InsertDTO {
     public String toString() {
         return "InsertDTO{" +
                 "name='" + name + '\'' +
-                ", userCode=" + userCode +
+                ", userCodse=" + userCodes +
                 ", status='" + status + '\'' +
                 ", enroll=" + enroll +
                 '}';

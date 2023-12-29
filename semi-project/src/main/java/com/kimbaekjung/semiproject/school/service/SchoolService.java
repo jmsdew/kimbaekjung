@@ -34,8 +34,8 @@ public class SchoolService {
     @Autowired
     private DeleteDAO deleteDAO;
 
-    public List<SchoolDTO> oneName() {
-        List<SchoolDTO> nameOne= schoolDAO.oneName();
+    public List<SchoolDTO> oneName(int userCodes) {
+        List<SchoolDTO> nameOne= schoolDAO.oneName(userCodes);
 
         return nameOne;
     }
@@ -67,8 +67,8 @@ public class SchoolService {
         return searchProp;
     }
 
-    public int insert(InsertDTO insertDTO) {
-        int insert = insertDAO.insert(insertDTO);
+    public int insert(InsertDTO insertDTO, int userCodes) {
+        int insert = insertDAO.insert(insertDTO, userCodes);
 
         return insert;
     }
@@ -78,11 +78,11 @@ public class SchoolService {
        return  deleteDAO.delete(studentCode);
     }
 
-    public List<SchoolDTO> getStudentDetails(String studentName) {
-        List<SchoolDTO> nameOne= schoolDAO.oneName();
-
-        return nameOne;
-    }
+//    public List<SchoolDTO> getStudentDetails(String studentName) {
+//        List<SchoolDTO> nameOne= schoolDAO.oneName();
+//
+//        return nameOne;
+//    }
 
     public List<AttendNumDTO> getStudentDetail(int studentCode) {
         List<AttendNumDTO> attendNum = attendNumDAO.getStudentDetail(studentCode);

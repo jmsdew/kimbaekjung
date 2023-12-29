@@ -1,0 +1,105 @@
+#notiTitle{
+    height: 43px;
+    border-top: none;
+    border-bottom: 1px black solid;
+    justify-content: center;
+    align-items: flex-start;
+    display: flex;
+    width: 100%;
+}
+
+#no{
+    width: 80px;
+    height: 40px;
+    background: white;
+    position: relative;
+    border: 1px white solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#no div{
+    width: 80px;
+    background: white;
+    height: 20px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    letter-spacing: 3.75px;
+    word-wrap: break-word;
+}
+
+#notiName{
+    flex: 1;
+    height: 40px;
+    background: white;
+    border: 1px white solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#notiName div{
+    flex: 1;
+    background: white;
+    height: 20px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    letter-spacing: 3.75px;
+    word-wrap: break-word;
+}
+
+#writer{
+    width: 120px;
+    height: 40px;
+    background: white;
+    border: 1px white solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#writer div{
+    width: 120px;
+    background: white;
+    height: 20px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    letter-spacing: 3.75px;
+    word-wrap: break-word;
+}
+#registDate{
+    width: 120px;
+    height: 40px;
+    background: white;
+    border: 1px white solid;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#registDate div{
+    width: 120px;
+    background: white;
+    height: 20px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-family: Inter;
+    font-weight: 600;
+    letter-spacing: 3.75px;
+    word-wrap: break-word;
+}
+
+#article{
+
+}

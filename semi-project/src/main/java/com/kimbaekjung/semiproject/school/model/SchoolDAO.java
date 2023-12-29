@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface SchoolDAO {
-    List<SchoolDTO> oneName();
+    List<SchoolDTO> oneName(int userCodes);
 
 
 }

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css0/myGlobal.css">
+  <link rel="stylesheet" href="/css0/call_notification.css">
+  <Link rel="stylesheet" href="/css0/one_noti.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+<header class="navbox">
+  <nav>
+    <h1>
+      <button class="main" onclick="location.href='/main/main'">
+        학교종이 땡땡땡
+      </button>
+    </h1>
+    <ul>
+      <li>
+        <button class="ranking" onclick="location.href='/rank/rank'">
+          랭킹
+        </button>
+      </li>
+      <li>
+        <button class="calendar" onclick="location.href='/calendar/calendar'">
+          캘린더
+        </button>
+      </li>
+      <li>
+        <button class="student-management">
+          <a href="/management/student_manage">학생관리</a>
+        </button>
+      </li>
+      <li>
+        <button class="mypage">
+          <a id="myPage" href="/school/mypage_info">마이페이지</a>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<div id="bar"></div>
+
+<div id="fiveFrame">
+
+  <a href="/school/mypage_info" id="studentInfo">
+    <div id="iconTag1">
+      <i class="bi-info-circle"></i>
+    </div>
+    <div id="studentWord">학생정보</div>
+  </a>
+
+
+  <a href="/school/call_info_notification" id="call">
+    <div id="iconTag2">
+      <i class="bi-whatsapp"></i>
+    </div>
+    <div id="callWord">고객센터</div>
+  </a>
+
+  <a href="/school/restart_info" id="restart">
+    <div id="iconTag3">
+      <i class="bi-arrow-clockwise"></i>
+    </div>
+    <div id="restartWord">초기화</div>
+  </a>
+
+  <a href="/school/logout_info" id="logout">
+    <div id="iconTag4">
+      <i class="bi-box-arrow-right"></i>
+    </div>
+    <div id="logoutWord">로그아웃</div>
+  </a>
+
+  <a href="/school/destroy_info" id="destroy">
+    <div id="iconTag5">
+      <i class="bi-slash-circle"></i>
+    </div>
+    <div id="destroyWord">회원탈퇴</div>
+  </a>
+</div>
+
+<a href="/school/call_info_notification" id="asideBtn">
+  <div id="btn1">공지게시판</div>
+</a>
+
+<a href="/school/call_info_propose" id="asideBtn2">
+  <div id="btn2">건의게시판</div>
+</a>
+
+<article id="article">
+  <div id="notiTitle">
+    <div id="no">
+      <div>번호</div>
+    </div>
+
+    <div id="notiName">
+      <div>제목</div>
+    </div>
+
+    <div id="writer">
+      <div>관리자</div>
+    </div>
+
+    <div id="registDate">
+      <div>등록일</div>
+    </div>
+  </div>
+</article>
+  <!--  -->
+
+
+
+
+<!--*****************footer****************-->
+<footer id=footers>
+  <div id = email>kbjcom@google.com</div>
+
+  <img src="/img/bell.png" alt="school Bell" id="bell">
+  <div id =footerTitle>학교 종이 땡땡땡</div>
+
+  <div id="number">call : 010-6411-9074</div>
+  <div id="footerFinal">
+    <div>Copyright (C) 2023</div>
+    <div id="jejuH">.김백정컴퍼니.</div>
+    <div>All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
