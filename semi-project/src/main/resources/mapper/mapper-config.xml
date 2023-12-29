@@ -23,7 +23,10 @@
         <mapper resource="mapper/main/kakaoMapper.xml"/>
         <mapper resource="mapper/school/mapper.xml" />
         <mapper resource="mapper/school/mapper1.xml" />
+        <mapper resource="mapper/school/attendNum.xml" />
         <mapper resource="mapper/school/propose.xml" />
+        <mapper resource="mapper/school/Insert.xml" />
+        <mapper resource="mapper/school/Delete.xml" />
         <mapper resource="mapper/school/SearchPropose.xml" />
         <mapper resource="mapper/school/SearchMapper1.xml" />
         <mapper resource="mapper/manage/manage.xml" />

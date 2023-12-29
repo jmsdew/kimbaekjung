@@ -4,6 +4,7 @@ import com.kimbaekjung.semiproject.school.dto.*;
 import com.kimbaekjung.semiproject.school.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -23,6 +24,15 @@ public class SchoolService {
 
     @Autowired
     private PropSearchDAO propSearchDAO;
+
+    @Autowired
+    private InsertDAO insertDAO;
+
+    @Autowired
+    private AttendNumDAO attendNumDAO;
+
+    @Autowired
+    private DeleteDAO deleteDAO;
 
     public List<SchoolDTO> oneName() {
         List<SchoolDTO> nameOne= schoolDAO.oneName();
@@ -56,4 +66,29 @@ public class SchoolService {
 
         return searchProp;
     }
+
+    public int insert(InsertDTO insertDTO) {
+        int insert = insertDAO.insert(insertDTO);
+
+        return insert;
+    }
+
+    public int deleteStudentByCode(int studentCode) {
+        deleteDAO.delete(studentCode);
+       return  deleteDAO.delete(studentCode);
+    }
+
+    public List<SchoolDTO> getStudentDetails(String studentName) {
+        List<SchoolDTO> nameOne= schoolDAO.oneName();
+
+        return nameOne;
+    }
+
+    public List<AttendNumDTO> getStudentDetail(int studentCode) {
+        List<AttendNumDTO> attendNum = attendNumDAO.getStudentDetail(studentCode);
+        return attendNum;
+    }
+
+
+
 }

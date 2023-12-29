@@ -11,8 +11,10 @@
 
     <select id="oneName" resultMap="schoolResult">
         SELECT
+        STUDENT_CODE,
         STUDENT_NAME
         FROM STUDENT
+        WHERE STUDENT_STATUS = 'Y'
     </select>
 
 
