@@ -20,7 +20,11 @@
         <p style="position: relative;
                         top: 300px;">* 최초 로그인시 초기설정을 꼭 해주세요.</p>
     </div>
+<<<<<<< HEAD
     <input type="hidden" id="key" th:value="${@environment.getProperty('javascript-key')}"/>
+=======
+
+>>>>>>> 644816281594ac781075e305746c081c4fe69f6c
     <footer id=footers>
         <div id = email>kbjcom@google.com</div>
         <img src="image/bell.png" alt="school Bell" id="bell">
@@ -38,7 +42,13 @@
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
 
-        Kakao.init(key);
+        fetch('/api/key') // 백엔드 API 엔드포인트
+            .then(response => response.text())
+            .then(apiKey => {
+                // API 키를 받아서 Kakao.init()을 호출
+                Kakao.init(apiKey);
+            })
+
 
         function loginWithKakao() {
             Kakao.Auth.authorize({
