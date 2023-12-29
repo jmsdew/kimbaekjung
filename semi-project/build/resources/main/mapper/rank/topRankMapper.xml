@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.rank.totalRank.model.TopRankDAO">
+
+    <resultMap id="schoolResult" type="com.kimbaekjung.semiproject.rank.totalRank.dto.TopRankDTO">
+        <id property="categoryName" column="category_NAME"/>
+        <result property="name" column="STUDENT_NAME"/>
+        <result property="score" column="total_score"/>
+    </resultMap>
+
+    <select id="topRank" resultMap="schoolResult">
+        WITH RankedResults AS (
+         SELECT
+            C.category_NAME,
+            A.STUDENT_NAME,
+          SUM(B.score) AS total_score,
+          ROW_NUMBER() OVER (PARTITION BY C.category_NAME ORDER BY SUM(B.score) DESC) AS row_num
+          FROM
+          STUDENT A
+          JOIN PRAISE B ON A.student_code = B.student_code
+          JOIN praise_category C ON B.category_code = C.category_code
+          and a.user_code = #{userCode}
+         GROUP BY C.category_NAME, A.STUDENT_NAME
+        )
+        SELECT
+            category_NAME,
+            STUDENT_NAME,
+            total_score
+          FROM RankedResults
+         WHERE row_num = 1
+         ORDER BY total_score desc;
+    </select>
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.main.model.PraiseDAO">
+
+
+    <insert id="processPraise" parameterType="com.kimbaekjung.semiproject.main.dto.PraiseDTO">
+        INSERT INTO praise
+        VALUES
+        (
+        NULL,
+        ${praiseDTO.category},
+        "${praiseDTO.praise}",
+        ${praiseDTO.point},
+        (SELECT
+        student_code
+        FROM student
+        WHERE student_name = '${praiseDTO.name}'
+        AND user_code = #{userCode}),
+        "${praiseDTO.date}",
+        "Y",
+        CURRENT_DATE,
+        NULL,
+        NULL
+        );
+    </insert>
+</mapper>

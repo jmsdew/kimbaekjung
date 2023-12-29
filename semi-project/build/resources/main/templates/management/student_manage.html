@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+    <link rel="stylesheet" href="/css0/StuGlobal.css">
+    <link rel="stylesheet" href="/css0/manageStu.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+</head>
+
+<body>
+<header class="navbox">
+    <nav>
+        <h1>
+            <button class="main" onclick="location.href='/main/main'">
+                학교종이 땡땡땡
+            </button>
+        </h1>
+        <ul>
+            <li>
+                <button class="ranking" onclick="location.href='/rank/rank'">
+                    랭킹
+                </button>
+            </li>
+            <li>
+                <button class="calendar" onclick="location.href='/calendar/calendar'">
+                    캘린더
+                </button>
+            </li>
+            <li>
+                <button class="student-management" onclick="location.href='/management/student_manage'">
+                    학생관리
+                </button>
+            </li>
+            <li>
+                <button class="mypage" onclick="location.href='/school/mypage_info'">
+                    마이페이지
+                </button>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <div id="barTitle">학생관리</div>
+    <div id="barButton">학생 선택</div>
+
+    <div id="barButton2">
+        <h2 id="copy"></h2>
+        <button id="popupButton">
+            <img src="/img/arrow-down.svg" alt="arrows">
+        </button>
+    </div>
+
+
+
+<article id="bodyBody">
+    <aside id="asideSTU">
+        <section id="section1">
+            <div>결석 일수</div>
+            <div>지각</div>
+            <div>조퇴</div>
+            <div>결과</div>
+            <div>특기사항</div>
+        </section>
+
+        <section id="section2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </section>
+
+        <div id="attendList">출결 사항</div>
+        <div id="attendListInput"></div>
+    </aside>
+
+
+    <section id="section3">
+        <div>칭찬 내역</div>
+        <div class="praise"></div>
+    </section>
+    <section id="section4">
+        <div>추천 문구
+
+                <select id="mySelect">
+                    <option value="default" selected>배려</option>
+                    <option value="option2">사교</option>
+                    <option value="option3">긍정</option>
+                    <option value="option4">책임</option>
+                    <option value="option5">성실</option>
+                    <option value="option6">도움</option>
+                    <option value="option7">예의</option>
+                    <option value="option8">봉사</option>
+                    <option value="option9">리더십</option>
+                    <option value="option10">끈기</option>
+
+                </select>
+
+        </div>
+
+
+        <div class="recommend"></div>
+    </section>
+    <section id="section5">
+        <div>입력란</div>
+        <input type="text" id="input1">
+        <button>복사</button>
+    </section>
+</article>
+
+
+<footer id=footers>
+    <div id = email>kbjcom@google.com</div>
+
+    <img src="/img/bell.png" alt="school Bell" id="bell">
+    <div id =footerTitle>학교 종이 땡땡땡</div>
+
+    <div id="number">call : 010-6411-9074</div>
+    <div id="footerFinal">
+        <div>Copyright (C) 2023</div>
+        <div id="jejuH">.김백정컴퍼니.</div>
+        <div>All rights reserved.</div>
+    </div>
+</footer>
+<!--**********팝업***************-->
+<div class="popup_manage">
+    <h3>학생선택</h3>
+    <div id="nameStyle">
+         <tr th:each="pick : ${picks}">
+             <td>
+                 <button th:text="${pick.studentName}"></button>
+             </td>
+         </tr>
+    </div>
+    <div class="buttons">
+        <button>선택</button>
+        <button id="cancel">취소</button>
+    </div>
+</div>
+
+<div class="background"></div>
+<!--**********************************-->
+<script>
+    const popup = document.querySelector('.popup_manage');
+    const popupButton = document.querySelector('#popupButton');
+    const background = document.querySelector('.background');
+    const cancel= document.querySelector('#cancel');
+
+    popupButton.addEventListener('click', function() {
+        popup.style.display='block';
+        background.classList.add('show');
+    });
+
+    background.addEventListener('click', function (){
+        background.classList.remove('show');
+        popup.style.display='none';
+    });
+
+    cancel.addEventListener('click', function (){
+        background.classList.remove('show');
+        popup.style.display='none';
+    })
+
+
+
+</script>
+</body>
+</html>

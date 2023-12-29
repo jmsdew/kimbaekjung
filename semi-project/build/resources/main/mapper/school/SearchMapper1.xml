@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.school.model.NotiSearchDAO">
+
+    <resultMap id="notiResult" type="com.kimbaekjung.semiproject.school.dto.SearchNotiDTO">
+        <id property="code" column="NOTICE_CODE"/>
+        <result property="name" column="NOTICE_NAME"/>
+        <result property="noticeDate" column="REGIST_DATE"/>
+    </resultMap>
+
+
+    <select id="searchNoti" resultMap="notiResult">
+        SELECT
+        NOTICE_CODE,
+        NOTICE_NAME,
+        REGIST_DATE
+        FROM NOTICE
+        WHERE 1=1
+        <if test='keyword != null and keyword != ""'>
+            AND NOTICE_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+
+
+</mapper>

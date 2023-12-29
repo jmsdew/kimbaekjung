@@ -1,0 +1,910 @@
+
+/********************************************시간표 제작************************************************/
+
+.time-line{
+  width: 400px;
+  height: 780px;
+  background-color: rgba(255,225,80,1);
+  opacity: 1;
+  position: absolute;
+  top: 180px;
+  left: 0;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  border: 10px solid white;
+  border-left: 0px;
+}
+.class-box {
+  width: 350px;
+  height: 75px;
+  background-color: rgba(255,225,80,1);
+  margin-top: 30px;
+  margin-left: 10px;
+  left: 20px;
+  align-items: center;
+}
+
+.first-class{
+  width: 270px;
+  height: 75px;
+  background-color: rgba(254,239,197,1);
+  opacity: 1;
+  position: absolute;
+  border: 1px solid rgba(254,239,197,1);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+}
+.first-check{
+  width: 60px;
+  height: 50px;
+  opacity: 1;
+  background-color: rgba(255,225,80,1);
+  position: absolute;
+  left: 300px;
+  top: 50px;
+
+}
+.bi-heart{
+  background-color: rgba(255,225,80,1);
+}
+.bi-heart-fill {
+  background-color: rgba(255,225,80,1);
+}
+.bi-plus-lg {
+  background-color: rgba(254,239,197,1);
+}
+p {
+  font-size: 35px;
+}
+#plusButton{
+  width: 300px;
+  height: 50px;
+  background-color: rgba(255,225,80,1);
+  opacity: 1;
+  position: absolute;
+  top: 720px;
+  left: 30px;
+  border: 1px solid  rgba(255,225,80,1);
+  overflow: hidden;
+  font-size: 20px;
+  align-items: center;
+}
+#timeFont {
+  width: 270px;
+  height: 75px;
+  color: rgba(0,0,0,1);
+  top: 61px;
+  left: 53px;
+  font-weight: bold;
+  font-size: 35px;
+  opacity: 1;
+  text-align: center;
+  background-color: rgba(254,239,197,1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid  rgba(255,225,80,1);
+}
+
+/****************************************************메인화면 타이머*********************************************************/
+.main-view {
+  width: 75.5%;
+  height: 780px;
+  background-color: rgba(255,225,80,1);
+  opacity: 1;
+  position: relative;
+  top: 165px;
+  left: 474px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  overflow: hidden;
+  border: 10px solid white;
+  border-right: 0px;
+}
+.stop-watch {
+  width: 100%;
+  height: 110px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 9px;
+  overflow: hidden;
+  background-color: rgba(255,225,80,1);
+  border-bottom: 2px solid white;
+}
+
+.period {
+  width: 600px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  background-color: rgba(255,225,80,1);
+
+}
+.period-text {
+  width: 600px;
+  height: 120px;
+  font-size: 80px;
+  position: relative;
+  color: rgba(0,47,4,1);
+  top: 7px;
+  left: 100px;
+  text-align: center;
+  align-items: center;
+  background-color: rgba(255,225,80,1);
+}
+.timer {
+  width: 600px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 600px;
+  background-color: rgba(255,225,80,1);
+}
+#viewTimer {
+  width: 600px;
+  height: 120px;
+  position: absolute;
+  background-color: rgba(255,225,80,1);
+  font-size: 80px;
+  top: 7px;
+}
+.red-text {
+  color: red;
+}
+.start-button {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  font-size: 40px;
+  top: 7px;
+  left: 900px;
+  cursor: pointer;
+  background-color: rgba(255,225,80,1);
+  border: none;
+}
+/**********************************************메인화면 학교정보************************************************/
+.school-info {
+  width: 100%;
+  height: 70px;
+  background-color: rgba(255,225,80,1);
+  border-bottom: 2px solid white;
+}
+.school-name {
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255,225,80,1);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+}
+.school-name-name {
+  width: 600px;
+  font-size: 40px;
+  background-color: rgba(255,225,80,1);
+  word-spacing:2px;
+  text-align: center;
+}
+.school-name-rank {
+  width: 400px;
+  font-size: 40px;
+  text-align: center;
+  background-color: rgba(255,225,80,1);
+  word-spacing:2px;
+}
+
+/********************************************좌석*********************************************************/
+
+.student-seat {
+  width: 900px;
+  height: 560px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  overflow: hidden;
+  background-color: rgba(255,225,80,1);
+}
+.student-table {
+  width: 900px;
+  height: 560px;
+  position: relative;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
+  align-content: flex-start;
+  background-color: rgba(255,225,80,1);
+}
+.student-name {
+  width: 140px;
+  height:60px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  border: 5px solid rgba(77,161,85,1);
+  border-radius: 30px;
+  font-size: 45px;
+  text-align: center;
+  align-content: center;
+  display: block;
+  gap: 20px;
+
+
+}
+#student-table {
+  margin: 20px;
+  width: 900px;
+  height: 560px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
+  align-content: flex-start;
+  background-color: rgba(255,225,80,1);
+}
+tbody {
+  margin: 20px;
+  width: 900px;
+  height: 560px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
+  align-content: flex-start;
+  background-color: rgba(255,225,80,1);
+}
+td {
+  background-color: rgba(255,225,80,1);
+  border: none;
+}
+tr {
+  background-color: rgba(255,225,80,1);
+}
+
+
+
+
+/********************************************이미지,교과서,준비물*********************************************************/
+.study-ment {
+  width: 400px;
+  height: 50px;
+  font-size: 36px;
+  background-color: rgba(255,225,80,1);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 200px;
+  left: 950px;
+  overflow: hidden;
+}
+.study-ment p {
+  background-color: rgba(255,225,80,1);
+}
+.charactor {
+  background-color: rgba(255,225,80,1);
+  width: 450px;
+  height: 450px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 240px;
+  left: 900px;
+  overflow: hidden;
+}
+#image {
+  background-color: rgba(255,225,80,1);
+  width: 400px;
+  height: 400px;
+}
+.material {
+  width: 540px;
+  height: 120px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 630px;
+  left: 830px;
+  overflow: hidden;
+  background-color: rgba(255,225,80,1);
+}
+.textbook-text {
+  width: 180px;
+  height: 50px;
+  background: rgba(254,239,197,1);
+  opacity: 1;
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  border: 1px solid rgba(254,239,197,1);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  font-size: 35px;
+  text-align: center;
+}
+.textbook {
+  width: 100px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 18px;
+  left: 270px;
+  font-size: 36px;
+  opacity: 1;
+  text-align: left;
+  background-color: rgba(255,225,80,1);
+}
+
+.material-text {
+  width: 300px;
+  height: 45px;
+  background: rgba(254,239,197,1);
+  opacity: 1;
+  position: absolute;
+  top: 65px;
+  left: 180px;
+  border: 1px solid rgba(254,239,197,1);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  font-size: 35px;
+  text-align: center;
+}
+
+.material-ment {
+  width: 100px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 70px;
+  left: 80px;
+  font-size: 36px;
+  opacity: 1;
+  text-align: left;
+  background-color: rgba(255,225,80,1);
+}
+.page {
+  width: 34px;
+  color: rgba(0,0,0,1);
+  position: absolute;
+  top: 18px;
+  left: 454px;
+  font-size: 35px;
+  opacity: 1;
+  text-align: left;
+  background-color: rgba(255,225,80,1);
+}
+.page-text {
+  width: 80px;
+  height: 50px;
+  background: rgba(254,239,197,1);
+  opacity: 1;
+  position: absolute;
+  top: 10px;
+  left: 370px;
+  border: 1px solid rgba(254,239,197,1);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  font-size: 35px;
+  text-align: center;
+}
+
+/****************************************종소리,이미지,자리 변경 팝업******************************************/
+.show-modal {
+  display: block; /* 또는 필요한 스타일 설정 */
+}
+
+/************************************** 종소리 *****************************************/
+.bell-sound {
+  width: 100%;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 970px;
+  left: 60px;
+  overflow: hidden;
+}
+.bell-sound-icon {
+  width: 60px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  left: 10px;
+  position: absolute;
+  overflow: hidden;
+}
+.bell-sound-ment {
+  width: 250px;
+  color: rgba(255,225,80,1);
+  position: absolute;
+  top: 14px;
+  left: 70px;
+  font-size: 32px;
+  opacity: 1;
+  text-align: center;
+}
+.first-bell {
+  width: 180px;
+  height: 50px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 400px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  overflow: hidden;
+}
+.bell-click {
+  width: 180px;
+  height: 50px;
+  position: absolute;
+  font-size: 30px;
+  opacity: 1;
+  text-align: left;
+  background: rgba(255,255,255,1);
+  border: 1px solid rgba(254,239,197,1);
+}
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  outline: none;
+  margin-right: 10px; /* 간격을 주기 위해 조절할 수 있습니다. */
+  background-color: rgba(255,225,80,1);
+}
+
+input[type="radio"]:checked {
+  background-color: #4CAF50; /* 선택 시 배경색을 녹색으로 변경 */
+}
+#radio1, #radio2,#radio3,#radio4,#radio5,#radio6{
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+.two-bell {
+  width: 180px;
+  height: 50px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 650px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  overflow: hidden;
+}
+
+.three-bell {
+  width: 180px;
+  height: 50px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 900px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  overflow: hidden;
+}
+
+.four-bell {
+  width: 180px;
+  height: 50px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 1150px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  overflow: hidden;
+}
+
+.five-bell {
+  width: 180px;
+  height: 50px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 1400px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  overflow: hidden;
+}
+
+.show-popup {
+  width: 180px;
+  height: 50px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 15px;
+  left: 1650px;
+  border-radius: 100px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.popup-click {
+  width: 180px;
+  height: 50px;
+  position: absolute;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
+  background: rgba(255,255,255,1);
+  border: 1px solid rgba(254,239,197,1);
+  cursor: pointer;
+}
+.popup {
+  position: fixed;
+  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 500px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid;
+}
+.popup-content {
+  background-color: white;
+  height: 400px;
+  width: 400px;
+}
+.popup-content button {
+  width: 400px;
+  height: 200px;
+  font-size: 60px;
+  background-color: white;
+  border: 3px solid;
+  cursor: pointer;
+}
+.popup p {
+  font-size: 30px;
+}
+
+
+/********************칭찬팝업*******************/
+.popup-2 {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 520px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.popup-3 {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 520px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.popup-4 {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 200px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 30px;
+}
+.popup-5 {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 400px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 30px;
+  color: black;
+}
+.popup-4-div {
+  background-color: rgba(6, 97, 26, 1);
+  height: 150px;
+  margin: auto; /* 추가: 수평 가운데 정렬 */
+  position: relative;
+  top: 15px;
+  width: 350px;
+  border-radius: 20%;
+
+}
+.popup-5-div {
+  top: 20px;
+  width: 350px;
+  height: 350px;
+  margin: auto; /* 추가: 수평 가운데 정렬 */
+  position: relative;
+  left: 10px;
+}
+.popup-5-div h3 {
+  background-color: white;
+  color: black;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.content4 {
+  background-color: white;
+  color: black;
+}
+.popup-5 {
+  color: white;
+  font-size: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.popup-2-div {
+  top: 20px;
+  background-color: rgba(6, 97, 26, 1);
+  width: 350px;
+  height: 470px;
+  border-radius: 30px;
+  margin: auto; /* 추가: 수평 가운데 정렬 */
+  position: relative;
+
+}
+.popup-2 h3 {
+  margin-top: 5px;
+  font-size: 30px;
+  color: white;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: lighter;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.popup-3 h3 {
+  margin-top: 5px;
+  font-size: 30px;
+  color: white;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: lighter;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+.popup-4 h3 {
+  margin-top: 5px;
+  font-size: 30px;
+  color: white;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: lighter;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.popup-2 form {
+  display: block;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.popup-3 form {
+  display: block;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.popup-4 form {
+  display: block;
+  text-align: center;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+
+.praise-date {
+  margin: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  font-size: 20px;
+  width: 150px; /* 수정: 폭 조정 */
+  background-color: white;
+}
+select {
+  background-color: white;
+}
+
+.praise-text {
+  margin-top: 20px;
+  width: 320px;
+  height: 250px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: white;
+  font-size: 20px;
+}
+
+.popup-2 button {
+  margin-top: 5px; /* 버튼과 텍스트 사이 간격 조절 */
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+  position: relative;
+  left: 100px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.popup-3 button {
+  margin-top: 5px; /* 버튼과 텍스트 사이 간격 조절 */
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+  position: relative;
+  left: 100px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.popup-4 button {
+  margin-top: 5px; /* 버튼과 텍스트 사이 간격 조절 */
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+  position: relative;
+  left: 30px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.popup-5 button {
+  margin-top: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+  position: relative;
+  left: 250px;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+
+/************************************/
+.popup1 {
+  position: fixed;
+  z-index: 11;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 71px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid;
+}
+.popup1-div {
+  align-content: center;
+
+}
+.popup1-button {
+  font-size: 20px;
+  background-color: white;
+  text-align: center;
+  align-content: center;
+  cursor: pointer;
+}
+.popup h3 {
+  font-size: 40px;
+  text-align: center;
+  padding: 20px 0;
+  font-weight: lighter;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  bottom: 0;
+  position: absolute;
+  padding: 20px 40px;
+}
+.buttons button {
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 90px;
+  height: 50px;
+  font-size: 20px;
+  cursor: pointer;
+}

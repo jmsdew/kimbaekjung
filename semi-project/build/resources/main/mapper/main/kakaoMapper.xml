@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.main.kakao.model.KakaoDAO">
+
+    <resultMap id="schoolResult" type="com.kimbaekjung.semiproject.main.kakao.dto.KakaoDTO">
+        <id property="code" column="user_code"/>
+        <result property="email" column="email"/>
+
+    </resultMap>
+
+    <select id="selectEmail" resultMap="schoolResult">
+        SELECT
+            email
+          FROM USER
+    </select>
+    <select id="userCode" resultMap="schoolResult">
+        SELECT
+          user_code
+          from user
+        where email = #{email}
+    </select>
+    <insert id="signUp" parameterType="com.kimbaekjung.semiproject.main.kakao.dto.KakaoDTO">
+        INSERT INTO USER
+        VALUES(
+            NULL,
+            #{email}
+        )
+    </insert>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.school.model.PropSearchDAO">
+
+    <resultMap id="proResult" type="com.kimbaekjung.semiproject.school.dto.SearchPropDTO">
+        <id property="code" column="PROPOSE_CODE"/>
+        <result property="title" column="PROPOSE_NAME"/>
+        <result property="enrollD" column="REGIST_DATE"/>
+        <result property="email" column="EMAIL"/>
+    </resultMap>
+
+
+    <select id="searchProp" resultMap="proResult">
+        SELECT
+        PROPOSE_CODE,
+        PROPOSE_NAME,
+        REGIST_DATE,
+        USER.email as EMAIL
+        FROM PROPOSE
+        JOIN user ON propose.user_code = USER.user_code
+        WHERE 1=1
+        <if test='keyword != null and keyword != ""'>
+            AND PROPOSE_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+
+
+
+
+</mapper>

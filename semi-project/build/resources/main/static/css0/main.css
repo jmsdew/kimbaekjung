@@ -1,0 +1,353 @@
+
+#studentInfo{
+
+  background: #FFE150; 
+
+  
+}
+#studentWord{
+  background-color: #FFE150;
+
+}
+
+
+.bi-info-circle{
+  background-color: #FFE150;
+}
+
+
+#namelist{
+  width: 100%;
+  height: 100%;
+  padding-right: 50px;
+  padding-left: 50px;
+  overflow: auto;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
+  align-content: flex-start;
+}
+
+#namelist button{
+  height: 45px;
+  width: 179px;
+  font-size: 25px;
+  font-weight: 450;
+  background-color: white;
+  border: 1px solid black;
+  font-family: Inter;
+}
+
+
+#list{
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  color: black;
+  font-size: 30px;
+  font-family: Inter;
+  font-weight: 600;
+  letter-spacing: 9px;
+  word-wrap: break-word;
+
+}
+
+#line{
+  width: 100%;
+  height: 85px;
+}
+
+.popup0{
+  position: fixed;
+  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  height: 600px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
+#namePopup0{
+  border: 1px solid black;
+  position: absolute;
+  top: 20px;
+  left: 240px;
+  width: 220px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* 가운데 정렬을 유지하기 위해 추가 */
+  font-family: Inter;
+}
+
+.popup0 section{
+  position: absolute;
+  left: 110px;
+  width: 480px;
+  height: 60px;
+  top: 90px;
+}
+
+.popup0 section div{
+  width: 100%;
+  height: 30px;
+  display: flex;
+}
+
+.popup0 section div div{
+  font-size: 20px;
+  font-weight: normal;
+  font-family: Inter;
+  width: 96px;
+  border: solid 1px black;
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+}
+
+.attendance{
+  width: 90%;
+  height: 370px;
+  position: absolute;
+  left: 5%;
+  bottom: 60px;
+  border: 1px solid black;
+  overflow-y: auto;
+}
+
+.attendance div{
+  position: absolute;
+  width: 100%;
+  height: 185px;
+  display: flex;
+}
+
+.attendance div h3{
+  top: -4%;
+  left: 2%;
+  position: absolute;
+  font-family: Inter;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+#word1{
+  top: -4%;
+  position: absolute;
+  font-family: Inter;
+  font-size: 15px;
+  left: 465px;
+  letter-spacing: 2px;
+}
+
+
+#date1{
+  position: absolute;
+  width: 235px;
+  height: 60px;
+  left: 2%;
+  top: 20%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#attend1{
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  left: 45%;
+  top: 20%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#agree{
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  right: 2%;
+  top: 20%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+#statusContent{
+  position: absolute;
+  width: 96%;
+  height: 60px;
+  left: 2%;
+  top: 60%;
+  font-family: Inter;
+  font-size: 20px;
+  border: 1px solid black;
+}
+
+
+
+
+#color1{
+ background-color: #FFF8E4;
+}
+#color2{
+  background-color: #FFF8E4;
+}
+#color3{
+  background-color: #FFF8E4;
+}
+#color4{
+  background-color: #FFF8E4;
+}
+#color5{
+  background-color: #FFF8E4;
+}
+
+ #showPopupButton{
+   width: 100px;
+   height: 30px;
+   right: 150px;
+   bottom: 60px;
+   font-family: Inter;
+   font-size: 17px;
+   font-weight: bold;
+   position: absolute;
+
+ }
+
+.popup {
+  position: fixed;
+  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 500px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
+.popup section{
+  width: 95%;
+  height: 350px;
+  position: absolute;
+  top: 70px;
+  left: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.nameBtn2{
+  width: 170px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid black;
+  font-family: Inter;
+  font-size: 20px;
+}
+
+.nameBtn2.selected{
+
+  background-color: #e7e7e7;
+}
+
+
+h3 {
+  font-size: 25px;
+  text-align: center;
+  padding: 20px 0;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  bottom: 0;
+  position: absolute;
+  padding: 20px 40px;
+}
+.buttons button {
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 70px;
+  font-size: 20px;
+}
+
+.popup_cancel1{
+  position: absolute;
+  bottom: 20px;
+  right: 40px;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 70px;
+  font-size: 20px;
+}
+
+.popup1 {
+  position: fixed;
+  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+  z-index: 12;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 380px;
+  height: 200px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid;
+}
+
+#addInput{
+   position: absolute;
+   width: 200px;
+   left: 23%;
+   height: 40px;
+   font-weight: 400;
+   font-size: 30px;
+   text-align: center;
+}
+
+.background {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}

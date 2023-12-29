@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css0/myGlobal.css">
+    <link rel="stylesheet" href="/css0/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
+</head>
+<body>
+ <header class="navbox">
+     <nav>
+         <h1>
+             <button class="main" onclick="location.href='/main/main'">
+                 학교종이 땡땡땡
+             </button>
+         </h1>
+         <ul>
+             <li>
+                 <button class="ranking" onclick="location.href='/rank/rank'">
+                     랭킹
+                 </button>
+             </li>
+             <li>
+                 <button class="calendar" onclick="location.href='/calendar/calendar'">
+                     캘린더
+                 </button>
+             </li>
+             <li>
+                 <button class="student-management" onclick="location.href='/management/student_manage'">
+                     학생관리
+                 </button>
+             </li>
+             <li>
+                 <button class="mypage" onclick="location.href='/school/mypage_info'">
+                     마이페이지
+                 </button>
+             </li>
+         </ul>
+     </nav>
+   </header>
+
+   <div id="bar"></div>
+
+ <!--***********************************************************************-->
+
+ <div id="fiveFrame">
+    
+    <a href="/school/mypage_info" id="studentInfo">
+        <div id="iconTag1">
+            <i class="bi-info-circle"></i>
+        </div>
+        <div id="studentWord">학생정보</div>
+    </a>
+
+
+    <a href="/school/call_info_notification" id="call">
+        <div id="iconTag2">
+            <i class="bi-whatsapp"></i>
+        </div>
+        <div id="callWord">고객센터</div>
+    </a>
+
+    <a href="/school/restart_info" id="restart">
+        <div id="iconTag3">
+            <i class="bi-arrow-clockwise"></i>
+        </div>
+        <div id="restartWord">초기화</div>
+    </a>
+
+    <a href="/school/logout_info" id="logout">
+        <div id="iconTag4">
+            <i class="bi-box-arrow-right"></i>
+        </div>
+        <div id="logoutWord">로그아웃</div>
+    </a>
+
+    <a href="/school/destroy_info" id="destroy">
+        <div id="iconTag5">
+            <i class="bi-slash-circle"></i>
+        </div>
+        <div id="destroyWord">회원탈퇴</div>
+    </a>
+</div>
+ <!--***********************************************************************-->
+<article id="article">
+    <div id="list">학생목록</div>
+
+    <section id="namelist">
+
+<!--            <tr th:each="name : ${names}">-->
+<!--                <button class="nameBtn1" th:text="${name.studentName}"></button>-->
+<!--            </tr>-->
+
+        <tr th:each="name, index : ${names}">
+            <button class="nameBtn1" th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'" th:text="${name.studentName}" th:attr="data-index=${index.index + 1}"></button>
+        </tr>
+
+
+    </section>
+<!--    <tr th:each="attendNums : ${attendNum}">-->
+<!--        <button th:text="${attendNums.attendKind}"></button>-->
+<!--        <button th:text="${attendNums.count}"></button>-->
+<!--    </tr>-->
+
+    <div id ="line">
+        <button id="showPopupButton">관리</button>
+    </div>
+</article>
+<!--****88888888888888888888888888888888888888888-->
+<footer id=footers>
+  <div id = email>kbjcom@google.com</div>
+
+    <img src="/img/bell.png" alt="school Bell" id="bell">
+    <div id =footerTitle>학교 종이 땡땡땡</div>
+
+    <div id="number">call : 010-6411-9074</div>
+    <div id="footerFinal">
+        <div>Copyright (C) 2023</div>
+        <div id="jejuH">.김백정컴퍼니.</div>
+        <div>All rights reserved.</div>
+    </div>
+</footer>
+ <!--*****************************이름 눌렀을 시 팝업*********************************-->
+ <div class="popup0">
+     <h3 id="namePopup0"></h3>
+
+    <section>
+        <div>
+            <div id="color1">결석</div>
+            <div id="color2">지각</div>
+            <div id="color3">조퇴</div>
+            <div id="color4">결과</div>
+            <div id="color5">특기사항</div>
+        </div>
+
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </section>
+
+     <div class="attendance">
+         <div>
+             <h3>출결사유</h3>
+             <h3 id="word1">출석인정</h3>
+
+             <div id="date1"></div>
+             <div id="attend1"></div>
+             <div id="agree"></div>
+             <input type="text" id="statusContent"/>
+         </div>
+
+     </div>
+
+
+     <div class="buttons">
+         <button class="popup_regist">확인</button>
+         <button class="popup_cancel">취소</button>
+     </div>
+ </div>
+<!--*****************************팝업*********************************-->
+ <div class="popup">
+     <h3>학생관리</h3>
+     <section id="popupList">
+         <tr th:each="name, index : ${names}">
+             <button class="nameBtn2" th:onclick="'onClickStudentHandler1(\'' + ${name.studentCode} + '\')'" th:text="${name.studentName}" th:attr="data-index=${index.index + 1}"></button>
+         </tr>
+
+     </section>
+     <div class="buttons">
+         <button id="addPopupStu">등록</button>
+         <button>수정</button>
+         <form id="deleteName">
+             <button type="submit">삭제</button>
+         </form>
+     </div>
+ </div>
+
+ <div class="background"></div>
+ <!--*****************************등록 팝업*********************************-->
+ <div class="popup1">
+     <h3> 등록할 이름</h3>
+<!--     <form action="/school/regist" method="post" name="registName">-->
+     <form id="addName">
+         <input type="text" name="name" id="addInput">
+         <div class="buttons">
+             <button type="submit" class="popup_regist1">등록</button>
+         </div>
+     </form>
+     <button class="popup_cancel1">취소</button>
+ </div>
+
+<!--******************************** 스크립트 *********************************************8-->
+     <script th:inline="javascript">
+     const popupButton = document.querySelector('#showPopupButton');
+     const addStudentButton = document.querySelector('#addPopupStu');
+     const popup1 = document.querySelector('.popup');
+     const background = document.querySelector('.background');
+     const popup = document.querySelector('.popup1');
+     const regist1 = document.querySelector('.popup_regist1');
+     const cancel1= document.querySelector('.popup_cancel1');
+     const cancel= document.querySelector('.popup_cancel');
+     const nameBtn1= document.querySelectorAll('.nameBtn1');
+     const popup0 = document.querySelector('.popup0');
+     // const namePopup0 =document.querySelector('#namePopup0');
+     // const nameBtns = document.querySelectorAll('.nameBtn2');
+
+     const addNameForm = document.getElementById('addName');
+     const deleteName = document.getElementById('deleteName');
+     const nameListSection = document.getElementById('namelist');
+     const popupListSection = document.getElementById('popupList');
+
+     function onClickStudentHandler(studentCode) {
+         background.classList.add('show');
+         popup0.classList.add('show');
+
+         console.log(studentCode);
+         fetch(`/student/popup_info/${studentCode}`, {
+             method: 'GET',
+         })
+             .then(res => res.json())
+             .then(data => {
+                 console.log(data);
+                 const convert = data.reduce((acc, cur) => {
+                     return { ...acc, [cur.attendKind]: cur.count };
+                 }, {});
+
+                 console.log(convert);
+             });
+     }
+
+     function onClickStudentHandler1(studentCode) {
+
+         console.log(studentCode);
+         fetch(`/student/delete/${studentCode}`, {
+             method: 'POST',
+             body: JSON.stringify({ studentCode: studentCode }),
+             headers: {
+                 'Content-Type': 'application/json'
+             }
+         })
+             .then(res => res.json())
+             .then(data => {
+                 console.log(data);
+                 selectedButton.parentElement.remove();
+                 let html = '';
+                 let text = '';
+                 let html1 = '';
+                 let text1 = '';
+                 data.forEach(element => {
+                     const {studentName} = element;
+                     text = `
+                     <tr>
+                       <button class="nameBtn1">${studentName}</button>
+                     </tr>
+                     `;
+
+                     text1 = `
+                     <tr>
+                     <button class="nameBtn2">${studentName}</button>
+                     </tr>
+                     `;
+                     html += text;
+                     html1 += text1;
+                 });
+                 nameListSection.innerHTML = html;
+                 popupListSection.innerHTML = html1;
+
+                 selectedButton.classList.remove('selected');
+                 selectedButton = null;
+             })
+             .catch(error => {
+                 console.log(error);
+             });
+     }
+
+
+     // nameBtn2 버튼 클릭 이벤트 리스너
+     // document.querySelectorAll('.nameBtn2').forEach(nameBtn => {
+     //     nameBtn.addEventListener('click', function () {
+     //         // 모든 버튼의 클래스 초기화
+     //         document.querySelectorAll('.nameBtn2').forEach(btn => btn.classList.remove('selected'));
+     //
+     //         // 클릭된 버튼에 새로운 클래스 추가
+     //         nameBtn.classList.add('selected');
+     //
+     //         // 선택된 버튼 저장
+     //         selectedButton = nameBtn;
+     //     });
+     // });
+
+     // **************************************************************
+     let selectedButton = null;
+     function addEventListenersToNameBtn2() {
+         const nameBtn2 = document.querySelectorAll('.nameBtn2');
+         nameBtn2.forEach(nameBtn => {
+             nameBtn.addEventListener('click', function () {
+                 // 모든 버튼의 클래스 초기화
+                 nameBtn2.forEach(btn => btn.classList.remove('selected'));
+
+                 // 클릭된 버튼에 새로운 클래스 추가
+                 nameBtn.classList.add('selected');
+
+                 selectedButton = nameBtn;
+             });
+         });
+     }
+
+     document.addEventListener('DOMContentLoaded', function () {
+         // 페이지가 로드되면 실행되는 코드
+
+         addEventListenersToNameBtn2();
+     });
+
+     //
+     // deleteName.addEventListener("submit", function (event) {
+     //     event.preventDefault();
+     //     if (selectedButton) {
+     //         const formData = new FormData();
+     //         formData.append('studentName', selectedButton.dataset.studentName);
+     //
+     //
+     //         fetch('/student/delete', {
+     //             method: 'POST',
+     //             body: formData,
+     //         })
+     //             .then(response => response.json())
+     //             .then(res => {
+     //                 console.log(res);
+     //                 selectedButton.parentElement.remove();
+     //                 let html = '';
+     //                 let text = '';
+     //                 let html1 = '';
+     //                 let text1 = '';
+     //                 res.forEach(element => {
+     //                     const {studentName} = element;
+     //                     text = `
+     //                    <tr>
+     //                        <button class="nameBtn1">${studentName}</button>
+     //                    </tr>
+     //                 `;
+     //
+     //                     text1 = `
+     //                    <tr>
+     //                        <button class="nameBtn2">${studentName}</button>
+     //                    </tr>
+     //                 `;
+     //                     html += text;
+     //                     html1 += text1;
+     //                 });
+     //                 nameListSection.innerHTML = html;
+     //                 popupListSection.innerHTML = html1;
+     //
+     //                 selectedButton.classList.remove('selected');
+     //                 selectedButton = null;
+     //             })
+     //
+     //             .catch(error => {
+     //                 console.log(error);
+     //             });
+     //     }else {
+     //         console.log('No button selected for deletion.');
+     //     }
+     // })
+     // **************************************************************
+
+
+     addNameForm.addEventListener("submit", function (event) {
+         event.preventDefault(); //submit 등 모든 이벤트 무효화
+         const formData = new FormData(event.target); //위의 form 태그 안의 데이터들을 넣는 기능
+         // const name = formData.get('name');
+         // console.log(name);
+         //
+         // fetch('/school/regist', {
+         //     method: 'POST',
+         //     body: formData,
+         // })
+         // .then(data => {
+         //     console.log('hello')
+         //     fetch('/student/list',{
+         //         method: 'GET',
+         //     })
+         //         .then(response => response.json())
+         //         .then(res => {
+         //             console.log(res);
+         //         })
+         //         .catch(error => {
+         //             console.log(error);
+         //         });
+         // })
+         // .catch(error => {
+         //     console.log(error);
+         // })
+         fetch('/student/add', {
+             method: 'POST',
+             body: formData,
+         })
+             .then(response => response.json())
+             .then(res => {
+                 console.log(res);
+                 let html = '';
+                 let text = '';
+                 let html1 = '';
+                 let text1 = '';
+                 res.forEach(element => {
+                     // const studentName = element.studentName;
+                     const { studentName } = element;
+                     // text = `asdfadf${studentName}`;
+                     text = `
+                        <tr>
+                            <button class="nameBtn1">${studentName}</button>
+                        </tr>
+                     `;
+
+                     text1 = `
+                        <tr>
+                            <button class="nameBtn2">${studentName}</button>
+                        </tr>
+                     `;
+                     html += text;
+                     html1 += text1;
+                 });
+                 nameListSection.innerHTML = html;
+                 popupListSection.innerHTML = html1;
+                 //
+                 // const nameBtn2 = document.querySelectorAll('.nameBtn2');
+                 // nameBtn2.forEach(nameBtn => {
+                 //     nameBtn.addEventListener('click', function () {
+                 //         // 모든 버튼의 클래스 초기화
+                 //         nameBtn2.forEach(btn => btn.classList.remove('selected'));
+                 //
+                 //         // 클릭된 버튼에 새로운 클래스 추가
+                 //         nameBtn.classList.add('selected');
+                 //     });
+                 // });
+             })
+             .catch(error => {
+                 console.log(error);
+             });
+
+     });
+
+
+
+     // function addEventListenersToNameBtn2() {
+     //     const nameBtn2 = document.querySelectorAll('.nameBtn2');
+     //     nameBtn2.forEach(nameBtn => {
+     //         nameBtn.addEventListener('click', function () {
+     //             // 모든 버튼의 클래스 초기화
+     //             nameBtn2.forEach(btn => btn.classList.remove('selected'));
+     //
+     //             // 클릭된 버튼에 새로운 클래스 추가
+     //             nameBtn.classList.add('selected');
+     //         });
+     //     });
+     // }
+     //
+     // document.addEventListener('DOMContentLoaded', function () {
+     //     // 페이지가 로드되면 실행되는 코드
+     //
+     //     addEventListenersToNameBtn2();
+     // });
+
+
+
+
+     console.log(cancel);
+
+     popupButton.addEventListener('click', function() {
+         popup1.classList.add('show');
+         background.classList.add('show');
+     });
+
+     background.addEventListener('click', function (){
+         background.classList.remove('show');
+         popup1.classList.remove('show');
+         popup.classList.remove('show');
+         popup0.classList.remove('show');
+     });
+
+     regist1.addEventListener('click', function (){
+         popup.classList.remove('show');
+     })
+
+     cancel1.addEventListener('click', function (){
+         popup.classList.remove('show');
+     })
+
+    addStudentButton.addEventListener('click',function (){
+        popup.classList.add('show');
+    });
+
+     // nameBtn1.addEventListener('click',function (){
+     //     background.classList.add('show');
+     //     popup0.classList.add('show');
+     // })
+
+     // nameBtn1.forEach(nameBtn => {
+     //     nameBtn.addEventListener('click', function () {
+     //         background.classList.add('show');
+     //         popup0.classList.add('show');
+     //     });
+     // });
+
+     cancel.addEventListener('click', function (){
+         popup0.classList.remove('show');
+         background.classList.remove('show');
+     })
+
+
+
+
+
+     /*<![CDATA[*/
+     document.addEventListener('DOMContentLoaded', function() {
+         var buttons = document.querySelectorAll('.nameBtn1');
+
+         buttons.forEach(function(button, index) {
+             button.addEventListener('click', function() {
+                 var name = button.innerText;
+                 document.getElementById('namePopup0').innerText = name;
+             });
+         });
+     });
+     /*]]>*/
+
+
+ </script>
+
+</body>
+</html>

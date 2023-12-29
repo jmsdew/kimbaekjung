@@ -1,0 +1,98 @@
+
+#restart{
+  background: #FFE150;
+}
+
+#restartWord{
+  background: #FFE150;
+}
+
+.bi-arrow-clockwise{
+  background: #FFE150;
+}
+
+
+
+#list{
+  width: 100%;
+  height: 40px;
+  left: 18%;
+  color: black;
+  font-size: 30px;
+  font-family: Inter;
+  font-weight: 600;
+  letter-spacing: 3px;
+  word-wrap: break-word;
+  position: absolute;
+  top: 20%;
+}
+#listUnder{
+  width: 100%;
+  height: 40px;
+  left: 37%;
+  color: black;
+  font-size: 15px;
+  font-family: Inter;
+  font-weight: 400;
+  word-wrap: break-word;
+  position: absolute;
+  top: 27%;
+}
+
+
+#resetButton{
+  align-items: center;
+  width: 90px;
+  height: 25px;
+  top: 50%;
+  left: 50%;
+  border-radius: 10%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+
+}
+
+.popup {
+  position: fixed;
+  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #eeeeee;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 150px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid blue;
+}
+
+.popup h3{
+  text-align: center;
+  color: black;
+  padding: 30px 0;
+  font-size: 30px;
+  font-weight: 350;
+  background-color: #eeeeee;
+}
+
+.buttons{
+  width: 100%;
+  height: 25px;
+  background-color: #eeeeee;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons button{
+  background-color: #dadada;
+  border-color: black;
+  height: 100%;
+  width: 50px;
+}
+
+

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD SQL Map Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="callSettersOnNulls" value="true" />
+        <setting name="jdbcTypeForNull" value="NULL" />
+    </settings>
+
+
+    <mappers>
+        <mapper resource="mapper/admin/AdminMapper.xml" />
+        <mapper resource="mapper/admin/NoticeMapper.xml" />
+        <mapper resource="mapper/admin/ProposeMapper.xml" />
+        <mapper resource="mapper/admin/RecommendMapper.xml" />
+        <mapper resource="mapper/rank/rankMapper.xml" />
+        <mapper resource="mapper/rank/gradeMapper.xml" />
+        <mapper resource="mapper/main/mainMapper.xml"/>
+        <mapper resource="mapper/main/studentMapper.xml"/>
+        <mapper resource="mapper/rank/topRankMapper.xml"/>
+        <mapper resource="mapper/main/sitDownMapper.xml"/>
+        <mapper resource="mapper/main/praiseMapper.xml"/>
+        <mapper resource="mapper/main/attendanceMapper.xml"/>
+        <mapper resource="mapper/main/kakaoMapper.xml"/>
+        <mapper resource="mapper/main/userInfoMapper.xml"/>
+        <mapper resource="mapper/school/mapper.xml" />
+        <mapper resource="mapper/school/mapper1.xml" />
+        <mapper resource="mapper/school/attendNum.xml" />
+        <mapper resource="mapper/school/propose.xml" />
+        <mapper resource="mapper/school/Insert.xml" />
+        <mapper resource="mapper/school/Delete.xml" />
+        <mapper resource="mapper/school/SearchPropose.xml" />
+        <mapper resource="mapper/school/SearchMapper1.xml" />
+        <mapper resource="mapper/manage/manage.xml" />
+        <mapper resource="mapper/manage/manage.xml" />
+        <mapper resource="mapper/calendar/calendarMapper.xml" />
+    </mappers>
+
+</configuration>

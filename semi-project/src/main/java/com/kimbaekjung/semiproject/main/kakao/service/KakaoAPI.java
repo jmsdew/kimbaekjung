@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 import com.kimbaekjung.semiproject.main.kakao.dto.KakaoDTO;
 import com.kimbaekjung.semiproject.main.kakao.model.KakaoDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonElement;
@@ -24,6 +25,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class KakaoAPI {
+
+    @Value("${API-KEY.restApi-key}")
+    private String kakao_apikey;
+    @Value("${API-KEY.restApi-pwd}")
+    private String kakao_apipwd;
+
 
     @Autowired
     private KakaoDAO kakaoDAO;
@@ -44,8 +51,8 @@ public class KakaoAPI {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=" + URLEncoder.encode("3a9a45d0213ca7a489beb3001dc2b784", "UTF-8"));
-            sb.append("&client_secret=" + URLEncoder.encode("jTeOCaUYOC0q12K0lzkWx1nYcFrMRNe9", "UTF-8"));
+            sb.append("&client_id=" + URLEncoder.encode(kakao_apikey, "UTF-8"));
+            sb.append("&client_secret=" + URLEncoder.encode(kakao_apipwd, "UTF-8"));
             sb.append("&redirect_uri=http://localhost:8080/oauth/kakao");
             sb.append("&code=" + code);
             bw.write(sb.toString());

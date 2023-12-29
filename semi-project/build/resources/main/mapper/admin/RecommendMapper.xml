@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kimbaekjung.semiproject.admin.dao.RecommendDAO">
+
+    <resultMap id="recommendResult" type="com.kimbaekjung.semiproject.admin.dto.RecommendSelectDTO">
+        <id property="recommendCode" column="RECOMMEND_CODE"/>
+        <result property="categoryCode" column="CATEGORY_CODE"/>
+        <result property="categoryName" column="CATEGORY_NAME"/>
+        <result property="content" column="REC_CONTENT"/>
+    </resultMap>
+
+    <select id="selectAllRecommend" resultMap="recommendResult">
+        SELECT
+            R.RECOMMEND_CODE,
+            R.CATEGORY_CODE,
+            PC.CATEGORY_NAME,
+            R.REC_CONTENT
+          FROM RECOMMEND AS R
+          JOIN PRAISE_CATEGORY AS PC ON R.CATEGORY_CODE = PC.CATEGORY_CODE
+         WHERE R.RECOMMEND_STATUS = 'Y'
+        <if test='keyword != null and keyword != ""'>
+            AND ${criteria} LIKE CONCAT ('%',#{keyword},'%')
+        </if>
+         ORDER BY R.RECOMMEND_CODE DESC
+    </select>
+
+    <insert id="registRecommend">
+        INSERT INTO RECOMMEND
+        VALUES (
+            NULL,
+            ${categoryCode},
+            #{content},
+            'Y',
+            NOW(),
+            NULL,
+            NULL
+        )
+    </insert>
+
+    <update id="deleteRecommend">
+        UPDATE RECOMMEND
+           SET RECOMMEND_STATUS = 'N'
+         WHERE RECOMMEND_CODE IN
+        <foreach item="code" collection="selectedRecommendCodeList" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+    </update>
+
+    <update id="modifyRecommend">
+        UPDATE RECOMMEND
+           SET CATEGORY_CODE = #{categoryCode}, REC_CONTENT = #{content}
+         WHERE RECOMMEND_CODE = #{recommendCode}
+    </update>
+</mapper>
