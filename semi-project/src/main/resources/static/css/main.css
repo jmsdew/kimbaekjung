@@ -674,6 +674,25 @@ input[type="radio"]:checked {
   overflow: hidden;
   border-radius: 30px;
 }
+.popup-5 {
+  position: fixed;
+  z-index: 11;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 400px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  overflow: hidden;
+  border-radius: 30px;
+  color: black;
+}
 .popup-4-div {
   background-color: rgba(6, 97, 26, 1);
   height: 150px;
@@ -683,6 +702,31 @@ input[type="radio"]:checked {
   width: 350px;
   border-radius: 20%;
 
+}
+.popup-5-div {
+  top: 20px;
+  width: 350px;
+  height: 350px;
+  margin: auto; /* 추가: 수평 가운데 정렬 */
+  position: relative;
+  left: 10px;
+}
+.popup-5-div h3 {
+  background-color: white;
+  color: black;
+  font-size: 30px;
+  font-weight: lighter;
+}
+
+.content4 {
+  background-color: white;
+  color: black;
+}
+.popup-5 {
+  color: white;
+  font-size: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 
 .popup-2-div {
@@ -801,6 +845,18 @@ select {
   left: 30px;
   margin-left: 10px;
   border-radius: 5px;
+}
+.popup-5 button {
+  margin-top: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 25px;
+  background-color: white;
+  position: relative;
+  left: 250px;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
 }
 
 

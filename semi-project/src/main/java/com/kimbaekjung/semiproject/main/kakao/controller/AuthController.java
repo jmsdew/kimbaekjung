@@ -47,6 +47,7 @@ public class AuthController {
 
             session.setAttribute("userId", userInfo.get("email"));
             session.setAttribute("access_Token", access_Token);
+            session.setMaxInactiveInterval(36000);
 
 
         Object emails = userInfo.get("email");

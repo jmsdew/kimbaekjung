@@ -220,6 +220,17 @@
         </form>
       </div>
     </div>
+    <!--학생입력-->
+    <div class="popup-5">
+      <div class="popup-5-div">
+        <h3>학생정보입력</h3>
+        <form action="#" class="content4">
+          <textarea name="name" class="praise-text" placeholder="학생이름을 입력 해주세요 [,] 로 구분 해주세요 ex)김철수,김영희"></textarea>
+          <button type="submit">등록</button>
+        </form>
+      </div>
+    </div>
+
 
 
   </footer>
@@ -388,6 +399,43 @@
   });
 
 //-----------------------------------------------------------초기정보등록 - 학생
+  $(document).ready(function () {
+    // 학교정보입력 버튼에 대한 클릭 이벤트 리스너 추가
+    $("#popupClick-studentName").click(function () {
+      // 이벤트 핸들러 로직
+      $(".popup-5").show();
+    });
+
+    $(".content4").submit(function (e) {
+      e.preventDefault(); // 폼 제출 방지
+
+      // FormData 객체를 생성하여 폼 데이터를 담습니다.
+      let formData = new FormData(this);
+
+      $.ajax({
+        type: "POST",
+        url: "/main/studentInfo", // 서버의 컨트롤러 매핑 주소
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (response) {
+          console.log("서버 응답:", response);
+          alert("등록완료");
+          $(".popup-5").hide();
+        },
+        error: function (error) {
+          console.error("에러 발생:", error);
+        },
+      });
+    });
+
+    // 팝업 외부 클릭 시 팝업 닫기
+    $(document).click(function (event) {
+      if (!$(event.target).closest('.popup-5').length && !$(event.target).is('#popupClick-studentName')) {
+        $(".popup-5").hide();
+      }
+    });
+  });
 
 <!-- 총 착석 하트 -------------------------------------->
   let i = 0;
@@ -445,6 +493,7 @@ $(document).ready(function() {
     handleHeartClick($(".classbox"));
   });
 //  --------------------------------------------------------------------------------------------타이머조정
+
   let SetTime = 600; // 테스트를 위해 시간을 10초로 설정
   let tid; // 타이머 ID
   let audio = new Audio();
@@ -463,7 +512,7 @@ $(document).ready(function() {
 
     let msg = formattedMinutes + " : " + formattedSeconds;
 
-    if (SetTime <= 3) { // 3초 이하일 때 클래스 추가하여 빨간색으로 변경
+    if (SetTime <= 3) { //
       document.getElementById('viewTimer').classList.add('red-text');
     }
 
