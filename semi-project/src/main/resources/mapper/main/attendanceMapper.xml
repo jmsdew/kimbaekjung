@@ -13,11 +13,11 @@
         (SELECT
         student_code
         FROM student
-        WHERE student_name = '${name}'
-        AND user_code = 1),
-        "${kind}",
-        "${date}",
-        "${reason}",
+        WHERE student_name = '${attendanceDTO.name}'
+        AND user_code = #{userCode}),
+        "${attendanceDTO.kind}",
+        "${attendanceDTO.date}",
+        "${attendanceDTO.reason}",
         "Y",
         null,
         NULL,

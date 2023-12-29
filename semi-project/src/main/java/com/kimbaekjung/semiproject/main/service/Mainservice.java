@@ -45,13 +45,13 @@ public class Mainservice {
         return sitDown;
     }
 
-    public int processPraise(PraiseDTO praiseDTO) {
-        int praise = praiseDAO.processPraise(praiseDTO);
+    public int processPraise(PraiseDTO praiseDTO, int userCode) {
+        int praise = praiseDAO.processPraise(praiseDTO,userCode);
         return praise;
     }
 
-    public int attendance(AttendanceDTO attendanceDTO) {
-        int attendance = attendanceDAO.attendanceStudent(attendanceDTO);
+    public int attendance(AttendanceDTO attendanceDTO, int userCode) {
+        int attendance = attendanceDAO.attendanceStudent(attendanceDTO,userCode);
         return attendance;
     }
 
