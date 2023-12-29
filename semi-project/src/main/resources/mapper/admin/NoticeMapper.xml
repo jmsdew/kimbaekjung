@@ -54,7 +54,6 @@
         NULL,
         #{name},
         #{content},
-        NOW(),
         1,
         NOW(),
         NULL,

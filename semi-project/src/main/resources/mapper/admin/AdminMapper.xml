@@ -20,5 +20,6 @@
           FROM USER U
           JOIN USER_INFO UI ON U.USER_CODE = UI.USER_CODE
          WHERE UI.USER_STATUS = 'Y'
+         ORDER BY U.USER_CODE DESC
     </select>
 </mapper>

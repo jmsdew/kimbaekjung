@@ -34,7 +34,9 @@
             ${categoryCode},
             #{content},
             'Y',
-            NOW()
+            NOW(),
+            NULL,
+            NULL
         )
     </insert>
 
