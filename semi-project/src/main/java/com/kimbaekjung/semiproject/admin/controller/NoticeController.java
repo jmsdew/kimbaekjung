@@ -44,4 +44,48 @@ public class NoticeController {
 
         return mv;
     }
+
+    @PostMapping("/deleteNotices")
+    public ModelAndView deleteSelectedNotices(ModelAndView mv, @RequestParam String selectedNoticeCodes) {
+
+        String[] selectedNoticeCodeList = selectedNoticeCodes.split(",");
+
+        int result = noticeService.deleteSelectedNotices(selectedNoticeCodeList);
+
+        if (result > 0) {
+            List<NoticeSelectDTO> noticeList = noticeService.selectAllNotice();
+
+            if (Objects.isNull(noticeList)) {
+                System.out.println("등록된 공지사항이 없습니다.");
+            }
+            mv.addObject("noticeList", noticeList);
+            mv.setViewName("/admim/admin_notice");
+        }
+        return mv;
+    }
+
+    @GetMapping("/registPage")
+    public String registPage() {
+        return "/admin/admin_notice_regist";
+    }
+
+    @PostMapping("/registNotice")
+    public ModelAndView registNoitce(ModelAndView mv, @RequestParam String name, @RequestParam String content) {
+        System.out.println("name : " + name);
+        System.out.println("content : " + content);
+
+        int result = noticeService.registNotice(name, content);
+        System.out.println(result);
+
+        if (result > 0) {
+            List<NoticeSelectDTO> noticeList = noticeService.selectAllNotice();
+
+            if (Objects.isNull(noticeList)) {
+                System.out.println("등록된 공지사항이 없습니다.");
+            }
+            mv.addObject("noticeList", noticeList);
+            mv.setViewName("/admin/admin_notice");
+        }
+        return mv;
+    }
 }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kimbaekjung.semiproject.admin.dao.AdminProposeDAO">
+
+    <resultMap id="proposeResult" type="com.kimbaekjung.semiproject.admin.dto.ProposeSelectDTO">
+        <id property="code" column="PROPOSE_CODE"/>
+        <result property="name" column="PROPOSE_NAME"/>
+        <result property="content" column="PROPOSE_CONTENT"/>
+        <result property="userCode" column="USER_CODE"/>
+        <result property="regist" column="REGIST_DATE"/>
+    </resultMap>
+
+    <resultMap id="proposeAnswer" type="com.kimbaekjung.semiproject.admin.dto.ProposeAnswerDTO">
+        <id property="auth" column="COMMENT_AUTH"/>
+    </resultMap>
+
+    <select id="selectAllPropose" resultMap="proposeResult">
+        SELECT
+            PROPOSE_CODE,
+            PROPOSE_NAME,
+            PROPOSE_CONTENT,
+            USER_CODE,
+            REGIST_DATE
+          FROM PROPOSE
+         WHERE PROPOSE_STATUS = 'Y'
+        <if test='keyword != null and keyword != ""'>
+            AND PROPOSE_NAME LIKE CONCAT('%',#{keyword},'%')
+        </if>
+    </select>
+
+    <select id="proposeAnswer" resultMap="proposeAnswer">
+        SELECT
+            COMMENT_AUTH
+          FROM COMMENT
+         WHERE PROPOSE_CODE = #{proposeCode}
+    </select>
+
+    <insert id="answerRegist">
+        INSERT INTO COMMENT
+        VALUES (
+            NULL,
+            #{proposeAnswer},
+            1,
+            #{proposeCode}
+        )
+    </insert>
+
+    <update id="deletePropose">
+        UPDATE PROPOSE
+           SET PROPOSE_STATUS = 'N'
+         WHERE PROPOSE_CODE IN
+        <foreach collection="selectedProposeCodeList" item="code" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+    </update>
+</mapper>

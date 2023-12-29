@@ -11,4 +11,8 @@ public interface NoticeDAO {
     List<NoticeSelectDTO> selectAllNotice();
 
     List<SearchNoticeDTO> searchNotice(String keyword);
+
+    int deleteNotice(String[] selectedNoticeCodeList);
+
+    int registNotice(String name, String content);
 }

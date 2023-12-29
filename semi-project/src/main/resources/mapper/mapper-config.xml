@@ -12,6 +12,8 @@
     <mappers>
         <mapper resource="mapper/admin/AdminMapper.xml" />
         <mapper resource="mapper/admin/NoticeMapper.xml" />
+        <mapper resource="mapper/admin/ProposeMapper.xml" />
+        <mapper resource="mapper/admin/RecommendMapper.xml" />
         <mapper resource="mapper/rank/rankMapper.xml" />
         <mapper resource="mapper/rank/gradeMapper.xml" />
         <mapper resource="mapper/main/mainMapper.xml"/>
