@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>학교 종이 땡땡땡</title>
@@ -20,6 +20,7 @@
         <p style="position: relative;
                         top: 300px;">* 최초 로그인시 초기설정을 꼭 해주세요.</p>
     </div>
+
     <footer id=footers>
         <div id = email>kbjcom@google.com</div>
         <img src="image/bell.png" alt="school Bell" id="bell">
@@ -35,7 +36,12 @@
 
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
-        Kakao.init('401490c2da690a83c9329a3eb7ab8433');
+        fetch('/api/key') // 백엔드 API 엔드포인트
+            .then(response => response.text())
+            .then(apiKey => {
+                // API 키를 받아서 Kakao.init()을 호출
+                Kakao.init(apiKey);
+            })
 
         function loginWithKakao() {
             Kakao.Auth.authorize({

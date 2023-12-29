@@ -8,3 +8,6 @@ spring:
 mybatis:
   mapper-locations: classpath:resources/mapper/*.xml
   config-location: classpath:mapper/mapper-config.xml
+
+API-KEY:
+  javascript-key: 401490c2da690a83c9329a3eb7ab8433
