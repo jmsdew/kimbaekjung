@@ -59,7 +59,7 @@ public class NoticeController {
                 System.out.println("등록된 공지사항이 없습니다.");
             }
             mv.addObject("noticeList", noticeList);
-            mv.setViewName("/admim/admin_notice");
+            mv.setViewName("/admin/admin_notice");
         }
         return mv;
     }
