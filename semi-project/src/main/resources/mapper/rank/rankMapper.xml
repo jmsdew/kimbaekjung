@@ -212,6 +212,7 @@
              sum(b.score) AS score
           FROM student a
           JOIN praise b ON (a.student_code = b.student_code)
+         where a.user_code = #{userCode}
          GROUP BY a.student_name
          ORDER BY score DESC
          LIMIT 1;
@@ -222,6 +223,7 @@
         sum(b.score) AS score
         FROM student a
         JOIN praise b ON (a.student_code = b.student_code)
+        where a.user_code = #{userCode}
         GROUP BY a.student_name
         ORDER BY score DESC
         LIMIT 1 offset 1;
@@ -232,6 +234,7 @@
         sum(b.score) AS score
         FROM student a
         JOIN praise b ON (a.student_code = b.student_code)
+        where a.user_code = #{userCode}
         GROUP BY a.student_name
         ORDER BY score DESC
         LIMIT 1 offset 2;

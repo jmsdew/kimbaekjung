@@ -469,15 +469,6 @@ $(document).ready(function() {
   }
 /**************************************** 설정버튼 만들기 ******************************************************/
 
-  document.getElementById('popupClick').addEventListener('click', function() {
-    document.querySelector('.popup').style.display = 'block';
-  });
-
-  document.addEventListener('click', function (event) {
-    if (event.target !== document.querySelector('.popup') && !document.querySelector('.popup').contains(event.target) && event.target !== document.getElementById('popupClick')) {
-      document.querySelector('.popup').style.display = 'none';
-    }
-  });
   let popup = document.querySelector('.popup1');
 
   // 여러 학생 이름 엘리먼트에 대해 반복하여 이벤트를 등록
