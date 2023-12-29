@@ -147,9 +147,9 @@
     (function(){
         $(function(){
             // calendar element 취득
-            var calendarEl = $('#calendar')[0];
+            let calendarEl = $('#calendar')[0];
             // full-calendar 생성하기
-            var calendar = new FullCalendar.Calendar(calendarEl, {
+            let calendar = new FullCalendar.Calendar(calendarEl, {
                 googleCalendarApiKey: 'AIzaSyAVIPjV-Xwq05ev5yexmFezpxzVwRBW-08',
                 height: '700px', // calendar 높이 설정
                 expandRows: true, // 화면에 맞게 높이 재설정
