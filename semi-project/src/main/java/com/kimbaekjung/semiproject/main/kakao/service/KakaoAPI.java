@@ -28,7 +28,7 @@ public class KakaoAPI {
 
     @Value("${API-KEY.restApi-key}")
     private String kakao_apikey;
-    @Value("${API-KEY.kakao_pwd}")
+    @Value("${API-KEY.restApi-pwd}")
     private String kakao_apipwd;
 
 
