@@ -3,7 +3,6 @@ package com.kimbaekjung.semiproject.rank.totalRank.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kimbaekjung.semiproject.main.dto.SitDTO;
 import com.kimbaekjung.semiproject.rank.totalRank.dto.GradeDTO;
 import com.kimbaekjung.semiproject.rank.totalRank.dto.RankDTO;
 import com.kimbaekjung.semiproject.rank.totalRank.dto.TopRankDTO;
@@ -97,7 +96,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank1");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -116,7 +115,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank2");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -135,7 +134,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank3");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -154,7 +153,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank4");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -173,7 +172,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank5");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -192,7 +191,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank6");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -211,7 +210,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank7");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -230,7 +229,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank8");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -249,7 +248,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank9");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -268,7 +267,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("/rank/tema/temaRank10");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
