@@ -115,9 +115,9 @@ public class RecommendController {
 
     @PostMapping("/modify")
     public ModelAndView modifyRecommend(ModelAndView mv, @RequestParam int recommendCode, @RequestParam int categoryCode, @RequestParam String content){
-        System.out.println("recommendCode : " + recommendCode);
-        System.out.println("categoryCode : " + categoryCode);
-        System.out.println("content : " + content);
+//        System.out.println("recommendCode : " + recommendCode);
+//        System.out.println("categoryCode : " + categoryCode);
+//        System.out.println("content : " + content);
 
         int result = recommendService.modifyRecommend(recommendCode, categoryCode, content);
 

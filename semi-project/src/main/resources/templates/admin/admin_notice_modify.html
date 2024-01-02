@@ -26,31 +26,37 @@
     <div th:insert="~{/admin/admin_main.html :: mainFragment}"></div>
 
     <div class="content">
-        <div class="notice-regist">
-            <div class="notice-regist-title-box">
-                <div class="notice-regist-title-name-box">
-                    <span class="notice-regist-title-name">공지사항 등록</span>
+        <div class="notice-modify">
+
+            <!-- 타이틀 -->
+            <div class="notice-modify-title-box">
+                <div class="notice-modify-title-name-box">
+                    <span class="notice-modify-title-name">공지사항</span>
                 </div>
             </div>
 
-            <form name="noticeForm" action="/notice/registNotice" method="post" autocomplete="off">
-                <div class="notice-regist-name-box">
-                    <div class="notice-regist-name">제목</div>
-                    <input type="text" name="name" class="notice-regist-name-input"/>
+            <form name="modifyForm" action="/notice/modify" method="post" autocomplete="off">
+                <input type="hidden" name="noticeCode" th:value="${noticeCode}">
+
+                <!-- 공지사항 제목 -->
+                <div class="notice-modify-name-box">
+                    <div class="notice-modify-name">제목</div>
+                    <textarea name="name" class="notice-modify-name-input">[[${name}]]</textarea>
                 </div>
 
-                <div class="notice-regist-content-box">
-                    <div class="notice-regist-content">내용</div>
-                    <textarea type="text" name="content" class="notice-regist-content-input"></textarea>
+                <!-- 공지사항 내용 -->
+                <div class="notice-modify-content-box">
+                    <div class="notice-modify-content">내용</div>
+                    <textarea name="content" class="notice-modify-content-input">[[${content}]]</textarea>
                 </div>
-                <button type=button class="notice-regist-btn" onclick="btn()">등록하기</button>
+
+                <button type="button" class="notice-modify-btn" onclick="btn()">수정하기</button>
             </form>
 
         </div>
     </div>
 
     <script>
-
         /* 엔터 입력시 submit 막기 */
         document.addEventListener('keydown', function(event) {
             if (event.keyCode === 13) {
@@ -58,22 +64,19 @@
             };
         }, true);
 
-
         /* 등록버튼 누를 시 alert */
         function btn() {
-            if (noticeForm.name.value === "") {
-                noticeForm.name.focus();
-                alert("제목을 입력해주세요.")
-                return false;
-            } else if (noticeForm.content.value === "") {
-                noticeForm.content.focus();
+            if (modifyForm.content.value === "") {
+                modifyForm.content.focus();
                 alert("내용을 입력해주세요.")
                 return false;
             } else {
-                noticeForm.submit();
-                alert("공지를 등록하였습니다.")
+                modifyForm.submit();
+                alert("추천문구를 수정하였습니다.")
             }
         }
     </script>
+
+
 </body>
 </html>
