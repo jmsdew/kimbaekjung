@@ -95,7 +95,10 @@
 <!--            </tr>-->
 
         <tr th:each="name, index : ${names}">
-            <button class="nameBtn1" th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'" th:text="${name.studentName}" th:attr="data-index=${index.index + 1}"></button>
+            <button class="nameBtn1"
+                    th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'"
+                    th:text="${name.studentName}"
+                    th:attr="data-index=${index.index + 1}"></button>
         </tr>
 
 
@@ -137,11 +140,11 @@
         </div>
 
         <div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div id="absent"></div>
+            <div id="late"></div>
+            <div id="early"></div>
+            <div id="attendResult"></div>
+            <div id="feature"></div>
         </div>
     </section>
 
@@ -169,13 +172,20 @@
      <h3>학생관리</h3>
      <section id="popupList">
          <tr th:each="name, index : ${names}">
-             <button class="nameBtn2" th:onclick="'onClickStudentHandler1(\'' + ${name.studentCode} + '\')'" th:text="${name.studentName}" th:attr="data-index=${index.index + 1}"></button>
+             <button
+                class="nameBtn2"
+                th:stuName="${name.studentName}"
+                th:stuCode="${name.studentCode}"
+                th:onclick="onClickStudentHandler1(event, this.getAttribute('stuCode'), this.getAttribute('stuName'))"
+                th:text="${name.studentName}"
+                th:attr="data-index=${index.index + 1}">
+             </button>
          </tr>
 
      </section>
      <div class="buttons">
          <button id="addPopupStu">등록</button>
-         <button>수정</button>
+         <button id="updatePopupStu">수정</button>
          <form id="deleteName">
              <button type="submit">삭제</button>
          </form>
@@ -195,16 +205,32 @@
      </form>
      <button class="popup_cancel1">취소</button>
  </div>
+ <!--*****************************수정 팝업*********************************-->
+ <div class="popup2">
+     <h3>수정할 이름</h3>
+
+     <form id="updateName">
+         <input type="text" name="studentName" id="updateInput" value="">
+         <div class="buttons">
+             <button type="submit" class="popup_regist2">수정</button>
+         </div>
+     </form>
+     <button class="popup_cancel2">취소</button>
+ </div>
 
 <!--******************************** 스크립트 *********************************************8-->
      <script th:inline="javascript">
      const popupButton = document.querySelector('#showPopupButton');
      const addStudentButton = document.querySelector('#addPopupStu');
+     const updatePopupStu = document.querySelector('#updatePopupStu');
      const popup1 = document.querySelector('.popup');
+     const popup2= document.querySelector('.popup2');
      const background = document.querySelector('.background');
      const popup = document.querySelector('.popup1');
      const regist1 = document.querySelector('.popup_regist1');
      const cancel1= document.querySelector('.popup_cancel1');
+     const regist2 = document.querySelector('.popup_regist2');
+     const cancel2= document.querySelector('.popup_cancel2');
      const cancel= document.querySelector('.popup_cancel');
      const nameBtn1= document.querySelectorAll('.nameBtn1');
      const popup0 = document.querySelector('.popup0');
@@ -212,9 +238,13 @@
      // const nameBtns = document.querySelectorAll('.nameBtn2');
 
      const addNameForm = document.getElementById('addName');
+     const updateNameForm = document.getElementById('updateName');
      const deleteName = document.getElementById('deleteName');
      const nameListSection = document.getElementById('namelist');
      const popupListSection = document.getElementById('popupList');
+     const popupNameButton = document.querySelector('.nameBtn2');
+
+     const updateNameValue = document.getElementById('updateInput');
 
      function onClickStudentHandler(studentCode) {
          background.classList.add('show');
@@ -235,50 +265,123 @@
              });
      }
 
-     function onClickStudentHandler1(studentCode) {
 
-         console.log(studentCode);
-         fetch(`/student/delete/${studentCode}`, {
+     let selectedStudentCode = 0;
+     let selectedStudentName = '';
+
+     function onClickStudentHandler1(event, studentCode, studentName) {
+         if (studentCode === selectedStudentCode) {
+             event.target.classList.remove('selected');
+             selectedStudentCode = 0;
+             selectedStudentName = '';
+             return;
+         }
+         const selected = document.querySelector('.selected');
+
+         if (selected) {
+             selected.classList.remove('selected');
+         }
+        event.target.classList.add('selected');
+        selectedStudentCode = studentCode;
+        selectedStudentName = studentName;
+     }
+
+
+     deleteName.addEventListener("submit", function (event) {
+         event.preventDefault();
+
+         if (selectedStudentCode === 0) {
+             alert('학생을 선택해주세요');
+             return;
+         }
+
+         const formData = new FormData();
+         formData.append('studentCode', selectedStudentCode);
+
+         fetch(`/student/delete`, {
              method: 'POST',
-             body: JSON.stringify({ studentCode: studentCode }),
-             headers: {
-                 'Content-Type': 'application/json'
-             }
+             body: formData,
          })
              .then(res => res.json())
              .then(data => {
-                 console.log(data);
-                 selectedButton.parentElement.remove();
-                 let html = '';
-                 let text = '';
-                 let html1 = '';
-                 let text1 = '';
-                 data.forEach(element => {
-                     const {studentName} = element;
-                     text = `
-                     <tr>
-                       <button class="nameBtn1">${studentName}</button>
-                     </tr>
-                     `;
-
-                     text1 = `
-                     <tr>
-                     <button class="nameBtn2">${studentName}</button>
-                     </tr>
-                     `;
-                     html += text;
-                     html1 += text1;
-                 });
-                 nameListSection.innerHTML = html;
-                 popupListSection.innerHTML = html1;
-
-                 selectedButton.classList.remove('selected');
-                 selectedButton = null;
+                 generatorList(data);
              })
              .catch(error => {
                  console.log(error);
              });
-     }
+     });
+
+
+     updateNameForm.addEventListener("submit", function (event) {
+         event.preventDefault();
+
+         if (selectedStudentCode === 0) {
+             alert('학생을 선택해주세요');
+             return;
+         }
+
+         const formData = new FormData();
+         formData.append('studentCode', selectedStudentCode);
+         const value = updateNameValue.value;
+         formData.append('studentName', value);
+
+         fetch(`/student/update`, {
+             method: 'POST',
+             body: formData,
+         })
+             .then(response => response.json())
+             .then(res1 => {
+                 generatorList(res1);
+             })
+             .catch(error => {
+                 console.log(error);
+             });
+
+     });
+     // function onClickStudentHandler1(studentCode) {
+     //
+     //     console.log(studentCode);
+     //     fetch(`/student/delete/${studentCode}`, {
+     //         method: 'POST',
+     //         body: JSON.stringify({ studentCode: studentCode }),
+     //         headers: {
+     //             'Content-Type': 'application/json'
+     //         }
+     //     })
+     //         .then(res => res.json())
+     //         .then(data => {
+     //             console.log(data);
+     //             selectedButton.parentElement.remove();
+     //             let html = '';
+     //             let text = '';
+     //             let html1 = '';
+     //             let text1 = '';
+     //             data.forEach(element => {
+     //                 const {studentName} = element;
+     //                 text = `
+     //                 <tr>
+     //                   <button class="nameBtn1">${studentName}</button>
+     //                 </tr>
+     //                 `;
+     //
+     //                 text1 = `
+     //                 <tr>
+     //                 <button class="nameBtn2">${studentName}</button>
+     //                 </tr>
+     //                 `;
+     //                 html += text;
+     //                 html1 += text1;
+     //             });
+     //             nameListSection.innerHTML = html;
+     //             popupListSection.innerHTML = html1;
+     //
+     //             selectedButton.classList.remove('selected');
+     //             selectedButton = null;
+     //         })
+     //         .catch(error => {
+     //             console.log(error);
+     //         });
+     // }
 
 
      // nameBtn2 버튼 클릭 이벤트 리스너
@@ -296,27 +399,27 @@
      // });
 
      // **************************************************************
-     let selectedButton = null;
-     function addEventListenersToNameBtn2() {
-         const nameBtn2 = document.querySelectorAll('.nameBtn2');
-         nameBtn2.forEach(nameBtn => {
-             nameBtn.addEventListener('click', function () {
-                 // 모든 버튼의 클래스 초기화
-                 nameBtn2.forEach(btn => btn.classList.remove('selected'));
+     // let selectedButton = null;
+     // function addEventListenersToNameBtn2() {
+     //     const nameBtn2 = document.querySelectorAll('.nameBtn2');
+     //     nameBtn2.forEach(nameBtn => {
+     //         nameBtn.addEventListener('click', function () {
+     //             // 모든 버튼의 클래스 초기화
+     //             nameBtn2.forEach(btn => btn.classList.remove('selected'));
+     //
+     //             // 클릭된 버튼에 새로운 클래스 추가
+     //             nameBtn.classList.add('selected');
+     //
+     //             selectedButton = nameBtn;
+     //         });
+     //     });
+     // }
 
-                 // 클릭된 버튼에 새로운 클래스 추가
-                 nameBtn.classList.add('selected');
-
-                 selectedButton = nameBtn;
-             });
-         });
-     }
-
-     document.addEventListener('DOMContentLoaded', function () {
-         // 페이지가 로드되면 실행되는 코드
-
-         addEventListenersToNameBtn2();
-     });
+     // document.addEventListener('DOMContentLoaded', function () {
+     //     // 페이지가 로드되면 실행되는 코드
+     //
+     //     addEventListenersToNameBtn2();
+     // });
 
      //
      // deleteName.addEventListener("submit", function (event) {
@@ -403,48 +506,39 @@
          })
              .then(response => response.json())
              .then(res => {
-                 console.log(res);
-                 let html = '';
-                 let text = '';
-                 let html1 = '';
-                 let text1 = '';
-                 res.forEach(element => {
-                     // const studentName = element.studentName;
-                     const { studentName } = element;
-                     // text = `asdfadf${studentName}`;
-                     text = `
-                        <tr>
-                            <button class="nameBtn1">${studentName}</button>
-                        </tr>
-                     `;
-
-                     text1 = `
-                        <tr>
-                            <button class="nameBtn2">${studentName}</button>
-                        </tr>
-                     `;
-                     html += text;
-                     html1 += text1;
-                 });
-                 nameListSection.innerHTML = html;
-                 popupListSection.innerHTML = html1;
-                 //
-                 // const nameBtn2 = document.querySelectorAll('.nameBtn2');
-                 // nameBtn2.forEach(nameBtn => {
-                 //     nameBtn.addEventListener('click', function () {
-                 //         // 모든 버튼의 클래스 초기화
-                 //         nameBtn2.forEach(btn => btn.classList.remove('selected'));
-                 //
-                 //         // 클릭된 버튼에 새로운 클래스 추가
-                 //         nameBtn.classList.add('selected');
-                 //     });
-                 // });
+                 generatorList(res);
              })
              .catch(error => {
                  console.log(error);
              });
 
      });
+
+     function generatorList(data) {
+         let html = '';
+         let text = '';
+         let html1 = '';
+         let text1 = '';
+         data.forEach(element => {
+             const { studentName, studentCode } = element;
+             console.log(element);
+             text = `
+                      <tr>
+                          <button class="nameBtn1" onclick="onClickStudentHandler(event)">${studentName}</button>
+                      </tr>
+                     `;
+
+             text1 = `
+                      <tr>
+                           <button class="nameBtn2" onclick="onClickStudentHandler1(event, ${studentCode}, '${studentName}')">${studentName}</button>
+                      </tr>
+                      `;
+             html += text;
+             html1 += text1;
+         });
+         nameListSection.innerHTML = html;
+         popupListSection.innerHTML = html1;
+     }
 
 
 
@@ -479,6 +573,7 @@
 
      background.addEventListener('click', function (){
          background.classList.remove('show');
+         popup2.classList.remove('show');
          popup1.classList.remove('show');
          popup.classList.remove('show');
          popup0.classList.remove('show');
@@ -492,9 +587,22 @@
          popup.classList.remove('show');
      })
 
+     regist2.addEventListener('click', function (){
+         popup2.classList.remove('show');
+     })
+
+     cancel2.addEventListener('click', function (){
+         popup2.classList.remove('show');
+     })
+
     addStudentButton.addEventListener('click',function (){
         popup.classList.add('show');
     });
+
+     updatePopupStu.addEventListener('click',function (){
+         popup2.classList.add('show');
+         updateNameValue.value = selectedStudentName;
+     })
 
      // nameBtn1.addEventListener('click',function (){
      //     background.classList.add('show');
@@ -525,6 +633,11 @@
              button.addEventListener('click', function() {
                  var name = button.innerText;
                  document.getElementById('namePopup0').innerText = name;
+                 // document.getElementById('absent').innerText =;
+                 // document.getElementById('late').innerText =;
+                 // document.getElementById('early').innerText =;
+                 // document.getElementById('attendResult').innerText =;
+                 // document.getElementById('feature').innerText =;
              });
          });
      });

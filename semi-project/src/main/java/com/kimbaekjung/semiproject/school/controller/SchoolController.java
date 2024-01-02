@@ -44,23 +44,22 @@ public class SchoolController {
 //    }
 
 
-    @GetMapping("regist")
-    public void insert(){};
-
-    @PostMapping("regist")
-    public ModelAndView insert(ModelAndView mv, InsertDTO insertDTO, HttpSession session){
-        Object a = session.getAttribute("userCodes");
-        String b = a.toString();
-        int c = Integer.parseInt(b);
-        int insert = schoolService.insert(insertDTO,c);
-        if(insert >= 0 ){
-            System.out.println("exception");
-        }
-        mv.setViewName("/school/mypage_info");
-
-        return mv;
-    }
-
+//    @GetMapping("regist")
+//    public void insert(){};
+//
+//    @PostMapping("regist")
+//    public ModelAndView insert(ModelAndView mv, InsertDTO insertDTO, HttpSession session) {
+//        Object a = session.getAttribute("userCodes");
+//        String b = a.toString();
+//        int c = Integer.parseInt(b);
+//        int insert = schoolService.insert(insertDTO, c);
+//        if (insert >= 0) {
+//            System.out.println("exception");
+//        }
+//        mv.setViewName("/school/mypage_info");
+//
+//        return mv;
+//    }
 
 
 

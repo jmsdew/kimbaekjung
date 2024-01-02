@@ -34,6 +34,9 @@ public class SchoolService {
     @Autowired
     private DeleteDAO deleteDAO;
 
+    @Autowired
+    private UpdateDAO updateDAO;
+
     public List<SchoolDTO> oneName(int userCodes) {
         List<SchoolDTO> nameOne= schoolDAO.oneName(userCodes);
 
@@ -67,15 +70,16 @@ public class SchoolService {
         return searchProp;
     }
 
-    public int insert(InsertDTO insertDTO, int userCodes) {
-        int insert = insertDAO.insert(insertDTO, userCodes);
+    public int insert(InsertDTO insertDTO) {
+        int insert = insertDAO.insert(insertDTO);
 
         return insert;
     }
 
-    public int deleteStudentByCode(int studentCode) {
-        deleteDAO.delete(studentCode);
-       return  deleteDAO.delete(studentCode);
+    public int deleteStudentByCode(DeleteDTO deleteDTO) {
+        System.out.println(deleteDTO);
+        deleteDAO.delete(deleteDTO);
+       return  deleteDAO.delete(deleteDTO);
     }
 
 //    public List<SchoolDTO> getStudentDetails(String studentName) {
@@ -90,5 +94,9 @@ public class SchoolService {
     }
 
 
+    public int updateStudentByCode(UpdateDTO updateDTO) {
+        int update = updateDAO.update(updateDTO);
+        return update;
+    }
 
 }

@@ -30,6 +30,7 @@
         <mapper resource="mapper/school/propose.xml" />
         <mapper resource="mapper/school/Insert.xml" />
         <mapper resource="mapper/school/Delete.xml" />
+        <mapper resource="mapper/school/Update.xml" />
         <mapper resource="mapper/school/SearchPropose.xml" />
         <mapper resource="mapper/school/SearchMapper1.xml" />
         <mapper resource="mapper/manage/manage.xml" />

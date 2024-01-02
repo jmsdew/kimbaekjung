@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>학교 종이 땡땡땡</title>
+    <link rel="icon" type="image/png" href="/static/favicon/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="/css/global.css" type="text/css">
     <link rel="stylesheet" href="/css/rank.css" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
@@ -94,7 +97,7 @@
             <button class="popup1-button" onclick="location.href='temaRank10'">끈기</button>
         </div>
     </div>
-    <!-----------------------------테마별 1등---------------------------------------->
+    <!-----------------------------칭찬내용---------------------------------------->
     <div class="rank-winner">
         <div class="rank-box">칭찬 받은 내용</div>
         <div id="rankTableContainer">
@@ -142,7 +145,7 @@
         let tema = button.getAttribute("data-tema");
 
         // Fetch API를 사용하여 서버로 데이터 전송
-        fetch("/rank/temaRank5", {
+        fetch("/rank/temaRank1", {
             method: 'POST', // HTTP POST 요청
             headers: {
                 'Content-Type': 'application/json', // JSON 형태의 데이터 전송을 지정
@@ -184,7 +187,7 @@
             });
     }
     function fetchData() {
-        fetch("/rank/temaRank5")
+        fetch("/rank/temaRank1")
             .then(response => response.json())
             .then(data => {
                 // 데이터를 받아와서 HTML에 추가하는 로직

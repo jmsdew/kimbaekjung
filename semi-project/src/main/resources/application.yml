@@ -10,6 +10,9 @@ mybatis:
   config-location: classpath:mapper/mapper-config.xml
 
 API-KEY:
-  restApi-key: 3a9a45d0213ca7a489beb3001dc2b784
-  restApi-pwd: jTeOCaUYOC0q12K0lzkWx1nYcFrMRNe9
-  javascript-key: 401490c2da690a83c9329a3eb7ab8433
+  restApi-key: 292de2282662f2a03bce2047c15cdffe
+  restApi-pwd: Z4AZoOlj58JQ3uqLrSKfRIEKh6I0edpg
+  javascript-key: 528bf87193c911d9669e1fac9b50a2e8
+#  restApi-key: 3a9a45d0213ca7a489beb3001dc2b784
+#  restApi-pwd: jTeOCaUYOC0q12K0lzkWx1nYcFrMRNe9
+#  javascript-key: 401490c2da690a83c9329a3eb7ab8433

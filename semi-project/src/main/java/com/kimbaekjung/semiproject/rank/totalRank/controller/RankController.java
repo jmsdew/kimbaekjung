@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/rank/*")
@@ -48,6 +49,24 @@ public class RankController {
 
         return mv;
     }
+
+    @PostMapping("/handleOption")
+    public ModelAndView handleOption(@RequestBody Map<String, String> requestData, HttpSession session) {
+        Object a = session.getAttribute("userCodes");
+        String b = a.toString();
+        int userCode = Integer.parseInt(b);
+        String option = requestData.get("option");
+
+        System.out.println("Received option: " + option);
+
+
+        ModelAndView mv = new ModelAndView();
+            mv.setViewName("/rank/rank");
+        return mv;
+    }
+
+
+
     @GetMapping("temaRank1")
     public ModelAndView temaRank1(ModelAndView mv, HttpSession session){
         Object a = session.getAttribute("userCodes");
@@ -64,7 +83,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank1");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -83,7 +102,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank2");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -102,7 +121,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank3");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -121,7 +140,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank4");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -140,7 +159,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank5");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -159,7 +178,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank6");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -178,7 +197,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank7");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -197,7 +216,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank8");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -216,7 +235,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank9");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
@@ -235,7 +254,7 @@ public class RankController {
         mv.addObject("first",first);
         mv.addObject("second",second);
         mv.addObject("third",third);
-        mv.setViewName("rank/tema/temaRank10");
+        mv.setViewName("/rank/tema/temaRank");
 
         return mv;
     }
