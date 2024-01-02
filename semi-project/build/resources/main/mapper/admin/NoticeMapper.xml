@@ -8,6 +8,7 @@
     <resultMap id="noticeResult" type="com.kimbaekjung.semiproject.admin.dto.NoticeSelectDTO">
         <id property="code" column="NOTICE_CODE"/>
         <result property="name" column="NOTICE_NAME"/>
+        <result property="content" column="NOTICE_CONTENT"/>
         <result property="regist" column="REGIST_DATE"/>
         <result property="status" column="NOTICE_STATUS"/>
     </resultMap>
@@ -16,6 +17,7 @@
         SELECT
             NOTICE_CODE,
             NOTICE_NAME,
+            NOTICE_CONTENT,
             REGIST_DATE
           FROM NOTICE
          WHERE NOTICE_STATUS = 'Y'
@@ -25,12 +27,12 @@
         SELECT
             NOTICE_CODE,
             NOTICE_NAME,
+            NOTICE_CONTENT,
             REGIST_DATE
           FROM NOTICE
-         WHERE 1=1
-            AND NOTICE_STATUS = 'Y'
+         WHERE NOTICE_STATUS = 'Y'
         <if test='keyword != null and keyword != ""'>
-            AND NOTICE_NAME LIKE CONCAT('%',#{keyword},'%')
+            AND ${criteria} LIKE CONCAT('%',#{keyword},'%')
         </if>
     </select>
 
@@ -61,5 +63,11 @@
         'Y'
         );
     </insert>
+
+    <update id="modifyNotice">
+        UPDATE NOTICE
+           SET NOTICE_NAME = #{name}, NOTICE_CONTENT = #{content}
+         WHERE NOTICE_CODE = #{noticeCode}
+    </update>
 
 </mapper>

@@ -27,7 +27,7 @@
           FROM PROPOSE
          WHERE PROPOSE_STATUS = 'Y'
         <if test='keyword != null and keyword != ""'>
-            AND PROPOSE_NAME LIKE CONCAT('%',#{keyword},'%')
+            AND ${criteria} LIKE CONCAT('%',#{keyword},'%')
         </if>
     </select>
 

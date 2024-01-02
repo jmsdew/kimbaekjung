@@ -23,10 +23,10 @@ public class NoticeService {
         return noticeList; // noticeDAO.selectALLNotice() 에서 반환된 값 반환
     }
 
-    public List<SearchNoticeDTO> searchNotice(String keyword) {
-        List<SearchNoticeDTO> searchNotice = noticeDAO.searchNotice(keyword);
+    public List<NoticeSelectDTO> searchNotice(String criteria, String keyword) {
+        List<NoticeSelectDTO> noticeList = noticeDAO.searchNotice(criteria, keyword);
 
-        return searchNotice;
+        return noticeList;
     }
 
     public int deleteSelectedNotices(String[] selectedNoticeCodeList) {
@@ -39,6 +39,12 @@ public class NoticeService {
 
     public int registNotice(String name, String content) {
         int result = noticeDAO.registNotice(name, content);
+
+        return result;
+    }
+
+    public int modifyNotice(int noticeCode, String name, String content) {
+        int result = noticeDAO.modifyNotice(noticeCode, name, content);
 
         return result;
     }

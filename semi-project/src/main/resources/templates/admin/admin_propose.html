@@ -2,13 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>notice</title>
+    <title>학교종이 땡땡땡</title>
 
     <link rel="stylesheet" href="/css/style.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
+
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/static/favicon/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
 
     <style>
         .propose {
@@ -59,6 +64,12 @@
             <!-- 문의사항 검색 -->
             <div class="propose-search">
                 <form action="/propose/searchPropose" method="post">
+                    <select name="criteria" class="propose-search-criteria">
+                        <option value="PROPOSE_CODE">번호</option>
+                        <option value="PROPOSE_NAME">제목</option>
+                        <option value="USER_CODE">작성자</option>
+                        <option value="REGIST_DATE">등록일</option>
+                    </select>
                     <input type="text" name="keyword" class="propose-search-input"/>
                     <button type="submit" class="propose-search-button">검색</button>
                 </form>

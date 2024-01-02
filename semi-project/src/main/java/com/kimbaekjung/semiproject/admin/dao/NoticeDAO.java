@@ -10,9 +10,11 @@ import java.util.List;
 public interface NoticeDAO {
     List<NoticeSelectDTO> selectAllNotice();
 
-    List<SearchNoticeDTO> searchNotice(String keyword);
+    List<NoticeSelectDTO> searchNotice(String criteria, String keyword);
 
     int deleteNotice(String[] selectedNoticeCodeList);
 
     int registNotice(String name, String content);
+
+    int modifyNotice(int noticeCode, String name, String content);
 }

@@ -85,9 +85,9 @@ public class ProposeController {
     }
 
     @PostMapping("/searchPropose")
-    public ModelAndView searchPropose(ModelAndView mv, @RequestParam String keyword) {
+    public ModelAndView searchPropose(ModelAndView mv,@RequestParam String criteria, @RequestParam String keyword) {
 
-        List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose(keyword);
+        List<ProposeSelectDTO> proposeList = proposeService.selectAllPropose(criteria, keyword);
 
         if (Objects.isNull(proposeList)) {
             System.out.println("검색 결과가 없습니다");

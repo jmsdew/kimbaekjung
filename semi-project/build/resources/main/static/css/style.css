@@ -453,6 +453,57 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     text-align: center;
 }
 
+/* ******************** 회원 검색  ******************** */
+.user-management-search {
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-management-search-criteria {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.user-management-search-input {
+    width: 200px;
+    height: 30px;
+    margin-right: 10px;
+    padding-top: 3px;
+}
+
+.user-management-search-button {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+
+    width: 70px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+/* ******************** 회원 정지  ******************** */
+
+.user-management-delete-box {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1310px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* ******************** 페이지네이션  ******************** */
 .paging {
     font-size: 30px;
@@ -560,6 +611,14 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.notice-search-criteria {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 .notice-search-input {
@@ -723,6 +782,125 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     justify-content: center;
 }
 
+/* ******************** 공지사항 수정페이지  ******************** */
+.notice-modify {
+    width: 1440px;
+    height: 900px;
+    background-color: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    overflow: hidden;
+}
+
+.notice-modify-title-box {
+    width: 100%;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+}
+
+.notice-modify-title-name-box {
+    width: 200px;
+    height: 50px;
+    opacity: 1;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notice-modify-title-name {
+    font-size: 30px;
+    color: #17A1FA;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+}
+
+.notice-modify-name-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 100px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notice-modify-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.notice-modify-name-input {
+    padding: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 50px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.notice-modify-content-box {
+    margin: 0 20px 20px 20px;
+    border-collapse: collapse;
+    font-size: 24px;
+    width: 1400px;
+    height: 550px;
+    opacity: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.notice-modify-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100px;
+    position: absolute;
+}
+
+.notice-modify-content-input {
+    padding: 10px;
+    left: 100px;
+    width: 1000px;
+    height: 550px;
+    font-size: 24px;
+    position: absolute;
+}
+
+.notice-modify-btn {
+    font-family: 'Do Hyeon', sans-serif;
+    background-color: lightskyblue;
+    font-size: 20px;
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    left: 1020px;
+    bottom: 90px;
+    border: 1px solid black;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* ******************** 문의사항  ******************** */
 .content-propose {
     width: 1440px;
@@ -801,6 +979,14 @@ a, a:link, a:visited{ /* a태그 특징제거 (ex.파란색 글씨) */
     display: inline-flex;
     align-items: center;
     justify-content: center;
+}
+
+.propose-search-criteria {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 20px;
+    width: 80px;
+    height: 30px;
+    margin-right: 10px;
 }
 
 .propose-search-input {

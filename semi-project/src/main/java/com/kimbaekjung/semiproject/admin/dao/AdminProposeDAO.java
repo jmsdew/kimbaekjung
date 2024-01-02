@@ -16,5 +16,5 @@ public interface AdminProposeDAO {
 
     int deletePropose(String[] selectedProposeCodeList);
 
-    List<ProposeSelectDTO> selectAllPropose(String keyword);
+    List<ProposeSelectDTO> selectAllPropose(String criteria, String keyword);
 }

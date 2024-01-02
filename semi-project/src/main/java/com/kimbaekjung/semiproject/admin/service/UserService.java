@@ -21,4 +21,16 @@ public class UserService {
         }
         return userList; // userDAO.selectAllUser() 에서 반환된 userList 반환
     }
+
+    public List<UserSelectDTO> searchUser(String criteria, String keyword) {
+        List<UserSelectDTO> userList = userDAO.searchUser(criteria, keyword);
+
+        return userList;
+    }
+
+    public int deleteUser(String[] selectedUserCodeList) {
+        int result = userDAO.deleteUser(selectedUserCodeList);
+
+        return result;
+    }
 }

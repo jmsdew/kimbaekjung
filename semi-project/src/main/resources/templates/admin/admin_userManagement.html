@@ -10,6 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Do+Hyeon&display=swap" rel="stylesheet"/>
 
+    <!-- favicon -->
+    <link rel="icon" type="image/png" href="/static/favicon/favicon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
     <style>
         .user-management {
             color: #17A1FA;
@@ -40,7 +45,7 @@
                 </thead>
                 <tbody>
                 <tr class="content-user-management-table-body" th:each="user : ${userList}">
-                    <td><input type="checkbox"></td>
+                    <td><input type="checkbox" name="selectedUserCodes" th:value="${user.code}"></td>
                     <td th:text="${user.code}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.regist}"></td>
@@ -48,6 +53,29 @@
                 </tbody>
             </table>
 
+
+            <!-- 회원 검색 -->
+            <div class="user-management-search">
+                <form action="/userManagement/search" method="post">
+                    <select name="criteria" class="user-management-search-criteria">
+                        <option value="U.USER_CODE">번호</option>
+                        <option value="U.EMAIL">이메일</option>
+                        <option value="UI.REGIST_DATE">가입일</option>
+                    </select>
+                    <input type="text" name="keyword" class="user-management-search-input"/>
+                    <button type="submit" class="user-management-search-button">검색</button>
+                </form>
+            </div>
+
+
+            <!-- 회원 정지 -->
+            <form action="/userManagement/delete" method="post" id="deleteForm">
+                <button type="button" onclick="deleteSelectedUser()" class="user-management-delete-box">회원정지</button>
+                <input type="hidden" id="selectedUserCodes" name="selectedUserCodes"/>
+            </form>
+
+
+            <!-- 페이지네이션 -->
             <div class="paging">
                 <i class="bi-chevron-double-left" id="firstPage"></i>
                 <i class="bi-chevron-left" id="prevPage"></i>
@@ -156,6 +184,27 @@
             renderContent(currentPage);
             renderPagination();
         });
+
+        /* 회원 정지. 선택된 회원 코드 서버로 전달 */
+        function deleteSelectedUser() {
+            let selectedUserCodes = []; // 선택한 추천문구 코드를 저장할 배열
+
+            // 모든 체크박스를 확인하여 선택된 체크박스의 값을 배열에 넣어준다
+            document.querySelectorAll('input[type=checkbox]:checked').forEach(function (checkbox) {
+                selectedUserCodes.push(checkbox.value);
+            });
+
+            if (selectedUserCodes.length === 0) {
+                alert("삭제할 항목을 선택해주세요")
+            } else {
+                // 선택된 체크박스의 추천문구 코드 리스트를 서버로 보내준다
+                document.getElementById('selectedUserCodes').value = selectedUserCodes;
+
+                // 폼을 제출한다
+                document.getElementById('deleteForm').submit();
+            }
+
+        }
     </script>
 
 </body>
