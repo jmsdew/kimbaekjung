@@ -8,6 +8,7 @@
         <id property="code" column="NOTICE_CODE"/>
         <result property="name" column="NOTICE_NAME"/>
         <result property="noticeDate" column="REGIST_DATE"/>
+        <result property="comment" column="NOTICE_CONTENT"/>
     </resultMap>
 
 
@@ -15,6 +16,7 @@
         SELECT
         NOTICE_CODE,
         NOTICE_NAME,
+        NOTICE_CONTENT,
         REGIST_DATE
         FROM NOTICE
     </select>

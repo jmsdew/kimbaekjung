@@ -4,10 +4,11 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kimbaekjung.semiproject.school.model.NotiSearchDAO">
 
-    <resultMap id="notiResult" type="com.kimbaekjung.semiproject.school.dto.SearchNotiDTO">
+    <resultMap id="notiResult" type="com.kimbaekjung.semiproject.school.dto.NotificationDTO">
         <id property="code" column="NOTICE_CODE"/>
         <result property="name" column="NOTICE_NAME"/>
         <result property="noticeDate" column="REGIST_DATE"/>
+        <result property="comment" column="NOTICE_CONTENT"/>
     </resultMap>
 
 
@@ -15,6 +16,7 @@
         SELECT
         NOTICE_CODE,
         NOTICE_NAME,
+        NOTICE_CONTENT,
         REGIST_DATE
         FROM NOTICE
         WHERE 1=1

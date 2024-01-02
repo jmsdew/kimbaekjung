@@ -35,7 +35,7 @@
             schedule_date,
             last_date
           FROM schedule
-         where user_code = #{userCode}
+         where user_code = #{userCode} and schedule_status = 'Y'
     </select>
     <select id="eventToday" resultMap="schoolResult">
         SELECT
@@ -45,5 +45,6 @@
           FROM schedule
          WHERE user_code = #{userCode}
            AND current_date() BETWEEN schedule_date AND last_date
+           and schedule_status = 'Y'
     </select>
 </mapper>
