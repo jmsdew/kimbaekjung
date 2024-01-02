@@ -25,7 +25,7 @@ public class MainController {
 
 
     @GetMapping("/main")
-    public ModelAndView main(ModelAndView mv, HttpSession session){
+    public ModelAndView mainCont(ModelAndView mv, HttpSession session){
         Object a = session.getAttribute("userCodes");
         String b = a.toString();
         int c = Integer.parseInt(b);

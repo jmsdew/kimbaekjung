@@ -53,7 +53,7 @@ public class KakaoAPI {
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=" + URLEncoder.encode(kakao_apikey, "UTF-8"));
             sb.append("&client_secret=" + URLEncoder.encode(kakao_apipwd, "UTF-8"));
-            sb.append("&redirect_uri=http://localhost:8080/oauth/kakao");
+            sb.append("&redirect_uri=http://112.222.187.244:1001/oauth/kakao");
             sb.append("&code=" + code);
             bw.write(sb.toString());
             bw.flush();
