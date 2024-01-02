@@ -6,6 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface InsertDAO {
-    int insert(InsertDTO insertDTO, int userCodes);
+    int insert(InsertDTO insertDTO);
 
 }

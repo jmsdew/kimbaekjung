@@ -1,5 +1,6 @@
 package com.kimbaekjung.semiproject.school.model;
 
+import com.kimbaekjung.semiproject.school.dto.DeleteDTO;
 import com.kimbaekjung.semiproject.school.dto.SchoolDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -9,5 +10,5 @@ import java.util.List;
 public interface DeleteDAO {
 
 
-    int delete(int studentCode);
+    int delete(DeleteDTO deleteDTO);
 }

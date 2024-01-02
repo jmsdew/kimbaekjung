@@ -58,7 +58,7 @@ public class InsertDTO {
     public String toString() {
         return "InsertDTO{" +
                 "name='" + name + '\'' +
-                ", userCodse=" + userCodes +
+                ", userCodes=" + userCodes +
                 ", status='" + status + '\'' +
                 ", enroll=" + enroll +
                 '}';
