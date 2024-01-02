@@ -44,8 +44,8 @@ public class ProposeService {
         return result;
     }
 
-    public List<ProposeSelectDTO> selectAllPropose(String keyword) {
-        List<ProposeSelectDTO> proposeList = adminProposeDAO.selectAllPropose(keyword);
+    public List<ProposeSelectDTO> selectAllPropose(String criteria, String keyword) {
+        List<ProposeSelectDTO> proposeList = adminProposeDAO.selectAllPropose(criteria, keyword);
 
         return proposeList;
     }

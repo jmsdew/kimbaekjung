@@ -1,12 +1,13 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>학교종이 땡땡땡</title>
-  <link rel="icon" type="image/png" href="/static/favicon/favicon.png">
+
+  <link rel="icon" type="image/png" href="/favicon/favicon.png">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" href="/css/global.css" type="text/css">
   <link rel="stylesheet" href="/css/main.css" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
@@ -515,7 +516,7 @@ $(document).ready(function() {
 
     let msg = formattedMinutes + " : " + formattedSeconds;
 
-    if (SetTime <= 3) { //
+    if (SetTime <= 3) {
       document.getElementById('viewTimer').classList.add('red-text');
     }
 
@@ -530,6 +531,18 @@ $(document).ready(function() {
 
   function TimerStart() {
     tid = setInterval(msg_time, 1000);
+
+    // 새로고침 시 세션 스토리지에서 시작 시간을 가져와서 타이머 초기화
+    const startTimeString = sessionStorage.getItem('timerStartTime');
+
+    if (startTimeString) {
+      const startTime = parseInt(startTimeString, 10);
+      const currentTime = new Date().getTime();
+      const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+
+      // 시작 시간부터 현재까지의 경과 시간을 기반으로 타이머 초기 설정
+      SetTime = Math.max(0, 600 - elapsedTime);
+    }
   }
 
   function playSound() {
@@ -538,20 +551,24 @@ $(document).ready(function() {
       audio.play();
     }
   }
+
   $(".start-button").click(function () {
-    clearInterval(tid); // 타이머 해제
-    SetTime = 600; // 초기 설정 시간으로 되돌림
-    document.getElementById('viewTimer').classList.remove('red-text'); // 빨간색 클래스 제거
-    TimerStart(); // 타이머 재시작
+    clearInterval(tid);
+    SetTime = 600;
+    const setTime = sessionStorage.setItem('timerStartTime', new Date().getTime());
+    document.getElementById('viewTimer').classList.remove('red-text');
+    TimerStart();
   });
 
   function handleRadioClick(sound) {
     selectedSound = sound;
   }
 
+  // 페이지 로딩 시에 시작 시간을 확인하여 타이머를 계속함
   window.onload = function () {
     TimerStart();
   };
+
 
 
   // -----------------------------------------------------------------------타이머

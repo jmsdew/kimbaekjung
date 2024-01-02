@@ -22,4 +22,27 @@
          WHERE UI.USER_STATUS = 'Y'
          ORDER BY U.USER_CODE DESC
     </select>
+
+    <select id="searchUser" resultMap="userResult">
+        SELECT
+            U.USER_CODE,
+            U.EMAIL,
+            UI.REGIST_DATE
+          FROM USER U
+          JOIN USER_INFO UI ON U.USER_CODE = UI.USER_CODE
+         WHERE UI.USER_STATUS = 'Y'
+        <if test='keyword != null and keyword != ""'>
+            AND ${criteria} LIKE CONCAT ('%',#{keyword},'%')
+        </if>
+         ORDER BY U.USER_CODE DESC
+    </select>
+
+    <update id="deleteUser">
+        UPDATE USER_INFO
+           SET USER_STATUS = 'N'
+         WHERE USER_CODE IN
+        <foreach collection="selectedUserCodeList" item="code" open="(" separator="," close=")">
+            #{code}
+        </foreach>
+    </update>
 </mapper>

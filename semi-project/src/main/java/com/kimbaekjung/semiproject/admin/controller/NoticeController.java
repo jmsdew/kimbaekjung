@@ -34,13 +34,13 @@ public class NoticeController {
     }
 
     @PostMapping("/searchNotice")
-    public ModelAndView searchNotice(ModelAndView mv, @RequestParam String keyword) {
-        System.out.println("keyword : " + keyword);
-        List<SearchNoticeDTO> searchList = noticeService.searchNotice(keyword);
-        System.out.println(searchList.toString());
+    public ModelAndView searchNotice(ModelAndView mv,@RequestParam String criteria, @RequestParam String keyword) {
+//        System.out.println("keyword : " + keyword);
+        List<NoticeSelectDTO> noticeList = noticeService.searchNotice(criteria, keyword);
+//        System.out.println(searchList.toString());
 
-        mv.addObject("searchList", searchList);
-        mv.setViewName("/admin/admin_notice_search");
+        mv.addObject("noticeList", noticeList);
+        mv.setViewName("/admin/admin_notice");
 
         return mv;
     }
@@ -83,6 +83,30 @@ public class NoticeController {
             if (Objects.isNull(noticeList)) {
                 System.out.println("등록된 공지사항이 없습니다.");
             }
+            mv.addObject("noticeList", noticeList);
+            mv.setViewName("/admin/admin_notice");
+        }
+        return mv;
+    }
+
+    @GetMapping("/selectNotice")
+    public ModelAndView selectNotice(ModelAndView mv, @RequestParam int noticeCode, @RequestParam String name, @RequestParam String content) {
+        mv.addObject("noticeCode", noticeCode);
+        mv.addObject("name", name);
+        mv.addObject("content", content);
+        mv.setViewName("/admin/admin_notice_modify");
+
+        return mv;
+    }
+
+    @PostMapping("/modify")
+    public ModelAndView modifyNotice(ModelAndView mv, @RequestParam int noticeCode, @RequestParam String name, @RequestParam String content) {
+
+        int result = noticeService.modifyNotice(noticeCode, name, content);
+
+        if (result > 0) {
+            List<NoticeSelectDTO> noticeList = noticeService.selectAllNotice();
+
             mv.addObject("noticeList", noticeList);
             mv.setViewName("/admin/admin_notice");
         }

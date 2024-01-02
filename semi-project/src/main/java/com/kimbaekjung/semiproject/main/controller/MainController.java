@@ -20,8 +20,7 @@ public class MainController {
     @Autowired
     private Mainservice mainservice;
 
-    @Autowired
-    private AuthController authController;
+
 
 
     @GetMapping("/main")
