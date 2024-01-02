@@ -61,20 +61,7 @@ public class RankController {
 
 
         ModelAndView mv = new ModelAndView();
-        // 뷰 내용 추가하기 if 문으로
-
-
             mv.setViewName("/rank/rank");
-/*        }else if (option.equals("standUp")){
-
-            SitDTO sitDTO = new SitDTO();
-            sitDTO.setStudentName(studentName);
-            int sitDown = mainservice.standUp(sitDTO, userCode);
-            if(sitDown > 0){
-                System.out.println("성공");
-            }
-            mv.setViewName("/main/main");
-        }*/
         return mv;
     }
 
