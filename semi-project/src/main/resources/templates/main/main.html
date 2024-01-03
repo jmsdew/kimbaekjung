@@ -1,12 +1,13 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>학교종이 땡땡땡</title>
-  <link rel="icon" type="image/png" href="/static/favicon/favicon.png">
+
+  <link rel="icon" type="image/png" href="/favicon/favicon.png">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
+
   <link rel="stylesheet" href="/css/global.css" type="text/css">
   <link rel="stylesheet" href="/css/main.css" type="text/css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
@@ -497,77 +498,105 @@ $(document).ready(function() {
   });
 //  --------------------------------------------------------------------------------------------타이머조정
 
-  let SetTime = 600; // 테스트를 위해 시간을 10초로 설정
+  // 타이머 초기값 설정 (테스트를 위해 600초, 즉 10분으로 설정)
+  let SetTime = 600;
   let tid; // 타이머 ID
-  let audio = new Audio();
-  let selectedSound = null;
+  let audio = new Audio(); // 음원 재생을 위한 Audio 객체 생성
+  let selectedSound = null; // 선택된 사운드를 저장할 변수
 
+  // 시간을 두 자리 숫자로 변환하는 함수 (e.g., 5 -> "05")
   function formatTime(time) {
     return time < 10 ? "0" + time : time;
   }
 
+  // 타이머 메시지를 갱신하는 함수
   function msg_time() {
-    let minutes = Math.floor(SetTime / 60);
-    let seconds = SetTime % 60;
+    let minutes = Math.floor(SetTime / 60); // 분 계산
+    let seconds = SetTime % 60; // 초 계산
 
+    // 시간을 두 자리 숫자 형식으로 변환
     let formattedMinutes = formatTime(minutes);
     let formattedSeconds = formatTime(seconds);
 
-    let msg = formattedMinutes + " : " + formattedSeconds;
+    let msg = formattedMinutes + " : " + formattedSeconds; // 시간 메시지 생성
 
-    if (SetTime <= 3) {
+    // 남은 시간이 3분 이하일 때 글자 색상을 빨간색으로 변경
+    if (SetTime <= 180) {
       document.getElementById('viewTimer').classList.add('red-text');
     }
 
+    // HTML 요소에 시간 메시지 출력
     document.getElementById('viewTimer').innerHTML = msg;
-    SetTime--;
+    SetTime--; // 1초 감소
 
+    // 타이머가 종료되면 clearInterval을 통해 타이머 정지 후 사운드 재생
     if (SetTime < 0) {
       clearInterval(tid);
       playSound();
     }
   }
 
+  // 타이머 시작 함수
   function TimerStart() {
-    tid = setInterval(msg_time, 1000);
+    const cookieStartTime = getCookie('timerStartTime'); // 쿠키에서 시작 시간을 가져옴
+    const currentTime = new Date().getTime(); // 현재 시간
 
-    // 새로고침 시 세션 스토리지에서 시작 시간을 가져와서 타이머 초기화
-    const startTimeString = sessionStorage.getItem('timerStartTime');
-
-    if (startTimeString) {
-      const startTime = parseInt(startTimeString, 10);
-      const currentTime = new Date().getTime();
-      const elapsedTime = Math.floor((currentTime - startTime) / 1000);
-
-      // 시작 시간부터 현재까지의 경과 시간을 기반으로 타이머 초기 설정
+    if (cookieStartTime) {
+      // 시작 시간이 쿠키에 저장되어 있을 경우 경과 시간 계산하여 타이머 설정
+      const elapsedTime = Math.floor((currentTime - cookieStartTime) / 1000);
       SetTime = Math.max(0, 600 - elapsedTime);
+    } else {
+      // 시작 시간이 없으면 초기값으로 타이머 설정하고 쿠키에 시작 시간 저장
+      SetTime = 600;
+      setCookie('timerStartTime', currentTime);
     }
+
+    tid = setInterval(msg_time, 1000); // 1초마다 msg_time 함수 호출
   }
 
+  // 사운드 재생 함수
   function playSound() {
     if (selectedSound !== null) {
-      audio.src = selectedSound;
-      audio.play();
+      audio.src = selectedSound; // 선택된 사운드 설정
+      audio.play(); // 사운드 재생
     }
   }
 
+  // 시작 버튼 클릭 시 타이머 초기화 및 시작
   $(".start-button").click(function () {
     clearInterval(tid);
-    SetTime = 600;
-    const setTime = sessionStorage.setItem('timerStartTime', new Date().getTime());
+    SetTime = 600; // 타이머를 10분(600초)으로 초기화
+    const currentTime = new Date().getTime();
+    setCookie('timerStartTime', currentTime); // 쿠키에 시작 시간을 설정
     document.getElementById('viewTimer').classList.remove('red-text');
     TimerStart();
   });
-
+  // 라디오 버튼 클릭 시 선택된 사운드 저장
   function handleRadioClick(sound) {
     selectedSound = sound;
   }
 
-  // 페이지 로딩 시에 시작 시간을 확인하여 타이머를 계속함
+  // 페이지 로딩 시 타이머 시작
   window.onload = function () {
     TimerStart();
   };
 
+  // 쿠키 설정 함수
+  function setCookie(name, value) {
+    document.cookie = `${name}=${value}; path=/`;
+  }
+
+  // 쿠키 가져오기 함수
+  function getCookie(name) {
+    const cookies = document.cookie.split(';');
+    for (let cookie of cookies) {
+      const [cookieName, cookieValue] = cookie.split('=');
+      if (cookieName.trim() === name) {
+        return parseInt(cookieValue);
+      }
+    }
+    return null;
+  }
 
 
   // -----------------------------------------------------------------------타이머

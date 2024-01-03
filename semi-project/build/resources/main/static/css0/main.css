@@ -242,6 +242,13 @@
   justify-content: space-between;
   border: 1px solid;
 }
+.popup h3 {
+  font-family: Inter;
+}
+
+.buttons button{
+  font-family: Inter;
+}
 
 .popup section{
   width: 95%;
@@ -287,6 +294,7 @@ h3 {
 .buttons button {
   border: 1px solid #000;
   background-color: #fff;
+
   border-radius: 20px;
   width: 70px;
   font-size: 20px;
@@ -296,6 +304,7 @@ h3 {
   position: absolute;
   bottom: 20px;
   right: 40px;
+  font-family: Inter;
   border: 1px solid #000;
   background-color: #fff;
   border-radius: 20px;
@@ -307,6 +316,7 @@ h3 {
   position: absolute;
   bottom: 20px;
   right: 40px;
+  font-family: Inter;
   border: 1px solid #000;
   background-color: #fff;
   border-radius: 20px;
@@ -332,7 +342,13 @@ h3 {
   justify-content: space-between;
   border: 1px solid;
 }
+.popup1 h3{
+  font-family: Inter;
+}
 
+.popup2 h3{
+  font-family: Inter;
+}
 #addInput{
    position: absolute;
    width: 200px;

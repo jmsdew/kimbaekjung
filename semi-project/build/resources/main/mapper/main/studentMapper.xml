@@ -16,6 +16,7 @@
           FROM student a
           JOIN praise b ON (a.student_code = b.student_code)
           where a.user_code = #{userCodes}
+            and a.student_status = 'Y'
          GROUP BY a.student_name
          ORDER BY score DESC
          LIMIT 3;

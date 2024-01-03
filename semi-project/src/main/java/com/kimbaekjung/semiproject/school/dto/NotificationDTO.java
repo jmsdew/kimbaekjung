@@ -6,14 +6,16 @@ public class NotificationDTO {
     private int code;
     private String name;
     private Date noticeDate;
+    private String comment;
 
     public NotificationDTO() {
     }
 
-    public NotificationDTO(int code, String name, Date noticeDate) {
+    public NotificationDTO(int code, String name, Date noticeDate, String comment) {
         this.code = code;
         this.name = name;
         this.noticeDate = noticeDate;
+        this.comment = comment;
     }
 
     public int getCode() {
@@ -40,12 +42,25 @@ public class NotificationDTO {
         this.noticeDate = noticeDate;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
         return "NotificationDTO{" +
                 "code=" + code +
                 ", name='" + name + '\'' +
                 ", noticeDate=" + noticeDate +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }
+
+
+
+

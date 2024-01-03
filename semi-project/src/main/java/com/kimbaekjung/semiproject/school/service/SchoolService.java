@@ -37,6 +37,9 @@ public class SchoolService {
     @Autowired
     private UpdateDAO updateDAO;
 
+    @Autowired
+    private RestartDAO restartDAO;
+
     public List<SchoolDTO> oneName(int userCodes) {
         List<SchoolDTO> nameOne= schoolDAO.oneName(userCodes);
 
@@ -99,4 +102,9 @@ public class SchoolService {
         return update;
     }
 
+
+    public int restart(RestartDTO restartDTO, int userCodes){
+        int restart = restartDAO.restart(restartDTO, userCodes);
+        return restart;
+    }
 }
