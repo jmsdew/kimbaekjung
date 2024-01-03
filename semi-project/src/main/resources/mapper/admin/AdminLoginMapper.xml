@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kimbaekjung.semiproject.admin.dao.AdminLoginDAO">
+
+    <resultMap id="adminLogin" type="com.kimbaekjung.semiproject.admin.dto.LoginDTO">
+        <id property="id" column="ADMIN_ID"/>
+        <result property="pass" column="ADMIN_PWD"/>
+    </resultMap>
+
+    <select id="adminLogin" resultMap="adminLogin">
+            SELECT
+                ADMIN_ID,
+                ADMIN_PWD
+              FROM ADMIN
+             WHERE ADMIN_ID = #{selectedAdminId}
+    </select>
+</mapper>
