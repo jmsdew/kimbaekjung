@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>학교 종이 땡땡땡</title>
@@ -94,6 +94,27 @@
 </a>
 
 <article id="article">
+  <div id="notiTitle">
+    <div id="no">
+      <div th:text="${propCode}"></div>
+    </div>
+
+    <div id="notiName">
+      <div th:text="${propName}"></div>
+    </div>
+
+    <div id="writer">
+      <div th:text="${propEmail}"></div>
+    </div>
+
+    <div id="registDate">
+      <div th:text="${propDate}"></div>
+    </div>
+  </div>
+
+  <div id = "comment">
+    <div th:text="${propContent}"></div>
+  </div>
 </article>
 <!--  -->
 

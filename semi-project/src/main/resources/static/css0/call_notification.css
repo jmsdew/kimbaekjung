@@ -207,6 +207,11 @@
   font-family: Inter;
   background-color: white;
 }
+
+#special2 a{
+  font-family: Inter;
+  font-size: 20px;
+}
 #special3{
   text-align: center;
   height: 20px;
