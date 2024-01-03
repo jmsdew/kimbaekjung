@@ -111,14 +111,27 @@ public class SchoolController {
     }
 
     @PostMapping("restart")
-    public ModelAndView restartBtn(ModelAndView mv,RestartDTO restartDTO,HttpSession session){
+    public ModelAndView restartBtn(ModelAndView mv,HttpSession session){
         Object userCodeSession = session.getAttribute("userCodes");
         String userCodeStr = userCodeSession.toString();
         int userCodes = Integer.parseInt(userCodeStr);
 
-        schoolService.restart(restartDTO, userCodes);
+        schoolService.restart(userCodes);
 
         mv.setViewName("/school/restart_info");
+
+        return mv;
+    }
+
+    @PostMapping("destroy")
+    public ModelAndView destroyBtn(ModelAndView mv, HttpSession session){
+        Object userCodeSession = session.getAttribute("userCodes");
+        String userCodeStr = userCodeSession.toString();
+        int userCodes = Integer.parseInt(userCodeStr);
+
+        schoolService.destroy(userCodes);
+
+        mv.setViewName("/school/destroy_info");
 
         return mv;
     }

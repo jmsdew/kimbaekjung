@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kimbaekjung.semiproject.school.model.RestartDAO">
 
-    <update id="restart" parameterType="com.kimbaekjung.semiproject.school.dto.RestartDTO">
+    <update id="restart">
         UPDATE student AS a
         JOIN schedule AS b ON a.user_code = b.user_code
         SET student_status = 'N',

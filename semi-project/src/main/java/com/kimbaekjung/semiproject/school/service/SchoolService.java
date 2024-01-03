@@ -40,6 +40,9 @@ public class SchoolService {
     @Autowired
     private RestartDAO restartDAO;
 
+    @Autowired
+    private DestroyDAO destroyDAO;
+
     public List<SchoolDTO> oneName(int userCodes) {
         List<SchoolDTO> nameOne= schoolDAO.oneName(userCodes);
 
@@ -103,8 +106,12 @@ public class SchoolService {
     }
 
 
-    public int restart(RestartDTO restartDTO, int userCodes){
-        int restart = restartDAO.restart(restartDTO, userCodes);
+    public int restart(int userCodes){
+        int restart = restartDAO.restart(userCodes);
         return restart;
+    }
+
+    public void destroy(int userCodes) {
+        int destroy = destroyDAO.destroy(userCodes);
     }
 }
