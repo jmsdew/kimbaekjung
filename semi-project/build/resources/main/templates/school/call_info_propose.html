@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>학교 종이 땡땡땡</title>
@@ -114,12 +114,27 @@
     </div>
   </div>
 
-  <section class="namelist1" th:each=" proposes : ${propose}">
+  <section class="namelist1" th:each="proposes : ${propose}">
     <div id="special1" th:text="${proposes.code}"></div>
-    <button onclick="location.href='/school/one_propose'" id="special2" th:text="${proposes.title}"></button>
+    <div id="special2">
+      <a th:href="@{/school/one_propose(propCode=${proposes.code},
+         propName=${proposes.title},
+         propContent=${proposes.comment},
+         propEmail=${#strings.substring(proposes.email, 0, #strings.indexOf(proposes.email, '@'))},
+         propDate=${#dates.format(proposes.enrollD, 'yyyy.MM.dd')})}"
+         th:text="${proposes.title}"></a></div>
     <div id="special3" th:text="${#strings.substring(proposes.email, 0, #strings.indexOf(proposes.email, '@'))}"></div>
     <div id="special4" th:text="${#dates.format(proposes.enrollD, 'yyyy.MM.dd')}"></div>
   </section>
+
+
+
+<!--  <section class="namelist1" th:each=" proposes : ${propose}">-->
+<!--    <div id="special1" th:text="${proposes.code}"></div>-->
+<!--    <button onclick="location.href='/school/one_propose'" id="special2" th:text="${proposes.title}"></button>-->
+<!--    <div id="special3" th:text="${#strings.substring(proposes.email, 0, #strings.indexOf(proposes.email, '@'))}"></div>-->
+<!--    <div id="special4" th:text="${#dates.format(proposes.enrollD, 'yyyy.MM.dd')}"></div>-->
+<!--  </section>-->
 
 
   <!--*********글쓰기 버튼************-->

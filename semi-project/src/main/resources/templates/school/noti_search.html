@@ -113,13 +113,25 @@
     </div>
   </div>
 
-  <!--  -->
   <section class="namelist1" th:each="search : ${searchNoti}">
     <div id="special1" th:text="${search.code}"></div>
-    <button onclick="location.href='/school/one_noti'" id="special2" th:text="${search.name}"></button>
+    <div id="special2">
+      <a th:href="@{/school/one_noti(notiCode=${search.code},
+         notiName=${search.name},
+         notiContent=${search.comment},
+         notiDate=${#dates.format(search.noticeDate, 'yyyy.MM.dd')})}"
+         th:text="${search.name}"></a></div>
     <div id="special3">관리자</div>
     <div id="special4" th:text="${#dates.format(search.noticeDate, 'yyyy.MM.dd')}"></div>
   </section>
+
+  <!--  -->
+<!--  <section class="namelist1" th:each="search : ${searchNoti}">-->
+<!--    <div id="special1" th:text="${search.code}"></div>-->
+<!--    <button onclick="location.href='/school/one_noti'" id="special2" th:text="${search.name}"></button>-->
+<!--    <div id="special3">관리자</div>-->
+<!--    <div id="special4" th:text="${#dates.format(search.noticeDate, 'yyyy.MM.dd')}"></div>-->
+<!--  </section>-->
 
   <!--&&&&&&&&&&&&&&&&&-->
   <div class="paging">

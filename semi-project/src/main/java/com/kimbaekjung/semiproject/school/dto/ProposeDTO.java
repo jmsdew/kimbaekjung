@@ -10,14 +10,17 @@ public class ProposeDTO {
 
     private Date enrollD;
 
+    private String comment;
+
     public ProposeDTO() {
     }
 
-    public ProposeDTO(int code, String title, String email, Date enrollD) {
+    public ProposeDTO(int code, String title, String email, Date enrollD, String comment) {
         this.code = code;
         this.title = title;
         this.email = email;
         this.enrollD = enrollD;
+        this.comment = comment;
     }
 
     public int getCode() {
@@ -52,6 +55,14 @@ public class ProposeDTO {
         this.enrollD = enrollD;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     @Override
     public String toString() {
         return "ProposeDTO{" +
@@ -59,6 +70,7 @@ public class ProposeDTO {
                 ", title='" + title + '\'' +
                 ", email='" + email + '\'' +
                 ", enrollD=" + enrollD +
+                ", comment='" + comment + '\'' +
                 '}';
     }
 }
