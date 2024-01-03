@@ -21,6 +21,8 @@ server:
   port: 443
   ssl:
     enabled: true
-    key-store: classpath:kimbaekjungcer.p12
+    protocol: TLS
+    key-store: classpath:server.jks
     key-store-type: PKCS12
     key-store-password: 1q2w3e4r!
+    enabled-protocols: TLSv1.2,TLSv1.3
