@@ -246,7 +246,6 @@
 <script type="text/javascript">
 
 
-
   let selectedStudent = null;
 
   function showOptions(button) {
@@ -255,6 +254,12 @@
 
     // 특정 div를 표시하도록 스타일 변경
     document.getElementById('options-container').style.display = 'block';
+    let studentName = selectedStudent.getAttribute('data-student-name');
+    console.log(studentName);
+
+    // 칭찬하기 팝업의 이름 입력 필드에 학생 이름 채우기
+    document.querySelector('.popup-2 [name="name"]').value = studentName;
+    document.querySelector('.popup-3 [name="name"]').value = studentName;
   }
 
   function handleOption(option) {
@@ -268,17 +273,63 @@
     // 스타일 변경은 'sitDown' 옵션일 때만 수행
     if (option === 'sitDown') {
       // 이전에 선택된 버튼이 있다면 스타일 초기화
-      if (selectedStudent) {
-        selectedStudent.style.backgroundColor = 'white';
-      }
+      if (selectedStudent.style.backgroundColor === 'white'){
+        if (selectedStudent) {
+          selectedStudent.style.backgroundColor = 'white';
+        }
+        // Ajax를 사용하여 서버에 요청을 보냅니다.
+        $.ajax({
+          type: "POST",
+          url: "/main/handleOption",
+          contentType: "application/json",
+          data: JSON.stringify({
+            option: option,
+            studentName: selectedStudentName
+          }),
+          success: function(response) {
+            // 서버에서의 응답을 처리합니다.
+            console.log("서버 응답:", response);
 
+            // 여기에 새로고침 없이 업데이트할 내용을 추가하세요.
+          },
+          error: function(error) {
+            console.error("에러 발생:", error);
+          }
+        });
+      }else {
+        alert("이미 착석하였습니다.")
+      }
       // 현재 선택된 버튼 스타일 변경
       selectedStudent.style.backgroundColor = 'lightblue';
       selectedStudent.style.border = '5px solid blue';
     }
     if (option === 'standUp'){
-      if (selectedStudent) {
-        selectedStudent.style.backgroundColor = 'white';
+
+      if (selectedStudent.style.backgroundColor === 'lightblue'){
+        if (selectedStudent) {
+          selectedStudent.style.backgroundColor = 'white';
+        }
+        // Ajax를 사용하여 서버에 요청을 보냅니다.
+        $.ajax({
+          type: "POST",
+          url: "/main/handleOption",
+          contentType: "application/json",
+          data: JSON.stringify({
+            option: option,
+            studentName: selectedStudentName
+          }),
+          success: function(response) {
+            // 서버에서의 응답을 처리합니다.
+            console.log("서버 응답:", response);
+
+            // 여기에 새로고침 없이 업데이트할 내용을 추가하세요.
+          },
+          error: function(error) {
+            console.error("에러 발생:", error);
+          }
+        });
+      }else {
+        alert("이미 취소하셨습니다.")
       }
       selectedStudent.style.backgroundColor = 'whilte';
       selectedStudent.style.border = '5px solid rgba(77,161,85,1)';
@@ -286,25 +337,7 @@
     }
 
 
-    // Ajax를 사용하여 서버에 요청을 보냅니다.
-    $.ajax({
-      type: "POST",
-      url: "/main/handleOption",
-      contentType: "application/json",
-      data: JSON.stringify({
-        option: option,
-        studentName: selectedStudentName
-      }),
-      success: function(response) {
-        // 서버에서의 응답을 처리합니다.
-        console.log("서버 응답:", response);
 
-        // 여기에 새로고침 없이 업데이트할 내용을 추가하세요.
-      },
-      error: function(error) {
-        console.error("에러 발생:", error);
-      }
-    });
   }
 // ------------------------------------------------------------------- 칭찬 제출
 
