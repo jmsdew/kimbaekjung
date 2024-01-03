@@ -107,7 +107,7 @@
     width: 90%;
     overflow-y: auto;
     text-align: center;
-    height: 80%;
+    height: 60%;
     /* 수직 중앙 정렬 */
     display: flex;
     align-items: center;
@@ -122,4 +122,12 @@
     font-weight: 600;
     text-align: center;
 
+}
+
+#manamgeAnswer{
+    width: 90%;
+    height: 18%;
+    position: absolute;
+    bottom: 15%;
+    border-bottom: 1px solid #7e7e7e;
 }

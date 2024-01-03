@@ -1,6 +1,7 @@
 package com.kimbaekjung.semiproject.school.controller;
 
 
+import com.kimbaekjung.semiproject.admin.dto.ProposeAnswerDTO;
 import com.kimbaekjung.semiproject.school.dto.*;
 import com.kimbaekjung.semiproject.school.service.SchoolService;
 import jakarta.servlet.http.HttpSession;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -109,14 +111,27 @@ public class SchoolController {
     }
 
     @PostMapping("restart")
-    public ModelAndView restartBtn(ModelAndView mv,RestartDTO restartDTO,HttpSession session){
+    public ModelAndView restartBtn(ModelAndView mv,HttpSession session){
         Object userCodeSession = session.getAttribute("userCodes");
         String userCodeStr = userCodeSession.toString();
         int userCodes = Integer.parseInt(userCodeStr);
 
-        schoolService.restart(restartDTO, userCodes);
+        schoolService.restart(userCodes);
 
         mv.setViewName("/school/restart_info");
+
+        return mv;
+    }
+
+    @PostMapping("destroy")
+    public ModelAndView destroyBtn(ModelAndView mv, HttpSession session){
+        Object userCodeSession = session.getAttribute("userCodes");
+        String userCodeStr = userCodeSession.toString();
+        int userCodes = Integer.parseInt(userCodeStr);
+
+        schoolService.destroy(userCodes);
+
+        mv.setViewName("/school/destroy_info");
 
         return mv;
     }
@@ -145,19 +160,51 @@ public class SchoolController {
     }
 
 
-//    th:href="@{/school/one_noti(notiCode=${title1.code},
-//    notiName=${title1.name},
-//    notiContent=${title1.comment},
-//    notiDate=${#dates.format(title1.noticeDate, 'yyyy.MM.dd')})}"
-//    @GetMapping("one_noti")
-//    public ModelAndView oneNoti(ModelAndView mv, @RequestParam int notiCode, ){
-//
-//        return "/school/one_noti"; }
-
     @GetMapping("one_noti")
-    public String oneNoti(){return "/school/one_noti"; }
+    public ModelAndView oneNoti(ModelAndView mv, @RequestParam int notiCode, @RequestParam String notiName, @RequestParam String notiContent, @RequestParam String notiDate){
+        System.out.println(notiCode);
+        System.out.println(notiContent);
+        System.out.println(notiDate);
 
-    @GetMapping("one_propose")
-    public String oneProp(){ return "/school/one_propose"; }
+//        NotificationDTO oneNoti= schoolService.oneNoti();
 
+//        ProposeAnswerDTO answer = proposeService.proposeAnswer(proposeCode, proposeName);
+        mv.addObject("notiCode",notiCode);
+        mv.addObject("notiName", notiName);
+        mv.addObject("notiContent", notiContent);
+        mv.addObject("notiDate", notiDate);
+        mv.setViewName("/school/one_noti");
+
+        System.out.println(mv);
+        return mv;
+    }
+
+//    @GetMapping("one_noti")
+//    public String oneNoti(){return "/school/one_noti"; }
+//"/school/one_noti";
+
+//    propCode
+//    propName
+//    propContent
+//    propEmail
+//    propDate
+@GetMapping("one_propose")
+public ModelAndView oneProp(ModelAndView mv,
+                            @RequestParam int propCode,
+                            @RequestParam String propName,
+                            @RequestParam String propContent,
+                            @RequestParam String propEmail,
+                            @RequestParam String propDate){
+
+    mv.addObject("propCode",propCode);
+    mv.addObject("propName",propName);
+    mv.addObject("propContent",propContent);
+    mv.addObject("propEmail",propEmail);
+    mv.addObject("propDate",propDate);
+    mv.setViewName("/school/one_propose");
+
+    System.out.println(mv);
+    return mv;
+
+}
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+
   <meta charset="UTF-8">
   <title>학교 종이 땡땡땡</title>
   <link rel="stylesheet" href="/css0/myGlobal.css">
@@ -97,11 +98,11 @@
 <article id="article">
   <div id="notiTitle">
     <div id="no">
-      <div>번호</div>
+      <div th:text="${notiCode}"></div>
     </div>
 
     <div id="notiName">
-      <div>제목</div>
+      <div th:text="${notiName}"></div>
     </div>
 
     <div id="writer">
@@ -109,11 +110,17 @@
     </div>
 
     <div id="registDate">
-      <div>등록일</div>
+      <div th:text="${notiDate}"></div>
     </div>
+  </div>
+
+  <div id = "comment">
+     <div th:text="${notiContent}"></div>
   </div>
 </article>
   <!--  -->
+
+
 
 
 
