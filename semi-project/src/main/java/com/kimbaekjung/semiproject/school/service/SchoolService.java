@@ -43,6 +43,11 @@ public class SchoolService {
     @Autowired
     private DestroyDAO destroyDAO;
 
+    @Autowired
+    private WriteDAO writeDAO;
+
+
+
     public List<SchoolDTO> oneName(int userCodes) {
         List<SchoolDTO> nameOne= schoolDAO.oneName(userCodes);
 
@@ -111,7 +116,20 @@ public class SchoolService {
         return restart;
     }
 
-    public void destroy(int userCodes) {
+
+
+    public int destroy(int userCodes) {
         int destroy = destroyDAO.destroy(userCodes);
+        return destroy;
     }
+
+
+    public int writing(int userCodes, String contentTitle, String content){
+        int writing = writeDAO.writing(userCodes, contentTitle, content);
+        return writing;
+    }
+
+
+
+
 }

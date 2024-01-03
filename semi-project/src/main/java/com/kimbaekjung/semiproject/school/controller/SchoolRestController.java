@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -27,10 +28,26 @@ public class SchoolRestController {
     }
 
     @GetMapping("popup_info/{studentCode}")
-    public List<AttendNumDTO> getStudentDetail(@PathVariable("studentCode") int studentCode){
+    public ModelAndView getStudentDetail(ModelAndView mv, @PathVariable("studentCode") int studentCode){
+        System.out.println(studentCode);
         List<AttendNumDTO> attendNum = schoolService.getStudentDetail(studentCode);
-        return attendNum;
+        mv.addObject("attendNum", attendNum);
+
+        mv.setViewName("/school/mypage_info");
+        System.out.println(mv);
+        return mv;
     }
+
+//    @GetMapping("one_student")
+//    public ModelAndView oneStudent(ModelAndView mv, @RequestParam int studentCode){
+//        System.out.println(studentCode);
+//        List<OneStudentDTO> oneStudent = schoolService.oneStudent(studentCode);
+//        mv.addObject("oneStudent", oneStudent);
+//        mv.setViewName("/school/mypage_info");
+//
+//        return mv;
+//    }
+
 
     @PostMapping("add")
     public List<SchoolDTO> addNames(InsertDTO insertDTO, HttpSession session){
