@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>학교 종이 땡땡땡</title>
@@ -114,23 +114,24 @@
   </div>
 
   <!--  -->
-  <section class="namelist1" th:each="title1 : ${titles}">
-    <div id="special1" th:text="${title1.code}"></div>
-    <button onclick="location.href='/school/one_noti'" id="special2" th:text="${title1.name}"></button>
-    <div id="special3">관리자</div>
-    <div id="special4" th:text="${#dates.format(title1.noticeDate, 'yyyy.MM.dd')}"></div>
-  </section>
 <!--  <section class="namelist1" th:each="title1 : ${titles}">-->
 <!--    <div id="special1" th:text="${title1.code}"></div>-->
-<!--    <div><a id="special2"-->
-<!--            th:href="@{/school/one_noti(notiCode=${title1.code},-->
-<!--         notiName=${title1.name},-->
-<!--         notiContent=${title1.comment},-->
-<!--         notiDate=${#dates.format(title1.noticeDate, 'yyyy.MM.dd')})}"-->
-<!--            th:text="${title1.name}"></a></div>-->
+<!--    <button onclick="location.href='/school/one_noti'" id="special2" th:text="${title1.name}"></button>-->
 <!--    <div id="special3">관리자</div>-->
 <!--    <div id="special4" th:text="${#dates.format(title1.noticeDate, 'yyyy.MM.dd')}"></div>-->
 <!--  </section>-->
+<!--  th:fragment="mainFragment"-->
+  <section class="namelist1" th:each="title1 : ${titles}">
+    <div id="special1" th:text="${title1.code}"></div>
+    <div id="special2">
+      <a th:href="@{/school/one_noti(notiCode=${title1.code},
+         notiName=${title1.name},
+         notiContent=${title1.comment},
+         notiDate=${#dates.format(title1.noticeDate, 'yyyy.MM.dd')})}"
+            th:text="${title1.name}"></a></div>
+    <div id="special3">관리자</div>
+    <div id="special4" th:text="${#dates.format(title1.noticeDate, 'yyyy.MM.dd')}"></div>
+  </section>
 
 
   <!--&&&&&&&&&&&&&&&&&-->

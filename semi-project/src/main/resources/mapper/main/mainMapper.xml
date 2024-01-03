@@ -19,5 +19,6 @@
         (SELECT count(*) FROM student where student_status='Y' and user_code = #{userCodes}) AS total
         FROM user_info
         WHERE user_code= #{userCodes}
+          and user_status = 'Y'
     </select>
 </mapper>

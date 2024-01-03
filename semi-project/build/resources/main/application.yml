@@ -16,3 +16,11 @@ API-KEY:
 #  restApi-key: 3a9a45d0213ca7a489beb3001dc2b784
 #  restApi-pwd: jTeOCaUYOC0q12K0lzkWx1nYcFrMRNe9
 #  javascript-key: 401490c2da690a83c9329a3eb7ab8433
+
+server:
+  port: 443
+  ssl:
+    enabled: true
+    key-store: classpath:certificate.p12
+    key-store-type: PKCS12
+    key-store-password: 1q2w3e4r!
