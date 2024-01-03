@@ -136,6 +136,19 @@ public class SchoolController {
         return mv;
     }
 
+    @PostMapping("writing")
+    public ModelAndView writeBtn(ModelAndView mv, HttpSession session, @RequestParam String contentTitle, @RequestParam String content){
+        Object userCodeSession = session.getAttribute("userCodes");
+        String userCodeStr = userCodeSession.toString();
+        int userCodes = Integer.parseInt(userCodeStr);
+
+        schoolService.writing(userCodes, contentTitle, content);
+
+        mv.setViewName("/school/propose_write");
+
+        return mv;
+    }
+
 
     @GetMapping("restart_info")
     public String restart(){
