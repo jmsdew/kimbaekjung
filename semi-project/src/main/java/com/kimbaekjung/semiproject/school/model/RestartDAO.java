@@ -6,5 +6,5 @@ import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface RestartDAO {
-    int restart(@Param("restartDTO") RestartDTO restartDTO, @Param("userCodes") int userCodes);
+    int restart(int userCodes);
 }
