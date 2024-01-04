@@ -13,5 +13,4 @@ public interface AttendNumDAO {
 
     List<AttendNumDTO> getStudentDetail(int studentCode);
 
-
 }

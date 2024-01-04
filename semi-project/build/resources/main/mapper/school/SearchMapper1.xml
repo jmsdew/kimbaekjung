@@ -23,6 +23,7 @@
         <if test='keyword != null and keyword != ""'>
             AND NOTICE_NAME LIKE CONCAT('%',#{keyword},'%')
         </if>
+        and NOTICE_STATUS = 'Y'
     </select>
 
 

@@ -101,7 +101,7 @@
                     th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'"
                     th:text="${name.studentName}"
                     th:attr="data-index=${index.index + 1}">
-<!--                <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>-->
+                <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>
             </button>
         </tr>
 

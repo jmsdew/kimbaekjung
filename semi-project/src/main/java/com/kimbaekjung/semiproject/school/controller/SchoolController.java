@@ -143,12 +143,23 @@ public class SchoolController {
         int userCodes = Integer.parseInt(userCodeStr);
 
         schoolService.writing(userCodes, contentTitle, content);
+        List<ProposeDTO> propose = schoolService.propose();
+        mv.addObject("propose",propose);
 
-        mv.setViewName("/school/propose_write");
+        mv.setViewName("/school/call_info_propose");
 
         return mv;
     }
 
+    @GetMapping("logout")
+    public ModelAndView logoutBtn(ModelAndView mv, HttpSession session){
+
+        session.invalidate();
+
+        mv.setViewName("redirect:/");
+        return mv;
+
+    }
 
     @GetMapping("restart_info")
     public String restart(){

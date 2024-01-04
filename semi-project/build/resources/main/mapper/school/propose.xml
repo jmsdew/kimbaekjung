@@ -21,7 +21,8 @@
         PROPOSE_CONTENT,
         USER.email as EMAIL
         FROM PROPOSE
-        JOIN user ON propose.user_code = USER.user_code;
+        JOIN user ON propose.user_code = USER.user_code
+        WHERE PROPOSE_STATUS = 'Y';
     </select>
 
 

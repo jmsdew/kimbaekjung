@@ -46,6 +46,9 @@ public class SchoolService {
     @Autowired
     private WriteDAO writeDAO;
 
+    @Autowired
+    private StudentNumDAO studentNumDAO;
+
 
 
     public List<SchoolDTO> oneName(int userCodes) {
@@ -130,6 +133,10 @@ public class SchoolService {
     }
 
 
+    public int studentNum(int studentCode){
+        int studentNum = studentNumDAO.studentNum(studentCode);
+        return studentNum;
+    }
 
 
 }

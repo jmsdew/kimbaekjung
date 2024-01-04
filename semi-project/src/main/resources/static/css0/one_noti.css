@@ -1,7 +1,7 @@
 #notiTitle{
     height: 43px;
     border-top: none;
-    border-bottom: 1px black solid;
+    border-bottom: 2px black solid;
     justify-content: center;
     align-items: flex-start;
     display: flex;
@@ -103,8 +103,8 @@
 #comment{
     position: absolute;
     top: 43px;
-    border-bottom: 1px #7e7e7e solid;
-    width: 90%;
+    border-bottom: 2px #7e7e7e solid;
+    width: 100%;
     overflow-y: auto;
     text-align: center;
     height: 80%;

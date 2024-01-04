@@ -24,6 +24,7 @@
         <if test='keyword != null and keyword != ""'>
             AND PROPOSE_NAME LIKE CONCAT('%',#{keyword},'%')
         </if>
+        AND PROPOSE_STATUS = 'Y'
     </select>
 
 
