@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>학교 종이 땡땡땡</title>
@@ -59,7 +59,7 @@
 <article id="bodyBody">
     <aside id="asideSTU">
         <section id="section1">
-            <div>결석 일수</div>
+            <div>결석</div>
             <div>지각</div>
             <div>조퇴</div>
             <div>결과</div>
@@ -67,36 +67,57 @@
         </section>
 
         <section id="section2">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <input type="hidden" id="pickStudentCode" th:value="${pickStudentCode}">
+            <div th:text="${absentCount}" th:value="absent"></div>
+            <div th:text="${lateCount}" th:value="late"></div>
+            <div th:text="${leaveCount}" th:value="leave"></div>
+            <div th:text="${resultCount}" th:value="result"></div>
             <div></div>
         </section>
 
         <div id="attendList">출결 사항</div>
-        <div id="attendListInput"></div>
+        <div class="attendListInput"></div>
     </aside>
 
 
     <section id="section3">
         <div>칭찬 내역</div>
-        <div class="praise"></div>
+        <div class="praise">
+            <table class="praise-table">
+                <thead>
+                <tr class="praise-table-head">
+                    <th>키워드</th>
+                    <th>내용</th>
+                    <th>점수</th>
+                    <th>날짜</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr class="praise-table-body" th:each="praise : ${praiseList}">
+                        <td th:text="${praise.praiseCategory}"></td>
+                        <td th:text="${praise.praiseContent}"></td>
+                        <td th:text="${praise.praiseScore}"></td>
+                        <td th:text="${praise.praiseDate}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
     <section id="section4">
         <div>추천 문구
 
-                <select id="mySelect">
-                    <option value="default" selected>배려</option>
-                    <option value="option2">사교</option>
-                    <option value="option3">긍정</option>
-                    <option value="option4">책임</option>
-                    <option value="option5">성실</option>
-                    <option value="option6">도움</option>
-                    <option value="option7">예의</option>
-                    <option value="option8">봉사</option>
-                    <option value="option9">리더십</option>
-                    <option value="option10">끈기</option>
+                <select id="recommendSelect">
+                    <option value="default">선택</option>
+                    <option value="1">배려</option>
+                    <option value="2">사교</option>
+                    <option value="3">긍정</option>
+                    <option value="4">책임</option>
+                    <option value="5">성실</option>
+                    <option value="6">도움</option>
+                    <option value="7">예의</option>
+                    <option value="8">봉사</option>
+                    <option value="9">리더십</option>
+                    <option value="10">끈기</option>
 
                 </select>
 
@@ -132,7 +153,9 @@
     <div id="nameStyle">
          <tr th:each="pick : ${picks}">
              <td>
-                 <button th:text="${pick.studentName}"></button>
+                 <form name="pickStudent" action="/management/select" method="post">
+                     <button th:text="${pick.studentName}" th:value="${pick.studentCode}" type="submit" name="pickStudentCode" onclick="setPickStudentCode(this.value)"></button>
+                 </form>
              </td>
          </tr>
     </div>
@@ -165,7 +188,57 @@
         popup.style.display='none';
     })
 
+    function btn() {
+        pickStudent.submit();
+    }
 
+    const selectBox = document.getElementById('recommendSelect');
+    const recommendDiv = document.querySelector('.recommend');
+
+    selectBox.addEventListener('change', function () {
+        const selectedOption = selectBox.value;
+
+        fetch(`/management/${selectedOption}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                let recommends = '';
+                data.forEach(item => {
+                    recommends += '<p>' + item.content + '</p>'
+                })
+
+                recommendDiv.innerHTML = recommends;
+            })
+    });
+
+    const attendSelect = document.getElementById('asideSTU');
+    const attendResultDiv = document.querySelector('.attendListInput');
+    const pickStudentCodeElement = document.getElementById('pickStudentCode');
+    const pickStudentCode = pickStudentCodeElement.value;
+
+    attendSelect.addEventListener('click', function (event) {
+        if (event.target.tagName === 'DIV') {
+            const selectedAttend = event.target.getAttribute('th:value');
+
+            fetch(`/management/${selectedAttend}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ pickStudentCode }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    let details = '';
+                    data.forEach(item => {
+                        details += '<p>' + item.kind + item.content + item.regist + '</p>'
+                    })
+
+                    attendResultDiv.innerHTML = details;
+                })
+        }
+    })
 
 </script>
 </body>
