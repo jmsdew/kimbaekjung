@@ -107,7 +107,9 @@
 <div class="popup">
     <h3> 로그아웃하시겠습니까?</h3>
     <div class="buttons">
-        <button class="confirmBtn">확인</button>
+        <form action="/school/logout" method="get">
+            <button class="confirmBtn">확인</button>
+        </form>
         <button class="cancelBtn">취소</button>
     </div>
 </div>
@@ -135,6 +137,19 @@
             document.querySelector('.popup').style.display = 'none';
         }
     });
+
+
+    //
+    // const URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_API_KEY}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code&prompt='login`;
+    //
+    // const handleLogout = () => {
+    //     axios.get(
+    //         `https://kauth.kakao.com/oauth/logout?client_id=${process.env.REACT_APP_KAKAO_API_KEY}&logout_redirect_uri=${logout_url}`,
+    //     );
+    //     localStorage.removeItem("accessToken");
+    //     // window.location.reload();
+    //     window.location.href = "/";
+    // };
 </script>
 </body>
 </html>

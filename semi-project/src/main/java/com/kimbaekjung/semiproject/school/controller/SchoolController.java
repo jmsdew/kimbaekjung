@@ -4,6 +4,9 @@ package com.kimbaekjung.semiproject.school.controller;
 import com.kimbaekjung.semiproject.admin.dto.ProposeAnswerDTO;
 import com.kimbaekjung.semiproject.school.dto.*;
 import com.kimbaekjung.semiproject.school.service.SchoolService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +21,8 @@ import java.util.List;
 public class SchoolController {
     @Autowired
     private SchoolService schoolService;
+
+
 
     @GetMapping("mypage_info")
     public ModelAndView namesBtn(ModelAndView mv, HttpSession session){
@@ -136,6 +141,42 @@ public class SchoolController {
         return mv;
     }
 
+    @PostMapping("writing")
+    public ModelAndView writeBtn(ModelAndView mv, HttpSession session, @RequestParam String contentTitle, @RequestParam String content){
+        Object userCodeSession = session.getAttribute("userCodes");
+        String userCodeStr = userCodeSession.toString();
+        int userCodes = Integer.parseInt(userCodeStr);
+
+        schoolService.writing(userCodes, contentTitle, content);
+        List<ProposeDTO> propose = schoolService.propose();
+        mv.addObject("propose",propose);
+
+        mv.setViewName("/school/call_info_propose");
+
+        return mv;
+    }
+
+    @GetMapping("logout")
+    public ModelAndView logoutBtn(ModelAndView mv, HttpSession session){
+
+        session.invalidate();
+
+        mv.setViewName("redirect:/");
+        return mv;
+
+    }
+
+//    @GetMapping("logout")
+//    public String logout(HttpServletRequest request) {
+////        HttpSession session = request.getSession();
+////        session.setMaxInactiveInterval(1 * 1); // 세션 유효 시간을 1시간으로 설정 (단위: 초)
+////        System.out.println(session);
+//
+//        return "redirect:/"; // 로그아웃 후 리다이렉트할 페이지
+//    }
+
+
+
 
     @GetMapping("restart_info")
     public String restart(){
@@ -194,7 +235,12 @@ public ModelAndView oneProp(ModelAndView mv,
                             @RequestParam String propName,
                             @RequestParam String propContent,
                             @RequestParam String propEmail,
-                            @RequestParam String propDate){
+                            @RequestParam String propDate) {
+
+
+    List<ReplyDTO> propReply = schoolService.propReply(propCode);
+    mv.addObject("propReply", propReply);
+
 
     mv.addObject("propCode",propCode);
     mv.addObject("propName",propName);

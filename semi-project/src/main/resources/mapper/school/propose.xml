@@ -21,9 +21,21 @@
         PROPOSE_CONTENT,
         USER.email as EMAIL
         FROM PROPOSE
-        JOIN user ON propose.user_code = USER.user_code;
+        JOIN user ON propose.user_code = USER.user_code
+        WHERE PROPOSE_STATUS = 'Y';
     </select>
 
+<!--    SELECT-->
+<!--    P.PROPOSE_CODE,-->
+<!--    P.PROPOSE_NAME,-->
+<!--    P.REGIST_DATE,-->
+<!--    P.PROPOSE_CONTENT,-->
+<!--    U.email as EMAIL,-->
+<!--    C.COMMENT_AUTH-->
+<!--    FROM PROPOSE P-->
+<!--    JOIN user U ON P.user_code = U.user_code-->
+<!--    LEFT JOIN COMMENT C ON P.PROPOSE_CODE = C.PROPOSE_CODE-->
+<!--    WHERE P.PROPOSE_STATUS = 'Y' AND P.PROPOSE_CODE = #{proposeCode};-->
 
 
 </mapper>

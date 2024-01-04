@@ -19,6 +19,7 @@
         NOTICE_CONTENT,
         REGIST_DATE
         FROM NOTICE
+        WHERE NOTICE_STATUS='Y'
     </select>
 
 

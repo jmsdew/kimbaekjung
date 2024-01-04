@@ -9,6 +9,7 @@
         <result property="title" column="PROPOSE_NAME"/>
         <result property="enrollD" column="REGIST_DATE"/>
         <result property="email" column="EMAIL"/>
+        <result property="comment" column="PROPOSE_CONTENT"/>
     </resultMap>
 
 
@@ -17,6 +18,7 @@
         PROPOSE_CODE,
         PROPOSE_NAME,
         REGIST_DATE,
+        PROPOSE_CONTENT,
         USER.email as EMAIL
         FROM PROPOSE
         JOIN user ON propose.user_code = USER.user_code
@@ -24,6 +26,7 @@
         <if test='keyword != null and keyword != ""'>
             AND PROPOSE_NAME LIKE CONCAT('%',#{keyword},'%')
         </if>
+        AND PROPOSE_STATUS = 'Y'
     </select>
 
 

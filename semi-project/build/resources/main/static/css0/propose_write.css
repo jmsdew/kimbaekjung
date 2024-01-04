@@ -42,12 +42,17 @@
   line-height: 50px;
   resize: none;
   overflow: hidden;
+    width: 100%;
+    font-family: Inter;
+    font-weight: bold;
 }
 
 #content{
   font-size: 20px;
   height: 350px;
   resize: none;
+    width: 100%;
+    font-family: Inter;
 }
 
 #pwdAndWrite{

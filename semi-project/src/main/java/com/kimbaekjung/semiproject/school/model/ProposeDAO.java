@@ -11,4 +11,6 @@ public interface ProposeDAO {
 
 
     List<ProposeDTO> propose();
+
+
 }

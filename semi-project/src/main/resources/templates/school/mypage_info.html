@@ -100,8 +100,12 @@
             <button class="nameBtn1"
                     th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'"
                     th:text="${name.studentName}"
-                    th:attr="data-index=${index.index + 1}"></button>
+                    th:attr="data-index=${index.index + 1}">
+                <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>
+            </button>
         </tr>
+
+
 
 
     </section>
@@ -151,16 +155,14 @@
     </section>
 
      <div class="attendance">
-         <div>
+         <div th:each="attendNums:${attendNum}">
              <h3>출결사유</h3>
              <h3 id="word1">출석인정</h3>
-
-             <div id="date1"></div>
-             <div id="attend1"></div>
-             <div id="agree"></div>
-             <input type="text" id="statusContent"/>
+             <div id="date1" th:text="${attendNums.date}"></div>
+             <div id="attend1" th:text="${attendNums.kind}"></div>
+             <div id="agree" th:text="${attendNums.status}"></div>
+             <div id="statusContent" th:text="${attendNums.reason}"></div>
          </div>
-
      </div>
 
 

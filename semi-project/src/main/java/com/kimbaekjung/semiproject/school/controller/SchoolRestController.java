@@ -1,11 +1,13 @@
 package com.kimbaekjung.semiproject.school.controller;
 
+import com.kimbaekjung.semiproject.main.dto.StudentDTO;
 import com.kimbaekjung.semiproject.school.dto.*;
 import com.kimbaekjung.semiproject.school.service.SchoolService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -26,11 +28,36 @@ public class SchoolRestController {
         return names;
     }
 
-    @GetMapping("popup_info/{studentCode}")
-    public List<AttendNumDTO> getStudentDetail(@PathVariable("studentCode") int studentCode){
-        List<AttendNumDTO> attendNum = schoolService.getStudentDetail(studentCode);
-        return attendNum;
-    }
+
+
+//    @GetMapping("studentNum")
+//    public List<dto> studentNum(ModelAndView mv, @RequestParam("studentCode") int studentCode){
+//        List<> studentNum = schoolService.studentNum(studentCode);
+//
+//
+//        return studentNum;
+//    }
+//    @GetMapping("popup_info/{studentCode}")
+//    public ModelAndView getStudentDetail(ModelAndView mv, @PathVariable("studentCode") int studentCode){
+//        System.out.println(studentCode);
+//        List<AttendNumDTO> attendNum = schoolService.getStudentDetail(studentCode);
+//        mv.addObject("attendNum", attendNum);
+//
+//        mv.setViewName("/school/mypage_info");
+//        System.out.println(mv);
+//        return mv;
+//    }
+
+//    @GetMapping("one_student")
+//    public ModelAndView oneStudent(ModelAndView mv, @RequestParam int studentCode){
+//        System.out.println(studentCode);
+//        List<OneStudentDTO> oneStudent = schoolService.oneStudent(studentCode);
+//        mv.addObject("oneStudent", oneStudent);
+//        mv.setViewName("/school/mypage_info");
+//
+//        return mv;
+//    }
+
 
     @PostMapping("add")
     public List<SchoolDTO> addNames(InsertDTO insertDTO, HttpSession session){

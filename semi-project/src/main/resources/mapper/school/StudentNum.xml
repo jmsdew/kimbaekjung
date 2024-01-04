@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTO mapper 3.0//EN"
+        "https://mabatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.school.model.StudentNumDAO">
+
+    <select id="studentNum">
+        SELECT
+        attend_kind,
+        COUNT(*) AS count
+        FROM
+        attend
+        JOIN
+        student ON student.student_code = attend.student_code
+        WHERE
+        student.student_code  = #{studentCode}
+        GROUP BY
+        attend_kind;
+    </select>
+
+</mapper>

@@ -87,18 +87,25 @@
 
 
 <article id="article">
-    <h2>제목</h2>
-    <textarea id="contentTitle" rows="1" cols="1"  maxlength="50"></textarea>
-    <h2>내용</h2>
-    <textarea id="content" rows="4" cols="50"></textarea>
-    <div id="pwdAndWrite">
-        <h2>비밀번호</h2>
-        <input type="password" id="password"/>
-        <button>작 성</button>
-    </div>
+    <form action="/school/writing" method="post">
+        <h2>제목</h2>
+        <textarea name="contentTitle" id="contentTitle" rows="1" cols="1"  maxlength="50"></textarea>
+        <h2>내용</h2>
+        <textarea name="content" id="content" rows="4" cols="50"></textarea>
+        <div id="pwdAndWrite">
+            <h2>비밀번호</h2>
+            <input type="password" id="password"/>
+            <button type="submit">작 성</button>
+        </div>
+    </form>
 </article>
 
-
+<!--<form id="addName">-->
+<!--    <input type="text" name="name" id="addInput">-->
+<!--    <div class="buttons">-->
+<!--        <button type="submit" class="popup_regist1">등록</button>-->
+<!--    </div>-->
+<!--</form>-->
 
 <footer id=footers>
     <div id = email>kbjcom@google.com</div>

@@ -94,6 +94,7 @@
     <div id="btn2">건의게시판</div>
 </a>
 
+
 <article id="article">
 
     <div id="notiTitle">
@@ -116,17 +117,20 @@
 
     <section class="namelist1" th:each=" searchP : ${searchProp}">
         <div id="special1" th:text="${searchP.code}"></div>
-        <button onclick="location.href='/school/one_propose'" id="special2" th:text="${searchP.title}"></button>
+            <div id="special2">
+                <a th:href="@{/school/one_propose(propCode=${searchP.code},
+                 propName=${searchP.title},
+                 propContent=${searchP.comment},
+                 propEmail=${#strings.substring(searchP.email, 0, #strings.indexOf(searchP.email, '@'))},
+                 propDate=${#dates.format(searchP.enrollD, 'yyyy.MM.dd')})}"
+                   th:text="${searchP.title}"></a></div>
         <div id="special3" th:text="${#strings.substring(searchP.email, 0, #strings.indexOf(searchP.email, '@'))}"></div>
         <div id="special4" th:text="${#dates.format(searchP.enrollD, 'yyyy.MM.dd')}"></div>
     </section>
 
 
-    <!--*********글쓰기 버튼************-->
-    <button id="userWriting">
-        <img src="/img/pencil-fill.svg" alt="pencil" id="pencil">
-        <a href="/school/propose_write">글쓰기</a>
-    </button>
+
+<!--    <button onclick="location.href='/school/one_propose'" id="special2" th:text="${searchP.title}"></button>-->
     <!--************페이지 넘김 버튼**************-->
 
     <div class="paging">
@@ -141,6 +145,13 @@
         </div>
         <i class="bi-chevron-right" id="nextPage"></i>
         <i class="bi-chevron-double-right" id="lastPage"></i>
+
+        <!--*********글쓰기 버튼************-->
+        <button id="userWriting">
+            <img src="/img/pencil-fill.svg" alt="pencil" id="pencil">
+            <a href="/school/propose_write">글쓰기</a>
+        </button>
+
     </div>
     <!--  <div id="allPageBtn">-->
     <!--    <div id="leftBtns">-->

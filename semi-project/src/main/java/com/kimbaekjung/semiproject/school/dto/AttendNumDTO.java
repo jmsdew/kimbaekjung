@@ -1,39 +1,78 @@
 package com.kimbaekjung.semiproject.school.dto;
 
-public class AttendNumDTO {
-    private String attendKind;
+import java.util.Date;
 
-    private int count;
+public class AttendNumDTO {
+//    private String attendKind;
+//
+//    private int count;
+
+    private int code;
+    private String kind;
+    private Date date;
+    private String reason;
+    private String status;
+
 
     public AttendNumDTO() {
     }
 
-    public AttendNumDTO(String attendKind, int count) {
-        this.attendKind = attendKind;
-        this.count = count;
+    public AttendNumDTO(int code, String kind, Date date, String reason, String status) {
+        this.code = code;
+        this.kind = kind;
+        this.date = date;
+        this.reason = reason;
+        this.status = status;
     }
 
-    public String getAttendKind() {
-        return attendKind;
+    public int getCode() {
+        return code;
     }
 
-    public void setAttendKind(String attendKind) {
-        this.attendKind = attendKind;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public int getCount() {
-        return count;
+    public String getKind() {
+        return kind;
     }
 
-    public void setCount(int count) {
-        this.count = count;
+    public void setKind(String kind) {
+        this.kind = kind;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
-        return "attendNumDTO{" +
-                "attendKind='" + attendKind + '\'' +
-                ", count=" + count +
+        return "AttendNumDTO{" +
+                "code=" + code +
+                ", kind='" + kind + '\'' +
+                ", date=" + date +
+                ", reason='" + reason + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }
