@@ -10,16 +10,19 @@ public class SearchPropDTO {
 
     private Date enrollD;
 
+    private String comment;
+
     private String keyword;
 
     public SearchPropDTO() {
     }
 
-    public SearchPropDTO(int code, String title, String email, Date enrollD, String keyword) {
+    public SearchPropDTO(int code, String title, String email, Date enrollD, String comment, String keyword) {
         this.code = code;
         this.title = title;
         this.email = email;
         this.enrollD = enrollD;
+        this.comment = comment;
         this.keyword = keyword;
     }
 
@@ -55,6 +58,14 @@ public class SearchPropDTO {
         this.enrollD = enrollD;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
     public String getKeyword() {
         return keyword;
     }
@@ -70,6 +81,7 @@ public class SearchPropDTO {
                 ", title='" + title + '\'' +
                 ", email='" + email + '\'' +
                 ", enrollD=" + enrollD +
+                ", comment='" + comment + '\'' +
                 ", keyword='" + keyword + '\'' +
                 '}';
     }

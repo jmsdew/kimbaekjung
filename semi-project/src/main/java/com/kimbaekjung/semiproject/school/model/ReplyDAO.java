@@ -1,16 +1,12 @@
 package com.kimbaekjung.semiproject.school.model;
 
-
-import com.kimbaekjung.semiproject.school.dto.ProposeDTO;
+import com.kimbaekjung.semiproject.school.dto.ReplyDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 @Mapper
-public interface ProposeDAO {
+public interface ReplyDAO {
 
-
-    List<ProposeDTO> propose();
-
-
+    List<ReplyDTO> propReply(int propCode);
 }
