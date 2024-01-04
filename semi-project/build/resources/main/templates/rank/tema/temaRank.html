@@ -138,14 +138,14 @@
 
 <script>
 
-    // 학생 이름을 서버로 전송하는 함수
+    // 학생 이름을 서버로 전송하는 함수  ResponseEntity<List<>>로 받고 있음
     function sendStudentName(button) {
         // 선택된 버튼에서 데이터 속성(data-student-name)을 읽어옴
         let studentName = button.getAttribute("data-student-name");
         let tema = button.getAttribute("data-tema");
 
         // Fetch API를 사용하여 서버로 데이터 전송
-        fetch("/rank/temaRank1", {
+        fetch("/rank/temaRank", {
             method: 'POST', // HTTP POST 요청
             headers: {
                 'Content-Type': 'application/json', // JSON 형태의 데이터 전송을 지정
@@ -180,45 +180,13 @@
                     cell3.textContent = item.date;
                 });
 
-                // 여기에서 필요한 작업을 수행하고 페이지를 갱신하거나 다른 동작을 수행할 수 있습니다.
-            })
-            .catch(error => {
-                console.error("에러 발생:", error);
-            });
-    }
-    function fetchData() {
-        fetch("/rank/temaRank1")
-            .then(response => response.json())
-            .then(data => {
-                // 데이터를 받아와서 HTML에 추가하는 로직
-                console.log(data);
-                const tableContainer = document.getElementById("rankTableContainer");
-                const table = document.getElementById("ranktb");
 
-                // 기존 테이블 내용을 비움
-                while (table.rows.length > 1) {
-                    table.deleteRow(1);
-                }
-
-                data.forEach(rank1 => {
-                    const row = table.insertRow();
-                    const cell1 = row.insertCell(0);
-                    const cell2 = row.insertCell(1);
-                    const cell3 = row.insertCell(2);
-
-                    // 데이터를 각 셀에 삽입
-                    cell1.textContent = rank1.point;
-                    cell2.textContent = rank1.reason;
-                    cell3.textContent = rank1.date;
-                });
             })
             .catch(error => {
                 console.error("에러 발생:", error);
             });
     }
 
-    // 페이지 로드 시 데이터를 가져와서 출력
-    document.addEventListener("DOMContentLoaded", fetchData);
 
 
     document.getElementById('popupClick').addEventListener('click', function(event) {
