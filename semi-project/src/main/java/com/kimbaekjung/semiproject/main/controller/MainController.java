@@ -77,7 +77,6 @@ public class MainController {
 
     @PostMapping("/processPraise")
     public ModelAndView processPraise(ModelAndView mv, PraiseDTO praiseDTO , HttpSession session) {
-        System.out.println(praiseDTO);
         Object a = session.getAttribute("userCodes");
         String b = a.toString();
         int userCode = Integer.parseInt(b);
