@@ -117,10 +117,12 @@
 
 #comment div{
 
-    font-size: 15px;
+    font-size: 18px;
     font-family: Inter;
     font-weight: 600;
     text-align: center;
+    width: 600px;
+    letter-spacing: 2px;
 
 }
 
@@ -130,4 +132,22 @@
     position: absolute;
     bottom: 15%;
     border-bottom: 2px solid #7e7e7e;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#manamgeAnswer div{
+    font-size: 20px;
+    font-family: Inter;
+}
+
+#yama{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 25px;
+    font-family: Inter;
+    font-weight: bold;
 }

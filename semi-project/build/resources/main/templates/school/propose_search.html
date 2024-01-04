@@ -117,13 +117,20 @@
 
     <section class="namelist1" th:each=" searchP : ${searchProp}">
         <div id="special1" th:text="${searchP.code}"></div>
-        <button onclick="location.href='/school/one_propose'" id="special2" th:text="${searchP.title}"></button>
+            <div id="special2">
+                <a th:href="@{/school/one_propose(propCode=${searchP.code},
+                 propName=${searchP.title},
+                 propContent=${searchP.comment},
+                 propEmail=${#strings.substring(searchP.email, 0, #strings.indexOf(searchP.email, '@'))},
+                 propDate=${#dates.format(searchP.enrollD, 'yyyy.MM.dd')})}"
+                   th:text="${searchP.title}"></a></div>
         <div id="special3" th:text="${#strings.substring(searchP.email, 0, #strings.indexOf(searchP.email, '@'))}"></div>
         <div id="special4" th:text="${#dates.format(searchP.enrollD, 'yyyy.MM.dd')}"></div>
     </section>
 
 
 
+<!--    <button onclick="location.href='/school/one_propose'" id="special2" th:text="${searchP.title}"></button>-->
     <!--************페이지 넘김 버튼**************-->
 
     <div class="paging">

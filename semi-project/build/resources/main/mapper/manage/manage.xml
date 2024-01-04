@@ -9,12 +9,102 @@
         <result property="studentName" column="STUDENT_NAME"/>
     </resultMap>
 
+    <resultMap id="attendResult" type="com.kimbaekjung.semiproject.management.dto.AttendDTO">
+        <id property="attendCode" column="ATTEND_CODE"/>
+    </resultMap>
+
+    <resultMap id="praiseResult" type="com.kimbaekjung.semiproject.management.dto.PraiseDTO">
+        <id property="praiseCategory" column="CATEGORY_NAME"/>
+        <result property="praiseContent" column="PRAISE_CONTEXT"/>
+        <result property="praiseScore" column="SCORE"/>
+        <result property="praiseDate" column="PRAISE_DATE"/>
+    </resultMap>
+
+    <resultMap id="recommendSelect" type="com.kimbaekjung.semiproject.management.dto.RecommendDTO">
+        <id property="content" column="REC_CONTENT"/>
+    </resultMap>
+
+    <resultMap id="attendDetail" type="com.kimbaekjung.semiproject.management.dto.AttendDetailDTO">
+        <id property="kind" column="ATTEND_KIND"/>
+        <result property="content" column="REASON"/>
+        <result property="regist" column="REGIST_DATE"/>
+    </resultMap>
+
     <select id="picks" resultMap="manageResult">
         SELECT
-        STUDENT_NAME
-        FROM STUDENT
+            STUDENT_CODE,
+            STUDENT_NAME
+          FROM STUDENT
+         WHERE STUDENT_STATUS = 'Y'
+           AND USER_CODE = ${userCode}
     </select>
 
+    <select id="absent" resultMap="attendResult">
+        SELECT
+            ATTEND_CODE
+          FROM ATTEND
+         WHERE STUDENT_CODE = #{pickStudentCode}
+           AND ATTEND_KIND LIKE "결석"
+           AND ATTEND_STATUS = 'Y'
+    </select>
 
+    <select id="late" resultMap="attendResult">
+        SELECT
+            ATTEND_CODE
+          FROM ATTEND
+         WHERE STUDENT_CODE = #{pickStudentCode}
+           AND ATTEND_KIND LIKE "지각"
+           AND ATTEND_STATUS = 'Y'
+    </select>
+
+    <select id="leave" resultMap="attendResult">
+        SELECT
+            ATTEND_CODE
+          FROM ATTEND
+         WHERE STUDENT_CODE = #{pickStudentCode}
+           AND ATTEND_KIND LIKE "조퇴"
+           AND ATTEND_STATUS = 'Y'
+    </select>
+
+    <select id="result" resultMap="attendResult">
+        SELECT
+            ATTEND_CODE
+          FROM ATTEND
+         WHERE STUDENT_CODE = #{pickStudentCode}
+           AND ATTEND_KIND LIKE "결과"
+           AND ATTEND_STATUS = 'Y'
+    </select>
+
+    <select id="praise" resultMap="praiseResult">
+        SELECT
+            PC.CATEGORY_NAME,
+            P.PRAISE_CONTEXT,
+            P.SCORE,
+            P.PRAISE_DATE
+          FROM PRAISE P
+          JOIN PRAISE_CATEGORY PC ON P.CATEGORY_CODE = PC.CATEGORY_CODE
+         WHERE P.STUDENT_CODE = #{pickStudentCode}
+           AND P.PRAISE_STATUS = 'Y'
+           AND P.CATEGORY_CODE IN ('1','2','3','4','5','6','7','8','9','10')
+         ORDER BY P.CATEGORY_CODE
+    </select>
+
+    <select id="recommend" resultMap="recommendSelect">
+        SELECT
+            REC_CONTENT
+          FROM RECOMMEND
+         WHERE RECOMMEND_STATUS = 'Y'
+           AND CATEGORY_CODE = #{selectedOption}
+    </select>
+
+    <select id="attendDetail" resultMap="attendDetail">
+        SELECT
+            ATTEND_KIND,
+            REASON,
+            REGIST_DATE
+          FROM ATTEND
+         WHERE STUDENT_CODE = #{pickStudentCode}
+           AND ATTEND_STATUS = 'Y'
+    </select>
 
 </mapper>

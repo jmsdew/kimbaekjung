@@ -49,6 +49,8 @@ public class SchoolService {
     @Autowired
     private StudentNumDAO studentNumDAO;
 
+    @Autowired
+    private ReplyDAO replyDAO;
 
 
     public List<SchoolDTO> oneName(int userCodes) {
@@ -139,4 +141,8 @@ public class SchoolService {
     }
 
 
+    public List<ReplyDTO> propReply(int propCode) {
+        List<ReplyDTO> propReply = replyDAO.propReply(propCode);
+        return propReply;
+    }
 }

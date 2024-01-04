@@ -116,8 +116,13 @@
   <div id = "comment">
     <div th:text="${propContent}"></div>
   </div>
-  <div id ="manamgeAnswer">
 
+
+  <div id ="manamgeAnswer" th:each="reply : ${propReply}">
+    <div id="yama">
+      - 관리자 답변 -
+    </div>
+    <div th:text="${reply.reply}"></div>
   </div>
 </article>
 <!--  -->
