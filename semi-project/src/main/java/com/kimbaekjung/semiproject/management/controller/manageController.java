@@ -82,12 +82,23 @@ public class manageController {
     @ResponseBody
     public List<AttendDetailDTO> attendDetail(@PathVariable String selectedAttend, @RequestBody Map<String, Object> requestDate) {
 
+        if (Objects.equals(selectedAttend, "absent")) {
+            selectedAttend = "결석";
+        } else if (Objects.equals(selectedAttend, "late")) {
+            selectedAttend = "지각";
+        } else if (Objects.equals(selectedAttend, "leave")) {
+            selectedAttend = "조퇴";
+        } else if (Objects.equals(selectedAttend, "result")) {
+            selectedAttend = "결과";
+        }
+
         System.out.println(requestDate);
         String pickStudentCodeString = (String) requestDate.get("pickStudentCode");
         int pickStudentCode = Integer.parseInt(pickStudentCodeString);
         System.out.println(pickStudentCode);
+        System.out.println(selectedAttend);
 
-        List<AttendDetailDTO> attendDetailList = manageService.attendDetail(pickStudentCode);
+        List<AttendDetailDTO> attendDetailList = manageService.attendDetail(selectedAttend, pickStudentCode);
         System.out.println(attendDetailList.toString());
 
         return attendDetailList;
