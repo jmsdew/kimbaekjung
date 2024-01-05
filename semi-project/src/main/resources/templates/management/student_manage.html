@@ -66,27 +66,31 @@
 <article id="bodyBody">
     <aside id="asideSTU">
         <section id="section1">
+            <div>이름</div>
             <div>결석</div>
             <div>지각</div>
             <div>조퇴</div>
             <div>결과</div>
-            <div>특기사항</div>
         </section>
 
         <section id="section2">
             <input type="hidden" id="pickStudentCode" th:value="${pickStudentCode}">
+            <div></div>
             <div th:text="${absentCount}"></div>
             <div th:text="${lateCount}"></div>
             <div th:text="${leaveCount}"></div>
             <div th:text="${resultCount}"></div>
-            <div></div>
         </section>
 
         <div id="attendList">출결 사항</div>
-        <div class="attendListInput"></div>
+        <div id="attendListInput1">
+            <div class="attendListInput"></div>
+
+        </div>
+
     </aside>
 
-    <section id = "frame">
+
     <section id="section3">
         <div>칭찬 내역</div>
         <div class="praise">
@@ -137,7 +141,6 @@
         <div>입력란</div>
         <textarea id="input1"></textarea>
         <button id="copyButton">복사</button>
-    </section>
     </section>
 </article>
 
@@ -213,7 +216,7 @@
                 console.log(data)
                 let recommends = '';
                 data.forEach(item => {
-                    recommends += '<p>' + item.content + '</p>'
+                    recommends += '<p style="font-family: Inter">' + item.content + '</p>'
                 })
 
                 recommendDiv.innerHTML = recommends;
@@ -243,7 +246,7 @@
                     console.log(data)
                     let details = '';
                     data.forEach(item => {
-                        details += '<p>' + item.kind + item.content + item.regist + '</p>'
+                        details += '<p style="font-family: Inter">' + item.kind + item.content + item.regist + '</p>'
                     })
 
                     attendResultDiv.innerHTML = details;
