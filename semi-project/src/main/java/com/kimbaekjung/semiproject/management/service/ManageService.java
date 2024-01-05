@@ -58,8 +58,8 @@ public class ManageService {
         return recommendList;
     }
 
-    public List<AttendDetailDTO> attendDetail(int pickStudentCode) {
-        List<AttendDetailDTO> attendDetailList = manageDAO.attendDetail(pickStudentCode);
+    public List<AttendDetailDTO> attendDetail(String selectedAttend, int pickStudentCode) {
+        List<AttendDetailDTO> attendDetailList = manageDAO.attendDetail(selectedAttend, pickStudentCode);
 
         return attendDetailList;
     }

@@ -104,6 +104,7 @@
             REGIST_DATE
           FROM ATTEND
          WHERE STUDENT_CODE = #{pickStudentCode}
+           AND ATTEND_KIND = #{selectedAttend}
            AND ATTEND_STATUS = 'Y'
     </select>
 

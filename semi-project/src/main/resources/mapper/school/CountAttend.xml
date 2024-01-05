@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.school.model.OneStudentDAO">
+
+    <resultMap id="oneResult" type="com.kimbaekjung.semiproject.school.dto.OneStudentDTO">
+        <id property="attendCode" column="ATTEND_CODE"/>
+    </resultMap>
+
+
+    <select id="absent" resultMap="oneResult">
+        SELECT
+        ATTEND_CODE
+        FROM ATTEND
+        WHERE STUDENT_CODE = #{studentCode}
+        AND ATTEND_KIND LIKE "결석"
+        AND ATTEND_STATUS = 'Y'
+    </select>
+
+    <select id="late" resultMap="oneResult">
+        SELECT
+        ATTEND_CODE
+        FROM ATTEND
+        WHERE STUDENT_CODE = #{studentCode}
+        AND ATTEND_KIND LIKE "지각"
+        AND ATTEND_STATUS = 'Y'
+    </select>
+
+    <select id="leave" resultMap="oneResult">
+        SELECT
+        ATTEND_CODE
+        FROM ATTEND
+        WHERE STUDENT_CODE = #{studentCode}
+        AND ATTEND_KIND LIKE "조퇴"
+        AND ATTEND_STATUS = 'Y'
+    </select>
+
+    <select id="result" resultMap="oneResult">
+        SELECT
+        ATTEND_CODE
+        FROM ATTEND
+        WHERE STUDENT_CODE = #{studentCode}
+        AND ATTEND_KIND LIKE "결과"
+        AND ATTEND_STATUS = 'Y'
+    </select>
+
+
+</mapper>
+

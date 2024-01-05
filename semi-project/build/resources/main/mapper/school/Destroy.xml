@@ -5,8 +5,8 @@
 <mapper namespace="com.kimbaekjung.semiproject.school.model.DestroyDAO">
 
     <delete id="destroy">
-        DELETE FROM USER
-        WHERE user_code  = #{userCodes};
+<!--        DELETE FROM USER-->
+<!--        WHERE user_code  = #{userCodes};-->
     </delete>
 
 

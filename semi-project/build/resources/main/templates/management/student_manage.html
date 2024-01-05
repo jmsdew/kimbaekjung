@@ -10,7 +10,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 </head>
-
+<style>
+    #input1 {
+        top: 40px;
+        position: relative;
+        width: 100%;
+        height: 88%;
+    }
+</style>
 <body>
 <header class="navbox">
     <nav>
@@ -59,24 +66,28 @@
 <article id="bodyBody">
     <aside id="asideSTU">
         <section id="section1">
+            <div>이름</div>
             <div>결석</div>
             <div>지각</div>
             <div>조퇴</div>
             <div>결과</div>
-            <div>특기사항</div>
         </section>
 
         <section id="section2">
             <input type="hidden" id="pickStudentCode" th:value="${pickStudentCode}">
-            <div th:text="${absentCount}" th:value="absent"></div>
-            <div th:text="${lateCount}" th:value="late"></div>
-            <div th:text="${leaveCount}" th:value="leave"></div>
-            <div th:text="${resultCount}" th:value="result"></div>
             <div></div>
+            <div th:text="${absentCount}"></div>
+            <div th:text="${lateCount}"></div>
+            <div th:text="${leaveCount}"></div>
+            <div th:text="${resultCount}"></div>
         </section>
 
         <div id="attendList">출결 사항</div>
-        <div class="attendListInput"></div>
+        <div id="attendListInput1">
+            <div class="attendListInput"></div>
+
+        </div>
+
     </aside>
 
 
@@ -128,8 +139,8 @@
     </section>
     <section id="section5">
         <div>입력란</div>
-        <input type="text" id="input1">
-        <button>복사</button>
+        <textarea id="input1"></textarea>
+        <button id="copyButton">복사</button>
     </section>
 </article>
 
@@ -192,6 +203,7 @@
         pickStudent.submit();
     }
 
+    // 추천문구
     const selectBox = document.getElementById('recommendSelect');
     const recommendDiv = document.querySelector('.recommend');
 
@@ -204,21 +216,23 @@
                 console.log(data)
                 let recommends = '';
                 data.forEach(item => {
-                    recommends += '<p>' + item.content + '</p>'
+                    recommends += '<p style="font-family: Inter">' + item.content + '</p>'
                 })
 
                 recommendDiv.innerHTML = recommends;
             })
     });
 
-    const attendSelect = document.getElementById('asideSTU');
+    const attendSelect = document.getElementById('section1');
     const attendResultDiv = document.querySelector('.attendListInput');
     const pickStudentCodeElement = document.getElementById('pickStudentCode');
     const pickStudentCode = pickStudentCodeElement.value;
 
+
+    // 출결 사항
     attendSelect.addEventListener('click', function (event) {
         if (event.target.tagName === 'DIV') {
-            const selectedAttend = event.target.getAttribute('th:value');
+            const selectedAttend = event.target.textContent.trim();
 
             fetch(`/management/${selectedAttend}`, {
                 method: 'POST',
@@ -232,13 +246,33 @@
                     console.log(data)
                     let details = '';
                     data.forEach(item => {
-                        details += '<p>' + item.kind + item.content + item.regist + '</p>'
+                        details += '<p style="font-family: Inter">' + item.kind + item.content + item.regist + '</p>'
                     })
 
                     attendResultDiv.innerHTML = details;
                 })
         }
     })
+
+    const divHover = document.querySelectorAll('#section1 div');
+    divHover.forEach(div => {
+        div.addEventListener('mouseover', function (event) {
+            div.style.cursor = 'pointer';
+        });
+        div.addEventListener('mouseout', function (event) {
+            div.style.cursor = '';
+        });
+    });
+
+
+    // 입력란 복사
+    const textarea = document.getElementById('input1');
+
+    document.getElementById('copyButton').onclick = () => {
+        window.navigator.clipboard.writeText(textarea.value).then(() => {
+            alert("복사완료");
+        });
+    };
 
 </script>
 </body>

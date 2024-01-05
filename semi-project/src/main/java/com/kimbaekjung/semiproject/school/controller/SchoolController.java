@@ -136,7 +136,7 @@ public class SchoolController {
 
         schoolService.destroy(userCodes);
 
-        mv.setViewName("/school/destroy_info");
+        mv.setViewName("redirect:/");
 
         return mv;
     }

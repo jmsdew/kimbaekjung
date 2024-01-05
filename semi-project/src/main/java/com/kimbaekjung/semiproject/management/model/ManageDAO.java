@@ -21,5 +21,5 @@ public interface ManageDAO {
 
     List<RecommendDTO> recommend(int selectedOption);
 
-    List<AttendDetailDTO> attendDetail(int pickStudentCode);
+    List<AttendDetailDTO> attendDetail(String selectedAttend, int pickStudentCode);
 }

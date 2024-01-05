@@ -28,8 +28,6 @@ public class SchoolService {
     @Autowired
     private InsertDAO insertDAO;
 
-    @Autowired
-    private AttendNumDAO attendNumDAO;
 
     @Autowired
     private DeleteDAO deleteDAO;
@@ -51,6 +49,9 @@ public class SchoolService {
 
     @Autowired
     private ReplyDAO replyDAO;
+
+    @Autowired
+    private OneStudentDAO oneStudentDAO;
 
 
     public List<SchoolDTO> oneName(int userCodes) {
@@ -104,10 +105,6 @@ public class SchoolService {
 //        return nameOne;
 //    }
 
-    public List<AttendNumDTO> getStudentDetail(int studentCode) {
-        List<AttendNumDTO> attendNum = attendNumDAO.getStudentDetail(studentCode);
-        return attendNum;
-    }
 
 
     public int updateStudentByCode(UpdateDTO updateDTO) {
@@ -144,5 +141,25 @@ public class SchoolService {
     public List<ReplyDTO> propReply(int propCode) {
         List<ReplyDTO> propReply = replyDAO.propReply(propCode);
         return propReply;
+    }
+
+    public List<OneStudentDTO> oneStudent(int studentCode) {
+        List<OneStudentDTO> absent = oneStudentDAO.absent(studentCode);
+        return absent;
+    }
+
+    public List<OneStudentDTO> lateL(int studentCode) {
+        List<OneStudentDTO> late = oneStudentDAO.late(studentCode);
+        return late;
+    }
+
+    public List<OneStudentDTO> leaveL(int studentCode) {
+        List<OneStudentDTO> leave = oneStudentDAO.leave(studentCode);
+        return leave;
+    }
+
+    public List<OneStudentDTO> resultL(int studentCode) {
+        List<OneStudentDTO> result = oneStudentDAO.result(studentCode);
+        return result;
     }
 }
