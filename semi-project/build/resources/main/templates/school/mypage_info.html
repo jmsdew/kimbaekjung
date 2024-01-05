@@ -99,14 +99,12 @@
         <tr th:each="name, index : ${names}">
             <button class="nameBtn1"
                     th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'"
-                    th:text="${name.studentName}"
-                    th:attr="data-index=${index.index + 1}">
-                <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>
+                    th:text="${name.studentName}">
             </button>
         </tr>
 
-
-
+<!--        <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>-->
+<!--        th:attr="data-index=${index.index + 1}">-->
 
     </section>
 <!--    <tr th:each="attendNums : ${attendNum}">-->
@@ -142,7 +140,7 @@
             <div id="color2">지각</div>
             <div id="color3">조퇴</div>
             <div id="color4">결과</div>
-            <div id="color5">특기사항</div>
+<!--            <div id="color5">특기사항</div>-->
         </div>
 
         <div>
@@ -150,7 +148,7 @@
             <div id="late"></div>
             <div id="early"></div>
             <div id="attendResult"></div>
-            <div id="feature"></div>
+<!--            <div id="feature"></div>-->
         </div>
     </section>
 
@@ -262,6 +260,10 @@
 
      const updateNameValue = document.getElementById('updateInput');
 
+     let absentCount = 0;
+     let lateCount = 0;
+     let leaveCount = 0;
+     let resultCount = 0;
      function onClickStudentHandler(studentCode) {
          background.classList.add('show');
          popup0.classList.add('show');
@@ -270,16 +272,45 @@
          fetch(`/student/popup_info/${studentCode}`, {
              method: 'GET',
          })
-             .then(res => res.json())
+             .then(response => response.json()) // JSON 형식으로 변환
              .then(data => {
-                 console.log(data);
-                 const convert = data.reduce((acc, cur) => {
-                     return { ...acc, [cur.attendKind]: cur.count };
-                 }, {});
+                //  absentCount = data;
+                // console.log("asdasdasdsa" + absentCount);
+                     absentCount = data.absentCount || "0";
 
-                 console.log(convert);
+                     lateCount = data.lateCount || "0";
+
+                     leaveCount = data.leaveCount || "0";
+
+                     resultCount = data.resultCount || "0";
              });
-     }
+         }
+
+     /*<![CDATA[*/
+     document.addEventListener('DOMContentLoaded', function() {
+         var buttons = document.querySelectorAll('.nameBtn1');
+
+         buttons.forEach(function(button) {
+             button.addEventListener('click', function() {
+                 var name = button.innerText;
+                 // var currentAbsentCount = absentCount || document.getElementById('absent').innerText;
+                 var currentAbsentCount = absentCount !== 0 ? absentCount : document.getElementById('absent').innerText;
+                 var currentLateCount = lateCount !== 0 ? lateCount : document.getElementById('late').innerText;
+                 var currentLeaveCount = leaveCount !== 0 ? leaveCount : document.getElementById('early').innerText;
+                 var currentResultCount = resultCount !== 0 ? resultCount : document.getElementById('attendResult').innerText;
+                 console.log(currentAbsentCount);
+                 console.log(currentResultCount);
+                 document.getElementById('namePopup0').innerText = name;
+                 document.getElementById('absent').innerText = currentAbsentCount;
+                 document.getElementById('late').innerText = currentLateCount;
+                 document.getElementById('early').innerText = currentLeaveCount;
+                 document.getElementById('attendResult').innerText = currentResultCount;
+
+             });
+         });
+     });
+     /*]]>*/
+
 
 
      let selectedStudentCode = 0;
@@ -640,24 +671,6 @@
 
 
 
-
-     /*<![CDATA[*/
-     document.addEventListener('DOMContentLoaded', function() {
-         var buttons = document.querySelectorAll('.nameBtn1');
-
-         buttons.forEach(function(button, index) {
-             button.addEventListener('click', function() {
-                 var name = button.innerText;
-                 document.getElementById('namePopup0').innerText = name;
-                 // document.getElementById('absent').innerText =;
-                 // document.getElementById('late').innerText =;
-                 // document.getElementById('early').innerText =;
-                 // document.getElementById('attendResult').innerText =;
-                 // document.getElementById('feature').innerText =;
-             });
-         });
-     });
-     /*]]>*/
 
 
  </script>
