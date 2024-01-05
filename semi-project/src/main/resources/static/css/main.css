@@ -908,3 +908,95 @@ select {
   font-size: 1.25rem;
   cursor: pointer;
 }
+/*************************  모달 창 꾸미기 *************************************/
+
+#modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+#modal1 {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+#modal2 {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+#modal3 {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+#modal4 {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: -10%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+#closeModal {
+  background-color: white;
+  font-size: 28px;
+  width: 10%;
+  border: none;
+  position: relative;
+  left: 90%;
+}
+#closeModal1, #closeModal2, #closeModal3, #closeModal4 {
+  background-color: white;
+  font-size: 28px;
+  width: 10%;
+  border: none;
+  position: relative;
+  left: 80%;
+}
+#backModal1, #backModal2, #backModal3, #backModal4{
+  background-color: white;
+  font-size: 28px;
+  width: 10%;
+  border: none;
+  position: relative;
+  left: 80%;
+}
+.cancel {
+  background-color: white;
+  float: none;
+  font-size: 20px;
+  width: 10%;
+  border: none;
+  position: relative;
+  left: -20%;
+}
