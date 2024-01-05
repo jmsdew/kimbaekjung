@@ -10,7 +10,14 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 </head>
-
+<style>
+    #input1 {
+        top: 40px;
+        position: relative;
+        width: 100%;
+        height: 88%;
+    }
+</style>
 <body>
 <header class="navbox">
     <nav>
@@ -68,10 +75,10 @@
 
         <section id="section2">
             <input type="hidden" id="pickStudentCode" th:value="${pickStudentCode}">
-            <div th:text="${absentCount}" th:value="absent"></div>
-            <div th:text="${lateCount}" th:value="late"></div>
-            <div th:text="${leaveCount}" th:value="leave"></div>
-            <div th:text="${resultCount}" th:value="result"></div>
+            <div th:text="${absentCount}"></div>
+            <div th:text="${lateCount}"></div>
+            <div th:text="${leaveCount}"></div>
+            <div th:text="${resultCount}"></div>
             <div></div>
         </section>
 
@@ -128,8 +135,8 @@
     </section>
     <section id="section5">
         <div>입력란</div>
-        <input type="text" id="input1">
-        <button>복사</button>
+        <textarea id="input1"></textarea>
+        <button id="copyButton">복사</button>
     </section>
 </article>
 
@@ -192,6 +199,7 @@
         pickStudent.submit();
     }
 
+    // 추천문구
     const selectBox = document.getElementById('recommendSelect');
     const recommendDiv = document.querySelector('.recommend');
 
@@ -211,14 +219,16 @@
             })
     });
 
-    const attendSelect = document.getElementById('asideSTU');
+    const attendSelect = document.getElementById('section1');
     const attendResultDiv = document.querySelector('.attendListInput');
     const pickStudentCodeElement = document.getElementById('pickStudentCode');
     const pickStudentCode = pickStudentCodeElement.value;
 
+
+    // 출결 사항
     attendSelect.addEventListener('click', function (event) {
         if (event.target.tagName === 'DIV') {
-            const selectedAttend = event.target.getAttribute('th:value');
+            const selectedAttend = event.target.textContent.trim();
 
             fetch(`/management/${selectedAttend}`, {
                 method: 'POST',
@@ -239,6 +249,26 @@
                 })
         }
     })
+
+    const divHover = document.querySelectorAll('#section1 div');
+    divHover.forEach(div => {
+        div.addEventListener('mouseover', function (event) {
+            div.style.cursor = 'pointer';
+        });
+        div.addEventListener('mouseout', function (event) {
+            div.style.cursor = '';
+        });
+    });
+
+
+    // 입력란 복사
+    const textarea = document.getElementById('input1');
+
+    document.getElementById('copyButton').onclick = () => {
+        window.navigator.clipboard.writeText(textarea.value).then(() => {
+            alert("복사완료");
+        });
+    };
 
 </script>
 </body>
