@@ -29,6 +29,7 @@
         <mapper resource="mapper/school/mapper.xml" />
         <mapper resource="mapper/school/mapper1.xml" />
         <mapper resource="mapper/school/StudentNum.xml"/>
+        <mapper resource="mapper/school/AttendList.xml"/>
         <mapper resource="mapper/school/propose.xml" />
         <mapper resource="mapper/school/Writing.xml"/>
         <mapper resource="mapper/school/Insert.xml" />

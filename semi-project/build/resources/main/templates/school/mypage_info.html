@@ -92,25 +92,16 @@
 
     <section id="namelist">
 
-<!--            <tr th:each="name : ${names}">-->
-<!--                <button class="nameBtn1" th:text="${name.studentName}"></button>-->
-<!--            </tr>-->
 
         <tr th:each="name, index : ${names}">
             <button class="nameBtn1"
-                    th:onclick="'onClickStudentHandler(\'' + ${name.studentCode} + '\')'"
+                    th:onclick="'onClickStudentHandlerBoth(\'' + ${name.studentCode} + '\')'"
                     th:text="${name.studentName}">
             </button>
         </tr>
 
-<!--        <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>-->
-<!--        th:attr="data-index=${index.index + 1}">-->
-
     </section>
-<!--    <tr th:each="attendNums : ${attendNum}">-->
-<!--        <button th:text="${attendNums.attendKind}"></button>-->
-<!--        <button th:text="${attendNums.count}"></button>-->
-<!--    </tr>-->
+
 
     <div id ="line">
         <button id="showPopupButton">관리</button>
@@ -140,7 +131,6 @@
             <div id="color2">지각</div>
             <div id="color3">조퇴</div>
             <div id="color4">결과</div>
-<!--            <div id="color5">특기사항</div>-->
         </div>
 
         <div>
@@ -148,32 +138,19 @@
             <div id="late"></div>
             <div id="early"></div>
             <div id="attendResult"></div>
-<!--            <div id="feature"></div>-->
         </div>
     </section>
 
-     <div class="attendance">
-         <div>
-             <h3>출결사유</h3>
-             <h3 id="word1">출석인정</h3>
-             <div id="date1"></div>
-             <div id="attend1"></div>
-             <div id="agree"></div>
-             <div id="statusContent"></div>
-         </div>
-     </div>
-
-<!--     <div class="attendance">-->
-<!--         <div th:each="attendNums:${attendNum}">-->
+     <div id="attendance">
+<!--         <div id="kucu">-->
 <!--             <h3>출결사유</h3>-->
 <!--             <h3 id="word1">출석인정</h3>-->
-<!--             <div id="date1" th:text="${attendNums.date}"></div>-->
-<!--             <div id="attend1" th:text="${attendNums.kind}"></div>-->
-<!--             <div id="agree" th:text="${attendNums.status}"></div>-->
-<!--             <div id="statusContent" th:text="${attendNums.reason}"></div>-->
+<!--             <div id="date1"></div>-->
+<!--             <div id="attend1"></div>-->
+<!--             <div id="agree"></div>-->
+<!--             <div id="statusContent"></div>-->
 <!--         </div>-->
-<!--     </div>-->
-
+     </div>
 
 
      <div class="buttons">
@@ -246,70 +223,136 @@
      const regist2 = document.querySelector('.popup_regist2');
      const cancel2= document.querySelector('.popup_cancel2');
      const cancel= document.querySelector('.popup_cancel');
-     const nameBtn1= document.querySelectorAll('.nameBtn1');
      const popup0 = document.querySelector('.popup0');
-     // const namePopup0 =document.querySelector('#namePopup0');
-     // const nameBtns = document.querySelectorAll('.nameBtn2');
+     const popupRegist = document.querySelector('.popup_regist');
 
      const addNameForm = document.getElementById('addName');
      const updateNameForm = document.getElementById('updateName');
      const deleteName = document.getElementById('deleteName');
      const nameListSection = document.getElementById('namelist');
      const popupListSection = document.getElementById('popupList');
-     const popupNameButton = document.querySelector('.nameBtn2');
-
      const updateNameValue = document.getElementById('updateInput');
 
-     let absentCount = 0;
-     let lateCount = 0;
-     let leaveCount = 0;
-     let resultCount = 0;
+
+
+
+
+
+
+     function onClickStudentHandlerBoth(studentCode){
+         onClickStudentHandler(studentCode);
+         attendList(studentCode);
+     }
+
+
+     function formatDate(dateString) {
+         const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+         return new Date(dateString).toLocaleDateString('ko-KR', options);
+     }
+
+     function attendList(studentCode){
+         fetch(`/student/popup_attend/${studentCode}`,{
+             method: 'GET',
+         })
+             .then(response => response.json())
+             .then(res =>{
+                let html = '';
+                let text = '';
+                res.forEach(element => {
+                    text = `
+                               <div class="kucu">
+                                 <h3 class="word2">출결사유</h3>
+                                 <h3 class="word1">출석인정</h3>
+                                 <div class="date1">${formatDate(element.registDate)}</div>
+                                 <div class="attend1">${element.attendKind}</div>
+                                 <div class="agree">
+                                 <div class="statusResult">${element.status}</div>
+                                 <button class="status1" onclick="updateStatusY('${element.attendCode}')">Y</button>
+                                 <button class="status2" onclick="updateStatusN('${element.attendCode}')">N</button>
+                                 </div>
+                                 <div class="statusContent">${element.reason}</div>
+                               </div>
+                           `;
+                    html += text;
+                });
+                document.getElementById('attendance').innerHTML = html;
+             })
+     }
+
+
+     // <select className="agree">
+     //     <option value="default">${element.status}</option>
+     //     <option value="1" onClick="updateStatus('${element.attendCode}')">Y</option>
+     //     <option value="2">N</option>
+     // </select>
+     function updateStatusY(attendCode){
+         const data = { attendCode: attendCode};
+
+         fetch(`/student/update_attendanceY/${attendCode}`,{
+             method:'POST',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+         })
+
+     }
+
+     function updateStatusN(attendCode){
+         const data = { attendCode: attendCode};
+
+         fetch(`/student/update_attendanceN/${attendCode}`,{
+             method:'POST',
+             headers: {
+                 'Content-Type': 'application/json'
+             },
+             body: JSON.stringify(data)
+         })
+     }
+
+
+     var absent = document.getElementById('absent');
+     var late = document.getElementById('late');
+     var early = document.getElementById('early');
+     var attendResult = document.getElementById('attendResult');
+     //결석, 지각, 조퇴, 결과의 카운트 불러오는 기능
      function onClickStudentHandler(studentCode) {
          background.classList.add('show');
          popup0.classList.add('show');
 
-         console.log(studentCode);
          fetch(`/student/popup_info/${studentCode}`, {
              method: 'GET',
          })
              .then(response => response.json()) // JSON 형식으로 변환
              .then(data => {
+                 console.log(data);
                 //  absentCount = data;
                 // console.log("asdasdasdsa" + absentCount);
-                     absentCount = data.absentCount || "0";
+                 absent.innerHTML = data.absentCount || "0";
 
-                     lateCount = data.lateCount || "0";
 
-                     leaveCount = data.leaveCount || "0";
+                     late.innerHTML = data.lateCount || "0";
 
-                     resultCount = data.resultCount || "0";
+                     early.innerHTML = data.leaveCount || "0";
+
+                     attendResult.innerHTML = data.resultCount || "0";
              });
          }
 
-     /*<![CDATA[*/
+
+     //팝업 위에 이름 불러오는 기능
      document.addEventListener('DOMContentLoaded', function() {
          var buttons = document.querySelectorAll('.nameBtn1');
 
          buttons.forEach(function(button) {
              button.addEventListener('click', function() {
                  var name = button.innerText;
-                 // var currentAbsentCount = absentCount || document.getElementById('absent').innerText;
-                 var currentAbsentCount = absentCount !== 0 ? absentCount : document.getElementById('absent').innerText;
-                 var currentLateCount = lateCount !== 0 ? lateCount : document.getElementById('late').innerText;
-                 var currentLeaveCount = leaveCount !== 0 ? leaveCount : document.getElementById('early').innerText;
-                 var currentResultCount = resultCount !== 0 ? resultCount : document.getElementById('attendResult').innerText;
-                 console.log(currentAbsentCount);
-                 console.log(currentResultCount);
-                 document.getElementById('namePopup0').innerText = name;
-                 document.getElementById('absent').innerText = currentAbsentCount;
-                 document.getElementById('late').innerText = currentLateCount;
-                 document.getElementById('early').innerText = currentLeaveCount;
-                 document.getElementById('attendResult').innerText = currentResultCount;
 
+                 document.getElementById('namePopup0').innerText = name;
              });
          });
      });
-     /*]]>*/
+
 
 
 
@@ -385,6 +428,169 @@
              });
 
      });
+
+
+
+     addNameForm.addEventListener("submit", function (event) {
+         event.preventDefault(); //submit 등 모든 이벤트 무효화
+         const formData = new FormData(event.target); //위의 form 태그 안의 데이터들을 넣는 기능
+
+         fetch('/student/add', {
+             method: 'POST',
+             body: formData,
+         })
+             .then(response => response.json())
+             .then(res => {
+                 generatorList(res);
+             })
+             .catch(error => {
+                 console.log(error);
+             });
+
+     });
+
+
+
+     function generatorList(data) {
+         let html = '';
+         let text = '';
+         let html1 = '';
+         let text1 = '';
+         data.forEach(element => {
+             const { studentName, studentCode } = element;
+             console.log(element);
+             text = `
+                      <tr>
+                          <button class="nameBtn1" onclick="onClickStudentHandler(event)">${studentName}</button>
+                      </tr>
+                     `;
+
+             text1 = `
+                      <tr>
+                           <button class="nameBtn2" onclick="onClickStudentHandler1(event, ${studentCode}, '${studentName}')">${studentName}</button>
+                      </tr>
+                      `;
+             html += text;
+             html1 += text1;
+         });
+         nameListSection.innerHTML = html;
+         popupListSection.innerHTML = html1;
+     }
+
+
+
+     popupButton.addEventListener('click', function() {
+         popup1.classList.add('show');
+         background.classList.add('show');
+     });
+
+
+     background.addEventListener('click', function (){
+         background.classList.remove('show');
+         popup2.classList.remove('show');
+         popup1.classList.remove('show');
+         popup.classList.remove('show');
+         popup0.classList.remove('show');
+     });
+
+
+     regist1.addEventListener('click', function (){
+         popup.classList.remove('show');
+     })
+
+     cancel1.addEventListener('click', function (){
+         popup.classList.remove('show');
+     })
+
+     regist2.addEventListener('click', function (){
+         popup2.classList.remove('show');
+     })
+
+     cancel2.addEventListener('click', function (){
+         popup2.classList.remove('show');
+     })
+
+    addStudentButton.addEventListener('click',function (){
+        popup.classList.add('show');
+    });
+
+     updatePopupStu.addEventListener('click',function (){
+         popup2.classList.add('show');
+         updateNameValue.value = selectedStudentName;
+     })
+
+
+     popupRegist.addEventListener('click', function (){
+         popup0.classList.remove('show');
+         background.classList.remove('show');
+     })
+
+     cancel.addEventListener('click', function (){
+         popup0.classList.remove('show');
+         background.classList.remove('show');
+     })
+
+
+     // <!--            <tr th:each="name : ${names}">-->
+     //     <!--                <button class="nameBtn1" th:text="${name.studentName}"></button>-->
+     //     <!--            </tr>-->
+     //     <!--        <a th:href="@{/school/one_student(studentCode=${name.studentCode})}"></a>-->
+     //     <!--        th:attr="data-index=${index.index + 1}">-->
+     //     <!--    <tr th:each="attendNums : ${attendNum}">-->
+     //     <!--        <button th:text="${attendNums.attendKind}"></button>-->
+     //     <!--        <button th:text="${attendNums.count}"></button>-->
+     //     <!--    </tr>-->
+
+     // <!--     <div class="attendance">-->
+     //     <!--         <div th:each="attendNums:${attendNum}">-->
+     //     <!--             <h3>출결사유</h3>-->
+     //     <!--             <h3 id="word1">출석인정</h3>-->
+     //     <!--             <div id="date1" th:text="${attendNums.date}"></div>-->
+     //     <!--             <div id="attend1" th:text="${attendNums.kind}"></div>-->
+     //     <!--             <div id="agree" th:text="${attendNums.status}"></div>-->
+     //     <!--             <div id="statusContent" th:text="${attendNums.reason}"></div>-->
+     //     <!--         </div>-->
+     //     <!--     </div>-->
+
+     //
+     // let absentCount = 0;
+     // let lateCount = 0;
+     // let leaveCount = 0;
+     // let resultCount = 0;
+     // const nameBtn1= document.querySelectorAll('.nameBtn1');
+     // const popupNameButton = document.querySelector('.nameBtn2');
+
+     // function addEventListenersToNameBtn2() {
+     //     const nameBtn2 = document.querySelectorAll('.nameBtn2');
+     //     nameBtn2.forEach(nameBtn => {
+     //         nameBtn.addEventListener('click', function () {
+     //             // 모든 버튼의 클래스 초기화
+     //             nameBtn2.forEach(btn => btn.classList.remove('selected'));
+     //
+     //             // 클릭된 버튼에 새로운 클래스 추가
+     //             nameBtn.classList.add('selected');
+     //         });
+     //     });
+     // }
+     //
+     // document.addEventListener('DOMContentLoaded', function () {
+     //     // 페이지가 로드되면 실행되는 코드
+     //
+     //     addEventListenersToNameBtn2();
+     // });
+
+
+     // nameBtn1.addEventListener('click',function (){
+     //     background.classList.add('show');
+     //     popup0.classList.add('show');
+     // })
+
+     // nameBtn1.forEach(nameBtn => {
+     //     nameBtn.addEventListener('click', function () {
+     //         background.classList.add('show');
+     //         popup0.classList.add('show');
+     //     });
+     // });
      // function onClickStudentHandler1(studentCode) {
      //
      //     console.log(studentCode);
@@ -520,158 +726,29 @@
      // })
      // **************************************************************
 
-
-     addNameForm.addEventListener("submit", function (event) {
-         event.preventDefault(); //submit 등 모든 이벤트 무효화
-         const formData = new FormData(event.target); //위의 form 태그 안의 데이터들을 넣는 기능
-         // const name = formData.get('name');
-         // console.log(name);
-         //
-         // fetch('/school/regist', {
-         //     method: 'POST',
-         //     body: formData,
-         // })
-         // .then(data => {
-         //     console.log('hello')
-         //     fetch('/student/list',{
-         //         method: 'GET',
-         //     })
-         //         .then(response => response.json())
-         //         .then(res => {
-         //             console.log(res);
-         //         })
-         //         .catch(error => {
-         //             console.log(error);
-         //         });
-         // })
-         // .catch(error => {
-         //     console.log(error);
-         // })
-         fetch('/student/add', {
-             method: 'POST',
-             body: formData,
-         })
-             .then(response => response.json())
-             .then(res => {
-                 generatorList(res);
-             })
-             .catch(error => {
-                 console.log(error);
-             });
-
-     });
-
-     function generatorList(data) {
-         let html = '';
-         let text = '';
-         let html1 = '';
-         let text1 = '';
-         data.forEach(element => {
-             const { studentName, studentCode } = element;
-             console.log(element);
-             text = `
-                      <tr>
-                          <button class="nameBtn1" onclick="onClickStudentHandler(event)">${studentName}</button>
-                      </tr>
-                     `;
-
-             text1 = `
-                      <tr>
-                           <button class="nameBtn2" onclick="onClickStudentHandler1(event, ${studentCode}, '${studentName}')">${studentName}</button>
-                      </tr>
-                      `;
-             html += text;
-             html1 += text1;
-         });
-         nameListSection.innerHTML = html;
-         popupListSection.innerHTML = html1;
-     }
-
-
-
-     // function addEventListenersToNameBtn2() {
-     //     const nameBtn2 = document.querySelectorAll('.nameBtn2');
-     //     nameBtn2.forEach(nameBtn => {
-     //         nameBtn.addEventListener('click', function () {
-     //             // 모든 버튼의 클래스 초기화
-     //             nameBtn2.forEach(btn => btn.classList.remove('selected'));
+     // const name = formData.get('name');
+     // console.log(name);
      //
-     //             // 클릭된 버튼에 새로운 클래스 추가
-     //             nameBtn.classList.add('selected');
-     //         });
-     //     });
-     // }
-     //
-     // document.addEventListener('DOMContentLoaded', function () {
-     //     // 페이지가 로드되면 실행되는 코드
-     //
-     //     addEventListenersToNameBtn2();
-     // });
-
-
-
-
-     console.log(cancel);
-
-     popupButton.addEventListener('click', function() {
-         popup1.classList.add('show');
-         background.classList.add('show');
-     });
-
-     background.addEventListener('click', function (){
-         background.classList.remove('show');
-         popup2.classList.remove('show');
-         popup1.classList.remove('show');
-         popup.classList.remove('show');
-         popup0.classList.remove('show');
-     });
-
-     regist1.addEventListener('click', function (){
-         popup.classList.remove('show');
-     })
-
-     cancel1.addEventListener('click', function (){
-         popup.classList.remove('show');
-     })
-
-     regist2.addEventListener('click', function (){
-         popup2.classList.remove('show');
-     })
-
-     cancel2.addEventListener('click', function (){
-         popup2.classList.remove('show');
-     })
-
-    addStudentButton.addEventListener('click',function (){
-        popup.classList.add('show');
-    });
-
-     updatePopupStu.addEventListener('click',function (){
-         popup2.classList.add('show');
-         updateNameValue.value = selectedStudentName;
-     })
-
-     // nameBtn1.addEventListener('click',function (){
-     //     background.classList.add('show');
-     //     popup0.classList.add('show');
+     // fetch('/school/regist', {
+     //     method: 'POST',
+     //     body: formData,
      // })
-
-     // nameBtn1.forEach(nameBtn => {
-     //     nameBtn.addEventListener('click', function () {
-     //         background.classList.add('show');
-     //         popup0.classList.add('show');
-     //     });
-     // });
-
-     cancel.addEventListener('click', function (){
-         popup0.classList.remove('show');
-         background.classList.remove('show');
-     })
-
-
-
-
-
+     // .then(data => {
+     //     console.log('hello')
+     //     fetch('/student/list',{
+     //         method: 'GET',
+     //     })
+     //         .then(response => response.json())
+     //         .then(res => {
+     //             console.log(res);
+     //         })
+     //         .catch(error => {
+     //             console.log(error);
+     //         });
+     // })
+     // .catch(error => {
+     //     console.log(error);
+     // })
 
  </script>
 

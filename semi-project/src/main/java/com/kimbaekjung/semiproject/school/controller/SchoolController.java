@@ -93,9 +93,9 @@ public class SchoolController {
 
     @PostMapping("searchNoti")
     public ModelAndView searchNoti(ModelAndView mv, @RequestParam String keyword) {
-        System.out.println("keyword : " + keyword);
+
         List<SearchNotiDTO> searchNoti = schoolService.searchNoti(keyword);
-        System.out.println(searchNoti.toString());
+
 
         mv.addObject("searchNoti", searchNoti);
         mv.setViewName("/school/noti_search");
@@ -105,9 +105,9 @@ public class SchoolController {
 
     @PostMapping("searchProp")
     public ModelAndView searchProp(ModelAndView mv, @RequestParam String keyword) {
-        System.out.println("keyword : " + keyword);
+
         List<SearchPropDTO> searchProp = schoolService.searchProp(keyword);
-        System.out.println(searchProp.toString());
+
 
         mv.addObject("searchProp", searchProp);
         mv.setViewName("/school/propose_search");
@@ -203,9 +203,7 @@ public class SchoolController {
 
     @GetMapping("one_noti")
     public ModelAndView oneNoti(ModelAndView mv, @RequestParam int notiCode, @RequestParam String notiName, @RequestParam String notiContent, @RequestParam String notiDate){
-        System.out.println(notiCode);
-        System.out.println(notiContent);
-        System.out.println(notiDate);
+
 
 //        NotificationDTO oneNoti= schoolService.oneNoti();
 
@@ -216,7 +214,6 @@ public class SchoolController {
         mv.addObject("notiDate", notiDate);
         mv.setViewName("/school/one_noti");
 
-        System.out.println(mv);
         return mv;
     }
 
@@ -249,7 +246,7 @@ public ModelAndView oneProp(ModelAndView mv,
     mv.addObject("propDate",propDate);
     mv.setViewName("/school/one_propose");
 
-    System.out.println(mv);
+
     return mv;
 
 }

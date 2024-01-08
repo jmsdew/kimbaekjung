@@ -162,4 +162,21 @@ public class SchoolService {
         List<OneStudentDTO> result = oneStudentDAO.result(studentCode);
         return result;
     }
+
+    public List<AttendListDTO> attendList(int studentCode){
+        List<AttendListDTO> attendList = oneStudentDAO.attendList(studentCode);
+        return attendList;
+    }
+
+    public int updateAttend(int attendCode) {
+        oneStudentDAO.updateAttend(attendCode);
+        return  oneStudentDAO.updateAttend(attendCode);
+    }
+
+    public int updateAttendN(int attendCode) {
+        oneStudentDAO.updateAttendN(attendCode);
+        return oneStudentDAO.updateAttendN(attendCode);
+    }
+
+
 }

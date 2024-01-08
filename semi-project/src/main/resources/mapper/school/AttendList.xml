@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kimbaekjung.semiproject.school.model.OneStudentDAO">
+
+    <resultMap id="AttendList" type="com.kimbaekjung.semiproject.school.dto.AttendListDTO">
+        <id property="attendCode" column="ATTEND_CODE"/>
+        <result property="registDate" column="REGIST_DATE"/>
+        <result property="attendKind" column="ATTEND_KIND"/>
+        <result property="reason" column="REASON"/>
+        <result property="status" column="ATTEND_STATUS"/>
+    </resultMap>
+
+
+    <select id="attendList" resultMap="AttendList">
+        SELECT
+            ATTEND_CODE,
+            REGIST_DATE,
+            ATTEND_KIND,
+            REASON,
+            ATTEND_STATUS
+           FROM attend
+          WHERE STUDENT_CODE = #{studentCode};
+    </select>
+
+
+
+    <update id="updateAttend">
+        UPDATE ATTEND
+        SET ATTEND_STATUS = 'Y'
+        WHERE ATTEND_CODE = #{attendCode};
+    </update>
+
+    <update id="updateAttendN">
+        UPDATE ATTEND
+        SET ATTEND_STATUS = 'N'
+        WHERE ATTEND_CODE = #{attendCode};
+    </update>
+</mapper>
