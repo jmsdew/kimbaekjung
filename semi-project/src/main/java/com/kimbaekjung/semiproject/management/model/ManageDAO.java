@@ -7,6 +7,8 @@ import java.util.List;
 
 @Mapper
 public interface ManageDAO {
+
+    List<studentNameDTO> name(int pickStudentCode);
     List<manageDTO> picks(int userCode);
 
     List<AttendDTO> absent(int pickStudentCode);

@@ -41,6 +41,8 @@ public class manageController {
         List<manageDTO> picks = manageService.pickName(userCode);
         mv.addObject("picks",picks);
 
+        List<studentNameDTO> name = manageService.name(pickStudentCode);
+        System.out.println(name);
         // 출석 결과
         List<AttendDTO> absentList = manageService.absent(pickStudentCode);
         int absentCount = absentList.size();
@@ -54,6 +56,7 @@ public class manageController {
         List<AttendDTO> resultList = manageService.result(pickStudentCode);
         int resultCount = resultList.size();
 
+        mv.addObject("name", name);
         mv.addObject("pickStudentCode", pickStudentCode);
         mv.addObject("absentCount", absentCount);
         mv.addObject("lateCount", lateCount);

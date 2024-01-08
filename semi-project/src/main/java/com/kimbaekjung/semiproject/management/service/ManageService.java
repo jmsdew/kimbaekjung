@@ -22,6 +22,12 @@ public class ManageService {
         return picks;
     }
 
+    public List<studentNameDTO> name(int pickStudentCode) {
+       List<studentNameDTO> name = manageDAO.name(pickStudentCode);
+
+       return name;
+    }
+
     public List<AttendDTO> absent(int pickStudentCode) {
         List<AttendDTO> absentList = manageDAO.absent(pickStudentCode);
 

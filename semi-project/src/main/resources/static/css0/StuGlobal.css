@@ -186,6 +186,11 @@ header nav ul li button a{
     height: 42px;
     top: 3px;
 }
+
+#attendListInput1{
+    position: absolute;
+    bottom: 40%;
+}
 #section1{
     top: 0;
     left: 0;
