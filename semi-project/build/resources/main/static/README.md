@@ -34,3 +34,10 @@
 - Kakao Login API 를 이용해 카카오 로그인을 이용해야만 웹을 이용 가능
 - SSL을 사용한 HTTPS 보안 설정
 
+프로젝트 아키텍처
+---
+<img src=img/project.png>
+
+ERD
+---
+<img src=img/erd.png>
