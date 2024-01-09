@@ -1,1002 +1,994 @@
+html{
+    scroll-behavior: smooth;
+}
+a, a:link, a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'bitbit';
+    background-color: rgba(6,97,26,1);
+}
 
 /********************************************시간표 제작************************************************/
-
 .time-line{
-  width: 25rem;
-  height: 48.75rem;
-  background-color: rgba(255,225,80,1);
-  opacity: 1;
-  position: absolute;
-  top: 10.3125rem;
-  left: 0;
-  border-top-right-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
-  overflow: hidden;
-  border: 0.625rem solid white;
-  border-left: 0rem;
+    width: 25rem;
+    height: 75%;
+    background-color: rgba(255,225,80,1);
+    opacity: 1;
+    position: absolute;
+    top: 10.3125rem;
+    left: 0;
+    border-top-right-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
+    overflow: hidden;
+    border: 0.625rem solid white;
+    border-left: 0rem;
 }
 .class-box {
-  width: 21.875rem;
-  height: 4.6875rem;
-  background-color: rgba(255,225,80,1);
-  margin-top: 1.875rem;
-  margin-left: 0.625rem;
-  left: 1.25rem;
-  align-items: center;
+    width: 21.875rem;
+    height: 4.6875rem;
+    background-color: rgba(255,225,80,1);
+    margin-top: 1.875rem;
+    margin-left: 0.625rem;
+    left: 1.25rem;
+    align-items: center;
 }
-
 .first-class{
-  width: 16.875rem;
-  height: 4.6875rem;
-  background-color: rgba(254,239,197,1);
-  opacity: 1;
-  position: absolute;
-  border: 0.0625rem solid rgba(254,239,197,1);
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
-  overflow: hidden;
+    width: 16.875rem;
+    height: 4.6875rem;
+    background-color: rgba(254,239,197,1);
+    opacity: 1;
+    position: absolute;
+    border: 0.0625rem solid rgba(254,239,197,1);
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
+    overflow: hidden;
 }
 .first-check{
-  width: 3.75rem;
-  height: 3.125rem;
-  opacity: 1;
-  background-color: rgba(255,225,80,1);
-  position: absolute;
-  left: 18.75rem;
-  top: 3.125rem;
-
+    width: 3.75rem;
+    height: 3.125rem;
+    opacity: 1;
+    background-color: rgba(255,225,80,1);
+    position: absolute;
+    left: 18.75rem;
+    top: 3.125rem;
 }
 .bi-heart{
-  background-color: rgba(255,225,80,1);
+    background-color: rgba(255,225,80,1);
 }
 .bi-heart-fill {
-  background-color: rgba(255,225,80,1);
+    background-color: rgba(255,225,80,1);
 }
 .bi-plus-lg {
-  background-color: rgba(254,239,197,1);
+    background-color: rgba(254,239,197,1);
 }
 p {
-  font-size: 2.1875rem;
+    font-size: 2.1875rem;
 }
 #plusButton{
-  width: 18.75rem;
-  height: 3.125rem;
-  background-color: rgba(255,225,80,1);
-  opacity: 1;
-  position: absolute;
-  top: 45rem;
-  left: 1.875rem;
-  border: 0.0625rem solid  rgba(255,225,80,1);
-  overflow: hidden;
-  font-size: 1.25rem;
-  align-items: center;
+    width: 18.75rem;
+    height: 3.125rem;
+    background-color: rgba(255,225,80,1);
+    opacity: 1;
+    position: absolute;
+    top: 45rem;
+    left: 1.875rem;
+    border: 0.0625rem solid rgba(255,225,80,1);
+    overflow: hidden;
+    font-size: 1.25rem;
+    align-items: center;
 }
 #timeFont {
-  width: 16.875rem;
-  height: 4.6875rem;
-  color: rgba(0,0,0,1);
-  top: 3.8125rem;
-  left: 3.3125rem;
-  font-weight: bold;
-  font-size: 2.1875rem;
-  opacity: 1;
-  text-align: center;
-  background-color: rgba(254,239,197,1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0.0625rem solid  rgba(255,225,80,1);
+    width: 16.875rem;
+    height: 4.6875rem;
+    color: rgba(0,0,0,1);
+    top: 3.8125rem;
+    left: 3.3125rem;
+    font-weight: bold;
+    font-size: 2.1875rem;
+    opacity: 1;
+    text-align: center;
+    background-color: rgba(254,239,197,1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid rgba(255,225,80,1);
 }
-
 /****************************************************메인화면 타이머*********************************************************/
 .main-view {
-  width: 75.5%;
-  height: 48.75rem;
-  background-color: rgba(255,225,80,1);
-  opacity: 1;
-  position: relative;
-  top: 10.3125rem;
-  left: 29.625rem;
-  border-top-left-radius: 1.875rem;
-  border-bottom-left-radius: 1.875rem;
-  overflow: hidden;
-  border: 0.625rem solid white;
-  border-right: 0rem;
+    width: 76%;
+    height: 75%;
+    background-color: rgba(255,225,80,1);
+    opacity: 1;
+    position: relative;
+    top: 10.3125rem;
+    left: 29.625rem;
+    border-top-left-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
+    overflow: hidden;
+    border: 0.625rem solid white;
+    border-right: 0rem;
 }
 .stop-watch {
-  width: 100%;
-  height: 6.875rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: relative;
-  top: 0.5625rem;
-  overflow: hidden;
-  background-color: rgba(255,225,80,1);
-  border-bottom: 0.125rem solid white;
+    width: 100%;
+    height: 6.875rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: relative;
+    top: 0.5625rem;
+    overflow: hidden;
+    background-color: rgba(255,225,80,1);
+    border-bottom: 0.125rem solid white;
 }
-
 .period {
-  width: 37.5rem;
-  height: 7.5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: relative;
-  overflow: hidden;
-  align-items: center;
-  background-color: rgba(255,225,80,1);
-
+    width: 37.5rem;
+    height: 7.5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: relative;
+    overflow: hidden;
+    align-items: center;
+    background-color: rgba(255,225,80,1);
 }
 .period-text {
-  width: 37.5rem;
-  height: 7.5rem;
-  font-size: 5rem;
-  position: relative;
-  color: rgba(0,47,4,1);
-  top: 0.4375rem;
-  left: 6.25rem;
-  text-align: center;
-  align-items: center;
-  background-color: rgba(255,225,80,1);
+    width: 37.5rem;
+    height: 7.5rem;
+    font-size: 5rem;
+    position: relative;
+    color: rgba(0,47,4,1);
+    top: 0.4375rem;
+    left: 6.25rem;
+    text-align: center;
+    align-items: center;
+    background-color: rgba(255,225,80,1);
 }
 .timer {
-  width: 37.5rem;
-  height: 7.5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 0rem;
-  left: 37.5rem;
-  background-color: rgba(255,225,80,1);
+    width: 37.5rem;
+    height: 7.5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 0rem;
+    left: 37.5rem;
+    background-color: rgba(255,225,80,1);
 }
 #viewTimer {
-  width: 37.5rem;
-  height: 7.5rem;
-  position: absolute;
-  background-color: rgba(255,225,80,1);
-  font-size: 5rem;
-  top: 0.4375rem;
+    width: 37.5rem;
+    height: 7.5rem;
+    position: absolute;
+    background-color: rgba(255,225,80,1);
+    font-size: 5rem;
+    top: 0.4375rem;
 }
 .red-text {
-  color: red;
+    color: red;
 }
 .start-button {
-  width: 5rem;
-  height: 5rem;
-  position: absolute;
-  font-size: 2.5rem;
-  top: 0.4375rem;
-  left: 56.25rem;
-  cursor: pointer;
-  background-color: rgba(255,225,80,1);
-  border: none;
+    width: 5rem;
+    height: 5rem;
+    position: absolute;
+    font-size: 2.5rem;
+    top: 0.4375rem;
+    left: 56.25rem;
+    cursor: pointer;
+    background-color: rgba(255,225,80,1);
+    border: none;
 }
 /**********************************************메인화면 학교정보************************************************/
 .school-info {
-  width: 100%;
-  height: 4.375rem;
-  background-color: rgba(255,225,80,1);
-  border-bottom: 0.125rem solid white;
+    width: 100%;
+    height: 4.375rem;
+    background-color: rgba(255,225,80,1);
+    border-bottom: 0.125rem solid white;
 }
 .school-name {
-  width: 100%;
-  height: 3.125rem;
-  background-color: rgba(255,225,80,1);
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0.625rem;
+    width: 100%;
+    height: 3.125rem;
+    background-color: rgba(255,225,80,1);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0.625rem;
 }
 .school-name-name {
-  width: 37.5rem;
-  font-size: 2.5rem;
-  background-color: rgba(255,225,80,1);
-  word-spacing:0.125rem;
-  text-align: center;
+    width: 37.5rem;
+    font-size: 2.5rem;
+    background-color: rgba(255,225,80,1);
+    word-spacing:0.125rem;
+    text-align: center;
 }
 .school-name-rank {
-  width: 25rem;
-  font-size: 2.5rem;
-  text-align: center;
-  background-color: rgba(255,225,80,1);
-  word-spacing:0.125rem;
+    width: 25rem;
+    font-size: 2.5rem;
+    text-align: center;
+    background-color: rgba(255,225,80,1);
+    word-spacing:0.125rem;
 }
-
 /********************************************좌석*********************************************************/
-
 .student-seat {
-  width: 56.25rem;
-  height: 35rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  overflow: hidden;
-  background-color: rgba(255,225,80,1);
+    width: 56.25rem;
+    height: 72%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    overflow: hidden;
+    background-color: rgba(255,225,80,1);
 }
 .student-table {
-  width: 56.25rem;
-  height: 35rem;
-  position: relative;
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
-  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
-  align-content: flex-start;
-  background-color: rgba(255,225,80,1);
+    width: 56.25rem;
+    height: 100%;
+    position: relative;
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+    justify-content: flex-start;
+    /* 왼쪽에서부터 정렬 */
+    align-content: flex-start;
+    background-color: rgba(255,225,80,1);
 }
 .student-name {
-  width: 8.75rem;
-  height:3.75rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: relative;
-  border: 0.3125rem solid rgba(77,161,85,1);
-  border-radius: 1.875rem;
-  font-size: 2.8125rem;
-  text-align: center;
-  align-content: center;
-  display: block;
-  gap: 1.25rem;
-
-
+    width: 8.75rem;
+    height:3.75rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: relative;
+    border: 0.3125rem solid rgba(77,161,85,1);
+    border-radius: 1.875rem;
+    font-size: 2.8125rem;
+    text-align: center;
+    align-content: center;
+    display: block;
+    gap: 1.25rem;
 }
 #student-table {
-  margin: 1.25rem;
-  width: 56.25rem;
-  height: 35rem;
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
-  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
-  align-content: flex-start;
-  background-color: rgba(255,225,80,1);
+    margin: 1.25rem;
+    width: 56.25rem;
+    height: 100%;
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+    justify-content: flex-start;
+    /* 왼쪽에서부터 정렬 */
+    align-content: flex-start;
+    background-color: rgba(255,225,80,1);
 }
 tbody {
-  margin: 1.25rem;
-  width: 56.25rem;
-  height: 35rem;
-  display: flex;
-  gap: 1.25rem;
-  flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
-  justify-content: flex-start; /* 왼쪽에서부터 정렬 */
-  align-content: flex-start;
-  background-color: rgba(255,225,80,1);
+    margin: 1.25rem;
+    width: 56.25rem;
+    height: 35rem;
+    display: flex;
+    gap: 2%;
+    flex-wrap: wrap;
+    /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
+    justify-content: flex-start;
+    /* 왼쪽에서부터 정렬 */
+    align-content: flex-start;
+    background-color: rgba(255,225,80,1);
 }
 td {
-  background-color: rgba(255,225,80,1);
-  border: none;
+    background-color: rgba(255,225,80,1);
+    border: none;
 }
 tr {
-  background-color: rgba(255,225,80,1);
+    background-color: rgba(255,225,80,1);
 }
-
-
-
-
 /********************************************이미지,교과서,준비물*********************************************************/
 .study-ment {
-  width: 25rem;
-  height: 3.125rem;
-  font-size: 2.25rem;
-  background-color: rgba(255,225,80,1);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 12.5rem;
-  left: 59.375rem;
-  overflow: hidden;
+    width: 25rem;
+    height: 3.125rem;
+    font-size: 2.25rem;
+    background-color: rgba(255,225,80,1);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 12.5rem;
+    left: 59.375rem;
+    overflow: hidden;
 }
 .study-ment p {
-  background-color: rgba(255,225,80,1);
+    background-color: rgba(255,225,80,1);
 }
 .charactor {
-  background-color: rgba(255,225,80,1);
-  width: 28.125rem;
-  height: 28.125rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 15rem;
-  left: 56.25rem;
-  overflow: hidden;
+    background-color: rgba(255,225,80,1);
+    width: 28.125rem;
+    height: 28.125rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 15rem;
+    left: 56.25rem;
+    overflow: hidden;
 }
 #image {
-  background-color: rgba(255,225,80,1);
-  width: 25rem;
-  height: 25rem;
+    background-color: rgba(255,225,80,1);
+    width: 25rem;
+    height: 25rem;
 }
 .material {
-  width: 33.75rem;
-  height: 7.5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 39.375rem;
-  left: 51.875rem;
-  overflow: hidden;
-  background-color: rgba(255,225,80,1);
+    width: 33.75rem;
+    height: 7.5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 39.375rem;
+    left: 51.875rem;
+    overflow: hidden;
+    background-color: rgba(255,225,80,1);
 }
 .textbook-text {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(254,239,197,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.625rem;
-  left: 5rem;
-  border: 0.0625rem solid rgba(254,239,197,1);
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
-  overflow: hidden;
-  font-size: 2.1875rem;
-  text-align: center;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(254,239,197,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.625rem;
+    left: 5rem;
+    border: 0.0625rem solid rgba(254,239,197,1);
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
+    overflow: hidden;
+    font-size: 2.1875rem;
+    text-align: center;
 }
 .textbook {
-  width: 6.25rem;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 1.125rem;
-  left: 16.875rem;
-  font-size: 2.25rem;
-  opacity: 1;
-  text-align: left;
-  background-color: rgba(255,225,80,1);
+    width: 6.25rem;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1.125rem;
+    left: 16.875rem;
+    font-size: 2.25rem;
+    opacity: 1;
+    text-align: left;
+    background-color: rgba(255,225,80,1);
 }
-
 .material-text {
-  width: 18.75rem;
-  height: 2.8125rem;
-  background: rgba(254,239,197,1);
-  opacity: 1;
-  position: absolute;
-  top: 4.0625rem;
-  left: 11.25rem;
-  border: 0.0625rem solid rgba(254,239,197,1);
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
-  overflow: hidden;
-  font-size: 2.1875rem;
-  text-align: center;
+    width: 18.75rem;
+    height: 2.8125rem;
+    background: rgba(254,239,197,1);
+    opacity: 1;
+    position: absolute;
+    top: 4.0625rem;
+    left: 11.25rem;
+    border: 0.0625rem solid rgba(254,239,197,1);
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
+    overflow: hidden;
+    font-size: 2.1875rem;
+    text-align: center;
 }
-
 .material-ment {
-  width: 6.25rem;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 4.375rem;
-  left: 5rem;
-  font-size: 2.25rem;
-  opacity: 1;
-  text-align: left;
-  background-color: rgba(255,225,80,1);
+    width: 6.25rem;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 4.375rem;
+    left: 5rem;
+    font-size: 2.25rem;
+    opacity: 1;
+    text-align: left;
+    background-color: rgba(255,225,80,1);
 }
 .page {
-  width: 2.125rem;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 1.125rem;
-  left: 28.375rem;
-  font-size: 2.1875rem;
-  opacity: 1;
-  text-align: left;
-  background-color: rgba(255,225,80,1);
+    width: 2.125rem;
+    color: rgba(0,0,0,1);
+    position: absolute;
+    top: 1.125rem;
+    left: 28.375rem;
+    font-size: 2.1875rem;
+    opacity: 1;
+    text-align: left;
+    background-color: rgba(255,225,80,1);
 }
 .page-text {
-  width: 5rem;
-  height: 3.125rem;
-  background: rgba(254,239,197,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.625rem;
-  left: 23.125rem;
-  border: 0.0625rem solid rgba(254,239,197,1);
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
-  overflow: hidden;
-  font-size: 2.1875rem;
-  text-align: center;
+    width: 5rem;
+    height: 3.125rem;
+    background: rgba(254,239,197,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.625rem;
+    left: 23.125rem;
+    border: 0.0625rem solid rgba(254,239,197,1);
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
+    overflow: hidden;
+    font-size: 2.1875rem;
+    text-align: center;
 }
-
 /****************************************종소리,이미지,자리 변경 팝업******************************************/
 .show-modal {
-  display: block; /* 또는 필요한 스타일 설정 */
+    display: block;
+    /* 또는 필요한 스타일 설정 */
 }
-
 /************************************** 종소리 *****************************************/
 .bell-sound {
-  width: 100%;
-  height: 5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 60.625rem;
-  left: 3.75rem;
-  overflow: hidden;
+    width: 100%;
+    height: 5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    position: absolute;
+    top: 93%;
+    overflow: hidden;
 }
 .bell-sound-icon {
-  width: 3.75rem;
-  height: 3.75rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  left: 0.625rem;
-  position: absolute;
-  overflow: hidden;
+    width: 3.75rem;
+    height: 3.75rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 1;
+    left: 0.625rem;
+    position: absolute;
+    overflow: hidden;
 }
 .bell-sound-ment {
-  width: 15.625rem;
-  color: rgba(255,225,80,1);
-  position: absolute;
-  top: 0.875rem;
-  left: 4.375rem;
-  font-size: 2rem;
-  opacity: 1;
-  text-align: center;
+    width: 15.625rem;
+    color: rgba(255,225,80,1);
+    position: absolute;
+    top: 0.875rem;
+    left: 4.375rem;
+    font-size: 2rem;
+    opacity: 1;
+    text-align: center;
 }
 .first-bell {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.9375rem;
-  left: 25rem;
-  border-top-left-radius: 6.25rem;
-  border-top-right-radius: 6.25rem;
-  border-bottom-left-radius: 6.25rem;
-  border-bottom-right-radius: 6.25rem;
-  overflow: hidden;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.9375rem;
+    left: 23%;
+    border-top-left-radius: 6.25rem;
+    border-top-right-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+    overflow: hidden;
 }
 .bell-click {
-  width: 11.25rem;
-  height: 3.125rem;
-  position: absolute;
-  font-size: 1.875rem;
-  opacity: 1;
-  text-align: left;
-  background: rgba(255,255,255,1);
-  border: 0.0625rem solid rgba(254,239,197,1);
+    width: 11.25rem;
+    height: 3.125rem;
+    position: absolute;
+    font-size: 1.875rem;
+    opacity: 1;
+    text-align: left;
+    background: rgba(255,255,255,1);
+    border: 0.0625rem solid rgba(254,239,197,1);
 }
 input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  width: 1.25rem;
-  height: 1.25rem;
-  border-radius: 50%;
-  outline: none;
-  margin-right: 0.625rem; /* 간격을 주기 위해 조절할 수 있습니다. */
-  background-color: rgba(255,225,80,1);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    outline: none;
+    margin-right: 0.625rem;
+    /* 간격을 주기 위해 조절할 수 있습니다. */
+    background-color: rgba(255,225,80,1);
 }
-
 input[type="radio"]:checked {
-  background-color: #4CAF50; /* 선택 시 배경색을 녹색으로 변경 */
+    background-color: #4CAF50;
+    /* 선택 시 배경색을 녹색으로 변경 */
 }
 #radio1, #radio2,#radio3,#radio4,#radio5,#radio6{
-  width: 1.875rem;
-  height: 1.875rem;
-  border: none;
+    width: 1.875rem;
+    height: 1.875rem;
+    border: none;
 }
 .two-bell {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.9375rem;
-  left: 40.625rem;
-  border-top-left-radius: 6.25rem;
-  border-top-right-radius: 6.25rem;
-  border-bottom-left-radius: 6.25rem;
-  border-bottom-right-radius: 6.25rem;
-  overflow: hidden;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.9375rem;
+    left: 36%;
+    border-top-left-radius: 6.25rem;
+    border-top-right-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+    overflow: hidden;
 }
-
 .three-bell {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.9375rem;
-  left: 56.25rem;
-  border-top-left-radius: 6.25rem;
-  border-top-right-radius: 6.25rem;
-  border-bottom-left-radius: 6.25rem;
-  border-bottom-right-radius: 6.25rem;
-  overflow: hidden;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.9375rem;
+    left: 49%;
+    border-top-left-radius: 6.25rem;
+    border-top-right-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+    overflow: hidden;
 }
-
 .four-bell {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.9375rem;
-  left: 71.875rem;
-  border-top-left-radius: 6.25rem;
-  border-top-right-radius: 6.25rem;
-  border-bottom-left-radius: 6.25rem;
-  border-bottom-right-radius: 6.25rem;
-  overflow: hidden;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.9375rem;
+    left: 62%;
+    border-top-left-radius: 6.25rem;
+    border-top-right-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+    overflow: hidden;
 }
-
 .five-bell {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.9375rem;
-  left: 87.5rem;
-  border-top-left-radius: 6.25rem;
-  border-top-right-radius: 6.25rem;
-  border-bottom-left-radius: 6.25rem;
-  border-bottom-right-radius: 6.25rem;
-  overflow: hidden;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.9375rem;
+    left: 75%;
+    border-top-left-radius: 6.25rem;
+    border-top-right-radius: 6.25rem;
+    border-bottom-left-radius: 6.25rem;
+    border-bottom-right-radius: 6.25rem;
+    overflow: hidden;
 }
-
 .show-popup {
-  width: 11.25rem;
-  height: 3.125rem;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 0.9375rem;
-  left: 103.125rem;
-  border-radius: 6.25rem;
-  overflow: hidden;
-  cursor: pointer;
+    width: 11.25rem;
+    height: 3.125rem;
+    background: rgba(255,255,255,1);
+    opacity: 1;
+    position: absolute;
+    top: 0.9375rem;
+    left: 88%;
+    border-radius: 6.25rem;
+    overflow: hidden;
+    cursor: pointer;
 }
 .popup-click {
-  width: 11.25rem;
-  height: 3.125rem;
-  position: absolute;
-  font-size: 1.875rem;
-  opacity: 1;
-  text-align: center;
-  background: rgba(255,255,255,1);
-  border: 0.0625rem solid rgba(254,239,197,1);
-  cursor: pointer;
+    width: 11.25rem;
+    height: 3.125rem;
+    position: absolute;
+    font-size: 1.875rem;
+    opacity: 1;
+    text-align: center;
+    background: rgba(255,255,255,1);
+    border: 0.0625rem solid rgba(254,239,197,1);
+    cursor: pointer;
 }
 .popup {
-  position: fixed;
-  /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
-  z-index: 11;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
-  width: 25rem;
-  height: 31.25rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 0.0625rem solid;
+    position: fixed;
+    /* 위계를 bg보다 1 높게 해서 더 위로 올라가도록 함 */
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    height: 31.25rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 0.0625rem solid;
 }
 .popup-content {
-  background-color: white;
-  height: 25rem;
-  width: 25rem;
+    background-color: white;
+    height: 25rem;
+    width: 25rem;
 }
 .popup-content button {
-  width: 25rem;
-  height: 12.5rem;
-  font-size: 3.75rem;
-  background-color: white;
-  border: 0.1875rem solid;
-  cursor: pointer;
+    width: 25rem;
+    height: 12.5rem;
+    font-size: 3.75rem;
+    background-color: white;
+    border: 0.1875rem solid;
+    cursor: pointer;
 }
 .popup p {
-  font-size: 1.875rem;
+    font-size: 1.875rem;
 }
-
-
 /********************칭찬팝업*******************/
 .popup-2 {
-  position: fixed;
-  z-index: 11;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
-  width: 25rem;
-  height: 32.5rem;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 0.0625rem solid;
-  overflow: hidden;
-  border-radius: 1.875rem;
+    position: fixed;
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    height: 32.5rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid;
+    overflow: hidden;
+    border-radius: 1.875rem;
 }
 .popup-3 {
-  position: fixed;
-  z-index: 11;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
-  width: 25rem;
-  height: 32.5rem;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 0.0625rem solid;
-  overflow: hidden;
-  border-radius: 1.875rem;
+    position: fixed;
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    height: 32.5rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid;
+    overflow: hidden;
+    border-radius: 1.875rem;
 }
 .popup-4 {
-  position: fixed;
-  z-index: 11;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
-  width: 25rem;
-  height: 12.5rem;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 0.0625rem solid;
-  overflow: hidden;
-  border-radius: 1.875rem;
+    position: fixed;
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    height: 12.5rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid;
+    overflow: hidden;
+    border-radius: 1.875rem;
 }
 .popup-5 {
-  position: fixed;
-  z-index: 11;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
-  width: 25rem;
-  height: 25rem;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 0.0625rem solid;
-  overflow: hidden;
-  border-radius: 1.875rem;
-  color: black;
+    position: fixed;
+    z-index: 11;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+    width: 25rem;
+    height: 25rem;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 0.0625rem solid;
+    overflow: hidden;
+    border-radius: 1.875rem;
+    color: black;
 }
 .popup-4-div {
-  background-color: rgba(6, 97, 26, 1);
-  height: 9.375rem;
-  margin: auto; /* 추가: 수평 가운데 정렬 */
-  position: relative;
-  top: 0.9375rem;
-  width: 21.875rem;
-  border-radius: 20%;
-
+    background-color: rgba(6, 97, 26, 1);
+    height: 9.375rem;
+    margin: auto;
+    /* 추가: 수평 가운데 정렬 */
+    position: relative;
+    top: 0.9375rem;
+    width: 21.875rem;
+    border-radius: 20%;
 }
 .popup-5-div {
-  top: 1.25rem;
-  width: 21.875rem;
-  height: 21.875rem;
-  margin: auto; /* 추가: 수평 가운데 정렬 */
-  position: relative;
-  left: 0.625rem;
+    top: 1.25rem;
+    width: 21.875rem;
+    height: 21.875rem;
+    margin: auto;
+    /* 추가: 수평 가운데 정렬 */
+    position: relative;
+    left: 0.625rem;
 }
 .popup-5-div h3 {
-  background-color: white;
-  color: black;
-  font-size: 1.875rem;
-  font-weight: lighter;
+    background-color: white;
+    color: black;
+    font-size: 1.875rem;
+    font-weight: lighter;
 }
-
 .content4 {
-  background-color: white;
-  color: black;
+    background-color: white;
+    color: black;
 }
 .popup-5 {
-  color: white;
-  font-size: 1.875rem;
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
+    color: white;
+    font-size: 1.875rem;
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
 }
-
 .popup-2-div {
-  top: 1.25rem;
-  background-color: rgba(6, 97, 26, 1);
-  width: 21.875rem;
-  height: 29.375rem;
-  border-radius: 1.875rem;
-  margin: auto; /* 추가: 수평 가운데 정렬 */
-  position: relative;
-
+    top: 1.25rem;
+    background-color: rgba(6, 97, 26, 1);
+    width: 21.875rem;
+    height: 29.375rem;
+    border-radius: 1.875rem;
+    margin: auto;
+    /* 추가: 수평 가운데 정렬 */
+    position: relative;
 }
 .popup-2 h3 {
-  margin-top: 0.3125rem;
-  font-size: 1.875rem;
-  color: white;
-  margin-bottom: 0.3125rem;
-  text-align: center;
-  font-weight: lighter;
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
+    margin-top: 0.3125rem;
+    font-size: 1.875rem;
+    color: white;
+    margin-bottom: 0.3125rem;
+    text-align: center;
+    font-weight: lighter;
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
 }
 .popup-3 h3 {
-  margin-top: 0.3125rem;
-  font-size: 1.875rem;
-  color: white;
-  margin-bottom: 0.3125rem;
-  text-align: center;
-  font-weight: lighter;
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
+    margin-top: 0.3125rem;
+    font-size: 1.875rem;
+    color: white;
+    margin-bottom: 0.3125rem;
+    text-align: center;
+    font-weight: lighter;
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
 }
 .popup-4 h3 {
-  margin-top: 0.3125rem;
-  font-size: 1.875rem;
-  color: white;
-  margin-bottom: 0.3125rem;
-  text-align: center;
-  font-weight: lighter;
-  border-top-left-radius: 1.875rem;
-  border-top-right-radius: 1.875rem;
+    margin-top: 0.3125rem;
+    font-size: 1.875rem;
+    color: white;
+    margin-bottom: 0.3125rem;
+    text-align: center;
+    font-weight: lighter;
+    border-top-left-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
 }
-
 .popup-2 form {
-  display: block;
-  text-align: center;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
+    display: block;
+    text-align: center;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
 }
 .popup-3 form {
-  display: block;
-  text-align: center;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
+    display: block;
+    text-align: center;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
 }
 .popup-4 form {
-  display: block;
-  text-align: center;
-  border-bottom-left-radius: 1.875rem;
-  border-bottom-right-radius: 1.875rem;
+    display: block;
+    text-align: center;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
 }
-
-
 .praise-date {
-  margin: 0.625rem;
-  padding: 0.5rem;
-  border: 0.0625rem solid #ccc;
-  font-size: 1.25rem;
-  width: 9.375rem; /* 수정: 폭 조정 */
-  background-color: white;
+    margin: 0.625rem;
+    padding: 0.5rem;
+    border: 0.0625rem solid #ccc;
+    font-size: 1.25rem;
+    width: 9.375rem;
+    /* 수정: 폭 조정 */
+    background-color: white;
 }
 select {
-  background-color: white;
+    background-color: white;
 }
-
 .praise-text {
-  margin-top: 1.25rem;
-  width: 20rem;
-  height: 15.625rem;
-  border: 0.0625rem solid #ccc;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  background-color: white;
-  font-size: 1.25rem;
+    margin-top: 1.25rem;
+    width: 20rem;
+    height: 15.625rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    background-color: white;
+    font-size: 1.25rem;
 }
-
 .popup-2 button {
-  margin-top: 0.3125rem; /* 버튼과 텍스트 사이 간격 조절 */
-  border: 0.0625rem solid black;
-  cursor: pointer;
-  font-size: 1.5625rem;
-  background-color: white;
-  position: relative;
-  left: 6.25rem;
-  margin-left: 0.625rem;
-  border-radius: 0.3125rem;
+    margin-top: 0.3125rem;
+    /* 버튼과 텍스트 사이 간격 조절 */
+    border: 0.0625rem solid black;
+    cursor: pointer;
+    font-size: 1.5625rem;
+    background-color: white;
+    position: relative;
+    left: 6.25rem;
+    margin-left: 0.625rem;
+    border-radius: 0.3125rem;
 }
 .popup-3 button {
-  margin-top: 0.3125rem; /* 버튼과 텍스트 사이 간격 조절 */
-  border: 0.0625rem solid black;
-  cursor: pointer;
-  font-size: 1.5625rem;
-  background-color: white;
-  position: relative;
-  left: 6.25rem;
-  margin-left: 0.625rem;
-  border-radius: 0.3125rem;
+    margin-top: 0.3125rem;
+    /* 버튼과 텍스트 사이 간격 조절 */
+    border: 0.0625rem solid black;
+    cursor: pointer;
+    font-size: 1.5625rem;
+    background-color: white;
+    position: relative;
+    left: 6.25rem;
+    margin-left: 0.625rem;
+    border-radius: 0.3125rem;
 }
 .popup-4 button {
-  margin-top: 0.3125rem; /* 버튼과 텍스트 사이 간격 조절 */
-  border: 0.0625rem solid black;
-  cursor: pointer;
-  font-size: 1.5625rem;
-  background-color: white;
-  position: relative;
-  left: 1.875rem;
-  margin-left: 0.625rem;
-  border-radius: 0.3125rem;
+    margin-top: 0.3125rem;
+    /* 버튼과 텍스트 사이 간격 조절 */
+    border: 0.0625rem solid black;
+    cursor: pointer;
+    font-size: 1.5625rem;
+    background-color: white;
+    position: relative;
+    left: 1.875rem;
+    margin-left: 0.625rem;
+    border-radius: 0.3125rem;
 }
 .popup-5 button {
-  margin-top: 0.3125rem;
-  border: 0.0625rem solid black;
-  cursor: pointer;
-  font-size: 1.5625rem;
-  background-color: white;
-  position: relative;
-  left: 15.625rem;
-  margin-left: 0.625rem;
-  width: 3.125rem;
-  height: 3.125rem;
+    margin-top: 0.3125rem;
+    border: 0.0625rem solid black;
+    cursor: pointer;
+    font-size: 1.5625rem;
+    background-color: white;
+    position: relative;
+    left: 15.625rem;
+    margin-left: 0.625rem;
+    width: 3.125rem;
+    height: 3.125rem;
 }
-
-
 /************************************/
 .popup1 {
-  position: fixed;
-  z-index: 11;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
-  width: 4.4375rem;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 0.0625rem solid;
+    position: fixed;
+    z-index: 11;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+    width: 4.4375rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 0.0625rem solid;
 }
 .popup1-div {
-  align-content: center;
-
+    align-content: center;
 }
 .popup1-button {
-  font-size: 1.25rem;
-  background-color: white;
-  text-align: center;
-  align-content: center;
-  cursor: pointer;
+    font-size: 1.25rem;
+    background-color: white;
+    text-align: center;
+    align-content: center;
+    cursor: pointer;
 }
 .popup h3 {
-  font-size: 2.5rem;
-  text-align: center;
-  padding: 1.25rem 0;
-  font-weight: lighter;
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 1.25rem 0;
+    font-weight: lighter;
 }
 .buttons {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 1.25rem;
-  bottom: 0;
-  position: absolute;
-  padding: 1.25rem 2.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.25rem;
+    bottom: 0;
+    position: absolute;
+    padding: 1.25rem 2.5rem;
 }
 .buttons button {
-  border: 0.0625rem solid #000;
-  background-color: #fff;
-  border-radius: 1.25rem;
-  width: 5.625rem;
-  height: 3.125rem;
-  font-size: 1.25rem;
-  cursor: pointer;
+    border: 0.0625rem solid #000;
+    background-color: #fff;
+    border-radius: 1.25rem;
+    width: 5.625rem;
+    height: 3.125rem;
+    font-size: 1.25rem;
+    cursor: pointer;
 }
-/*************************  모달 창 꾸미기 *************************************/
-
+/************************* 모달 창 꾸미기 *************************************/
 #modal {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: -10%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
 }
 #modal1 {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: -10%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
 }
 #modal2 {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: -10%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
 }
 #modal3 {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: -10%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
 }
 #modal4 {
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: -10%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: -10%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
 }
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 60%;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 1.25rem;
+    border: 0.0625rem solid #888;
+    width: 60%;
 }
 #closeModal {
-  background-color: white;
-  font-size: 28px;
-  width: 10%;
-  border: none;
-  position: relative;
-  left: 90%;
+    background-color: white;
+    font-size: 1.75rem;
+    width: 10%;
+    border: none;
+    position: relative;
+    left: 90%;
 }
 #closeModal1, #closeModal2, #closeModal3, #closeModal4 {
-  background-color: white;
-  font-size: 28px;
-  width: 10%;
-  border: none;
-  position: relative;
-  left: 80%;
+    background-color: white;
+    font-size: 1.75rem;
+    width: 10%;
+    border: none;
+    position: relative;
+    left: 80%;
 }
 #backModal1, #backModal2, #backModal3, #backModal4{
-  background-color: white;
-  font-size: 28px;
-  width: 10%;
-  border: none;
-  position: relative;
-  left: 80%;
+    background-color: white;
+    font-size: 1.75rem;
+    width: 10%;
+    border: none;
+    position: relative;
+    left: 80%;
 }
 .cancels {
-  background-color: white;
-  float: none;
-  font-size: 20px;
-  width: 10%;
-  border: none;
-  position: relative;
-  left: -20%;
+    background-color: white;
+    float: none;
+    font-size: 1.25rem;
+    width: 10%;
+    border: none;
+    position: relative;
+    left: -20%;
 }
+
