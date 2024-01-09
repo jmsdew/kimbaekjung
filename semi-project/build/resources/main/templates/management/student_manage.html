@@ -52,14 +52,17 @@
 </header>
 
     <div id="barTitle">학생관리</div>
-    <div id="barButton">학생 선택</div>
-
-    <div id="barButton2">
-        <h2 id="copy"></h2>
-        <button id="popupButton">
-            <img src="/img/arrow-down.svg" alt="arrows">
-        </button>
+    <div id="barButton">
+        <button id="popupButton">학 생 선 택
+            <img src="/img/arrow-down.svg" alt="arrows"></button>
     </div>
+
+<!--    <div id="barButton2">-->
+<!--        <h2 id="copy"></h2>-->
+<!--        <button id="popupButton">-->
+<!--            <img src="/img/arrow-down.svg" alt="arrows">-->
+<!--        </button>-->
+<!--    </div>-->
 
 
 
@@ -75,7 +78,7 @@
 
         <section id="section2">
             <input type="hidden" id="pickStudentCode" th:value="${pickStudentCode}">
-            <div></div>
+            <div id="pickName" th:text="${name}"></div>
             <div th:text="${absentCount}"></div>
             <div th:text="${lateCount}"></div>
             <div th:text="${leaveCount}"></div>

@@ -1,5 +1,6 @@
 package com.kimbaekjung.semiproject.school.model;
 
+import com.kimbaekjung.semiproject.school.dto.AttendListDTO;
 import com.kimbaekjung.semiproject.school.dto.OneStudentDTO;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -14,4 +15,12 @@ public interface OneStudentDAO {
     List<OneStudentDTO> leave(int studentCode);
 
     List<OneStudentDTO> result(int studentCode);
+
+    List<AttendListDTO> attendList(int studentCode);
+
+    int updateAttend(int attendCode);
+
+    int updateAttendN(int attendCode);
+
+
 }

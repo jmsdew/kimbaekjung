@@ -42,22 +42,45 @@ public class SchoolRestController {
 //
 //        return studentNum;
 //    }
+    @GetMapping("popup_attend/{studentCode}")
+    public ResponseEntity<List<AttendListDTO>> attendList(@PathVariable("studentCode") int studentCode){
+        // 출결사항 리스트 조회하기
+        List<AttendListDTO> attendList = schoolService.attendList(studentCode);
+
+        System.out.println(attendList);
+
+        return ResponseEntity.ok(attendList);
+    }
+
+    @PostMapping("update_attendanceY/{attendCode}")
+    public ResponseEntity updateAttendY(@PathVariable("attendCode") int attendCode){
+        System.out.println(attendCode + "djgwiejg");
+        int attendListN = schoolService.updateAttend(attendCode);
+
+        return ResponseEntity.ok(attendListN);
+    }
+
+    @PostMapping("update_attendanceN/{attendCode}")
+    public ResponseEntity updateAttendN(@PathVariable("attendCode") int attendCode){
+        System.out.println(attendCode + "nonono");
+        int updateAttendN = schoolService.updateAttendN(attendCode);
+
+
+        return ResponseEntity.ok(updateAttendN);
+    }
+
     @GetMapping("popup_info/{studentCode}")
     public ResponseEntity<Map<String,Integer>> getStudentDetail(@PathVariable("studentCode") int studentCode){
-        System.out.println(studentCode+"하하하");
 
         List<OneStudentDTO> absentL = schoolService.oneStudent(studentCode);
         List<OneStudentDTO> lateL = schoolService.lateL(studentCode);
         List<OneStudentDTO> leaveL = schoolService.leaveL(studentCode);
         List<OneStudentDTO> resultL = schoolService.resultL(studentCode);
 
-        System.out.println("결석" + absentL);
-
         int absentCount = absentL.size();
         int lateCount = lateL.size();
         int leaveCount = leaveL.size();
         int resultCount = resultL.size();
-        System.out.println("이거야이거" + absentCount);
 
 //        System.out.println(absentCount+"크크크");
         Map<String, Integer> response = new HashMap<>();

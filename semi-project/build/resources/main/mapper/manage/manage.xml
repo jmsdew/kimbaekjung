@@ -13,6 +13,7 @@
         <id property="attendCode" column="ATTEND_CODE"/>
     </resultMap>
 
+
     <resultMap id="praiseResult" type="com.kimbaekjung.semiproject.management.dto.PraiseDTO">
         <id property="praiseCategory" column="CATEGORY_NAME"/>
         <result property="praiseContent" column="PRAISE_CONTEXT"/>
@@ -29,6 +30,18 @@
         <result property="content" column="REASON"/>
         <result property="regist" column="REGIST_DATE"/>
     </resultMap>
+
+    <resultMap id="studentResult" type="com.kimbaekjung.semiproject.management.dto.studentNameDTO">
+        <id property="name" column="STUDENT_NAME"/>
+    </resultMap>
+
+
+    <select id="name" resultMap="studentResult">
+        SELECT
+        STUDENT_NAME
+        FROM STUDENT
+        WHERE STUDENT_CODE = #{pickStudentCode}
+    </select>
 
     <select id="picks" resultMap="manageResult">
         SELECT
