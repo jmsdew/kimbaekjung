@@ -986,7 +986,7 @@ select {
 .cancels {
     background-color: white;
     float: none;
-    font-size: 1.25rem;
+    font-size: 1rem;
     width: 10%;
     border: none;
     position: relative;
