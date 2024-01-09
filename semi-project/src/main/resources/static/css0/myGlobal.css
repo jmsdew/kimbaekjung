@@ -81,12 +81,11 @@ header nav ul li button a{
 }
 /*************************************************마이페이지 버튼들******************************************************/
 #bar {
-    top: 10%;
+    top: 15%;
     width: 96%;
-    height: 80px;
+    height: 8%;
     position: absolute;
-    left: 20px;
-    right: 20px;
+    left: 2%;
     background: #07621B;
     border: 1px rgba(68.63, 197.54, 205.77, 0) solid;
     margin: 0 auto; /* 수평 가운데 정렬을 위해 추가 */
@@ -94,9 +93,9 @@ header nav ul li button a{
 }
 
 #fiveFrame {
-    width: 1000px;
-    height: 160px;
-    top: 120px;
+    width: 90%;
+    height: 15%;
+    top: 18%;
     padding-bottom: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -105,7 +104,7 @@ header nav ul li button a{
     gap: 52px;
     display: inline-flex;
     position: absolute;
-    left: 50%; /* 부모의 가운데 정렬을 위한 위치 설정 */
+    left: 70%; /* 부모의 가운데 정렬을 위한 위치 설정 */
     transform: translateX(-50%); /* 자신의 너비의 반만큼 왼쪽으로 이동하여 중앙 정렬 */
     z-index: 1;
 }
