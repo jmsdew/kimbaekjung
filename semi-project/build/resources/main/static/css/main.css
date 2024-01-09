@@ -77,7 +77,7 @@ p {
     background-color: rgba(255,225,80,1);
     opacity: 1;
     position: absolute;
-    top: 45rem;
+    top: 93%;
     left: 1.875rem;
     border: 0.0625rem solid rgba(255,225,80,1);
     overflow: hidden;
@@ -194,7 +194,7 @@ p {
     border-bottom: 0.125rem solid white;
 }
 .school-name {
-    width: 100%;
+    width: 95%;
     height: 3.125rem;
     background-color: rgba(255,225,80,1);
     position: relative;
@@ -205,14 +205,14 @@ p {
 }
 .school-name-name {
     width: 37.5rem;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     background-color: rgba(255,225,80,1);
     word-spacing:0.125rem;
     text-align: center;
 }
 .school-name-rank {
     width: 25rem;
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     text-align: center;
     background-color: rgba(255,225,80,1);
     word-spacing:0.125rem;
@@ -255,6 +255,7 @@ p {
     align-content: center;
     display: block;
     gap: 1.25rem;
+    z-index: 1;
 }
 #student-table {
     margin: 1.25rem;
@@ -301,7 +302,7 @@ tr {
     opacity: 1;
     position: absolute;
     top: 12.5rem;
-    left: 59.375rem;
+    left: 70%;
     overflow: hidden;
 }
 .study-ment p {
@@ -309,37 +310,37 @@ tr {
 }
 .charactor {
     background-color: rgba(255,225,80,1);
-    width: 28.125rem;
-    height: 28.125rem;
+    width: 30%;
+    height: 50%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
     top: 15rem;
-    left: 56.25rem;
+    left: 65%;
     overflow: hidden;
 }
 #image {
     background-color: rgba(255,225,80,1);
-    width: 25rem;
-    height: 25rem;
+    width: 100%;
+    height: 100%;
 }
 .material {
-    width: 33.75rem;
-    height: 7.5rem;
+    width: 35%;
+    height: 20%;
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     opacity: 1;
     position: absolute;
-    top: 39.375rem;
-    left: 51.875rem;
+    top: 80%;
+    left: 60%;
     overflow: hidden;
     background-color: rgba(255,225,80,1);
 }
 .textbook-text {
-    width: 11.25rem;
+    width: 30%;
     height: 3.125rem;
     background: rgba(254,239,197,1);
     opacity: 1;
@@ -360,14 +361,14 @@ tr {
     color: rgba(0,0,0,1);
     position: absolute;
     top: 1.125rem;
-    left: 16.875rem;
+    left: 50%;
     font-size: 2.25rem;
     opacity: 1;
     text-align: left;
     background-color: rgba(255,225,80,1);
 }
 .material-text {
-    width: 18.75rem;
+    width: 55%;
     height: 2.8125rem;
     background: rgba(254,239,197,1);
     opacity: 1;
@@ -399,7 +400,7 @@ tr {
     color: rgba(0,0,0,1);
     position: absolute;
     top: 1.125rem;
-    left: 28.375rem;
+    left: 90%;
     font-size: 2.1875rem;
     opacity: 1;
     text-align: left;
@@ -412,7 +413,7 @@ tr {
     opacity: 1;
     position: absolute;
     top: 0.625rem;
-    left: 23.125rem;
+    left: 70%;
     border: 0.0625rem solid rgba(254,239,197,1);
     border-top-left-radius: 1.875rem;
     border-top-right-radius: 1.875rem;
