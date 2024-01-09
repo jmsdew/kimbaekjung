@@ -301,15 +301,17 @@
   const backModal4 = document.getElementById("backModal4");
   const cancelModals = document.getElementsByClassName("cancels");
   function inCount() {
-    let count = localStorage.getItem("visitCount");
+    let count = localStorage.getItem("visit");
+    console.log(count);
 
     if (count === null) {
       count = 0;
+      return count;
     } else if (count >= 0) {
       count = parseInt(count);
 
       count++;
-      localStorage.setItem("visitCount", count);
+      localStorage.setItem("visit", count);
       return count;
     }
   }
@@ -356,12 +358,10 @@
         modal4.style.display = "none";
         modal3.style.display = "block";
       });
-      for (let i = 0; i < cancelModals.length; i++) {
         cancelModals[i].addEventListener("click", () => {
           modal4.style.display = "none";
-          localStorage.setItem("visitCount", -1000000000);
+          localStorage.setItem("visit", -1000000);
         });
-      }
     }
   });
 
