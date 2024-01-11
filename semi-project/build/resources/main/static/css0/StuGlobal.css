@@ -25,6 +25,7 @@ header .navbox{
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 10%;
     padding-top: 0%;
 
 }
@@ -34,19 +35,23 @@ header{
     top: 0;
     z-index: 1;
     width: 100%;
+    height: 10%;
     padding: 0;
 
 }
 header nav{
     display: flex;
     justify-content:space-between;
+    align-items:top;
     width: 100%;
+    height: 80%;
 }
 header nav ul{
     display: flex;
+    align-items: top;
 }
 header nav ul li{
-    padding-left: 10px;
+    padding-left: 0.625rem;
     padding-top: 0;
 }
 header button{
@@ -54,22 +59,22 @@ header button{
     border: 0;
     cursor: pointer;
     background-color: rgba(0,47,4,1);
-    width: 230px;
-    height: 70px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    width: 14.375rem;
+    height: 4.375rem;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
 }
 header h1 button{
-    font-size: 70px;
+    font-size: 4.375rem;
     color: rgba(255,225,80,1);
-    width: 500px;
-    height: 100px;
+    width: 100%;
+    height: 130%;
     text-align: left;
     padding-left: 1rem;
     background-color: white;
 }
 header nav ul li button{
-    font-size: 35px;
+    font-size: 2.1875rem;
     color: rgb(255, 255, 255);
     background-color: rgba(0,47,4,1);
     overflow: hidden;
@@ -77,16 +82,17 @@ header nav ul li button{
 header nav ul li button a{
     background-color: rgba(0,47,4,1);
 }
+
 /*******************************************************************************************************/
 #barTitle{
     width: 16%;
-    height: 85px;
+    height: 7%;
     background: rgba(7,98,27,1);
     opacity: 1;
     position: absolute;
     font-size: 50px;
     font-weight: bold;
-    top: 108px;
+    top: 11%;
     left: 2%;
     border: 2px solid black;
     letter-spacing: 10px;
@@ -94,17 +100,17 @@ header nav ul li button a{
     color: rgba(255,255,255,1);
     text-align: center;
     display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
+    align-items: center;
     justify-content: center;
 }
 
 #barButton{
     width: 80%;
-    height: 85px;
+    height: 7%;
     background: rgba(7,98,27,1);
     opacity: 1;
     position: absolute;
-    top: 108px;
+    top: 11%;
     left: 18%;
     border-bottom: 2px solid black;
     overflow: hidden;
@@ -144,7 +150,7 @@ header nav ul li button a{
 
 #bodyBody{
     width: 96%;
-    top: 193px;
+    top: 18%;
     height: 75%;
     left: 2%;
     position: absolute;
@@ -193,12 +199,12 @@ header nav ul li button a{
     left: 0;
     position: absolute;
     width: 50%;
-    height:320px;
+    height:38.4%;
     font-family: Inter;
 }
 
 #section1 div{
-    height: 64px;
+    height: 20%;
     background: rgba(255,247,227,1);
     border-bottom: 2px solid black;
     font-size: 20px;
@@ -215,12 +221,12 @@ header nav ul li button a{
     left: 50%;
     position: absolute;
     width: 50%;
-    height:320px;
+    height:38.4%;
     font-family: Inter;
 }
 
 #section2 div{
-    height: 64px;
+    height: 20%;
     border-bottom: 2px solid black;
     border-left: 2px solid black;
     font-size: 15px;
@@ -233,11 +239,11 @@ header nav ul li button a{
 
 #attendList{
     width: 100%;
-    height: 40px;
+    height: 6%;
     background: rgba(255,247,227,1);
     opacity: 1;
     position: absolute;
-    top: 320px;
+    top: 38.4%;
     left: 0;
     overflow: hidden;
     display: flex;
@@ -252,7 +258,7 @@ header nav ul li button a{
 
 #attendListInput1{
     width: 100%;
-    height: 400px;
+    height: 50%;
     position: absolute;
     bottom: 0;
     overflow-y: auto;
@@ -260,7 +266,7 @@ header nav ul li button a{
 
 #attendListInput{
     width: 100%;
-    height: 400px;
+    height: 100%;
     opacity: 1;
     position: absolute;
     top: 45%;
@@ -287,8 +293,8 @@ header nav ul li button a{
 }
 
 #recommendSelect{
-    width: 80px;
-    height: 25px;
+    width: 14%;
+    height: 70%;
     text-align: center;
 }
 #section3{
@@ -303,7 +309,7 @@ header nav ul li button a{
 
 #section3 div{
     width: 100%;
-    height: 40px;
+    height: 9%;
     position: absolute;
     left: 0;
     top: 0;
@@ -318,11 +324,11 @@ header nav ul li button a{
 
 #section3 div.praise{
     width: 100%;
-    height: 390px;
+    height: 91%;
     position: absolute;
     background-color: white;
     left: 0;
-    top: 40px;
+    top: 9%;
     text-align: left;
     overflow-y: auto;
     line-height: 40px;
@@ -341,7 +347,7 @@ header nav ul li button a{
 
 #section4 div{
     width: 100%;
-    height: 40px;
+    height: 9%;
     position: absolute;
     left: 0;
     top: 0;
@@ -365,11 +371,11 @@ header nav ul li button a{
 
 #section4 div.recommend{
     width: 100%;
-    height: 390px;
+    height: 91%;
     position: absolute;
     background-color: white;
     left: 0;
-    top: 40px;
+    top: 9%;
     text-align: left;
     line-height: 40px;
     font-family: Inter;
@@ -391,7 +397,7 @@ header nav ul li button a{
 
 #section5 div{
     width: 100%;
-    height: 40px;
+    height: 10%;
     position: absolute;
     left: 0;
     top: 0;
@@ -414,17 +420,19 @@ header nav ul li button a{
 }
 
 #section5 button{
-    width: 100px;
-    height: 30px;
+    width: 10%;
+    height: 9%;
     position: absolute;
-    right: 20px;
-    bottom: 20px;
+    right: 2%;
+    bottom: 6%;
     text-align: center;
     letter-spacing: 2px;
     line-height: 30px;
     background-color: white;
     border-radius: 10px;
     font-family: Inter;
+
+
 }
 
 
@@ -434,7 +442,7 @@ header nav ul li button a{
 #footers{
     width: 800px;
     height: 50px;
-    bottom: 0;
+    bottom: 1%;
     padding-left: 50px;
     padding-right: 50px;
     background: rgba(255, 255, 255, 0);

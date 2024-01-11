@@ -80,8 +80,8 @@ header nav ul li button a{
 }
 
 .schedule {
-    width: 1720px;
-    height: 800px;
+    width: 90%;
+    height: 75%;
     opacity: 1;
     position: absolute;
     top: 180px;
@@ -124,15 +124,14 @@ header nav ul li button a{
 
 /***********************************************/
 #calendar {
-    height: 700px;
+    height: 90%;
     position: relative;
-    width: 1000px;
+    width: 137%;
 }
 #calendar-container {
     position: relative;
-    height: 700px;
-    left: 150px;
-    top: 30px;
+    left: 8%;
+    top: 5%;
 }
 .fc-header-toolbar fc-toolbar fc-toolbar-ltr {
     width: 700px;

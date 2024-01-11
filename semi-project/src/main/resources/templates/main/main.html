@@ -601,20 +601,90 @@
   });
 
 <!-- 총 착석 하트 -------------------------------------->
-  let i = 0;
-    $('i').on('click',function(){
-        if(i==0){
-            $(this).attr('class','bi-heart-fill');
-            i++;
-        }else if(i==1){
-            $(this).attr('class','bi-heart');
-            i--;
-        }
+  $(document).ready(function () {
+    let savedBoxes = JSON.parse(sessionStorage.getItem('savedBoxes')) || [];
 
+    savedBoxes.forEach(function (savedBox) {
+      addSavedBox(savedBox);
     });
 
-$(document).ready(function() {
+    $("#plusButton").click(function () {
+      let newBoxInfo = createNewBoxInfo();
+      savedBoxes.push(newBoxInfo);
+      sessionStorage.setItem('savedBoxes', JSON.stringify(savedBoxes));
+      addSavedBox(newBoxInfo);
+    });
+
+    function createNewBoxInfo() {
+      function time(i) {
+        const times = ["09:50", "10:50", "12:30", "01:20", "02:00", "02:50"];
+        return i < times.length ? times[i] : null;
+      }
+
+      let i = savedBoxes.length + 1;
+      let newBox = {
+        id: 'box' + i, // 각 상자에 대한 고유 식별자
+        time: i+1 + "교시 " + time(i - 1),
+        heartClass: 'bi-heart'
+      };
+      return newBox;
+    }
+
+    function addSavedBox(savedBoxInfo) {
+      let clonedBox = $(".class-box").first().clone();
+      clonedBox.attr('id', savedBoxInfo.id); // 복제된 상자의 id 설정
+      clonedBox.find("#timeFont").val(savedBoxInfo.time);
+
+      let iconClone = clonedBox.find(".bi-heart").clone();
+      iconClone.attr('class', savedBoxInfo.heartClass);
+      clonedBox.find(".first-check").empty().append(iconClone);
+
+      $(".time-line").append(clonedBox);
+
+      handleHeartClick(clonedBox);
+      let newTop = 50 + ($(".class-box").length - 1) * 105;
+      clonedBox.find(".first-check").css({ top: newTop + "px" });
+    }
+
+    function handleHeartClick(box) {
+      box.find('.bi-heart, .bi-heart-fill').off('click').on('click', function () {
+        let boxId = $(this).closest('.class-box').attr('id');
+        let clickedBox = savedBoxes.find(box => box.id === boxId);
+
+        if ($(this).hasClass('bi-heart')) {
+          $(this).attr('class', 'bi-heart-fill');
+          clickedBox.heartClass = 'bi-heart-fill';
+        } else if ($(this).hasClass('bi-heart-fill')) {
+          $(this).attr('class', 'bi-heart');
+          clickedBox.heartClass = 'bi-heart';
+        }
+        updateSavedBoxes();
+      });
+    }
+
+    function updateSavedBoxes() {
+      sessionStorage.setItem('savedBoxes', JSON.stringify(savedBoxes));
+    }
+
+    // 페이지 새로고침 시 하트를 모두 비움
+    $(window).on('beforeunload', function () {
+      $(".class-box").each(function () {
+        $(this).find(".bi-heart-fill").attr('class', 'bi-heart');
+      });
+    });
+
+    handleHeartClick($(".class-box"));
+    handleHeartClick($(".class-box").last());
+  });
+/*$(document).ready(function() {
+  // 초기화 단계에서 세션 스토리지 정보를 가져옴
+  let saveBox = JSON.parse(sessionStorage.getItem('saveBox')) || [];
+  // 이전에 저장된 요소들을 재생성
+  savedBoxes.forEach(function(savedBox) {
+    addSavedBox(savedBox);
+  });
     let i = 0;
+
     $("#plusButton").click(function() {
       // ".classbox"를 복제하여 추가합니다.
       let clonedBox = $(".class-box").first().clone();
@@ -654,7 +724,7 @@ $(document).ready(function() {
 
     // 초기화 단계에서도 클릭 이벤트 처리
     handleHeartClick($(".classbox"));
-  });
+  });*/
 //  --------------------------------------------------------------------------------------------타이머조정
 
   // 타이머 초기값 설정 (테스트를 위해 600초, 즉 10분으로 설정)
