@@ -247,14 +247,14 @@
 
   <div id="modal">
     <div class="modal-content">
-      <img src="/img/page1.png" style="position: relative; width: 1000px; height: 600px; border: none; left: 5%;">
+      <img src="/img/page1.png" style="position: relative; width: 1000px; height: 600px; border: none;">
       <button type="button" id="closeModal">넘기기</button>
     </div>
   </div>
 
   <div id="modal1">
     <div class="modal-content">
-      <img src="/img/page2.png" style="position: relative; width: 1000px; height: 600px; border: none; left: 5%;">
+      <img src="/img/page2.png" style="position: relative; width: 1000px; height: 600px; border: none;">
       <button type="button" id="backModal1">돌아가기</button>
       <button type="button" id="closeModal1">넘기기</button>
     </div>
@@ -262,7 +262,7 @@
 
   <div id="modal2">
     <div class="modal-content">
-      <img src="/img/page3.png" style="position: relative; width: 1000px; height: 600px; border: none; left: 5%;">
+      <img src="/img/page3.png" style="position: relative; width: 1000px; height: 600px; border: none;">
       <button type="button" id="backModal2">돌아가기</button>
       <button type="button" id="closeModal2">넘기기</button>
     </div>
@@ -270,7 +270,7 @@
 
   <div id="modal3">
     <div class="modal-content">
-      <img src="/img/page4.png" style="position: relative; width: 1000px; height: 600px; border: none; left: 5%;">
+      <img src="/img/page4.png" style="position: relative; width: 1000px; height: 600px; border: none;">
       <button type="button" id="backModal3">돌아가기</button>
       <button type="button" id="closeModal3">넘기기</button>
     </div>
@@ -278,7 +278,7 @@
 
   <div id="modal4">
     <div class="modal-content">
-      <img src="/img/page5.png" style="position: relative; width: 1000px; height: 600px; border: none; left: 5%;">
+      <img src="/img/page5.png" style="position: relative; width: 1000px; height: 600px; border: none;">
       <button type="button" id="backModal4">돌아가기</button>
       <button type="button" id="closeModal4">시작하기</button>
       <button type="button" class="cancels">다시 보지 않기</button>
@@ -307,7 +307,7 @@
   const backModal4 = document.getElementById("backModal4");
   const cancelModals = document.getElementsByClassName("cancels");
   function inCount() {
-    let count = localStorage.getItem("visit");
+    let count = localStorage.getItem("visitCode");
     console.log(count);
 
     if (count === null) {
@@ -317,7 +317,7 @@
       count = parseInt(count);
 
       count++;
-      localStorage.setItem("visit", count);
+      localStorage.setItem("visitCode", count);
       return count;
     }
   }
@@ -366,7 +366,7 @@
       });
         cancelModals[i].addEventListener("click", () => {
           modal4.style.display = "none";
-          localStorage.setItem("visit", -1000000);
+          localStorage.setItem("visitCode", -1000000);
         });
     }
   });
