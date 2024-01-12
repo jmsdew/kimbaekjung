@@ -59,7 +59,9 @@
       <div class="first-class">
         <input type="text" id="timeFont" value="1교시 09:00"/>
       </div>
-      <div class="first-check" id="showHide"><i class="bi-heart" style="font-size:3rem; color: red; cursor: pointer;"></i></div>
+      <div class="first-check" id="showHide"><i class="bi-heart" style="font-size:3rem; color: red; cursor: pointer; "></i>
+        <i class="bi-heart-fill" id="firstHeart" style="font-size:3rem; color: red; cursor: pointer;"></i>
+      </div>
     </div>
       <button id="plusButton" >시간표 추가</button>
   </div>
@@ -165,8 +167,17 @@
   </section>
 
   <section class="charactor">
-    <img id="image" src="/image/v23_24.png">
+    <button class="popup-click1" type="button" style="cursor: pointer; border: none;width: 100%;
+    height: 100%;"><img id="image" src="/image/v23_24.png"></button>
   </section>
+
+  <div class="popup-6">
+    <h3>옵션 선택</h3>
+    <div class="popup-content">
+      <button type="button"  id="popupClick-modal">설명서 다시보기</button>
+    </div>
+  </div>
+
 
   <section class="material">
   <!-- 준비물 -->
@@ -306,6 +317,7 @@
   const closeModal4 = document.getElementById("closeModal4");
   const backModal4 = document.getElementById("backModal4");
   const cancelModals = document.getElementsByClassName("cancels");
+  const cancelMo = document.getElementById("popupClick-modal");
   function inCount() {
     let count = localStorage.getItem("visitCode");
     console.log(count);
@@ -368,6 +380,12 @@
         cancelModals[i].addEventListener("click", () => {
           modal4.style.display = "none";
           localStorage.setItem("visitCode", -1000000);
+        });
+      }
+      for (let i = 0; i < cancelMo.length; i++) {
+        cancelMo[i].addEventListener("click", () => {
+          modal1.style.display = "block";
+          localStorage.setItem("visitCode", 0);
         });
       }
 
@@ -669,12 +687,7 @@
       sessionStorage.setItem('savedBoxes', JSON.stringify(savedBoxes));
     }
 
-    // 페이지 새로고침 시 하트를 모두 비움
-    $(window).on('beforeunload', function () {
-      $(".class-box").each(function () {
-        $(this).find(".bi-heart-fill").attr('class', 'bi-heart');
-      });
-    });
+
 
     handleHeartClick($(".class-box"));
     handleHeartClick($(".class-box").last());
@@ -907,6 +920,16 @@
   document.addEventListener('click', function (event) {
     if (event.target !== document.querySelector('.popup-3') && !document.querySelector('.popup-3').contains(event.target) && event.target !== document.getElementById('popupClick-attendance')) {
       document.querySelector('.popup-3').style.display = 'none';
+    }
+  });
+
+  document.getElementById('popupClick1').addEventListener('click', function() {
+    document.querySelector('.popup-6').style.display = 'block';
+  });
+
+  document.addEventListener('click', function (event) {
+    if (event.target !== document.querySelector('.popup-6') && !document.querySelector('.popup-6').contains(event.target) && event.target !== document.getElementById('popupClick1')) {
+      document.querySelector('.popup-6').style.display = 'none';
     }
   });
 
