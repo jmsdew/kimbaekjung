@@ -290,7 +290,7 @@
 
   <!-----------------------------------------------자바스크립트--------------------------------------------------->
 <script type="text/javascript">
-
+  window.history.pushState({}, document.title, '/main/main')
   const modal = document.getElementById("modal");
   const modal1 = document.getElementById("modal1");
   const modal2 = document.getElementById("modal2");
@@ -364,10 +364,13 @@
         modal4.style.display = "none";
         modal3.style.display = "block";
       });
+      for (let i = 0; i < cancelModals.length; i++) {
         cancelModals[i].addEventListener("click", () => {
           modal4.style.display = "none";
           localStorage.setItem("visitCode", -1000000);
         });
+      }
+
     }
   });
 
