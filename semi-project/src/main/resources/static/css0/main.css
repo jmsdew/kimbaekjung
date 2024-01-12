@@ -19,43 +19,43 @@
 #namelist{
   width: 100%;
   height: 100%;
-  padding-right: 50px;
-  padding-left: 50px;
+  padding-right: 3.125rem;
+  padding-left: 3.125rem;
   overflow: auto;
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   flex-wrap: wrap; /* 자식 요소들을 여러 줄에 걸쳐 정렬 */
   justify-content: flex-start; /* 왼쪽에서부터 정렬 */
   align-content: flex-start;
 }
 
 #namelist button{
-  height: 45px;
-  width: 179px;
-  font-size: 25px;
+  height: 2.8125rem;
+  width: 11.1875rem;
+  font-size: 1.5625rem;
   font-weight: 450;
   background-color: white;
-  border: 1px solid black;
+  border: 0.0625rem solid black;
   font-family: Inter;
 }
 
 
 #list{
   width: 100%;
-  height: 50px;
+  height: 3.125rem;
   text-align: center;
   color: black;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-family: Inter;
   font-weight: 600;
-  letter-spacing: 9px;
+  letter-spacing: 0.5625rem;
   word-wrap: break-word;
 
 }
 
 #line{
   width: 100%;
-  height: 85px;
+  height: 5.3125rem;
 }
 
 .popup0{
@@ -66,22 +66,22 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 700px;
-  height: 600px;
+  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+  width: 43.75rem;
+  height: 37.5rem;
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid;
+  border: 0.0625rem solid;
 }
 
 #namePopup0{
-  border: 1px solid black;
+  border: 0.0625rem solid black;
   position: absolute;
-  top: 20px;
-  left: 240px;
-  width: 220px;
-  height: 50px;
+  top: 1.25rem;
+  left: 15rem;
+  width: 13.75rem;
+  height: 3.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,24 +91,24 @@
 
 .popup0 section{
   position: absolute;
-  left: 158px;
-  width: 384px;
-  height: 60px;
-  top: 90px;
+  left: 9.875rem;
+  width: 24rem;
+  height: 3.75rem;
+  top: 5.625rem;
 }
 
 .popup0 section div{
   width: 100%;
-  height: 30px;
+  height: 1.875rem;
   display: flex;
 }
 
 .popup0 section div div{
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: normal;
   font-family: Inter;
-  width: 96px;
-  border: solid 1px black;
+  width: 6rem;
+  border: solid 0.0625rem black;
   display: flex;
   align-items: center; /* 수직 가운데 정렬 */
   justify-content: center; /* 수평 가운데 정렬 */
@@ -116,23 +116,23 @@
 
 #attendance{
   width: 90%;
-  height: 370px;
+  height: 23.125rem;
   position: absolute;
   left: 5%;
-  bottom: 60px;
-  border: 1px solid black;
+  bottom: 3.75rem;
+  border: 0.0625rem solid black;
   overflow-y: auto;
 }
 
 .kucu{
   position: relative;
   width: 94%;
-  height: 185px;
-  margin-bottom: 20px;
+  height: 11.5625rem;
+  margin-bottom: 1.25rem;
   margin-left: 3%;
   margin-top: 3%;
-  border: 2px solid black;
-  border-radius: 10px;
+  border: 0.125rem solid black;
+  border-radius: 0.625rem;
 }
 
 .word2{
@@ -140,30 +140,30 @@
   left: 2%;
   position: absolute;
   font-family: Inter;
-  font-size: 15px;
-  letter-spacing: 2px;
+  font-size: 0.9375rem;
+  letter-spacing: 0.125rem;
 }
 
 .word1{
   top: -4%;
   position: absolute;
   font-family: Inter;
-  font-size: 15px;
+  font-size: 0.9375rem;
   right: 10%;
-  letter-spacing: 2px;
+  letter-spacing: 0.125rem;
 }
 
 
 .date1{
   position: absolute;
-  width: 225px;
-  height: 60px;
+  width: 14.0625rem;
+  height: 3.75rem;
   left: 2%;
   top: 20%;
   font-family: Inter;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: bold;
-  border: 1px solid black;
+  border: 0.0625rem solid black;
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: center; /* 수평 중앙 정렬 */
@@ -171,15 +171,15 @@
 
 .attend1{
   position: absolute;
-  width: 140px;
-  height: 60px;
+  width: 8.75rem;
+  height: 3.75rem;
   left: 45%;
   top: 20%;
   font-family: Inter;
-  font-size: 30px;
+  font-size: 1.875rem;
   font-weight: bold;
-  letter-spacing: 5px;
-  border: 1px solid black;
+  letter-spacing: 0.3125rem;
+  border: 0.0625rem solid black;
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: center; /* 수평 중앙 정렬 */
@@ -187,19 +187,19 @@
 
 .agree{
   position: absolute;
-  width: 140px;
-  height: 60px;
+  width: 8.75rem;
+  height: 3.75rem;
   right: 2%;
   top: 20%;
-  font-size: 30px;
-  border: 1px solid black;
+  font-size: 1.875rem;
+  border: 0.0625rem solid black;
 
 }
 
 .statusResult{
   position: absolute;
-  width: 110px;
-  height: 60px;
+  width: 6.875rem;
+  height: 3.75rem;
   left: 0;
   font-family: Inter;
   display: flex;
@@ -207,29 +207,29 @@
   justify-content: center; /* 수평 중앙 정렬 */
 }
 .status1{
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   position: absolute;
-  right: 0px;
-  top: 0px;
+  right: 0rem;
+  top: 0rem;
 }
 .status2{
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   position: absolute;
-  right: 0px;
-  bottom: 0px;
+  right: 0rem;
+  bottom: 0rem;
 }
 
 .statusContent{
   position: absolute;
   width: 96%;
-  height: 60px;
+  height: 3.75rem;
   left: 2%;
   top: 60%;
   font-family: Inter;
-  font-size: 20px;
-  border: 1px solid black;
+  font-size: 1.25rem;
+  border: 0.0625rem solid black;
   display: flex;
   align-items: center; /* 수직 중앙 정렬 */
   justify-content: center; /* 수평 중앙 정렬 */
@@ -258,9 +258,9 @@
    width: 17%;
    height: 6%;
    right: 10%;
-   bottom: 60px;
+   bottom: 3.75rem;
    font-family: Inter;
-   font-size: 17px;
+   font-size: 1.0625rem;
    font-weight: bold;
    position: absolute;
 
@@ -274,14 +274,14 @@
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  height: 500px;
+  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+  width: 25rem;
+  height: 31.25rem;
 
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid;
+  border: 0.0625rem solid;
 }
 .popup h3 {
   font-family: Inter;
@@ -293,23 +293,23 @@
 
 .popup section{
   width: 95%;
-  height: 350px;
+  height: 21.875rem;
   position: absolute;
-  top: 70px;
+  top: 4.375rem;
   left: 5%;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.625rem;
   overflow-y: auto;
 }
 
 .nameBtn2{
-  width: 170px;
-  height: 50px;
+  width: 10.625rem;
+  height: 3.125rem;
   background-color: white;
-  border: 1px solid black;
+  border: 0.0625rem solid black;
   font-family: Inter;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 
 .nameBtn2.selected{
@@ -319,50 +319,50 @@
 
 
 h3 {
-  font-size: 25px;
+  font-size: 1.5625rem;
   text-align: center;
-  padding: 20px 0;
+  padding: 1.25rem 0;
 }
 .buttons {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 1.25rem;
   bottom: 0;
   position: absolute;
-  padding: 20px 40px;
+  padding: 1.25rem 2.5rem;
 }
 .buttons button {
-  border: 1px solid #000;
+  border: 0.0625rem solid #000;
   background-color: #fff;
 
-  border-radius: 20px;
-  width: 70px;
-  font-size: 20px;
+  border-radius: 1.25rem;
+  width: 4.375rem;
+  font-size: 1.25rem;
 }
 
 .popup_cancel1{
   position: absolute;
-  bottom: 20px;
-  right: 40px;
+  bottom: 1.25rem;
+  right: 2.5rem;
   font-family: Inter;
-  border: 1px solid #000;
+  border: 0.0625rem solid #000;
   background-color: #fff;
-  border-radius: 20px;
-  width: 70px;
-  font-size: 20px;
+  border-radius: 1.25rem;
+  width: 4.375rem;
+  font-size: 1.25rem;
 }
 
 .popup_cancel2{
   position: absolute;
-  bottom: 20px;
-  right: 40px;
+  bottom: 1.25rem;
+  right: 2.5rem;
   font-family: Inter;
-  border: 1px solid #000;
+  border: 0.0625rem solid #000;
   background-color: #fff;
-  border-radius: 20px;
-  width: 70px;
-  font-size: 20px;
+  border-radius: 1.25rem;
+  width: 4.375rem;
+  font-size: 1.25rem;
 }
 
 
@@ -374,14 +374,14 @@ h3 {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 380px;
-  height: 200px;
+  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+  width: 23.75rem;
+  height: 12.5rem;
 
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid;
+  border: 0.0625rem solid;
 }
 .popup1 h3{
   font-family: Inter;
@@ -392,11 +392,11 @@ h3 {
 }
 #addInput{
    position: absolute;
-   width: 200px;
+   width: 12.5rem;
    left: 23%;
-   height: 40px;
+   height: 2.5rem;
    font-weight: 400;
-   font-size: 30px;
+   font-size: 1.875rem;
    text-align: center;
 }
 .popup2 {
@@ -407,23 +407,23 @@ h3 {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: #fff;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  width: 380px;
-  height: 200px;
+  box-shadow: 0 0 0.9375rem rgba(0, 0, 0, 0.1);
+  width: 23.75rem;
+  height: 12.5rem;
 
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid;
+  border: 0.0625rem solid;
 }
 
 #updateInput{
   position: absolute;
-  width: 200px;
+  width: 12.5rem;
   left: 23%;
-  height: 40px;
+  height: 2.5rem;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 1.875rem;
   text-align: center;
 }
 
