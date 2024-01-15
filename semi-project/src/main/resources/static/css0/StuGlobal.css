@@ -92,6 +92,7 @@ header nav ul li button a{
     position: absolute;
     font-size: 50px;
     font-weight: bold;
+    font-family: Inter;
     top: 11%;
     left: 2%;
     border: 2px solid black;
@@ -376,6 +377,7 @@ header nav ul li button a{
     background-color: white;
     left: 0;
     top: 9%;
+    padding: 2%;
     text-align: left;
     line-height: 40px;
     font-family: Inter;
@@ -583,18 +585,15 @@ h3 {
 }
 
 #nameStyle{
+    width: 95%;
+    height: 21.875rem;
     position: absolute;
-    top: 70px;
+    top: 4.375rem;
     left: 5%;
-    width: 90%;
-    height: 350px;
-    font-size: 20px;
-    font-weight: 450;
-    gap: 10px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start; /* 수평 정렬을 시작 부분에서 시작하게 함 */
     flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.625rem;
     overflow-y: auto;
 }
 

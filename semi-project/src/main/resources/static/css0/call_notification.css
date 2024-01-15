@@ -292,7 +292,7 @@
 }
 
 #research{
-  width: 36%;
+  width: 45%;
   position: absolute;
   bottom: 5%;
   left: 31%;
@@ -311,7 +311,7 @@
   border: 2px solid black;
   font-family: Inter;
   font-size: 20px;
-  width: 100%;
+  width: 75%;
 }
 #research button{
   flex: 1;
@@ -324,8 +324,8 @@
   letter-spacing: 3px;
   word-wrap: break-word;
   border-radius: 5px;
-  width: 23%;
+  width: 20%;
   position: absolute;
   top: 0;
-  left: 460px;
+  right: 3%;
 }
