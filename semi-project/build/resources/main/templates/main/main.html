@@ -167,13 +167,12 @@
   </section>
 
   <section class="charactor">
-    <button class="popup-click1" type="button" style="cursor: pointer; border: none;width: 100%;
+    <button id="popupClick1" type="button" style="cursor: pointer; border: none;width: 100%;
     height: 100%;"><img id="image" src="/image/v23_24.png"></button>
   </section>
 
   <div class="popup-6">
-    <h3>옵션 선택</h3>
-    <div class="popup-content">
+    <div class="popup-content1">
       <button type="button"  id="popupClick-modal">설명서 다시보기</button>
     </div>
   </div>
@@ -317,7 +316,6 @@
   const closeModal4 = document.getElementById("closeModal4");
   const backModal4 = document.getElementById("backModal4");
   const cancelModals = document.getElementsByClassName("cancels");
-  const cancelMo = document.getElementById("popupClick-modal");
   function inCount() {
     let count = localStorage.getItem("visitCode");
     console.log(count);
@@ -333,6 +331,17 @@
       return count;
     }
   }
+  document.addEventListener('DOMContentLoaded', function () {
+    const cancelMo = document.getElementById("popupClick-modal");
+
+    cancelMo.addEventListener("click", () => {
+      console.log("Button clicked!");
+      localStorage.removeItem("visitCode");
+      modal.style.display = "block";
+      document.body.style.overflow = "hidden";
+    });
+  });
+
   window.addEventListener('DOMContentLoaded' ,function (){
     let visitCount = inCount();
     console.log("방문횟수 : " + visitCount);
@@ -380,12 +389,6 @@
         cancelModals[i].addEventListener("click", () => {
           modal4.style.display = "none";
           localStorage.setItem("visitCode", -1000000);
-        });
-      }
-      for (let i = 0; i < cancelMo.length; i++) {
-        cancelMo[i].addEventListener("click", () => {
-          modal1.style.display = "block";
-          localStorage.setItem("visitCode", 0);
         });
       }
 
@@ -923,13 +926,17 @@
     }
   });
 
-  document.getElementById('popupClick1').addEventListener('click', function() {
-    document.querySelector('.popup-6').style.display = 'block';
+  let popup6 = document.querySelector('.popup-6');
+  let popupButton = document.getElementById('popupClick1');
+
+  popupButton.addEventListener('click', function(event) {
+    event.stopPropagation(); // 이벤트 버블링 중지
+    popup6.style.display = (popup6.style.display === 'block') ? 'none' : 'block';
   });
 
-  document.addEventListener('click', function (event) {
-    if (event.target !== document.querySelector('.popup-6') && !document.querySelector('.popup-6').contains(event.target) && event.target !== document.getElementById('popupClick1')) {
-      document.querySelector('.popup-6').style.display = 'none';
+  document.addEventListener('click', function(event) {
+    if (event.target !== popup6 && !popup6.contains(event.target) && event.target !== popupButton) {
+      popup6.style.display = 'none';
     }
   });
 
