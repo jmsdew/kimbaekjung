@@ -36,7 +36,7 @@
 
 프로젝트 아키텍처
 ---
-<img src=project.png>
+<img src=project1.png>
 
 ERD
 ---
