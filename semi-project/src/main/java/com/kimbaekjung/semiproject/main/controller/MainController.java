@@ -48,9 +48,6 @@ public class MainController {
         String option = requestData.get("option");
         String studentName = requestData.get("studentName");
 
-        System.out.println("Received option: " + option);
-        System.out.println("Received student name: " + studentName);
-
         ModelAndView mv = new ModelAndView();
         // 뷰 내용 추가하기 if 문으로
         if(option.equals("sitDown")){

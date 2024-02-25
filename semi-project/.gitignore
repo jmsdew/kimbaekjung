@@ -3,6 +3,8 @@
 !**/src/test/**/build/
 .yml
 
+application-api-db.yml
+
 ### STS ###
 .apt_generated
 .classpath

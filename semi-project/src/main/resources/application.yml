@@ -1,21 +1,7 @@
-spring:
-  datasource:
-    url: jdbc:mysql://222.112.124.237:3306/kbjcompanydb
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: kimbaekjung
-    password: 1q2w3e4r!@
 
 mybatis:
   mapper-locations: classpath:resources/mapper/*.xml
   config-location: classpath:mapper/mapper-config.xml
-
-API-KEY:
-  restApi-key: 292de2282662f2a03bce2047c15cdffe
-  restApi-pwd: Z4AZoOlj58JQ3uqLrSKfRIEKh6I0edpg
-  javascript-key: 528bf87193c911d9669e1fac9b50a2e8
-#  restApi-key: 3a9a45d0213ca7a489beb3001dc2b784
-#  restApi-pwd: jTeOCaUYOC0q12K0lzkWx1nYcFrMRNe9
-#  javascript-key: 401490c2da690a83c9329a3eb7ab8433
 
 server:
   port: 443
@@ -26,4 +12,6 @@ server:
     key-store-type: PKCS12
     key-store-password: 1q2w3e4r!
     enabled-protocols: TLSv1.2,TLSv1.3
-
+spring:
+  profiles:
+    include: api-db

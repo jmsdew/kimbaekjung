@@ -81,7 +81,7 @@ public class KakaoAPI {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
+
 
             //    Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
             JsonParser parser = new JsonParser();
@@ -90,8 +90,6 @@ public class KakaoAPI {
             access_Token = element.getAsJsonObject().get("access_token").getAsString();
             refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
 
-            System.out.println("access_token : " + access_Token);
-            System.out.println("refresh_token : " + refresh_Token);
 
             br.close();
             bw.close();
@@ -117,7 +115,7 @@ public class KakaoAPI {
             conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
             int responseCode = conn.getResponseCode();
-            System.out.println("responseCode : " + responseCode);
+
 
             BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
@@ -127,7 +125,7 @@ public class KakaoAPI {
             while ((line = br.readLine()) != null) {
                 result += line;
             }
-            System.out.println("response body : " + result);
+
 
             JsonParser parser = new JsonParser();
             JsonElement element = parser.parse(result);
@@ -138,7 +136,7 @@ public class KakaoAPI {
 
 
             userInfo.put("email", email);
-            System.out.println(email);
+
             List<KakaoDTO> kakaoDTOs = kakaoDAO.selectEmail();
             List<String> emails = kakaoDTOs.stream().map(KakaoDTO::getEmail).collect(Collectors.toList());
             System.out.println(emails);

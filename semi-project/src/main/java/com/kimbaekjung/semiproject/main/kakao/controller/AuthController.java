@@ -41,9 +41,9 @@ public class AuthController {
     @RequestMapping("/kakao")
     public ModelAndView login(@RequestParam("code") String code, HttpSession session){
         String access_Token = kakaoAPI.getAccessToken(code);
-        System.out.println("access token : " + access_Token);
+
         HashMap<String, Object> userInfo = kakaoAPI.getUserInfo(access_Token);
-        System.out.println(userInfo);
+
 
             session.setAttribute("userId", userInfo.get("email"));
             session.setAttribute("access_Token", access_Token);
@@ -52,12 +52,12 @@ public class AuthController {
 
         Object emails = userInfo.get("email");
         String a = emails.toString();
-        System.out.println(a);
+
         KakaoDTO userCode = kakaoDAO.userCode(a);
-        System.out.println(userCode);
+
         int userCodes = userCode.getCode();
         session.setAttribute("userCodes", userCodes);
-        System.out.println(session.getAttribute("userCodes"));
+
 
         List<MainDTO> school = mainservice.userSchool(userCodes);
         List<StudentDTO> student = mainservice.studentName(userCodes);
